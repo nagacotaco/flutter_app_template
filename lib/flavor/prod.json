@@ -1,0 +1,5 @@
+{
+    "FLAVOR": "prod",
+    "APP_NAME": "本番環境",
+    "APP_ID": "com.nuggetdyson.template"
+}

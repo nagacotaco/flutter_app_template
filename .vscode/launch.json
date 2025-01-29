@@ -5,28 +5,20 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch Chrome",
-            "request": "launch",
-            "type": "chrome",
-            "url": "http://localhost:8080",
-            "webRoot": "${workspaceFolder}"
-        },
-        {
-            "name": "flutter_app_template",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "flutter_app_template (profile mode)",
+            "name": "dev",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "args": [
+                "--dart-define-from-file=lib/flavor/dev.json",
+            ],
         },
         {
-            "name": "flutter_app_template (release mode)",
+            "name": "prod",
             "request": "launch",
-            "type": "dart",
-            "flutterMode": "release"
-        }
+            "type": "dart",            
+            "args": [
+                "--dart-define-from-file=lib/flavor/prod.json",
+            ],
+        },
     ]
 }
