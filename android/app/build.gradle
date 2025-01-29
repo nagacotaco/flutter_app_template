@@ -18,6 +18,16 @@ if (project.hasProperty('dart-defines')) {
     println(dartDefines)
 }
 
+// Flavor　アプリアイコンをmain/resへコピーする
+task copySources(type: Copy) {
+   from "src/${dartDefines.FLAVOR}/res"
+   into 'src/main/res'
+}
+
+tasks.whenTaskAdded { task ->
+  task.dependsOn copySources
+}
+
 android {
     namespace = "com.example.flutter_app_template"
     compileSdk = flutter.compileSdkVersion
