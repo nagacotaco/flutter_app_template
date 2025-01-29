@@ -15,6 +15,17 @@ dev_dependencies:
     sdk: flutter
   flutter_lints: ^5.0.0
   flutter_launcher_icons:
+  flutter_native_splash:
 
 flutter:
   uses-material-design: true
+
+#　flutter pub run flutter_native_splash:create
+flutter_native_splash:
+  color: "#ffffff" # 背景色（例: 白）
+  image: assets/splash/splash.png # スプラッシュ画像のパス
+  android: true
+  ios: true
+  android_12:
+    image: assets/splash/splash.png # Android 12用のスプラッシュ画像
+    icon_background_color: "#ffffff" # アイコン背景色（Android 12専用）
