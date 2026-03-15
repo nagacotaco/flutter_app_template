@@ -9,7 +9,7 @@
             "request": "launch",
             "type": "dart",
             "args": [
-                "--dart-define-from-file=lib/flavor/dev.json",
+                "--dart-define-from-file=lib/core/flavor/dev.json",
             ],
         },
         {
@@ -17,7 +17,7 @@
             "request": "launch",
             "type": "dart",            
             "args": [
-                "--dart-define-from-file=lib/flavor/prod.json",
+                "--dart-define-from-file=lib/core/flavor/prod.json",
             ],
         },
     ]
