@@ -12,6 +12,13 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'Flutter App',
+      theme: ThemeData(
+        // 波紋エフェクト（Ripple）を無くす
+        splashColor: Colors.transparent,
+        splashFactory: NoSplash.splashFactory,
+        // タップ時の背景ハイライトを薄いグレーに変更
+        highlightColor: Colors.grey.withValues(alpha: .15),
+      ),
       routerConfig: appRouter,
     );
   }
