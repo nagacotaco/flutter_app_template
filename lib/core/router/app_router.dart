@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_template/core/router/routes.dart';
 import 'package:flutter_app_template/core/widgets/scaffold_with_nav_bar.dart';
 import 'package:flutter_app_template/features/home/presentation/screens/detail_screen.dart';
 import 'package:flutter_app_template/features/home/presentation/screens/home_screen.dart';
@@ -7,7 +8,7 @@ import 'package:flutter_app_template/features/search/presentation/search_page.da
 import 'package:go_router/go_router.dart';
 
 final appRouter = GoRouter(
-  initialLocation: '/',
+  initialLocation: AppRoutes.home.path,
   routes: route,
 );
 
@@ -20,7 +21,7 @@ final route = [
       StatefulShellBranch(
         routes: [
           GoRoute(
-            path: '/',
+            path: AppRoutes.home.path,
             pageBuilder: (context, state) => buildPageWithTransition(
               state: state,
               child: const HomeScreen(),
@@ -28,7 +29,7 @@ final route = [
             routes: [
               // ネストルートに設定すると、遷移後もボトムナビが表示され続ける
               GoRoute(
-                path: 'detail', // ネストされたルートは「/」を省くことが推奨されます
+                path: AppRoutes.detail.name, // ネストされたルートは「/」を省くことが推奨されます
                 pageBuilder: (context, state) => buildPageWithTransition(
                   state: state,
                   child: const DetailScreen(),
@@ -40,7 +41,7 @@ final route = [
       ),
       StatefulShellBranch(routes: [
         GoRoute(
-          path: '/search-page',
+          path: AppRoutes.search.path,
           pageBuilder: (context, state) => buildPageWithTransition(
             state: state,
             child: const SearchPage(),
@@ -50,7 +51,7 @@ final route = [
       StatefulShellBranch(
         routes: [
           GoRoute(
-            path: '/my-page',
+            path: AppRoutes.myPage.path,
             pageBuilder: (context, state) => buildPageWithTransition(
               state: state,
               child: const MyPage(),
