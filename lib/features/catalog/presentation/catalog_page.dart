@@ -1,0 +1,761 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_app_template/core/theme/app_text_styles.dart';
+
+class CatalogPage extends StatelessWidget {
+  const CatalogPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return CatalogScreen();
+  }
+}
+
+// ---------------------------------------------------------------------------
+// データモデル
+// ---------------------------------------------------------------------------
+
+class _StyleEntry {
+  const _StyleEntry({
+    required this.name,
+    required this.style,
+    required this.sample,
+    required this.props,
+  });
+
+  final String name;
+  final TextStyle style;
+  final String sample;
+  final String props;
+}
+
+class _StyleGroup {
+  const _StyleGroup(
+      {required this.label, required this.desc, required this.entries});
+  final String label;
+  final String desc;
+  final List<_StyleEntry> entries;
+}
+
+final List<_StyleGroup> _groups = [
+  _StyleGroup(
+    label: 'Display',
+    desc: 'スプラッシュ・ヒーロー用の超大文字',
+    entries: [
+      _StyleEntry(
+          name: 'displayLarge',
+          style: AppTextStyles.displayLarge,
+          sample: 'あいう Ag',
+          props: '57px · w400 · h1.12'),
+      _StyleEntry(
+          name: 'displayMedium',
+          style: AppTextStyles.displayMedium,
+          sample: 'あいう Ag',
+          props: '45px · w400 · h1.16'),
+      _StyleEntry(
+          name: 'displaySmall',
+          style: AppTextStyles.displaySmall,
+          sample: 'あいう Ag',
+          props: '36px · w400 · h1.22'),
+    ],
+  ),
+  _StyleGroup(
+    label: 'Headline',
+    desc: 'ページ・セクション見出し',
+    entries: [
+      _StyleEntry(
+          name: 'headlineLarge',
+          style: AppTextStyles.headlineLarge,
+          sample: '設定',
+          props: '32px · w400 · h1.25'),
+      _StyleEntry(
+          name: 'headlineMedium',
+          style: AppTextStyles.headlineMedium,
+          sample: '通知一覧',
+          props: '28px · w400 · h1.29'),
+      _StyleEntry(
+          name: 'headlineSmall',
+          style: AppTextStyles.headlineSmall,
+          sample: 'プロフィール',
+          props: '24px · w400 · h1.33'),
+    ],
+  ),
+  _StyleGroup(
+    label: 'Title',
+    desc: 'カード見出し・AppBar・リストタイトル',
+    entries: [
+      _StyleEntry(
+          name: 'titleLarge',
+          style: AppTextStyles.titleLarge,
+          sample: '最近の注文',
+          props: '22px · w500 · h1.27'),
+      _StyleEntry(
+          name: 'titleMedium',
+          style: AppTextStyles.titleMedium,
+          sample: '山田商事への請求書',
+          props: '16px · w500 · h1.50 · ls0.15'),
+      _StyleEntry(
+          name: 'titleSmall',
+          style: AppTextStyles.titleSmall,
+          sample: '2025年3月17日',
+          props: '14px · w500 · h1.43 · ls0.1'),
+    ],
+  ),
+  _StyleGroup(
+    label: 'Body',
+    desc: '本文・説明文。最も出番が多いグループ',
+    entries: [
+      _StyleEntry(
+          name: 'bodyLarge',
+          style: AppTextStyles.bodyLarge,
+          sample: 'アカウント設定を変更しました。変更内容は次回ログイン時に反映されます。',
+          props: '16px · w400 · h1.50 · ls0.5'),
+      _StyleEntry(
+          name: 'bodyMedium',
+          style: AppTextStyles.bodyMedium,
+          sample: 'パスワードは8文字以上で、英数字を組み合わせてください。',
+          props: '14px · w400 · h1.43 · ls0.25'),
+      _StyleEntry(
+          name: 'bodySmall',
+          style: AppTextStyles.bodySmall,
+          sample: '※ 本設定はいつでも変更できます。ご不明な点はサポートまでお問い合わせください。',
+          props: '12px · w400 · h1.33 · ls0.4'),
+    ],
+  ),
+  _StyleGroup(
+    label: 'Label',
+    desc: 'ボタン・タグ・キャプション・ナビゲーション',
+    entries: [
+      _StyleEntry(
+          name: 'labelLarge',
+          style: AppTextStyles.labelLarge,
+          sample: '保存する　／　キャンセル',
+          props: '14px · w500 · h1.43 · ls0.1'),
+      _StyleEntry(
+          name: 'labelMedium',
+          style: AppTextStyles.labelMedium,
+          sample: '完了　処理中　エラー',
+          props: '12px · w500 · h1.33 · ls0.5'),
+      _StyleEntry(
+          name: 'labelSmall',
+          style: AppTextStyles.labelSmall,
+          sample: 'RECENT · FAVORITES · ALL ITEMS',
+          props: '11px · w500 · h1.45 · ls0.5'),
+    ],
+  ),
+];
+
+// ---------------------------------------------------------------------------
+// メイン画面
+// ---------------------------------------------------------------------------
+
+class CatalogScreen extends StatefulWidget {
+  const CatalogScreen({super.key});
+
+  @override
+  State<CatalogScreen> createState() => _CatalogScreenState();
+}
+
+class _CatalogScreenState extends State<CatalogScreen>
+    with SingleTickerProviderStateMixin {
+  late final TabController _tabController;
+
+  final _tabs = ['Display', 'Headline', 'Title', 'Body', 'Label', '使用例'];
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: _tabs.length, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final cs = Theme.of(context).colorScheme;
+
+    return Scaffold(
+      backgroundColor: cs.surface,
+      body: NestedScrollView(
+        headerSliverBuilder: (context, _) => [
+          SliverAppBar(
+            expandedHeight: 140,
+            pinned: true,
+            backgroundColor: const Color(0xFF2D2926),
+            foregroundColor: const Color(0xFFF7F5F2),
+            flexibleSpace: FlexibleSpaceBar(
+              titlePadding: const EdgeInsets.fromLTRB(20, 0, 20, 56),
+              title: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'FLUTTER · TYPE SCALE',
+                    style: AppTextStyles.labelSmall.copyWith(
+                      color: const Color(0xFFF7F5F2).withOpacity(0.5),
+                      letterSpacing: 1.0,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    'AppTextStyles',
+                    style: AppTextStyles.titleLarge.copyWith(
+                      color: const Color(0xFFF7F5F2),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            bottom: TabBar(
+              controller: _tabController,
+              isScrollable: true,
+              tabAlignment: TabAlignment.start,
+              indicatorColor: const Color(0xFFC4622D),
+              labelColor: const Color(0xFFF7F5F2),
+              unselectedLabelColor: const Color(0xFFF7F5F2).withOpacity(0.5),
+              labelStyle: AppTextStyles.labelMedium,
+              unselectedLabelStyle: AppTextStyles.labelMedium,
+              tabs: _tabs.map((t) => Tab(text: t)).toList(),
+            ),
+          ),
+        ],
+        body: TabBarView(
+          controller: _tabController,
+          children: [
+            ..._groups.map((g) => _StyleGroupTab(group: g)),
+            const _UsageExamplesTab(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// スタイルグループ タブ
+// ---------------------------------------------------------------------------
+
+class _StyleGroupTab extends StatelessWidget {
+  const _StyleGroupTab({required this.group});
+  final _StyleGroup group;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+      children: [
+        // セクションヘッダー
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.baseline,
+          textBaseline: TextBaseline.alphabetic,
+          children: [
+            Text(
+              group.label.toUpperCase(),
+              style: AppTextStyles.labelMedium.copyWith(
+                color: const Color(0xFF6B6460),
+                letterSpacing: 0.8,
+              ),
+            ),
+            const SizedBox(width: 10),
+            Text(
+              group.desc,
+              style: AppTextStyles.bodySmall
+                  .copyWith(color: const Color(0xFFA09B97)),
+            ),
+          ],
+        ),
+        const SizedBox(height: 8),
+        const Divider(color: Color(0xFFE2DDD8)),
+        const SizedBox(height: 8),
+
+        // スタイル行
+        ...group.entries.map((e) => _StyleRow(entry: e)),
+      ],
+    );
+  }
+}
+
+class _StyleRow extends StatelessWidget {
+  const _StyleRow({required this.entry});
+  final _StyleEntry entry;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(vertical: 16),
+      decoration: const BoxDecoration(
+        border:
+            Border(bottom: BorderSide(color: Color(0xFFE2DDD8), width: 0.5)),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Text(
+              entry.sample,
+              style: entry.style,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          const SizedBox(width: 16),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text(
+                entry.name,
+                style: AppTextStyles.labelSmall.copyWith(
+                  color: const Color(0xFFC4622D),
+                  letterSpacing: 0.2,
+                ),
+              ),
+              const SizedBox(height: 2),
+              Text(
+                entry.props,
+                style: AppTextStyles.labelSmall.copyWith(
+                  color: const Color(0xFFA09B97),
+                  fontSize: 10,
+                ),
+                textAlign: TextAlign.right,
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 使用例 タブ
+// ---------------------------------------------------------------------------
+
+class _UsageExamplesTab extends StatelessWidget {
+  const _UsageExamplesTab();
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 24),
+      children: const [
+        _SectionLabel(title: '使用例', desc: '実際の Widget イメージ'),
+        SizedBox(height: 16),
+        _MessageListCard(),
+        SizedBox(height: 16),
+        _InvoiceCard(),
+        SizedBox(height: 16),
+        _ButtonCard(),
+        SizedBox(height: 16),
+        _StatusChipsCard(),
+        SizedBox(height: 16),
+        _FormCard(),
+        SizedBox(height: 32),
+      ],
+    );
+  }
+}
+
+class _SectionLabel extends StatelessWidget {
+  const _SectionLabel({required this.title, required this.desc});
+  final String title;
+  final String desc;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.baseline,
+      textBaseline: TextBaseline.alphabetic,
+      children: [
+        Text(
+          title.toUpperCase(),
+          style: AppTextStyles.labelMedium.copyWith(
+            color: const Color(0xFF6B6460),
+            letterSpacing: 0.8,
+          ),
+        ),
+        const SizedBox(width: 10),
+        Text(
+          desc,
+          style:
+              AppTextStyles.bodySmall.copyWith(color: const Color(0xFFA09B97)),
+        ),
+      ],
+    );
+  }
+}
+
+// カードの共通ラッパー
+class _CatalogCard extends StatelessWidget {
+  const _CatalogCard({required this.label, required this.child});
+  final String label;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(color: const Color(0xFFE2DDD8)),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            decoration: const BoxDecoration(
+              color: Color(0xFFF0EDE9),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(11)),
+              border: Border(bottom: BorderSide(color: Color(0xFFE2DDD8))),
+            ),
+            child: Text(
+              label,
+              style: AppTextStyles.labelSmall.copyWith(
+                color: const Color(0xFFA09B97),
+                letterSpacing: 0.8,
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: child,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// ListTile風メッセージ一覧
+class _MessageListCard extends StatelessWidget {
+  const _MessageListCard();
+
+  @override
+  Widget build(BuildContext context) {
+    const items = [
+      ('田', '田中 花子', '了解しました。明日の会議は...', '10:32'),
+      ('佐', '佐藤 一郎', '資料を送りました', '昨日'),
+    ];
+
+    return _CatalogCard(
+      label: 'ListTile — メッセージ一覧',
+      child: Column(
+        children: items.map((item) {
+          final (initial, name, preview, time) = item;
+          return Container(
+            padding: const EdgeInsets.symmetric(vertical: 12),
+            decoration: BoxDecoration(
+              border: item != items.last
+                  ? const Border(
+                      bottom: BorderSide(color: Color(0xFFE2DDD8), width: 0.5))
+                  : null,
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CircleAvatar(
+                  radius: 18,
+                  backgroundColor: const Color(0xFFEDE9E4),
+                  child: Text(
+                    initial,
+                    style: AppTextStyles.labelLarge
+                        .copyWith(color: const Color(0xFF6B6460)),
+                  ),
+                ),
+                const SizedBox(width: 12),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(name, style: AppTextStyles.titleMedium),
+                      Text(
+                        preview,
+                        style: AppTextStyles.bodyMedium
+                            .copyWith(color: const Color(0xFF6B6460)),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Text(
+                        time,
+                        style: AppTextStyles.bodySmall
+                            .copyWith(color: const Color(0xFFA09B97)),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          );
+        }).toList(),
+      ),
+    );
+  }
+}
+
+// 請求書カード
+class _InvoiceCard extends StatelessWidget {
+  const _InvoiceCard();
+
+  @override
+  Widget build(BuildContext context) {
+    return _CatalogCard(
+      label: 'Card — 請求書サマリー',
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'INVOICE #0042',
+            style: AppTextStyles.labelSmall.copyWith(
+              color: const Color(0xFFA09B97),
+              letterSpacing: 0.8,
+            ),
+          ),
+          const SizedBox(height: 4),
+          Text('山田商事株式会社', style: AppTextStyles.titleLarge),
+          const SizedBox(height: 2),
+          Text(
+            '2025年3月17日 発行',
+            style: AppTextStyles.bodyMedium
+                .copyWith(color: const Color(0xFF6B6460)),
+          ),
+          const SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _StatusChip(
+                  label: '支払待ち',
+                  color: const Color(0xFFFEF3E2),
+                  textColor: const Color(0xFF9A5F10),
+                  dotColor: const Color(0xFFE08A1E)),
+              Text('¥128,000', style: AppTextStyles.titleLarge),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// ボタンカード
+class _ButtonCard extends StatelessWidget {
+  const _ButtonCard();
+
+  @override
+  Widget build(BuildContext context) {
+    return _CatalogCard(
+      label: 'Button — labelLarge 使用',
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              FilledButton(
+                onPressed: () {},
+                style: FilledButton.styleFrom(
+                    backgroundColor: const Color(0xFF2D2926)),
+                child: Text('送信する',
+                    style:
+                        AppTextStyles.labelLarge.copyWith(color: Colors.white)),
+              ),
+              const SizedBox(width: 8),
+              OutlinedButton(
+                onPressed: () {},
+                child: Text('キャンセル', style: AppTextStyles.labelLarge),
+              ),
+            ],
+          ),
+          const SizedBox(height: 10),
+          Text(
+            '※ 送信後は取り消しできません',
+            style: AppTextStyles.bodySmall
+                .copyWith(color: const Color(0xFF6B6460)),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+// ステータスチップカード
+class _StatusChipsCard extends StatelessWidget {
+  const _StatusChipsCard();
+
+  @override
+  Widget build(BuildContext context) {
+    return _CatalogCard(
+      label: 'Chip — ステータス表示',
+      child: Column(
+        children: [
+          _ChipRow(
+              label: '完了',
+              orderId: '注文 #1024',
+              color: const Color(0xFFEAF5EC),
+              textColor: const Color(0xFF2A7A3B),
+              dotColor: const Color(0xFF3DA050)),
+          const SizedBox(height: 10),
+          _ChipRow(
+              label: '処理中',
+              orderId: '注文 #1025',
+              color: const Color(0xFFFEF3E2),
+              textColor: const Color(0xFF9A5F10),
+              dotColor: const Color(0xFFE08A1E)),
+          const SizedBox(height: 10),
+          _ChipRow(
+              label: 'エラー',
+              orderId: '注文 #1026',
+              color: const Color(0xFFFDECEA),
+              textColor: const Color(0xFF9B2B2B),
+              dotColor: const Color(0xFFD93535)),
+        ],
+      ),
+    );
+  }
+}
+
+class _ChipRow extends StatelessWidget {
+  const _ChipRow(
+      {required this.label,
+      required this.orderId,
+      required this.color,
+      required this.textColor,
+      required this.dotColor});
+  final String label;
+  final String orderId;
+  final Color color;
+  final Color textColor;
+  final Color dotColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        _StatusChip(
+            label: label,
+            color: color,
+            textColor: textColor,
+            dotColor: dotColor),
+        const SizedBox(width: 12),
+        Text(orderId,
+            style: AppTextStyles.bodyMedium
+                .copyWith(color: const Color(0xFF6B6460))),
+      ],
+    );
+  }
+}
+
+class _StatusChip extends StatelessWidget {
+  const _StatusChip(
+      {required this.label,
+      required this.color,
+      required this.textColor,
+      required this.dotColor});
+  final String label;
+  final Color color;
+  final Color textColor;
+  final Color dotColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+      decoration:
+          BoxDecoration(color: color, borderRadius: BorderRadius.circular(99)),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+              width: 6,
+              height: 6,
+              decoration:
+                  BoxDecoration(color: dotColor, shape: BoxShape.circle)),
+          const SizedBox(width: 5),
+          Text(label,
+              style: AppTextStyles.labelMedium.copyWith(color: textColor)),
+        ],
+      ),
+    );
+  }
+}
+
+// フォームカード
+class _FormCard extends StatelessWidget {
+  const _FormCard();
+
+  @override
+  Widget build(BuildContext context) {
+    return _CatalogCard(
+      label: 'Form — 入力フォーム',
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text('新規アカウント作成', style: AppTextStyles.headlineMedium),
+          const SizedBox(height: 4),
+          Text(
+            'すでにアカウントをお持ちの方はログインしてください。',
+            style: AppTextStyles.bodyMedium
+                .copyWith(color: const Color(0xFF6B6460)),
+          ),
+          const SizedBox(height: 20),
+          Row(
+            children: [
+              Expanded(child: _FakeField(label: '姓', value: '山田')),
+              const SizedBox(width: 12),
+              Expanded(child: _FakeField(label: '名', value: '太郎')),
+            ],
+          ),
+          const SizedBox(height: 12),
+          _FakeField(label: 'メールアドレス', value: 'taro@example.com'),
+          const SizedBox(height: 4),
+          Text(
+            '※ 確認メールが送信されます',
+            style: AppTextStyles.bodySmall
+                .copyWith(color: const Color(0xFFA09B97)),
+          ),
+          const SizedBox(height: 20),
+          FilledButton(
+            onPressed: () {},
+            style: FilledButton.styleFrom(
+                backgroundColor: const Color(0xFF2D2926)),
+            child: Text('アカウントを作成',
+                style: AppTextStyles.labelLarge.copyWith(color: Colors.white)),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _FakeField extends StatelessWidget {
+  const _FakeField({required this.label, required this.value});
+  final String label;
+  final String value;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: AppTextStyles.labelMedium
+              .copyWith(color: const Color(0xFF6B6460)),
+        ),
+        const SizedBox(height: 4),
+        Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+          decoration: BoxDecoration(
+            border: Border.all(color: const Color(0xFFC8C2BB)),
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Text(value,
+              style: AppTextStyles.bodyLarge
+                  .copyWith(color: const Color(0xFFA09B97))),
+        ),
+      ],
+    );
+  }
+}

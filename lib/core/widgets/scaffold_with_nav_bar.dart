@@ -33,8 +33,8 @@ class ScaffoldWithNavBar extends StatelessWidget {
             label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
+            icon: Icon(Icons.light),
+            label: 'samples',
           ),
         ],
       ),

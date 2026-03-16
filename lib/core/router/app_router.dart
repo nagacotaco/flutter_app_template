@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_template/core/router/routes.dart';
 import 'package:flutter_app_template/core/widgets/scaffold_with_nav_bar.dart';
+import 'package:flutter_app_template/features/catalog/presentation/catalog_page.dart';
 import 'package:flutter_app_template/features/home/presentation/screens/detail_screen.dart';
 import 'package:flutter_app_template/features/home/presentation/screens/home_screen.dart';
-import 'package:flutter_app_template/features/my_page/presentation/my_page.dart';
 import 'package:flutter_app_template/features/search/presentation/search_page.dart';
 import 'package:go_router/go_router.dart';
 
@@ -51,10 +51,10 @@ final route = [
       StatefulShellBranch(
         routes: [
           GoRoute(
-            path: AppRoutes.myPage.path,
+            path: AppRoutes.catalogPage.path,
             pageBuilder: (context, state) => buildPageWithTransition(
               state: state,
-              child: const MyPage(),
+              child: const CatalogPage(),
             ),
           ),
         ],
