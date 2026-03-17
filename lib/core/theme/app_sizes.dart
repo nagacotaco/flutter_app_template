@@ -44,6 +44,7 @@ abstract final class AppRadius {
   static const BorderRadius borderSm = BorderRadius.all(Radius.circular(sm));
   static const BorderRadius borderMd = BorderRadius.all(Radius.circular(md));
   static const BorderRadius borderLg = BorderRadius.all(Radius.circular(lg));
+  static const BorderRadius borderMax = BorderRadius.all(Radius.circular(999));
 }
 
 /// 高さ・幅など「よく使うサイズ」
@@ -59,9 +60,20 @@ abstract final class AppSize {
   static const double iconLg = 32.0;
 
   // 共通コンポーネントの幅・高さ
+  static const double avatarXs = 18.0;
   static const double avatarSm = 32.0;
   static const double avatarMd = 40.0;
   static const double avatarLg = 56.0;
+
+  // ドット・インジケータ
+  static const double dotSm = 6.0;
+}
+
+/// レタースペーシング
+abstract final class AppLetterSpacing {
+  static const double tight = 0.2;
+  static const double normal = 0.8;
+  static const double wide = 1.0;
 }
 
 /// 影（Elevation）

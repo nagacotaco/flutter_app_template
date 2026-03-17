@@ -189,8 +189,8 @@ class _CatalogScreenState extends State<CatalogScreen>
             backgroundColor: AppColors.dark,
             foregroundColor: AppColors.cream,
             flexibleSpace: FlexibleSpaceBar(
-              titlePadding:
-                  const EdgeInsets.fromLTRB(AppSpacing.md + 4, 0, AppSpacing.md + 4, 56),
+              titlePadding: const EdgeInsets.fromLTRB(
+                  AppSpacing.lg, 0, AppSpacing.lg, 56),
               title: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -199,10 +199,10 @@ class _CatalogScreenState extends State<CatalogScreen>
                     'FLUTTER · TYPE SCALE',
                     style: AppTextStyles.labelSmall.copyWith(
                       color: AppColors.cream.withValues(alpha: 0.5),
-                      letterSpacing: 1.0,
+                      letterSpacing: AppLetterSpacing.wide,
                     ),
                   ),
-                  const SizedBox(height: 2),
+                  AppSpacing.gapVXs,
                   Text(
                     'AppTextStyles',
                     style: AppTextStyles.titleLarge.copyWith(
@@ -249,7 +249,7 @@ class _StyleGroupTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.md + 4,
+        horizontal: AppSpacing.lg,
         vertical: AppSpacing.lg,
       ),
       children: [
@@ -262,10 +262,10 @@ class _StyleGroupTab extends StatelessWidget {
               group.label.toUpperCase(),
               style: AppTextStyles.labelMedium.copyWith(
                 color: AppColors.textSecondary,
-                letterSpacing: 0.8,
+                letterSpacing: AppLetterSpacing.normal,
               ),
             ),
-            const SizedBox(width: 10),
+            AppSpacing.gapHSm,
             Text(
               group.desc,
               style: AppTextStyles.bodySmall
@@ -293,8 +293,7 @@ class _StyleRow extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
       decoration: const BoxDecoration(
-        border: Border(
-            bottom: BorderSide(color: AppColors.border, width: 0.5)),
+        border: Border(bottom: BorderSide(color: AppColors.border, width: 0.5)),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -315,10 +314,10 @@ class _StyleRow extends StatelessWidget {
                 entry.name,
                 style: AppTextStyles.labelSmall.copyWith(
                   color: AppColors.accent,
-                  letterSpacing: 0.2,
+                  letterSpacing: AppLetterSpacing.tight,
                 ),
               ),
-              const SizedBox(height: 2),
+              AppSpacing.gapVXs,
               Text(
                 entry.props,
                 style: AppTextStyles.labelSmall.copyWith(
@@ -346,7 +345,7 @@ class _UsageExamplesTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView(
       padding: const EdgeInsets.symmetric(
-        horizontal: AppSpacing.md + 4,
+        horizontal: AppSpacing.lg,
         vertical: AppSpacing.lg,
       ),
       children: [
@@ -382,10 +381,10 @@ class _SectionLabel extends StatelessWidget {
           title.toUpperCase(),
           style: AppTextStyles.labelMedium.copyWith(
             color: AppColors.textSecondary,
-            letterSpacing: 0.8,
+            letterSpacing: AppLetterSpacing.normal,
           ),
         ),
-        const SizedBox(width: 10),
+        AppSpacing.gapHSm,
         Text(
           desc,
           style:
@@ -406,26 +405,27 @@ class _CatalogCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColors.cardBackground,
         border: Border.all(color: AppColors.border),
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: AppRadius.borderLg,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
             padding: const EdgeInsets.symmetric(
-                horizontal: AppSpacing.md, vertical: 10),
+                horizontal: AppSpacing.md, vertical: AppSpacing.sm),
             decoration: const BoxDecoration(
               color: AppColors.surfaceMuted,
-              borderRadius: BorderRadius.vertical(top: Radius.circular(11)),
+              borderRadius:
+                  BorderRadius.vertical(top: Radius.circular(AppRadius.lg)),
               border: Border(bottom: BorderSide(color: AppColors.border)),
             ),
             child: Text(
               label,
               style: AppTextStyles.labelSmall.copyWith(
                 color: AppColors.textTertiary,
-                letterSpacing: 0.8,
+                letterSpacing: AppLetterSpacing.normal,
               ),
             ),
           ),
@@ -456,19 +456,18 @@ class _MessageListCard extends StatelessWidget {
         children: items.map((item) {
           final (initial, name, preview, time) = item;
           return Container(
-            padding: const EdgeInsets.symmetric(vertical: 12),
+            padding: const EdgeInsets.symmetric(vertical: AppSpacing.sm),
             decoration: BoxDecoration(
               border: item != items.last
                   ? const Border(
-                      bottom:
-                          BorderSide(color: AppColors.border, width: 0.5))
+                      bottom: BorderSide(color: AppColors.border, width: 0.5))
                   : null,
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CircleAvatar(
-                  radius: 18,
+                  radius: AppSize.avatarXs,
                   backgroundColor: AppColors.avatarBg,
                   child: Text(
                     initial,
@@ -476,7 +475,7 @@ class _MessageListCard extends StatelessWidget {
                         .copyWith(color: AppColors.textSecondary),
                   ),
                 ),
-                const SizedBox(width: 12),
+                AppSpacing.gapHSm,
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -521,12 +520,12 @@ class _InvoiceCard extends StatelessWidget {
             'INVOICE #0042',
             style: AppTextStyles.labelSmall.copyWith(
               color: AppColors.textTertiary,
-              letterSpacing: 0.8,
+              letterSpacing: AppLetterSpacing.normal,
             ),
           ),
           AppSpacing.gapVXs,
           Text('山田商事株式会社', style: AppTextStyles.titleLarge),
-          const SizedBox(height: 2),
+          AppSpacing.gapVXs,
           Text(
             '2025年3月17日 発行',
             style: AppTextStyles.bodyMedium
@@ -565,11 +564,10 @@ class _ButtonCard extends StatelessWidget {
             children: [
               FilledButton(
                 onPressed: () {},
-                style: FilledButton.styleFrom(
-                    backgroundColor: AppColors.dark),
+                style: FilledButton.styleFrom(backgroundColor: AppColors.dark),
                 child: Text('送信する',
-                    style:
-                        AppTextStyles.labelLarge.copyWith(color: Colors.white)),
+                    style: AppTextStyles.labelLarge
+                        .copyWith(color: AppColors.textOnDark)),
               ),
               AppSpacing.gapHSm,
               OutlinedButton(
@@ -578,7 +576,7 @@ class _ButtonCard extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 10),
+          AppSpacing.gapVSm,
           Text(
             '※ 送信後は取り消しできません',
             style: AppTextStyles.bodySmall
@@ -606,14 +604,14 @@ class _StatusChipsCard extends StatelessWidget {
               color: AppColors.successBg,
               textColor: AppColors.successText,
               dotColor: AppColors.successDot),
-          const SizedBox(height: 10),
+          AppSpacing.gapVSm,
           _ChipRow(
               label: '処理中',
               orderId: '注文 #1025',
               color: AppColors.warningBg,
               textColor: AppColors.warningText,
               dotColor: AppColors.warningDot),
-          const SizedBox(height: 10),
+          AppSpacing.gapVSm,
           _ChipRow(
               label: 'エラー',
               orderId: '注文 #1026',
@@ -648,7 +646,7 @@ class _ChipRow extends StatelessWidget {
             color: color,
             textColor: textColor,
             dotColor: dotColor),
-        const SizedBox(width: 12),
+        AppSpacing.gapHSm,
         Text(orderId,
             style: AppTextStyles.bodyMedium
                 .copyWith(color: AppColors.textSecondary)),
@@ -671,18 +669,19 @@ class _StatusChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: AppSpacing.xs),
+      padding: const EdgeInsets.symmetric(
+          horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
       decoration:
-          BoxDecoration(color: color, borderRadius: BorderRadius.circular(99)),
+          BoxDecoration(color: color, borderRadius: AppRadius.borderMax),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           Container(
-              width: 6,
-              height: 6,
+              width: AppSize.dotSm,
+              height: AppSize.dotSm,
               decoration:
                   BoxDecoration(color: dotColor, shape: BoxShape.circle)),
-          const SizedBox(width: 5),
+          AppSpacing.gapHXs,
           Text(label,
               style: AppTextStyles.labelMedium.copyWith(color: textColor)),
         ],
@@ -709,29 +708,29 @@ class _FormCard extends StatelessWidget {
             style: AppTextStyles.bodyMedium
                 .copyWith(color: AppColors.textSecondary),
           ),
-          const SizedBox(height: 20),
+          AppSpacing.gapVMd,
           Row(
             children: [
               Expanded(child: _FakeField(label: '姓', value: '山田')),
-              const SizedBox(width: 12),
+              AppSpacing.gapHSm,
               Expanded(child: _FakeField(label: '名', value: '太郎')),
             ],
           ),
-          const SizedBox(height: 12),
+          AppSpacing.gapVSm,
           _FakeField(label: 'メールアドレス', value: 'taro@example.com'),
           AppSpacing.gapVXs,
           Text(
             '※ 確認メールが送信されます',
-            style: AppTextStyles.bodySmall
-                .copyWith(color: AppColors.textTertiary),
+            style:
+                AppTextStyles.bodySmall.copyWith(color: AppColors.textTertiary),
           ),
-          const SizedBox(height: 20),
+          AppSpacing.gapVMd,
           FilledButton(
             onPressed: () {},
-            style: FilledButton.styleFrom(
-                backgroundColor: AppColors.dark),
+            style: FilledButton.styleFrom(backgroundColor: AppColors.dark),
             child: Text('アカウントを作成',
-                style: AppTextStyles.labelLarge.copyWith(color: Colors.white)),
+                style: AppTextStyles.labelLarge
+                    .copyWith(color: AppColors.textOnDark)),
           ),
         ],
       ),
@@ -757,7 +756,8 @@ class _FakeField extends StatelessWidget {
         AppSpacing.gapVXs,
         Container(
           width: double.infinity,
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+          padding: const EdgeInsets.symmetric(
+              horizontal: AppSpacing.md, vertical: AppSpacing.sm),
           decoration: BoxDecoration(
             border: Border.all(color: AppColors.borderLight),
             borderRadius: AppRadius.borderMd,

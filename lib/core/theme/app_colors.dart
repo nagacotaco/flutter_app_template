@@ -13,6 +13,12 @@ abstract final class AppColors {
   // ── アクセント ──
   static const Color accent = Color(0xFFC4622D);
 
+  // ── テキスト: ダーク背景上 ──
+  static const Color textOnDark = Colors.white;
+
+  // ── カード背景 ──
+  static const Color cardBackground = Colors.white;
+
   // ── ボーダー・サーフェス ──
   static const Color border = Color(0xFFE2DDD8);
   static const Color borderLight = Color(0xFFC8C2BB);
