@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_template/core/router/app_router.dart';
 import 'package:flutter_app_template/core/theme/app_text_styles.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(
+    ProviderScope(
+      child: const MainApp(),
+    ),
+  );
 }
 
-class MainApp extends StatelessWidget {
+class MainApp extends ConsumerWidget {
   const MainApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(appRouter);
     return MaterialApp.router(
       title: 'Flutter App',
       theme: ThemeData(
@@ -23,7 +29,7 @@ class MainApp extends StatelessWidget {
         // タップ時の背景ハイライトを薄いグレーに変更
         highlightColor: Colors.grey.withValues(alpha: .15),
       ),
-      routerConfig: appRouter,
+      routerConfig: router,
     );
   }
 }

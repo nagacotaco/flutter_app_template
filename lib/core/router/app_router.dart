@@ -6,13 +6,16 @@ import 'package:flutter_app_template/features/home/presentation/screens/detail_s
 import 'package:flutter_app_template/features/home/presentation/screens/home_screen.dart';
 import 'package:flutter_app_template/features/search/presentation/search_page.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final appRouter = GoRouter(
-  initialLocation: AppRoutes.home.path,
-  routes: route,
+final appRouter = Provider<GoRouter>(
+  (ref) => GoRouter(
+    initialLocation: AppRoutes.home.path,
+    routes: routes,
+  ),
 );
 
-final route = [
+final routes = [
   StatefulShellRoute.indexedStack(
     builder: (context, state, navigationShell) {
       return ScaffoldWithNavBar(navigationShell: navigationShell);
