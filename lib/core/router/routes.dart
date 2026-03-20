@@ -90,6 +90,7 @@ class CatalogRoute extends GoRouteData with $CatalogRoute {
       _buildFadePage(state: state, child: const CatalogPage());
 }
 
+/// 画面遷移のアニメーション
 Page<void> _buildFadePage({
   required GoRouterState state,
   required Widget child,
