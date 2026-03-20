@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_template/core/widgets/scaffold_with_nav_bar.dart';
 import 'package:flutter_app_template/features/catalog/presentation/catalog_page.dart';
-import 'package:flutter_app_template/features/home/presentation/screens/detail_screen.dart';
-import 'package:flutter_app_template/features/home/presentation/screens/home_screen.dart';
+import 'package:flutter_app_template/features/home/presentation/pages/detail_page.dart';
+import 'package:flutter_app_template/features/home/presentation/pages/home_page.dart';
 import 'package:flutter_app_template/features/search/presentation/search_page.dart';
 import 'package:go_router/go_router.dart';
 
@@ -63,7 +63,7 @@ class HomeRoute extends GoRouteData with $HomeRoute {
 
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) =>
-      _buildFadePage(state: state, child: const HomeScreen());
+      _buildFadePage(state: state, child: const HomePage());
 }
 
 class DetailRoute extends GoRouteData with $DetailRoute {
@@ -71,7 +71,7 @@ class DetailRoute extends GoRouteData with $DetailRoute {
 
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) =>
-      _buildFadePage(state: state, child: const DetailScreen());
+      _buildFadePage(state: state, child: const DetailPage());
 }
 
 class SearchRoute extends GoRouteData with $SearchRoute {
