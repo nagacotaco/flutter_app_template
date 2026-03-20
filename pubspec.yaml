@@ -11,6 +11,8 @@ dependencies:
     sdk: flutter
   go_router: ^17.1.0
   hooks_riverpod:
+  freezed_annotation:
+  json_annotation:
 
 dev_dependencies:
   flutter_test:
@@ -20,6 +22,8 @@ dev_dependencies:
   flutter_native_splash:
   go_router_builder:
   build_runner:
+  freezed:
+  json_serializable:
 
 flutter:
   uses-material-design: true

@@ -1,0 +1,64 @@
+{
+  "Freezed State Class": {
+    "scope": "dart",    
+    "prefix": "frstate",
+    "description": "Freezed state class with JSON serialization",
+    "body": [
+      "import 'package:freezed_annotation/freezed_annotation.dart';",
+      "",
+      "part '${TM_FILENAME_BASE}.freezed.dart';",
+      "part '${TM_FILENAME_BASE}.g.dart';",
+      "",
+      "@freezed",
+      "abstract class ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}} with _$${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}} {",
+      "  const ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}._();",
+      "  const factory ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}({",
+      "        @Default(false) bool isLoading,",
+      "        Object? error,",
+      "  }) = _${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}};",
+      "",
+      "  factory ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}.fromJson(Map<String, dynamic> json) =>",
+      "      _\\$${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}FromJson(json);",
+      "}"
+    ]
+  },
+  "Riverpod ViewModel (Notifier)": {
+    "scope": "dart",
+    "prefix": "frvm",
+    "description": "Riverpod NotifierProvider with ViewModel class",
+    "body": [
+      "import 'package:hooks_riverpod/hooks_riverpod.dart';",
+      "",
+      "import '${2:${TM_FILENAME_BASE/^(.*)_view_model$/$1_state/}}.dart';",
+      "",
+      "final ${TM_FILENAME_BASE/^(.*)_view_model$/${1:/camelcase}/}VMProvider = NotifierProvider<${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}, ${TM_FILENAME_BASE/^(.*)_view_model$/${1:/pascalcase}/}State>(",
+      "  ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}.new,",
+      ");",
+      "",
+      "class ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}} extends Notifier<${TM_FILENAME_BASE/^(.*)_view_model$/${1:/pascalcase}/}State> {",
+      "  @override",
+      "  ${TM_FILENAME_BASE/^(.*)_view_model$/${1:/pascalcase}/}State build() {",
+      "    return ${TM_FILENAME_BASE/^(.*)_view_model$/${1:/pascalcase}/}State();",
+      "  }",
+      "  $0",
+      "}"
+    ]
+  },
+  "Freezed State Class (no JSON)": {
+    "prefix": "frstate_nojson",
+    "description": "Freezed state class without JSON serialization",
+    "body": [
+      "import 'package:freezed_annotation/freezed_annotation.dart';",
+      "",
+      "part '${TM_FILENAME_BASE}.freezed.dart';",
+      "",
+      "@freezed",
+      "abstract class ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}} with _$${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}} {",
+      "  const ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}._();",
+      "  const factory ${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}}({",
+      "    $0",
+      "  }) = _${1:${TM_FILENAME_BASE/(.*)/${1:/pascalcase}/}};",
+      "}"
+    ]
+  }
+}
