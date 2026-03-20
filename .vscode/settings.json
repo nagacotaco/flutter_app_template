@@ -1,3 +1,9 @@
 {
-  "dart.flutterSdkPath": ".fvm/versions/3.41.4"
+  "dart.flutterSdkPath": ".fvm/versions/3.41.4",
+  "editor.formatOnSave": true,  
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "*.dart": "${capture}.g.dart, ${capture}.freezed.dart, ${capture}.gr.dart, ${capture}.gen.dart, ${capture}.mapper.dart"
+  }
 }
