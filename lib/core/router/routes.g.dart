@@ -30,14 +30,6 @@ RouteBase get $appShellRouteData => StatefulShellRouteData.$route(
         StatefulShellBranchData.$branch(
           routes: [
             GoRouteData.$route(
-              path: '/search',
-              factory: $SearchRoute._fromState,
-            ),
-          ],
-        ),
-        StatefulShellBranchData.$branch(
-          routes: [
-            GoRouteData.$route(
               path: '/catalog-page',
               factory: $CatalogRoute._fromState,
             ),
@@ -79,28 +71,6 @@ mixin $DetailRoute on GoRouteData {
   @override
   String get location => GoRouteData.$location(
         '/detail',
-      );
-
-  @override
-  void go(BuildContext context) => context.go(location);
-
-  @override
-  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
-
-  @override
-  void pushReplacement(BuildContext context) =>
-      context.pushReplacement(location);
-
-  @override
-  void replace(BuildContext context) => context.replace(location);
-}
-
-mixin $SearchRoute on GoRouteData {
-  static SearchRoute _fromState(GoRouterState state) => const SearchRoute();
-
-  @override
-  String get location => GoRouteData.$location(
-        '/search',
       );
 
   @override
