@@ -3,6 +3,8 @@ import 'package:flutter_app_template/core/router/app_router.dart';
 import 'package:flutter_app_template/core/theme/app_text_styles.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import 'core/theme/app_colors.dart';
+
 void main() {
   runApp(
     ProviderScope(
@@ -28,6 +30,20 @@ class MainApp extends ConsumerWidget {
         splashFactory: NoSplash.splashFactory,
         // タップ時の背景ハイライトを薄いグレーに変更
         highlightColor: Colors.grey.withValues(alpha: .15),
+
+        // bottomNavigationBar
+        bottomNavigationBarTheme: BottomNavigationBarThemeData(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          selectedItemColor: AppColors.accent,
+          selectedLabelStyle: AppTextStyles.bodySmall,
+          selectedIconTheme: IconThemeData(
+            color: AppColors.accent,
+            fill: 1, // 塗りつぶし
+          ),
+          unselectedItemColor: AppColors.textTertiary,
+          unselectedLabelStyle: AppTextStyles.bodySmall,
+        ),
       ),
       routerConfig: router,
     );

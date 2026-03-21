@@ -44,10 +44,6 @@ class HomeBranchData extends StatefulShellBranchData {
   const HomeBranchData();
 }
 
-class SearchBranchData extends StatefulShellBranchData {
-  const SearchBranchData();
-}
-
 class CatalogBranchData extends StatefulShellBranchData {
   const CatalogBranchData();
 }
