@@ -26,11 +26,10 @@ dev_dependencies:
   flutter_lints: ^5.0.0
   flutter_launcher_icons:
   flutter_native_splash:
-  go_router_builder:
+  go_router_builder: ^4.0.0
   build_runner:
   freezed:
   json_serializable:
-  openapi_generator: ^6.0.1
 
 flutter:
   uses-material-design: true

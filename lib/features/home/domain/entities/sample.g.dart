@@ -6,7 +6,7 @@ part of 'sample.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$SampleImpl _$$SampleImplFromJson(Map<String, dynamic> json) => _$SampleImpl(
+_Sample _$SampleFromJson(Map<String, dynamic> json) => _Sample(
       id: (json['id'] as num?)?.toInt() ?? 9999,
       name: json['name'] as String? ?? '',
       description: json['description'] as String? ?? '',
@@ -15,8 +15,7 @@ _$SampleImpl _$$SampleImplFromJson(Map<String, dynamic> json) => _$SampleImpl(
       rating: (json['rating'] as num?)?.toInt() ?? 0,
     );
 
-Map<String, dynamic> _$$SampleImplToJson(_$SampleImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$SampleToJson(_Sample instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'description': instance.description,

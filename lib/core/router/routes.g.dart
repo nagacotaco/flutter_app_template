@@ -13,46 +13,56 @@ List<RouteBase> get $appRoutes => [
 
 RouteBase get $loginRoute => GoRouteData.$route(
       path: '/login',
-      factory: $LoginRouteExtension._fromState,
+      factory: $LoginRoute._fromState,
       routes: [
         GoRouteData.$route(
           path: 'sign-up',
-          factory: $SignUpRouteExtension._fromState,
+          factory: $SignUpRoute._fromState,
         ),
       ],
     );
 
-extension $LoginRouteExtension on LoginRoute {
+mixin $LoginRoute on GoRouteData {
   static LoginRoute _fromState(GoRouterState state) => const LoginRoute();
 
+  @override
   String get location => GoRouteData.$location(
         '/login',
       );
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $SignUpRouteExtension on SignUpRoute {
+mixin $SignUpRoute on GoRouteData {
   static SignUpRoute _fromState(GoRouterState state) => const SignUpRoute();
 
+  @override
   String get location => GoRouteData.$location(
         '/login/sign-up',
       );
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
 
@@ -63,11 +73,11 @@ RouteBase get $appShellRouteData => StatefulShellRouteData.$route(
           routes: [
             GoRouteData.$route(
               path: '/',
-              factory: $HomeRouteExtension._fromState,
+              factory: $HomeRoute._fromState,
               routes: [
                 GoRouteData.$route(
                   path: 'detail/:id',
-                  factory: $DetailRouteExtension._fromState,
+                  factory: $DetailRoute._fromState,
                 ),
               ],
             ),
@@ -77,7 +87,7 @@ RouteBase get $appShellRouteData => StatefulShellRouteData.$route(
           routes: [
             GoRouteData.$route(
               path: '/catalog-page',
-              factory: $CatalogRouteExtension._fromState,
+              factory: $CatalogRoute._fromState,
             ),
           ],
         ),
@@ -89,55 +99,72 @@ extension $AppShellRouteDataExtension on AppShellRouteData {
       const AppShellRouteData();
 }
 
-extension $HomeRouteExtension on HomeRoute {
+mixin $HomeRoute on GoRouteData {
   static HomeRoute _fromState(GoRouterState state) => const HomeRoute();
 
+  @override
   String get location => GoRouteData.$location(
         '/',
       );
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $DetailRouteExtension on DetailRoute {
+mixin $DetailRoute on GoRouteData {
   static DetailRoute _fromState(GoRouterState state) => DetailRoute(
         id: int.parse(state.pathParameters['id']!),
       );
 
+  DetailRoute get _self => this as DetailRoute;
+
+  @override
   String get location => GoRouteData.$location(
-        '/detail/${Uri.encodeComponent(id.toString())}',
+        '/detail/${Uri.encodeComponent(_self.id.toString())}',
       );
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
 
-extension $CatalogRouteExtension on CatalogRoute {
+mixin $CatalogRoute on GoRouteData {
   static CatalogRoute _fromState(GoRouterState state) => const CatalogRoute();
 
+  @override
   String get location => GoRouteData.$location(
         '/catalog-page',
       );
 
+  @override
   void go(BuildContext context) => context.go(location);
 
+  @override
   Future<T?> push<T>(BuildContext context) => context.push<T>(location);
 
+  @override
   void pushReplacement(BuildContext context) =>
       context.pushReplacement(location);
 
+  @override
   void replace(BuildContext context) => context.replace(location);
 }
