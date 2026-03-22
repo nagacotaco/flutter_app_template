@@ -42,6 +42,36 @@ abstract final class AppTheme {
         // dialog
         dialogTheme: AppDialogTheme.data,
 
+        // input
+        inputDecorationTheme: InputDecorationTheme(
+          contentPadding: const EdgeInsets.symmetric(
+            horizontal: AppSpacing.md,
+            vertical: AppSpacing.sm,
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: AppColors.borderLight),
+            borderRadius: AppRadius.borderMd,
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: AppColors.border),
+            borderRadius: AppRadius.borderMd,
+          ),
+          errorBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: AppColors.errorDot),
+            borderRadius: AppRadius.borderMd,
+          ),
+          focusedErrorBorder: OutlineInputBorder(
+            borderSide: const BorderSide(color: AppColors.errorDot),
+            borderRadius: AppRadius.borderMd,
+          ),
+          labelStyle: AppTextStyles.labelMedium.copyWith(
+            color: AppColors.textSecondary,
+          ),
+          hintStyle: AppTextStyles.bodyLarge.copyWith(
+            color: AppColors.textTertiary,
+          ),
+        ),
+
         // bottomNavigationBar
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: Colors.transparent,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_template/core/auth/application/login_page_view_model.dart';
 import 'package:flutter_app_template/core/router/routes.dart';
+import 'package:flutter_app_template/core/theme/app_text_styles.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -28,6 +29,7 @@ class LoginPage extends HookConsumerWidget {
               children: [
                 TextFormField(
                   controller: emailController,
+                  style: AppTextStyles.bodyLarge,
                   decoration: const InputDecoration(labelText: 'メールアドレス'),
                   keyboardType: TextInputType.emailAddress,
                   validator: notifier.validateEmail,
@@ -35,6 +37,7 @@ class LoginPage extends HookConsumerWidget {
                 const SizedBox(height: 16),
                 TextFormField(
                   controller: passwordController,
+                  style: AppTextStyles.bodyLarge,
                   decoration: const InputDecoration(labelText: 'パスワード'),
                   obscureText: true,
                   validator: notifier.validatePassword,
