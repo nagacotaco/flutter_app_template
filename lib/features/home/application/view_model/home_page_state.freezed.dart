@@ -16,6 +16,7 @@ T _$identity<T>(T value) => value;
 mixin _$HomePageState {
   bool get isLoading;
   Object? get error;
+  AsyncValue<List<Sample>> get samplesAsync;
 
   /// Create a copy of HomePageState
   /// with the given fields replaced by the non-null parameter values.
@@ -25,9 +26,6 @@ mixin _$HomePageState {
       _$HomePageStateCopyWithImpl<HomePageState>(
           this as HomePageState, _$identity);
 
-  /// Serializes this HomePageState to a JSON map.
-  Map<String, dynamic> toJson();
-
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
@@ -35,17 +33,18 @@ mixin _$HomePageState {
             other is HomePageState &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            const DeepCollectionEquality().equals(other.error, error));
+            const DeepCollectionEquality().equals(other.error, error) &&
+            (identical(other.samplesAsync, samplesAsync) ||
+                other.samplesAsync == samplesAsync));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, isLoading, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, isLoading,
+      const DeepCollectionEquality().hash(error), samplesAsync);
 
   @override
   String toString() {
-    return 'HomePageState(isLoading: $isLoading, error: $error)';
+    return 'HomePageState(isLoading: $isLoading, error: $error, samplesAsync: $samplesAsync)';
   }
 }
 
@@ -55,7 +54,8 @@ abstract mixin class $HomePageStateCopyWith<$Res> {
           HomePageState value, $Res Function(HomePageState) _then) =
       _$HomePageStateCopyWithImpl;
   @useResult
-  $Res call({bool isLoading, Object? error});
+  $Res call(
+      {bool isLoading, Object? error, AsyncValue<List<Sample>> samplesAsync});
 }
 
 /// @nodoc
@@ -73,6 +73,7 @@ class _$HomePageStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? error = freezed,
+    Object? samplesAsync = null,
   }) {
     return _then(_self.copyWith(
       isLoading: null == isLoading
@@ -80,6 +81,10 @@ class _$HomePageStateCopyWithImpl<$Res>
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       error: freezed == error ? _self.error : error,
+      samplesAsync: null == samplesAsync
+          ? _self.samplesAsync
+          : samplesAsync // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<List<Sample>>,
     ));
   }
 }
@@ -177,13 +182,15 @@ extension HomePageStatePatterns on HomePageState {
 
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
-    TResult Function(bool isLoading, Object? error)? $default, {
+    TResult Function(bool isLoading, Object? error,
+            AsyncValue<List<Sample>> samplesAsync)?
+        $default, {
     required TResult orElse(),
   }) {
     final _that = this;
     switch (_that) {
       case _HomePageState() when $default != null:
-        return $default(_that.isLoading, _that.error);
+        return $default(_that.isLoading, _that.error, _that.samplesAsync);
       case _:
         return orElse();
     }
@@ -204,12 +211,14 @@ extension HomePageStatePatterns on HomePageState {
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
-    TResult Function(bool isLoading, Object? error) $default,
+    TResult Function(bool isLoading, Object? error,
+            AsyncValue<List<Sample>> samplesAsync)
+        $default,
   ) {
     final _that = this;
     switch (_that) {
       case _HomePageState():
-        return $default(_that.isLoading, _that.error);
+        return $default(_that.isLoading, _that.error, _that.samplesAsync);
       case _:
         throw StateError('Unexpected subclass');
     }
@@ -229,12 +238,14 @@ extension HomePageStatePatterns on HomePageState {
 
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(bool isLoading, Object? error)? $default,
+    TResult? Function(bool isLoading, Object? error,
+            AsyncValue<List<Sample>> samplesAsync)?
+        $default,
   ) {
     final _that = this;
     switch (_that) {
       case _HomePageState() when $default != null:
-        return $default(_that.isLoading, _that.error);
+        return $default(_that.isLoading, _that.error, _that.samplesAsync);
       case _:
         return null;
     }
@@ -242,17 +253,19 @@ extension HomePageStatePatterns on HomePageState {
 }
 
 /// @nodoc
-@JsonSerializable()
+
 class _HomePageState extends HomePageState {
-  const _HomePageState({this.isLoading = false, this.error}) : super._();
-  factory _HomePageState.fromJson(Map<String, dynamic> json) =>
-      _$HomePageStateFromJson(json);
+  const _HomePageState(
+      {this.isLoading = false, this.error, required this.samplesAsync})
+      : super._();
 
   @override
   @JsonKey()
   final bool isLoading;
   @override
   final Object? error;
+  @override
+  final AsyncValue<List<Sample>> samplesAsync;
 
   /// Create a copy of HomePageState
   /// with the given fields replaced by the non-null parameter values.
@@ -263,30 +276,24 @@ class _HomePageState extends HomePageState {
       __$HomePageStateCopyWithImpl<_HomePageState>(this, _$identity);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$HomePageStateToJson(
-      this,
-    );
-  }
-
-  @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _HomePageState &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            const DeepCollectionEquality().equals(other.error, error));
+            const DeepCollectionEquality().equals(other.error, error) &&
+            (identical(other.samplesAsync, samplesAsync) ||
+                other.samplesAsync == samplesAsync));
   }
 
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, isLoading, const DeepCollectionEquality().hash(error));
+  int get hashCode => Object.hash(runtimeType, isLoading,
+      const DeepCollectionEquality().hash(error), samplesAsync);
 
   @override
   String toString() {
-    return 'HomePageState(isLoading: $isLoading, error: $error)';
+    return 'HomePageState(isLoading: $isLoading, error: $error, samplesAsync: $samplesAsync)';
   }
 }
 
@@ -298,7 +305,8 @@ abstract mixin class _$HomePageStateCopyWith<$Res>
       __$HomePageStateCopyWithImpl;
   @override
   @useResult
-  $Res call({bool isLoading, Object? error});
+  $Res call(
+      {bool isLoading, Object? error, AsyncValue<List<Sample>> samplesAsync});
 }
 
 /// @nodoc
@@ -316,6 +324,7 @@ class __$HomePageStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? error = freezed,
+    Object? samplesAsync = null,
   }) {
     return _then(_HomePageState(
       isLoading: null == isLoading
@@ -323,6 +332,10 @@ class __$HomePageStateCopyWithImpl<$Res>
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       error: freezed == error ? _self.error : error,
+      samplesAsync: null == samplesAsync
+          ? _self.samplesAsync
+          : samplesAsync // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<List<Sample>>,
     ));
   }
 }

@@ -76,7 +76,7 @@ RouteBase get $appShellRouteData => StatefulShellRouteData.$route(
               factory: $HomeRoute._fromState,
               routes: [
                 GoRouteData.$route(
-                  path: 'detail',
+                  path: ':id',
                   factory: $DetailRoute._fromState,
                 ),
               ],
@@ -122,11 +122,15 @@ mixin $HomeRoute on GoRouteData {
 }
 
 mixin $DetailRoute on GoRouteData {
-  static DetailRoute _fromState(GoRouterState state) => const DetailRoute();
+  static DetailRoute _fromState(GoRouterState state) => DetailRoute(
+        id: int.parse(state.pathParameters['id']!),
+      );
+
+  DetailRoute get _self => this as DetailRoute;
 
   @override
   String get location => GoRouteData.$location(
-        '/detail',
+        '/${Uri.encodeComponent(_self.id.toString())}',
       );
 
   @override

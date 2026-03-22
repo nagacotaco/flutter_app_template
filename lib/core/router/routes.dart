@@ -43,7 +43,7 @@ class SignUpRoute extends GoRouteData with $SignUpRoute {
           path: '/',
           routes: <TypedRoute<RouteData>>[
             // ネストルートはボトムナビが表示され続ける
-            TypedGoRoute<DetailRoute>(path: 'detail'),
+            TypedGoRoute<DetailRoute>(path: ':id'),
           ],
         ),
       ],
@@ -85,11 +85,13 @@ class HomeRoute extends GoRouteData with $HomeRoute {
 }
 
 class DetailRoute extends GoRouteData with $DetailRoute {
-  const DetailRoute();
+  const DetailRoute({required this.id});
+
+  final int id;
 
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) =>
-      _buildFadePage(state: state, child: const DetailPage());
+      _buildFadePage(state: state, child: DetailPage(id: id));
 }
 
 class CatalogRoute extends GoRouteData with $CatalogRoute {

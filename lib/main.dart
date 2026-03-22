@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_template/core/router/app_router.dart';
+import 'package:flutter_app_template/features/home/repositories/mock/sample_repository_mock.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'core/theme/app_theme.dart';
+import 'features/home/domain/repositories/sample_repository.dart';
 
 void main() {
   runApp(
     ProviderScope(
+      overrides: [
+        sampleRepositoryProvider.overrideWithValue(SampleRepositoryMock()),
+      ],
       child: const MainApp(),
     ),
   );

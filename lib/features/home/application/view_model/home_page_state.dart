@@ -1,7 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+
+import '../../domain/entities/sample.dart';
 
 part 'home_page_state.freezed.dart';
-part 'home_page_state.g.dart'; // JSON serialization が必要な場合
 
 @freezed
 abstract class HomePageState with _$HomePageState {
@@ -9,8 +11,6 @@ abstract class HomePageState with _$HomePageState {
   const factory HomePageState({
     @Default(false) bool isLoading,
     Object? error,
+    required AsyncValue<List<Sample>> samplesAsync,
   }) = _HomePageState;
-
-  factory HomePageState.fromJson(Map<String, dynamic> json) =>
-      _$HomePageStateFromJson(json);
 }

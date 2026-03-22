@@ -1,5 +1,6 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import '../providers/samples_provider.dart';
 import 'home_page_state.dart';
 
 final homePageVMProvider = NotifierProvider<HomePageViewModel, HomePageState>(
@@ -9,6 +10,11 @@ final homePageVMProvider = NotifierProvider<HomePageViewModel, HomePageState>(
 class HomePageViewModel extends Notifier<HomePageState> {
   @override
   HomePageState build() {
-    return HomePageState();
+    final samples = ref.watch(samplesProvider);
+    return HomePageState(
+      samplesAsync: samples,
+      isLoading: samples.isLoading,
+      error: samples.error,
+    );
   }
 }
