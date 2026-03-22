@@ -52,6 +52,7 @@ abstract final class AppTheme {
             color: AppColors.accent,
             fill: 1,
           ),
+          enableFeedback: true,
           unselectedItemColor: AppColors.textTertiary,
           unselectedLabelStyle: AppTextStyles.bodySmall,
         ),
