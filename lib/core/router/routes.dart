@@ -43,7 +43,7 @@ class SignUpRoute extends GoRouteData with $SignUpRoute {
           path: '/',
           routes: <TypedRoute<RouteData>>[
             // ネストルートはボトムナビが表示され続ける
-            TypedGoRoute<DetailRoute>(path: ':id'),
+            TypedGoRoute<DetailRoute>(path: 'detail/:id'),
           ],
         ),
       ],
