@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'app_colors.dart';
+import 'app_dialog_theme.dart';
 import 'app_sizes.dart';
 import 'app_text_styles.dart';
 
@@ -37,6 +38,9 @@ abstract final class AppTheme {
             ),
           ),
         ),
+
+        // dialog
+        dialogTheme: AppDialogTheme.data,
 
         // bottomNavigationBar
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
