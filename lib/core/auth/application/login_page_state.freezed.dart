@@ -1,5 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,238 +9,95 @@ part of 'login_page_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$LoginPageState {
-  bool get isLoading;
-  Object? get error;
+  bool get isLoading => throw _privateConstructorUsedError;
+  Object? get error => throw _privateConstructorUsedError;
 
-  /// Create a copy of LoginPageState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
+  @JsonKey(ignore: true)
   $LoginPageStateCopyWith<LoginPageState> get copyWith =>
-      _$LoginPageStateCopyWithImpl<LoginPageState>(
-          this as LoginPageState, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is LoginPageState &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
-            const DeepCollectionEquality().equals(other.error, error));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, isLoading, const DeepCollectionEquality().hash(error));
-
-  @override
-  String toString() {
-    return 'LoginPageState(isLoading: $isLoading, error: $error)';
-  }
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $LoginPageStateCopyWith<$Res> {
+abstract class $LoginPageStateCopyWith<$Res> {
   factory $LoginPageStateCopyWith(
-          LoginPageState value, $Res Function(LoginPageState) _then) =
-      _$LoginPageStateCopyWithImpl;
+          LoginPageState value, $Res Function(LoginPageState) then) =
+      _$LoginPageStateCopyWithImpl<$Res, LoginPageState>;
   @useResult
   $Res call({bool isLoading, Object? error});
 }
 
 /// @nodoc
-class _$LoginPageStateCopyWithImpl<$Res>
+class _$LoginPageStateCopyWithImpl<$Res, $Val extends LoginPageState>
     implements $LoginPageStateCopyWith<$Res> {
-  _$LoginPageStateCopyWithImpl(this._self, this._then);
+  _$LoginPageStateCopyWithImpl(this._value, this._then);
 
-  final LoginPageState _self;
-  final $Res Function(LoginPageState) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-  /// Create a copy of LoginPageState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
     Object? isLoading = null,
     Object? error = freezed,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       isLoading: null == isLoading
-          ? _self.isLoading
+          ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      error: freezed == error ? _self.error : error,
-    ));
+      error: freezed == error ? _value.error : error,
+    ) as $Val);
   }
 }
 
-/// Adds pattern-matching-related methods to [LoginPageState].
-extension LoginPageStatePatterns on LoginPageState {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
+/// @nodoc
+abstract class _$$LoginPageStateImplCopyWith<$Res>
+    implements $LoginPageStateCopyWith<$Res> {
+  factory _$$LoginPageStateImplCopyWith(_$LoginPageStateImpl value,
+          $Res Function(_$LoginPageStateImpl) then) =
+      __$$LoginPageStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({bool isLoading, Object? error});
+}
 
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_LoginPageState value)? $default, {
-    required TResult orElse(),
+/// @nodoc
+class __$$LoginPageStateImplCopyWithImpl<$Res>
+    extends _$LoginPageStateCopyWithImpl<$Res, _$LoginPageStateImpl>
+    implements _$$LoginPageStateImplCopyWith<$Res> {
+  __$$LoginPageStateImplCopyWithImpl(
+      _$LoginPageStateImpl _value, $Res Function(_$LoginPageStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = null,
+    Object? error = freezed,
   }) {
-    final _that = this;
-    switch (_that) {
-      case _LoginPageState() when $default != null:
-        return $default(_that);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// Callbacks receives the raw object, upcasted.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case final Subclass2 value:
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_LoginPageState value) $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _LoginPageState():
-        return $default(_that);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `map` that fallback to returning `null`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_LoginPageState value)? $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _LoginPageState() when $default != null:
-        return $default(_that);
-      case _:
-        return null;
-    }
-  }
-
-  /// A variant of `when` that fallback to an `orElse` callback.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(bool isLoading, Object? error)? $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _LoginPageState() when $default != null:
-        return $default(_that.isLoading, _that.error);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// As opposed to `map`, this offers destructuring.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case Subclass2(:final field2):
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(bool isLoading, Object? error) $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _LoginPageState():
-        return $default(_that.isLoading, _that.error);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `when` that fallback to returning `null`
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(bool isLoading, Object? error)? $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _LoginPageState() when $default != null:
-        return $default(_that.isLoading, _that.error);
-      case _:
-        return null;
-    }
+    return _then(_$LoginPageStateImpl(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      error: freezed == error ? _value.error : error,
+    ));
   }
 }
 
 /// @nodoc
 
-class _LoginPageState extends LoginPageState {
-  const _LoginPageState({this.isLoading = false, this.error}) : super._();
+class _$LoginPageStateImpl extends _LoginPageState {
+  const _$LoginPageStateImpl({this.isLoading = false, this.error}) : super._();
 
   @override
   @JsonKey()
@@ -248,19 +105,16 @@ class _LoginPageState extends LoginPageState {
   @override
   final Object? error;
 
-  /// Create a copy of LoginPageState
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$LoginPageStateCopyWith<_LoginPageState> get copyWith =>
-      __$LoginPageStateCopyWithImpl<_LoginPageState>(this, _$identity);
+  String toString() {
+    return 'LoginPageState(isLoading: $isLoading, error: $error)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _LoginPageState &&
+            other is _$LoginPageStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             const DeepCollectionEquality().equals(other.error, error));
@@ -270,47 +124,25 @@ class _LoginPageState extends LoginPageState {
   int get hashCode => Object.hash(
       runtimeType, isLoading, const DeepCollectionEquality().hash(error));
 
-  @override
-  String toString() {
-    return 'LoginPageState(isLoading: $isLoading, error: $error)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$LoginPageStateCopyWith<$Res>
-    implements $LoginPageStateCopyWith<$Res> {
-  factory _$LoginPageStateCopyWith(
-          _LoginPageState value, $Res Function(_LoginPageState) _then) =
-      __$LoginPageStateCopyWithImpl;
-  @override
-  @useResult
-  $Res call({bool isLoading, Object? error});
-}
-
-/// @nodoc
-class __$LoginPageStateCopyWithImpl<$Res>
-    implements _$LoginPageStateCopyWith<$Res> {
-  __$LoginPageStateCopyWithImpl(this._self, this._then);
-
-  final _LoginPageState _self;
-  final $Res Function(_LoginPageState) _then;
-
-  /// Create a copy of LoginPageState
-  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? isLoading = null,
-    Object? error = freezed,
-  }) {
-    return _then(_LoginPageState(
-      isLoading: null == isLoading
-          ? _self.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      error: freezed == error ? _self.error : error,
-    ));
-  }
+  _$$LoginPageStateImplCopyWith<_$LoginPageStateImpl> get copyWith =>
+      __$$LoginPageStateImplCopyWithImpl<_$LoginPageStateImpl>(
+          this, _$identity);
 }
 
-// dart format on
+abstract class _LoginPageState extends LoginPageState {
+  const factory _LoginPageState({final bool isLoading, final Object? error}) =
+      _$LoginPageStateImpl;
+  const _LoginPageState._() : super._();
+
+  @override
+  bool get isLoading;
+  @override
+  Object? get error;
+  @override
+  @JsonKey(ignore: true)
+  _$$LoginPageStateImplCopyWith<_$LoginPageStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

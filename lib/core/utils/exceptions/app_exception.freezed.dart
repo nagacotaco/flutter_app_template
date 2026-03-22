@@ -1,5 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,84 +9,55 @@ part of 'app_exception.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$AppException {
-  String get message;
-
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $AppExceptionCopyWith<AppException> get copyWith =>
-      _$AppExceptionCopyWithImpl<AppException>(
-          this as AppException, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is AppException &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  @override
-  String toString() {
-    return 'AppException(message: $message)';
-  }
-}
-
-/// @nodoc
-abstract mixin class $AppExceptionCopyWith<$Res> {
-  factory $AppExceptionCopyWith(
-          AppException value, $Res Function(AppException) _then) =
-      _$AppExceptionCopyWithImpl;
-  @useResult
-  $Res call({String message});
-}
-
-/// @nodoc
-class _$AppExceptionCopyWithImpl<$Res> implements $AppExceptionCopyWith<$Res> {
-  _$AppExceptionCopyWithImpl(this._self, this._then);
-
-  final AppException _self;
-  final $Res Function(AppException) _then;
-
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? message = null,
-  }) {
-    return _then(_self.copyWith(
-      message: null == message
-          ? _self.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// Adds pattern-matching-related methods to [AppException].
-extension AppExceptionPatterns on AppException {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
+  String get message => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String message) network,
+    required TResult Function(int statusCode, String message) server,
+    required TResult Function(String message) auth,
+    required TResult Function(String message, Object? error) unknown,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String message)? network,
+    TResult? Function(int statusCode, String message)? server,
+    TResult? Function(String message)? auth,
+    TResult? Function(String message, Object? error)? unknown,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String message)? network,
+    TResult Function(int statusCode, String message)? server,
+    TResult Function(String message)? auth,
+    TResult Function(String message, Object? error)? unknown,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NetworkException value) network,
+    required TResult Function(ServerException value) server,
+    required TResult Function(AuthException value) auth,
+    required TResult Function(UnknownException value) unknown,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NetworkException value)? network,
+    TResult? Function(ServerException value)? server,
+    TResult? Function(AuthException value)? auth,
+    TResult? Function(UnknownException value)? unknown,
+  }) =>
+      throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(NetworkException value)? network,
@@ -94,101 +65,135 @@ extension AppExceptionPatterns on AppException {
     TResult Function(AuthException value)? auth,
     TResult Function(UnknownException value)? unknown,
     required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $AppExceptionCopyWith<AppException> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $AppExceptionCopyWith<$Res> {
+  factory $AppExceptionCopyWith(
+          AppException value, $Res Function(AppException) then) =
+      _$AppExceptionCopyWithImpl<$Res, AppException>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class _$AppExceptionCopyWithImpl<$Res, $Val extends AppException>
+    implements $AppExceptionCopyWith<$Res> {
+  _$AppExceptionCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
   }) {
-    final _that = this;
-    switch (_that) {
-      case NetworkException() when network != null:
-        return network(_that);
-      case ServerException() when server != null:
-        return server(_that);
-      case AuthException() when auth != null:
-        return auth(_that);
-      case UnknownException() when unknown != null:
-        return unknown(_that);
-      case _:
-        return orElse();
-    }
+    return _then(_value.copyWith(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$NetworkExceptionImplCopyWith<$Res>
+    implements $AppExceptionCopyWith<$Res> {
+  factory _$$NetworkExceptionImplCopyWith(_$NetworkExceptionImpl value,
+          $Res Function(_$NetworkExceptionImpl) then) =
+      __$$NetworkExceptionImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$NetworkExceptionImplCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$NetworkExceptionImpl>
+    implements _$$NetworkExceptionImplCopyWith<$Res> {
+  __$$NetworkExceptionImplCopyWithImpl(_$NetworkExceptionImpl _value,
+      $Res Function(_$NetworkExceptionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$NetworkExceptionImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$NetworkExceptionImpl implements NetworkException {
+  const _$NetworkExceptionImpl({this.message = 'ネットワークに接続できませんでした'});
+
+  @override
+  @JsonKey()
+  final String message;
+
+  @override
+  String toString() {
+    return 'AppException.network(message: $message)';
   }
 
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// Callbacks receives the raw object, upcasted.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case final Subclass2 value:
-  ///     return ...;
-  /// }
-  /// ```
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NetworkExceptionImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
 
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NetworkExceptionImplCopyWith<_$NetworkExceptionImpl> get copyWith =>
+      __$$NetworkExceptionImplCopyWithImpl<_$NetworkExceptionImpl>(
+          this, _$identity);
+
+  @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(NetworkException value) network,
-    required TResult Function(ServerException value) server,
-    required TResult Function(AuthException value) auth,
-    required TResult Function(UnknownException value) unknown,
+  TResult when<TResult extends Object?>({
+    required TResult Function(String message) network,
+    required TResult Function(int statusCode, String message) server,
+    required TResult Function(String message) auth,
+    required TResult Function(String message, Object? error) unknown,
   }) {
-    final _that = this;
-    switch (_that) {
-      case NetworkException():
-        return network(_that);
-      case ServerException():
-        return server(_that);
-      case AuthException():
-        return auth(_that);
-      case UnknownException():
-        return unknown(_that);
-    }
+    return network(message);
   }
 
-  /// A variant of `map` that fallback to returning `null`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
+  @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(NetworkException value)? network,
-    TResult? Function(ServerException value)? server,
-    TResult? Function(AuthException value)? auth,
-    TResult? Function(UnknownException value)? unknown,
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String message)? network,
+    TResult? Function(int statusCode, String message)? server,
+    TResult? Function(String message)? auth,
+    TResult? Function(String message, Object? error)? unknown,
   }) {
-    final _that = this;
-    switch (_that) {
-      case NetworkException() when network != null:
-        return network(_that);
-      case ServerException() when server != null:
-        return server(_that);
-      case AuthException() when auth != null:
-        return auth(_that);
-      case UnknownException() when unknown != null:
-        return unknown(_that);
-      case _:
-        return null;
-    }
+    return network?.call(message);
   }
 
-  /// A variant of `when` that fallback to an `orElse` callback.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
+  @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String message)? network,
@@ -197,152 +202,94 @@ extension AppExceptionPatterns on AppException {
     TResult Function(String message, Object? error)? unknown,
     required TResult orElse(),
   }) {
-    final _that = this;
-    switch (_that) {
-      case NetworkException() when network != null:
-        return network(_that.message);
-      case ServerException() when server != null:
-        return server(_that.statusCode, _that.message);
-      case AuthException() when auth != null:
-        return auth(_that.message);
-      case UnknownException() when unknown != null:
-        return unknown(_that.message, _that.error);
-      case _:
-        return orElse();
+    if (network != null) {
+      return network(message);
     }
+    return orElse();
   }
 
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// As opposed to `map`, this offers destructuring.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case Subclass2(:final field2):
-  ///     return ...;
-  /// }
-  /// ```
-
+  @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String message) network,
-    required TResult Function(int statusCode, String message) server,
-    required TResult Function(String message) auth,
-    required TResult Function(String message, Object? error) unknown,
+  TResult map<TResult extends Object?>({
+    required TResult Function(NetworkException value) network,
+    required TResult Function(ServerException value) server,
+    required TResult Function(AuthException value) auth,
+    required TResult Function(UnknownException value) unknown,
   }) {
-    final _that = this;
-    switch (_that) {
-      case NetworkException():
-        return network(_that.message);
-      case ServerException():
-        return server(_that.statusCode, _that.message);
-      case AuthException():
-        return auth(_that.message);
-      case UnknownException():
-        return unknown(_that.message, _that.error);
-    }
+    return network(this);
   }
 
-  /// A variant of `when` that fallback to returning `null`
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
+  @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String message)? network,
-    TResult? Function(int statusCode, String message)? server,
-    TResult? Function(String message)? auth,
-    TResult? Function(String message, Object? error)? unknown,
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NetworkException value)? network,
+    TResult? Function(ServerException value)? server,
+    TResult? Function(AuthException value)? auth,
+    TResult? Function(UnknownException value)? unknown,
   }) {
-    final _that = this;
-    switch (_that) {
-      case NetworkException() when network != null:
-        return network(_that.message);
-      case ServerException() when server != null:
-        return server(_that.statusCode, _that.message);
-      case AuthException() when auth != null:
-        return auth(_that.message);
-      case UnknownException() when unknown != null:
-        return unknown(_that.message, _that.error);
-      case _:
-        return null;
+    return network?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NetworkException value)? network,
+    TResult Function(ServerException value)? server,
+    TResult Function(AuthException value)? auth,
+    TResult Function(UnknownException value)? unknown,
+    required TResult orElse(),
+  }) {
+    if (network != null) {
+      return network(this);
     }
+    return orElse();
   }
 }
 
-/// @nodoc
-
-class NetworkException implements AppException {
-  const NetworkException({this.message = 'ネットワークに接続できませんでした'});
-
-  @override
-  @JsonKey()
-  final String message;
-
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $NetworkExceptionCopyWith<NetworkException> get copyWith =>
-      _$NetworkExceptionCopyWithImpl<NetworkException>(this, _$identity);
+abstract class NetworkException implements AppException {
+  const factory NetworkException({final String message}) =
+      _$NetworkExceptionImpl;
 
   @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is NetworkException &&
-            (identical(other.message, message) || other.message == message));
-  }
-
+  String get message;
   @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  @override
-  String toString() {
-    return 'AppException.network(message: $message)';
-  }
+  @JsonKey(ignore: true)
+  _$$NetworkExceptionImplCopyWith<_$NetworkExceptionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $NetworkExceptionCopyWith<$Res>
+abstract class _$$ServerExceptionImplCopyWith<$Res>
     implements $AppExceptionCopyWith<$Res> {
-  factory $NetworkExceptionCopyWith(
-          NetworkException value, $Res Function(NetworkException) _then) =
-      _$NetworkExceptionCopyWithImpl;
+  factory _$$ServerExceptionImplCopyWith(_$ServerExceptionImpl value,
+          $Res Function(_$ServerExceptionImpl) then) =
+      __$$ServerExceptionImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String message});
+  $Res call({int statusCode, String message});
 }
 
 /// @nodoc
-class _$NetworkExceptionCopyWithImpl<$Res>
-    implements $NetworkExceptionCopyWith<$Res> {
-  _$NetworkExceptionCopyWithImpl(this._self, this._then);
+class __$$ServerExceptionImplCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$ServerExceptionImpl>
+    implements _$$ServerExceptionImplCopyWith<$Res> {
+  __$$ServerExceptionImplCopyWithImpl(
+      _$ServerExceptionImpl _value, $Res Function(_$ServerExceptionImpl) _then)
+      : super(_value, _then);
 
-  final NetworkException _self;
-  final $Res Function(NetworkException) _then;
-
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @override
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
+    Object? statusCode = null,
     Object? message = null,
   }) {
-    return _then(NetworkException(
+    return _then(_$ServerExceptionImpl(
+      statusCode: null == statusCode
+          ? _value.statusCode
+          : statusCode // ignore: cast_nullable_to_non_nullable
+              as int,
       message: null == message
-          ? _self.message
+          ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -351,28 +298,26 @@ class _$NetworkExceptionCopyWithImpl<$Res>
 
 /// @nodoc
 
-class ServerException implements AppException {
-  const ServerException(
+class _$ServerExceptionImpl implements ServerException {
+  const _$ServerExceptionImpl(
       {required this.statusCode, this.message = 'サーバーエラーが発生しました'});
 
+  @override
   final int statusCode;
   @override
   @JsonKey()
   final String message;
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $ServerExceptionCopyWith<ServerException> get copyWith =>
-      _$ServerExceptionCopyWithImpl<ServerException>(this, _$identity);
+  String toString() {
+    return 'AppException.server(statusCode: $statusCode, message: $message)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is ServerException &&
+            other is _$ServerExceptionImpl &&
             (identical(other.statusCode, statusCode) ||
                 other.statusCode == statusCode) &&
             (identical(other.message, message) || other.message == message));
@@ -381,115 +326,129 @@ class ServerException implements AppException {
   @override
   int get hashCode => Object.hash(runtimeType, statusCode, message);
 
-  @override
-  String toString() {
-    return 'AppException.server(statusCode: $statusCode, message: $message)';
-  }
-}
-
-/// @nodoc
-abstract mixin class $ServerExceptionCopyWith<$Res>
-    implements $AppExceptionCopyWith<$Res> {
-  factory $ServerExceptionCopyWith(
-          ServerException value, $Res Function(ServerException) _then) =
-      _$ServerExceptionCopyWithImpl;
-  @override
-  @useResult
-  $Res call({int statusCode, String message});
-}
-
-/// @nodoc
-class _$ServerExceptionCopyWithImpl<$Res>
-    implements $ServerExceptionCopyWith<$Res> {
-  _$ServerExceptionCopyWithImpl(this._self, this._then);
-
-  final ServerException _self;
-  final $Res Function(ServerException) _then;
-
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? statusCode = null,
-    Object? message = null,
+  _$$ServerExceptionImplCopyWith<_$ServerExceptionImpl> get copyWith =>
+      __$$ServerExceptionImplCopyWithImpl<_$ServerExceptionImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String message) network,
+    required TResult Function(int statusCode, String message) server,
+    required TResult Function(String message) auth,
+    required TResult Function(String message, Object? error) unknown,
   }) {
-    return _then(ServerException(
-      statusCode: null == statusCode
-          ? _self.statusCode
-          : statusCode // ignore: cast_nullable_to_non_nullable
-              as int,
-      message: null == message
-          ? _self.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+    return server(statusCode, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String message)? network,
+    TResult? Function(int statusCode, String message)? server,
+    TResult? Function(String message)? auth,
+    TResult? Function(String message, Object? error)? unknown,
+  }) {
+    return server?.call(statusCode, message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String message)? network,
+    TResult Function(int statusCode, String message)? server,
+    TResult Function(String message)? auth,
+    TResult Function(String message, Object? error)? unknown,
+    required TResult orElse(),
+  }) {
+    if (server != null) {
+      return server(statusCode, message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NetworkException value) network,
+    required TResult Function(ServerException value) server,
+    required TResult Function(AuthException value) auth,
+    required TResult Function(UnknownException value) unknown,
+  }) {
+    return server(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NetworkException value)? network,
+    TResult? Function(ServerException value)? server,
+    TResult? Function(AuthException value)? auth,
+    TResult? Function(UnknownException value)? unknown,
+  }) {
+    return server?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NetworkException value)? network,
+    TResult Function(ServerException value)? server,
+    TResult Function(AuthException value)? auth,
+    TResult Function(UnknownException value)? unknown,
+    required TResult orElse(),
+  }) {
+    if (server != null) {
+      return server(this);
+    }
+    return orElse();
   }
 }
 
-/// @nodoc
+abstract class ServerException implements AppException {
+  const factory ServerException(
+      {required final int statusCode,
+      final String message}) = _$ServerExceptionImpl;
 
-class AuthException implements AppException {
-  const AuthException({this.message = '認証エラーが発生しました'});
-
+  int get statusCode;
   @override
-  @JsonKey()
-  final String message;
-
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
+  String get message;
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $AuthExceptionCopyWith<AuthException> get copyWith =>
-      _$AuthExceptionCopyWithImpl<AuthException>(this, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is AuthException &&
-            (identical(other.message, message) || other.message == message));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, message);
-
-  @override
-  String toString() {
-    return 'AppException.auth(message: $message)';
-  }
+  @JsonKey(ignore: true)
+  _$$ServerExceptionImplCopyWith<_$ServerExceptionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $AuthExceptionCopyWith<$Res>
+abstract class _$$AuthExceptionImplCopyWith<$Res>
     implements $AppExceptionCopyWith<$Res> {
-  factory $AuthExceptionCopyWith(
-          AuthException value, $Res Function(AuthException) _then) =
-      _$AuthExceptionCopyWithImpl;
+  factory _$$AuthExceptionImplCopyWith(
+          _$AuthExceptionImpl value, $Res Function(_$AuthExceptionImpl) then) =
+      __$$AuthExceptionImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class _$AuthExceptionCopyWithImpl<$Res>
-    implements $AuthExceptionCopyWith<$Res> {
-  _$AuthExceptionCopyWithImpl(this._self, this._then);
+class __$$AuthExceptionImplCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$AuthExceptionImpl>
+    implements _$$AuthExceptionImplCopyWith<$Res> {
+  __$$AuthExceptionImplCopyWithImpl(
+      _$AuthExceptionImpl _value, $Res Function(_$AuthExceptionImpl) _then)
+      : super(_value, _then);
 
-  final AuthException _self;
-  final $Res Function(AuthException) _then;
-
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
-  @override
   @pragma('vm:prefer-inline')
+  @override
   $Res call({
     Object? message = null,
   }) {
-    return _then(AuthException(
+    return _then(_$AuthExceptionImpl(
       message: null == message
-          ? _self.message
+          ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String,
     ));
@@ -498,27 +457,177 @@ class _$AuthExceptionCopyWithImpl<$Res>
 
 /// @nodoc
 
-class UnknownException implements AppException {
-  const UnknownException({this.message = '予期しないエラーが発生しました', this.error});
+class _$AuthExceptionImpl implements AuthException {
+  const _$AuthExceptionImpl({this.message = '認証エラーが発生しました'});
 
   @override
   @JsonKey()
   final String message;
-  final Object? error;
 
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  $UnknownExceptionCopyWith<UnknownException> get copyWith =>
-      _$UnknownExceptionCopyWithImpl<UnknownException>(this, _$identity);
+  String toString() {
+    return 'AppException.auth(message: $message)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is UnknownException &&
+            other is _$AuthExceptionImpl &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AuthExceptionImplCopyWith<_$AuthExceptionImpl> get copyWith =>
+      __$$AuthExceptionImplCopyWithImpl<_$AuthExceptionImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String message) network,
+    required TResult Function(int statusCode, String message) server,
+    required TResult Function(String message) auth,
+    required TResult Function(String message, Object? error) unknown,
+  }) {
+    return auth(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String message)? network,
+    TResult? Function(int statusCode, String message)? server,
+    TResult? Function(String message)? auth,
+    TResult? Function(String message, Object? error)? unknown,
+  }) {
+    return auth?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String message)? network,
+    TResult Function(int statusCode, String message)? server,
+    TResult Function(String message)? auth,
+    TResult Function(String message, Object? error)? unknown,
+    required TResult orElse(),
+  }) {
+    if (auth != null) {
+      return auth(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NetworkException value) network,
+    required TResult Function(ServerException value) server,
+    required TResult Function(AuthException value) auth,
+    required TResult Function(UnknownException value) unknown,
+  }) {
+    return auth(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NetworkException value)? network,
+    TResult? Function(ServerException value)? server,
+    TResult? Function(AuthException value)? auth,
+    TResult? Function(UnknownException value)? unknown,
+  }) {
+    return auth?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NetworkException value)? network,
+    TResult Function(ServerException value)? server,
+    TResult Function(AuthException value)? auth,
+    TResult Function(UnknownException value)? unknown,
+    required TResult orElse(),
+  }) {
+    if (auth != null) {
+      return auth(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AuthException implements AppException {
+  const factory AuthException({final String message}) = _$AuthExceptionImpl;
+
+  @override
+  String get message;
+  @override
+  @JsonKey(ignore: true)
+  _$$AuthExceptionImplCopyWith<_$AuthExceptionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UnknownExceptionImplCopyWith<$Res>
+    implements $AppExceptionCopyWith<$Res> {
+  factory _$$UnknownExceptionImplCopyWith(_$UnknownExceptionImpl value,
+          $Res Function(_$UnknownExceptionImpl) then) =
+      __$$UnknownExceptionImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String message, Object? error});
+}
+
+/// @nodoc
+class __$$UnknownExceptionImplCopyWithImpl<$Res>
+    extends _$AppExceptionCopyWithImpl<$Res, _$UnknownExceptionImpl>
+    implements _$$UnknownExceptionImplCopyWith<$Res> {
+  __$$UnknownExceptionImplCopyWithImpl(_$UnknownExceptionImpl _value,
+      $Res Function(_$UnknownExceptionImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+    Object? error = freezed,
+  }) {
+    return _then(_$UnknownExceptionImpl(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      error: freezed == error ? _value.error : error,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UnknownExceptionImpl implements UnknownException {
+  const _$UnknownExceptionImpl({this.message = '予期しないエラーが発生しました', this.error});
+
+  @override
+  @JsonKey()
+  final String message;
+  @override
+  final Object? error;
+
+  @override
+  String toString() {
+    return 'AppException.unknown(message: $message, error: $error)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UnknownExceptionImpl &&
             (identical(other.message, message) || other.message == message) &&
             const DeepCollectionEquality().equals(other.error, error));
   }
@@ -527,47 +636,97 @@ class UnknownException implements AppException {
   int get hashCode => Object.hash(
       runtimeType, message, const DeepCollectionEquality().hash(error));
 
-  @override
-  String toString() {
-    return 'AppException.unknown(message: $message, error: $error)';
-  }
-}
-
-/// @nodoc
-abstract mixin class $UnknownExceptionCopyWith<$Res>
-    implements $AppExceptionCopyWith<$Res> {
-  factory $UnknownExceptionCopyWith(
-          UnknownException value, $Res Function(UnknownException) _then) =
-      _$UnknownExceptionCopyWithImpl;
-  @override
-  @useResult
-  $Res call({String message, Object? error});
-}
-
-/// @nodoc
-class _$UnknownExceptionCopyWithImpl<$Res>
-    implements $UnknownExceptionCopyWith<$Res> {
-  _$UnknownExceptionCopyWithImpl(this._self, this._then);
-
-  final UnknownException _self;
-  final $Res Function(UnknownException) _then;
-
-  /// Create a copy of AppException
-  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? message = null,
-    Object? error = freezed,
+  _$$UnknownExceptionImplCopyWith<_$UnknownExceptionImpl> get copyWith =>
+      __$$UnknownExceptionImplCopyWithImpl<_$UnknownExceptionImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String message) network,
+    required TResult Function(int statusCode, String message) server,
+    required TResult Function(String message) auth,
+    required TResult Function(String message, Object? error) unknown,
   }) {
-    return _then(UnknownException(
-      message: null == message
-          ? _self.message
-          : message // ignore: cast_nullable_to_non_nullable
-              as String,
-      error: freezed == error ? _self.error : error,
-    ));
+    return unknown(message, error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String message)? network,
+    TResult? Function(int statusCode, String message)? server,
+    TResult? Function(String message)? auth,
+    TResult? Function(String message, Object? error)? unknown,
+  }) {
+    return unknown?.call(message, error);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String message)? network,
+    TResult Function(int statusCode, String message)? server,
+    TResult Function(String message)? auth,
+    TResult Function(String message, Object? error)? unknown,
+    required TResult orElse(),
+  }) {
+    if (unknown != null) {
+      return unknown(message, error);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(NetworkException value) network,
+    required TResult Function(ServerException value) server,
+    required TResult Function(AuthException value) auth,
+    required TResult Function(UnknownException value) unknown,
+  }) {
+    return unknown(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(NetworkException value)? network,
+    TResult? Function(ServerException value)? server,
+    TResult? Function(AuthException value)? auth,
+    TResult? Function(UnknownException value)? unknown,
+  }) {
+    return unknown?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(NetworkException value)? network,
+    TResult Function(ServerException value)? server,
+    TResult Function(AuthException value)? auth,
+    TResult Function(UnknownException value)? unknown,
+    required TResult orElse(),
+  }) {
+    if (unknown != null) {
+      return unknown(this);
+    }
+    return orElse();
   }
 }
 
-// dart format on
+abstract class UnknownException implements AppException {
+  const factory UnknownException({final String message, final Object? error}) =
+      _$UnknownExceptionImpl;
+
+  @override
+  String get message;
+  Object? get error;
+  @override
+  @JsonKey(ignore: true)
+  _$$UnknownExceptionImplCopyWith<_$UnknownExceptionImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

@@ -1,5 +1,5 @@
-// GENERATED CODE - DO NOT MODIFY BY HAND
 // coverage:ignore-file
+// GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,65 +9,43 @@ part of 'home_page_state.dart';
 // FreezedGenerator
 // **************************************************************************
 
-// dart format off
 T _$identity<T>(T value) => value;
+
+final _privateConstructorUsedError = UnsupportedError(
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$HomePageState {
-  bool get isLoading;
-  Object? get error;
-  AsyncValue<List<Sample>> get samplesAsync;
+  bool get isLoading => throw _privateConstructorUsedError;
+  Object? get error => throw _privateConstructorUsedError;
+  AsyncValue<List<Sample>> get samplesAsync =>
+      throw _privateConstructorUsedError;
 
-  /// Create a copy of HomePageState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
+  @JsonKey(ignore: true)
   $HomePageStateCopyWith<HomePageState> get copyWith =>
-      _$HomePageStateCopyWithImpl<HomePageState>(
-          this as HomePageState, _$identity);
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is HomePageState &&
-            (identical(other.isLoading, isLoading) ||
-                other.isLoading == isLoading) &&
-            const DeepCollectionEquality().equals(other.error, error) &&
-            (identical(other.samplesAsync, samplesAsync) ||
-                other.samplesAsync == samplesAsync));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, isLoading,
-      const DeepCollectionEquality().hash(error), samplesAsync);
-
-  @override
-  String toString() {
-    return 'HomePageState(isLoading: $isLoading, error: $error, samplesAsync: $samplesAsync)';
-  }
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract mixin class $HomePageStateCopyWith<$Res> {
+abstract class $HomePageStateCopyWith<$Res> {
   factory $HomePageStateCopyWith(
-          HomePageState value, $Res Function(HomePageState) _then) =
-      _$HomePageStateCopyWithImpl;
+          HomePageState value, $Res Function(HomePageState) then) =
+      _$HomePageStateCopyWithImpl<$Res, HomePageState>;
   @useResult
   $Res call(
       {bool isLoading, Object? error, AsyncValue<List<Sample>> samplesAsync});
 }
 
 /// @nodoc
-class _$HomePageStateCopyWithImpl<$Res>
+class _$HomePageStateCopyWithImpl<$Res, $Val extends HomePageState>
     implements $HomePageStateCopyWith<$Res> {
-  _$HomePageStateCopyWithImpl(this._self, this._then);
+  _$HomePageStateCopyWithImpl(this._value, this._then);
 
-  final HomePageState _self;
-  final $Res Function(HomePageState) _then;
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
-  /// Create a copy of HomePageState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -75,187 +53,65 @@ class _$HomePageStateCopyWithImpl<$Res>
     Object? error = freezed,
     Object? samplesAsync = null,
   }) {
-    return _then(_self.copyWith(
+    return _then(_value.copyWith(
       isLoading: null == isLoading
-          ? _self.isLoading
+          ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      error: freezed == error ? _self.error : error,
+      error: freezed == error ? _value.error : error,
       samplesAsync: null == samplesAsync
-          ? _self.samplesAsync
+          ? _value.samplesAsync
+          : samplesAsync // ignore: cast_nullable_to_non_nullable
+              as AsyncValue<List<Sample>>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$HomePageStateImplCopyWith<$Res>
+    implements $HomePageStateCopyWith<$Res> {
+  factory _$$HomePageStateImplCopyWith(
+          _$HomePageStateImpl value, $Res Function(_$HomePageStateImpl) then) =
+      __$$HomePageStateImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {bool isLoading, Object? error, AsyncValue<List<Sample>> samplesAsync});
+}
+
+/// @nodoc
+class __$$HomePageStateImplCopyWithImpl<$Res>
+    extends _$HomePageStateCopyWithImpl<$Res, _$HomePageStateImpl>
+    implements _$$HomePageStateImplCopyWith<$Res> {
+  __$$HomePageStateImplCopyWithImpl(
+      _$HomePageStateImpl _value, $Res Function(_$HomePageStateImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = null,
+    Object? error = freezed,
+    Object? samplesAsync = null,
+  }) {
+    return _then(_$HomePageStateImpl(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      error: freezed == error ? _value.error : error,
+      samplesAsync: null == samplesAsync
+          ? _value.samplesAsync
           : samplesAsync // ignore: cast_nullable_to_non_nullable
               as AsyncValue<List<Sample>>,
     ));
   }
 }
 
-/// Adds pattern-matching-related methods to [HomePageState].
-extension HomePageStatePatterns on HomePageState {
-  /// A variant of `map` that fallback to returning `orElse`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_HomePageState value)? $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _HomePageState() when $default != null:
-        return $default(_that);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// Callbacks receives the raw object, upcasted.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case final Subclass2 value:
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_HomePageState value) $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _HomePageState():
-        return $default(_that);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `map` that fallback to returning `null`.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case final Subclass value:
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>(
-    TResult? Function(_HomePageState value)? $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _HomePageState() when $default != null:
-        return $default(_that);
-      case _:
-        return null;
-    }
-  }
-
-  /// A variant of `when` that fallback to an `orElse` callback.
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return orElse();
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(bool isLoading, Object? error,
-            AsyncValue<List<Sample>> samplesAsync)?
-        $default, {
-    required TResult orElse(),
-  }) {
-    final _that = this;
-    switch (_that) {
-      case _HomePageState() when $default != null:
-        return $default(_that.isLoading, _that.error, _that.samplesAsync);
-      case _:
-        return orElse();
-    }
-  }
-
-  /// A `switch`-like method, using callbacks.
-  ///
-  /// As opposed to `map`, this offers destructuring.
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case Subclass2(:final field2):
-  ///     return ...;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(bool isLoading, Object? error,
-            AsyncValue<List<Sample>> samplesAsync)
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _HomePageState():
-        return $default(_that.isLoading, _that.error, _that.samplesAsync);
-      case _:
-        throw StateError('Unexpected subclass');
-    }
-  }
-
-  /// A variant of `when` that fallback to returning `null`
-  ///
-  /// It is equivalent to doing:
-  /// ```dart
-  /// switch (sealedClass) {
-  ///   case Subclass(:final field):
-  ///     return ...;
-  ///   case _:
-  ///     return null;
-  /// }
-  /// ```
-
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>(
-    TResult? Function(bool isLoading, Object? error,
-            AsyncValue<List<Sample>> samplesAsync)?
-        $default,
-  ) {
-    final _that = this;
-    switch (_that) {
-      case _HomePageState() when $default != null:
-        return $default(_that.isLoading, _that.error, _that.samplesAsync);
-      case _:
-        return null;
-    }
-  }
-}
-
 /// @nodoc
 
-class _HomePageState extends HomePageState {
-  const _HomePageState(
+class _$HomePageStateImpl extends _HomePageState {
+  const _$HomePageStateImpl(
       {this.isLoading = false, this.error, required this.samplesAsync})
       : super._();
 
@@ -267,19 +123,16 @@ class _HomePageState extends HomePageState {
   @override
   final AsyncValue<List<Sample>> samplesAsync;
 
-  /// Create a copy of HomePageState
-  /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @pragma('vm:prefer-inline')
-  _$HomePageStateCopyWith<_HomePageState> get copyWith =>
-      __$HomePageStateCopyWithImpl<_HomePageState>(this, _$identity);
+  String toString() {
+    return 'HomePageState(isLoading: $isLoading, error: $error, samplesAsync: $samplesAsync)';
+  }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _HomePageState &&
+            other is _$HomePageStateImpl &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             const DeepCollectionEquality().equals(other.error, error) &&
@@ -291,53 +144,29 @@ class _HomePageState extends HomePageState {
   int get hashCode => Object.hash(runtimeType, isLoading,
       const DeepCollectionEquality().hash(error), samplesAsync);
 
-  @override
-  String toString() {
-    return 'HomePageState(isLoading: $isLoading, error: $error, samplesAsync: $samplesAsync)';
-  }
-}
-
-/// @nodoc
-abstract mixin class _$HomePageStateCopyWith<$Res>
-    implements $HomePageStateCopyWith<$Res> {
-  factory _$HomePageStateCopyWith(
-          _HomePageState value, $Res Function(_HomePageState) _then) =
-      __$HomePageStateCopyWithImpl;
-  @override
-  @useResult
-  $Res call(
-      {bool isLoading, Object? error, AsyncValue<List<Sample>> samplesAsync});
-}
-
-/// @nodoc
-class __$HomePageStateCopyWithImpl<$Res>
-    implements _$HomePageStateCopyWith<$Res> {
-  __$HomePageStateCopyWithImpl(this._self, this._then);
-
-  final _HomePageState _self;
-  final $Res Function(_HomePageState) _then;
-
-  /// Create a copy of HomePageState
-  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  $Res call({
-    Object? isLoading = null,
-    Object? error = freezed,
-    Object? samplesAsync = null,
-  }) {
-    return _then(_HomePageState(
-      isLoading: null == isLoading
-          ? _self.isLoading
-          : isLoading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      error: freezed == error ? _self.error : error,
-      samplesAsync: null == samplesAsync
-          ? _self.samplesAsync
-          : samplesAsync // ignore: cast_nullable_to_non_nullable
-              as AsyncValue<List<Sample>>,
-    ));
-  }
+  _$$HomePageStateImplCopyWith<_$HomePageStateImpl> get copyWith =>
+      __$$HomePageStateImplCopyWithImpl<_$HomePageStateImpl>(this, _$identity);
 }
 
-// dart format on
+abstract class _HomePageState extends HomePageState {
+  const factory _HomePageState(
+          {final bool isLoading,
+          final Object? error,
+          required final AsyncValue<List<Sample>> samplesAsync}) =
+      _$HomePageStateImpl;
+  const _HomePageState._() : super._();
+
+  @override
+  bool get isLoading;
+  @override
+  Object? get error;
+  @override
+  AsyncValue<List<Sample>> get samplesAsync;
+  @override
+  @JsonKey(ignore: true)
+  _$$HomePageStateImplCopyWith<_$HomePageStateImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
