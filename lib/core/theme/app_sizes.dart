@@ -10,7 +10,7 @@ abstract final class AppSpacing {
   static const double xl = 32.0;
   static const double xxl = 40.0;
 
-  // SizedBox
+  // 正方形SizedBox（Stack内のオフセットやGridのgapなど両方向が必要な場合に使用）
   static const gapXs = SizedBox(height: xs, width: xs);
   static const gapSm = SizedBox(height: sm, width: sm);
   static const gapMd = SizedBox(height: md, width: md);
@@ -40,10 +40,12 @@ abstract final class AppRadius {
   static const double sm = 4.0;
   static const double md = 8.0;
   static const double lg = 16.0;
+  static const double xl = 24.0;
 
   static const BorderRadius borderSm = BorderRadius.all(Radius.circular(sm));
   static const BorderRadius borderMd = BorderRadius.all(Radius.circular(md));
   static const BorderRadius borderLg = BorderRadius.all(Radius.circular(lg));
+  static const BorderRadius borderXl = BorderRadius.all(Radius.circular(xl));
   static const BorderRadius borderMax = BorderRadius.all(Radius.circular(999));
 }
 

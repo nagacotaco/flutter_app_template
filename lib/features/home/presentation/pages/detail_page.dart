@@ -8,7 +8,7 @@ class DetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('詳細画面'),
+        title: const Text('detail'),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {

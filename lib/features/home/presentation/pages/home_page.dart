@@ -13,7 +13,7 @@ class HomePage extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ホーム画面'),
+        title: const Text('home'),
       ),
       body: _Body(),
     );

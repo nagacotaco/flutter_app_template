@@ -7,6 +7,7 @@ abstract final class AppColors {
   static const Color cream = Color(0xFFF7F5F2);
 
   // ── テキスト ──
+  static const Color textPrimary = Color(0xFF2D2926);
   static const Color textSecondary = Color(0xFF6B6460);
   static const Color textTertiary = Color(0xFFA09B97);
 
