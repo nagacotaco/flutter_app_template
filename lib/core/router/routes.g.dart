@@ -86,6 +86,20 @@ RouteBase get $appShellRouteData => StatefulShellRouteData.$route(
         StatefulShellBranchData.$branch(
           routes: [
             GoRouteData.$route(
+              path: '/petstore',
+              factory: $PetListRoute._fromState,
+              routes: [
+                GoRouteData.$route(
+                  path: 'detail/:id',
+                  factory: $PetDetailRoute._fromState,
+                ),
+              ],
+            ),
+          ],
+        ),
+        StatefulShellBranchData.$branch(
+          routes: [
+            GoRouteData.$route(
               path: '/catalog-page',
               factory: $CatalogRoute._fromState,
             ),
@@ -131,6 +145,54 @@ mixin $DetailRoute on GoRouteData {
   @override
   String get location => GoRouteData.$location(
         '/detail/${Uri.encodeComponent(_self.id.toString())}',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+mixin $PetListRoute on GoRouteData {
+  static PetListRoute _fromState(GoRouterState state) => const PetListRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/petstore',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+mixin $PetDetailRoute on GoRouteData {
+  static PetDetailRoute _fromState(GoRouterState state) => PetDetailRoute(
+        id: int.parse(state.pathParameters['id']!),
+      );
+
+  PetDetailRoute get _self => this as PetDetailRoute;
+
+  @override
+  String get location => GoRouteData.$location(
+        '/petstore/detail/${Uri.encodeComponent(_self.id.toString())}',
       );
 
   @override

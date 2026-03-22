@@ -5,6 +5,8 @@ import 'package:flutter_app_template/core/widgets/scaffold_with_nav_bar.dart';
 import 'package:flutter_app_template/features/catalog/presentation/catalog_page.dart';
 import 'package:flutter_app_template/features/home/presentation/pages/detail_page.dart';
 import 'package:flutter_app_template/features/home/presentation/pages/home_page.dart';
+import 'package:flutter_app_template/features/petstore/presentation/pages/pet_detail_page.dart';
+import 'package:flutter_app_template/features/petstore/presentation/pages/pet_list_page.dart';
 import 'package:go_router/go_router.dart';
 
 part 'routes.g.dart';
@@ -48,6 +50,16 @@ class SignUpRoute extends GoRouteData with $SignUpRoute {
         ),
       ],
     ),
+    TypedStatefulShellBranch<PetstoreBranchData>(
+      routes: <TypedRoute<RouteData>>[
+        TypedGoRoute<PetListRoute>(
+          path: '/petstore',
+          routes: <TypedRoute<RouteData>>[
+            TypedGoRoute<PetDetailRoute>(path: 'detail/:id'),
+          ],
+        ),
+      ],
+    ),
     TypedStatefulShellBranch<CatalogBranchData>(
       routes: <TypedRoute<RouteData>>[
         TypedGoRoute<CatalogRoute>(path: '/catalog-page'),
@@ -72,6 +84,10 @@ class HomeBranchData extends StatefulShellBranchData {
   const HomeBranchData();
 }
 
+class PetstoreBranchData extends StatefulShellBranchData {
+  const PetstoreBranchData();
+}
+
 class CatalogBranchData extends StatefulShellBranchData {
   const CatalogBranchData();
 }
@@ -92,6 +108,24 @@ class DetailRoute extends GoRouteData with $DetailRoute {
   @override
   Page<void> buildPage(BuildContext context, GoRouterState state) =>
       _buildFadePage(state: state, child: DetailPage(id: id));
+}
+
+class PetListRoute extends GoRouteData with $PetListRoute {
+  const PetListRoute();
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) =>
+      _buildFadePage(state: state, child: const PetListPage());
+}
+
+class PetDetailRoute extends GoRouteData with $PetDetailRoute {
+  const PetDetailRoute({required this.id});
+
+  final int id;
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) =>
+      _buildFadePage(state: state, child: PetDetailPage(id: id));
 }
 
 class CatalogRoute extends GoRouteData with $CatalogRoute {

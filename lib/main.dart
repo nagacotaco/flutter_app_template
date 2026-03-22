@@ -1,16 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_template/core/router/app_router.dart';
 import 'package:flutter_app_template/features/home/repositories/mock/sample_repository_mock.dart';
+import 'package:flutter_app_template/features/petstore/infrastructure/datasources/petstore_api_client.dart';
+import 'package:flutter_app_template/features/petstore/infrastructure/pet_repository_impl.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'core/theme/app_theme.dart';
 import 'features/home/domain/repositories/sample_repository.dart';
+import 'features/petstore/domain/repositories/pet_repository.dart';
 
 void main() {
   runApp(
     ProviderScope(
       overrides: [
         sampleRepositoryProvider.overrideWithValue(SampleRepositoryMock()),
+        petRepositoryProvider.overrideWith(
+            (ref) => PetRepositoryImpl(ref.watch(petApiProvider))),
       ],
       child: const MainApp(),
     ),
