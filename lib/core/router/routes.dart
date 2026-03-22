@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app_template/core/auth/presentation/login_page.dart';
+import 'package:flutter_app_template/core/auth/presentation/sign_up_page.dart';
 import 'package:flutter_app_template/core/widgets/scaffold_with_nav_bar.dart';
 import 'package:flutter_app_template/features/catalog/presentation/catalog_page.dart';
 import 'package:flutter_app_template/features/home/presentation/pages/detail_page.dart';
@@ -6,6 +8,32 @@ import 'package:flutter_app_template/features/home/presentation/pages/home_page.
 import 'package:go_router/go_router.dart';
 
 part 'routes.g.dart';
+
+// ── 認証ページ（BottomNav なし） ──────────────────────────────────────────────
+
+@TypedGoRoute<LoginRoute>(
+  path: '/login',
+  routes: [
+    TypedGoRoute<SignUpRoute>(path: 'sign-up'),
+  ],
+)
+class LoginRoute extends GoRouteData with $LoginRoute {
+  const LoginRoute();
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) =>
+      _buildFadePage(state: state, child: const LoginPage());
+}
+
+class SignUpRoute extends GoRouteData with $SignUpRoute {
+  const SignUpRoute();
+
+  @override
+  Page<void> buildPage(BuildContext context, GoRouterState state) =>
+      _buildFadePage(state: state, child: const SignUpPage());
+}
+
+// ── メインShell（BottomNav あり） ─────────────────────────────────────────────
 
 @TypedStatefulShellRoute<AppShellRouteData>(
   branches: <TypedStatefulShellBranch<StatefulShellBranchData>>[

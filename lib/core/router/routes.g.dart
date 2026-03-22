@@ -7,8 +7,64 @@ part of 'routes.dart';
 // **************************************************************************
 
 List<RouteBase> get $appRoutes => [
+      $loginRoute,
       $appShellRouteData,
     ];
+
+RouteBase get $loginRoute => GoRouteData.$route(
+      path: '/login',
+      factory: $LoginRoute._fromState,
+      routes: [
+        GoRouteData.$route(
+          path: 'sign-up',
+          factory: $SignUpRoute._fromState,
+        ),
+      ],
+    );
+
+mixin $LoginRoute on GoRouteData {
+  static LoginRoute _fromState(GoRouterState state) => const LoginRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/login',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+mixin $SignUpRoute on GoRouteData {
+  static SignUpRoute _fromState(GoRouterState state) => const SignUpRoute();
+
+  @override
+  String get location => GoRouteData.$location(
+        '/login/sign-up',
+      );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
 
 RouteBase get $appShellRouteData => StatefulShellRouteData.$route(
       factory: $AppShellRouteDataExtension._fromState,
