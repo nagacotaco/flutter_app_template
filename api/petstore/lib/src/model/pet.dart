@@ -4,10 +4,10 @@
 
 // ignore_for_file: unused_element
 import 'package:built_collection/built_collection.dart';
-import 'package:petstore_api/src/model/category.dart';
-import 'package:petstore_api/src/model/tag.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
+import 'package:petstore_api/src/model/category.dart';
+import 'package:petstore_api/src/model/tag.dart';
 
 part 'pet.g.dart';
 
@@ -23,7 +23,7 @@ part 'pet.g.dart';
 @BuiltValue()
 abstract class Pet implements Built<Pet, PetBuilder> {
   @BuiltValueField(wireName: r'name')
-  String get name;
+  String? get name;
 
   @BuiltValueField(wireName: r'photoUrls')
   BuiltList<String> get photoUrls;

@@ -65,7 +65,7 @@ class _$PetStatusEnumSerializer implements PrimitiveSerializer<PetStatusEnum> {
 
 class _$Pet extends Pet {
   @override
-  final String name;
+  final String? name;
   @override
   final BuiltList<String> photoUrls;
   @override
@@ -81,7 +81,7 @@ class _$Pet extends Pet {
       (PetBuilder()..update(updates))._build();
 
   _$Pet._(
-      {required this.name,
+      {this.name,
       required this.photoUrls,
       this.id,
       this.category,
@@ -198,7 +198,7 @@ class PetBuilder implements Builder<Pet, PetBuilder> {
     try {
       _$result = _$v ??
           _$Pet._(
-            name: BuiltValueNullFieldError.checkNotNull(name, r'Pet', 'name'),
+            name: name,
             photoUrls: photoUrls.build(),
             id: id,
             category: _category?.build(),

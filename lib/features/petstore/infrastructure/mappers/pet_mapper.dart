@@ -6,14 +6,12 @@ extension PetMapper on Pet {
   PetEntity toEntity() {
     return PetEntity(
       id: id ?? 0,
-      name: name,
+      name: name ?? '',
       photoUrls: photoUrls.toList(),
       categoryName: category?.name,
-      tags: tags
-              ?.map((t) => t.name ?? '')
-              .where((n) => n.isNotEmpty)
-              .toList() ??
-          [],
+      tags:
+          tags?.map((t) => t.name ?? '').where((n) => n.isNotEmpty).toList() ??
+              [],
       status: _mapStatus(status),
     );
   }

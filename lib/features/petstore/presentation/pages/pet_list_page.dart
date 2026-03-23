@@ -3,6 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../../../core/router/routes.dart';
 import '../../../../core/widgets/default_async_value_widget.dart';
+import '../../application/providers/pets_provider.dart';
 import '../../application/view_model/pet_list_view_model.dart';
 import '../../domain/entities/pet_entity.dart';
 
@@ -19,24 +20,32 @@ class PetListPage extends ConsumerWidget {
       ),
       body: DefaultAsyncValueWidget(
         asyncValue: state.petsAsync,
-        builder: (context, pets) => _PetList(pets: pets),
+        onRetry: () => ref.invalidate(petsProvider),
+        builder: (context, pets) => _PetList(
+          pets: pets,
+          onRefresh: () => ref.refresh(petsProvider.future),
+        ),
       ),
     );
   }
 }
 
 class _PetList extends StatelessWidget {
-  const _PetList({required this.pets});
+  const _PetList({required this.pets, required this.onRefresh});
 
   final List<PetEntity> pets;
+  final Future<void> Function() onRefresh;
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
-      padding: const EdgeInsets.all(16),
-      itemCount: pets.length,
-      separatorBuilder: (_, __) => const SizedBox(height: 8),
-      itemBuilder: (context, index) => _PetCard(pet: pets[index]),
+    return RefreshIndicator(
+      onRefresh: onRefresh,
+      child: ListView.separated(
+        padding: const EdgeInsets.all(16),
+        itemCount: pets.length,
+        separatorBuilder: (_, __) => const SizedBox(height: 8),
+        itemBuilder: (context, index) => _PetCard(pet: pets[index]),
+      ),
     );
   }
 }

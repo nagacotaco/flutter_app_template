@@ -10,10 +10,8 @@ final petsProvider = FutureProvider.autoDispose<List<PetEntity>>((ref) async {
 
 final petByIdProvider =
     FutureProvider.autoDispose.family<PetEntity, int>((ref, id) async {
-  final cached = ref
-      .watch(petsProvider)
-      .valueOrNull
-      ?.firstWhereOrNull((p) => p.id == id);
+  final cached =
+      ref.watch(petsProvider).valueOrNull?.firstWhereOrNull((p) => p.id == id);
   if (cached != null) return cached;
   return ref.read(petRepositoryProvider).fetchPetById(id);
 });

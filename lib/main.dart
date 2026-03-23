@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_template/core/router/app_router.dart';
 import 'package:flutter_app_template/features/home/repositories/mock/sample_repository_mock.dart';
-import 'package:flutter_app_template/features/petstore/infrastructure/datasources/petstore_api_client.dart';
 import 'package:flutter_app_template/features/petstore/infrastructure/pet_repository_impl.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -14,8 +13,8 @@ void main() {
     ProviderScope(
       overrides: [
         sampleRepositoryProvider.overrideWithValue(SampleRepositoryMock()),
-        petRepositoryProvider.overrideWith(
-            (ref) => PetRepositoryImpl(ref.watch(petApiProvider))),
+        petRepositoryProvider
+            .overrideWith((ref) => ref.watch(petRepositoryImplProvider)),
       ],
       child: const MainApp(),
     ),
