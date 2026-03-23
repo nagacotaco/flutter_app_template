@@ -6,9 +6,11 @@ class DefaultAsyncValueWidget<T> extends StatelessWidget {
     super.key,
     required this.asyncValue,
     required this.builder,
+    this.onRetry,
   });
   final AsyncValue<T> asyncValue;
   final Widget Function(BuildContext context, T value) builder;
+  final VoidCallback? onRetry;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,19 @@ class DefaultAsyncValueWidget<T> extends StatelessWidget {
       data: (value) => builder(context, value),
       error: (error, stackTrace) => Center(
         // TODO: FLAVOR Devならエラー詳細を表示
-        child: Text('エラーが発生しました'),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text('エラーが発生しました: $error'),
+            if (onRetry != null) ...[
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: onRetry,
+                child: const Text('再試行'),
+              ),
+            ],
+          ],
+        ),
       ),
       loading: () => const Center(
         child: CircularProgressIndicator(),
