@@ -8,8 +8,7 @@ import 'package:flutter_app_template/features/catalog/presentation/widgets/app_g
 import 'package:flutter_app_template/features/catalog/presentation/widgets/app_overlay_tab.dart';
 import 'package:flutter_app_template/features/catalog/presentation/widgets/app_text_field_tab.dart';
 import 'package:flutter_app_template/features/catalog/presentation/widgets/dialog_tab.dart';
-import 'package:flutter_app_template/features/catalog/presentation/widgets/style_group_tab.dart';
-import 'package:flutter_app_template/features/catalog/presentation/widgets/usage_examples_tab.dart';
+import 'package:flutter_app_template/features/catalog/presentation/widgets/typography_tab.dart';
 
 class CatalogPage extends StatelessWidget {
   const CatalogPage({super.key});
@@ -32,12 +31,7 @@ class _CatalogScreenState extends State<CatalogScreen>
   late final TabController _tabController;
 
   final _tabs = [
-    'Display',
-    'Headline',
-    'Title',
-    'Body',
-    'Label',
-    '使用例',
+    'Typography',
     'AppGap',
     'Dialog',
     'Button',
@@ -111,8 +105,7 @@ class _CatalogScreenState extends State<CatalogScreen>
         body: TabBarView(
           controller: _tabController,
           children: [
-            ...styleGroups.map((g) => StyleGroupTab(group: g)),
-            const UsageExamplesTab(),
+            const TypographyTab(),
             const AppGapTab(),
             const DialogTab(),
             const AppButtonTab(),
