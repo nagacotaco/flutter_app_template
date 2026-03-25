@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'app_colors.dart';
-import 'app_dialog_theme.dart';
-import 'app_sizes.dart';
 import 'app_text_styles.dart';
 
 /// ThemeData をまとめて提供するクラス
@@ -25,53 +23,6 @@ abstract final class AppTheme {
           ),
           elevation: 0,
         ),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            padding: EdgeInsets.symmetric(
-              horizontal: AppSpacing.lg,
-              vertical: AppSpacing.md,
-            ),
-            backgroundColor: AppColors.accent,
-            foregroundColor: AppColors.cream,
-            textStyle: AppTextStyles.titleSmall.copyWith(
-              color: AppColors.cream,
-            ),
-          ),
-        ),
-
-        // dialog
-        dialogTheme: AppDialogTheme.data,
-
-        // input
-        inputDecorationTheme: InputDecorationTheme(
-          contentPadding: const EdgeInsets.symmetric(
-            horizontal: AppSpacing.md,
-            vertical: AppSpacing.sm,
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: AppColors.borderLight),
-            borderRadius: AppRadius.borderMd,
-          ),
-          focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: AppColors.border),
-            borderRadius: AppRadius.borderMd,
-          ),
-          errorBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: AppColors.errorDot),
-            borderRadius: AppRadius.borderMd,
-          ),
-          focusedErrorBorder: OutlineInputBorder(
-            borderSide: const BorderSide(color: AppColors.errorDot),
-            borderRadius: AppRadius.borderMd,
-          ),
-          labelStyle: AppTextStyles.labelMedium.copyWith(
-            color: AppColors.textSecondary,
-          ),
-          hintStyle: AppTextStyles.bodyLarge.copyWith(
-            color: AppColors.textTertiary,
-          ),
-        ),
-
         // bottomNavigationBar
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: Colors.transparent,

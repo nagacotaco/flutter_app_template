@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../theme/app_colors.dart';
 import '../theme/app_sizes.dart';
+import '../theme/app_text_styles.dart';
 import 'app_gap.dart';
 
 enum AppButtonVariant { filled, outlined, text }
@@ -72,19 +74,51 @@ class AppButton extends StatelessWidget {
             )
           : Text(label);
 
+  static final _basePadding = const EdgeInsets.symmetric(
+    horizontal: AppSpacing.lg,
+    vertical: AppSpacing.md,
+  );
+
+  static final ButtonStyle _filledStyle = FilledButton.styleFrom(
+    padding: _basePadding,
+    backgroundColor: AppColors.accent,
+    foregroundColor: AppColors.cream,
+    textStyle: AppTextStyles.titleSmall,
+    disabledBackgroundColor: AppColors.surfaceMuted,
+    disabledForegroundColor: AppColors.textTertiary,
+  );
+
+  static final ButtonStyle _outlinedStyle = OutlinedButton.styleFrom(
+    padding: _basePadding,
+    foregroundColor: AppColors.accent,
+    side: const BorderSide(color: AppColors.accent),
+    textStyle: AppTextStyles.titleSmall,
+    disabledForegroundColor: AppColors.textTertiary,
+  );
+
+  static final ButtonStyle _textStyle = TextButton.styleFrom(
+    padding: _basePadding,
+    foregroundColor: AppColors.accent,
+    textStyle: AppTextStyles.titleSmall,
+    disabledForegroundColor: AppColors.textTertiary,
+  );
+
   @override
   Widget build(BuildContext context) {
     Widget button = switch (variant) {
       AppButtonVariant.filled => FilledButton(
           onPressed: _onPressed,
+          style: _filledStyle,
           child: _child,
         ),
       AppButtonVariant.outlined => OutlinedButton(
           onPressed: _onPressed,
+          style: _outlinedStyle,
           child: _child,
         ),
       AppButtonVariant.text => TextButton(
           onPressed: _onPressed,
+          style: _textStyle,
           child: _child,
         ),
     };
