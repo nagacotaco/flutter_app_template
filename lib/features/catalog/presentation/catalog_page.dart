@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_template/core/theme/app_colors.dart';
 import 'package:flutter_app_template/core/theme/app_sizes.dart';
 import 'package:flutter_app_template/core/theme/app_text_styles.dart';
+import 'package:flutter_app_template/features/catalog/presentation/widgets/app_button_tab.dart';
+import 'package:flutter_app_template/features/catalog/presentation/widgets/app_components_tab.dart';
 import 'package:flutter_app_template/features/catalog/presentation/widgets/app_gap_tab.dart';
+import 'package:flutter_app_template/features/catalog/presentation/widgets/app_overlay_tab.dart';
+import 'package:flutter_app_template/features/catalog/presentation/widgets/app_text_field_tab.dart';
 import 'package:flutter_app_template/features/catalog/presentation/widgets/dialog_tab.dart';
 import 'package:flutter_app_template/features/catalog/presentation/widgets/style_group_tab.dart';
 import 'package:flutter_app_template/features/catalog/presentation/widgets/usage_examples_tab.dart';
@@ -35,7 +39,11 @@ class _CatalogScreenState extends State<CatalogScreen>
     'Label',
     '使用例',
     'AppGap',
-    'Dialog'
+    'Dialog',
+    'Button',
+    'TextField',
+    'Components',
+    'Overlay',
   ];
 
   @override
@@ -107,6 +115,10 @@ class _CatalogScreenState extends State<CatalogScreen>
             const UsageExamplesTab(),
             const AppGapTab(),
             const DialogTab(),
+            const AppButtonTab(),
+            const AppTextFieldTab(),
+            const AppComponentsTab(),
+            const AppOverlayTab(),
           ],
         ),
       ),
