@@ -40,4 +40,8 @@ abstract final class AppColors {
   static const Color errorBg = Color(0xFFFDECEA);
   static const Color errorText = Color(0xFF9B2B2B);
   static const Color errorDot = Color(0xFFD93535);
+
+  // ── シャドウ・オーバーレイ ──
+  static const Color shadow = Colors.black12;
+  static const Color overlay = Colors.black26;
 }

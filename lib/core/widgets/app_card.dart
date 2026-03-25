@@ -33,7 +33,7 @@ class AppCard extends StatelessWidget {
     return Material(
       color: bg,
       elevation: effectiveElevation,
-      shadowColor: Colors.black12,
+      shadowColor: AppColors.shadow,
       borderRadius: radius,
       child: InkWell(
         onTap: onTap,

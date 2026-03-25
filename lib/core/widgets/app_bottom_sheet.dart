@@ -67,8 +67,8 @@ class _AppBottomSheetContent extends StatelessWidget {
             // ドラッグハンドル
             Center(
               child: Container(
-                width: 36,
-                height: 4,
+                width: AppSpacing.xl,
+                height: AppSpacing.xs,
                 decoration: BoxDecoration(
                   color: AppColors.border,
                   borderRadius: AppRadius.borderMax,
@@ -76,11 +76,12 @@ class _AppBottomSheetContent extends StatelessWidget {
               ),
             ),
             if (title != null) ...[
-              const SizedBox(height: AppSpacing.md),
+              // const SizedBox(height: AppSpacing.md),
+              AppSpacing.gapVMd,
               Text(title!, style: AppTextStyles.titleMedium),
-              const SizedBox(height: AppSpacing.sm),
+              AppSpacing.gapVSm,
             ] else
-              const SizedBox(height: AppSpacing.md),
+              AppSpacing.gapHMd,
             child,
           ],
         ),

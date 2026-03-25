@@ -12,18 +12,11 @@ abstract final class AppDialog {
     borderRadius: AppRadius.borderLg,
   );
 
-  static const _titleTextStyle = TextStyle(
-    fontSize: 18.0,
-    fontWeight: FontWeight.w600,
-    height: 1.27,
+  static final _titleTextStyle = AppTextStyles.titleLarge.copyWith(
     color: AppColors.textPrimary,
   );
 
-  static const _contentTextStyle = TextStyle(
-    fontSize: 14.0,
-    fontWeight: FontWeight.w400,
-    height: 1.43,
-    letterSpacing: 0.25,
+  static final _contentTextStyle = AppTextStyles.bodyMedium.copyWith(
     color: AppColors.textSecondary,
   );
 
@@ -63,7 +56,7 @@ abstract final class AppDialog {
         backgroundColor: AppColors.cardBackground,
         surfaceTintColor: Colors.transparent,
         elevation: AppElevation.level2,
-        shadowColor: Colors.black12,
+        shadowColor: AppColors.shadow,
         shape: _shape,
         titleTextStyle: _titleTextStyle,
         contentTextStyle: _contentTextStyle,
@@ -99,7 +92,7 @@ abstract final class AppDialog {
         backgroundColor: AppColors.cardBackground,
         surfaceTintColor: Colors.transparent,
         elevation: AppElevation.level2,
-        shadowColor: Colors.black12,
+        shadowColor: AppColors.shadow,
         shape: _shape,
         titleTextStyle: _titleTextStyle,
         contentTextStyle: _contentTextStyle,
@@ -134,7 +127,7 @@ abstract final class AppDialog {
         backgroundColor: AppColors.cardBackground,
         surfaceTintColor: Colors.transparent,
         elevation: AppElevation.level2,
-        shadowColor: Colors.black12,
+        shadowColor: AppColors.shadow,
         shape: _shape,
         titleTextStyle: _titleTextStyle,
         contentTextStyle: _contentTextStyle,

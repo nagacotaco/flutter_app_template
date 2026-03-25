@@ -51,7 +51,7 @@ class AppLoadingOverlay extends StatelessWidget {
         child,
         if (isLoading)
           const ColoredBox(
-            color: Colors.black26,
+            color: AppColors.overlay,
             child: Center(child: AppLoadingIndicator()),
           ),
       ],
