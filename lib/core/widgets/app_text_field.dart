@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../theme/app_colors.dart';
+import '../theme/app_sizes.dart';
 import '../theme/app_text_styles.dart';
 
 /// アプリ共通テキストフィールド。
@@ -61,7 +63,7 @@ class AppTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
+    final field = TextFormField(
       controller: controller,
       focusNode: focusNode,
       style: AppTextStyles.bodyLarge,
@@ -81,13 +83,29 @@ class AppTextField extends StatelessWidget {
       autofocus: autofocus,
       autocorrect: autocorrect,
       decoration: InputDecoration(
-        labelText: label,
         hintText: hint,
         errorText: errorText,
         helperText: helperText,
         prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
       ),
+    );
+
+    if (label == null) return field;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Text(
+          label!,
+          style: AppTextStyles.labelMedium.copyWith(
+            color: enabled ? AppColors.textSecondary : AppColors.textTertiary,
+          ),
+        ),
+        const SizedBox(height: AppSpacing.xs),
+        field,
+      ],
     );
   }
 }

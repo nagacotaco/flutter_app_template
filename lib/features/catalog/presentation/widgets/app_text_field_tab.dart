@@ -25,25 +25,42 @@ class _AppTextFieldTabState extends State<AppTextFieldTab> {
         vertical: AppSpacing.lg,
       ),
       children: [
-        const SectionLabel(title: 'AppTextField', desc: 'TextFormField ラッパー'),
+        const SectionLabel(
+          title: 'AppTextField',
+          desc: 'label はフィールド上部に Text として表示',
+        ),
         AppSpacing.gapVSm,
         const Divider(color: AppColors.border),
         AppSpacing.gapVMd,
 
-        // basic
+        // label あり
         CatalogCard(
-          label: '基本 — label / hint',
-          child: Column(
+          label: 'label — フィールド上部に表示',
+          child: const Column(
             children: [
-              const AppTextField(
+              AppTextField(
                 label: 'メールアドレス',
                 hint: 'example@mail.com',
                 keyboardType: TextInputType.emailAddress,
               ),
-              const AppGap.md(),
-              const AppTextField(
+              AppGap.md(),
+              AppTextField(
                 label: 'ユーザー名',
                 hint: '半角英数字で入力',
+              ),
+            ],
+          ),
+        ),
+        AppSpacing.gapVMd,
+
+        // label なし
+        CatalogCard(
+          label: 'label なし — hint のみ',
+          child: const Column(
+            children: [
+              AppTextField(
+                hint: 'キーワードを検索',
+                prefixIcon: Icon(Icons.search),
               ),
             ],
           ),
@@ -55,12 +72,6 @@ class _AppTextFieldTabState extends State<AppTextFieldTab> {
           label: 'prefixIcon / suffixIcon',
           child: Column(
             children: [
-              const AppTextField(
-                label: '検索',
-                hint: 'キーワードを入力',
-                prefixIcon: Icon(Icons.search),
-              ),
-              const AppGap.md(),
               AppTextField(
                 label: 'パスワード',
                 hint: '8文字以上',
