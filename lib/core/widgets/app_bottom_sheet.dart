@@ -69,7 +69,6 @@ class _AppBottomSheetContent extends StatelessWidget {
                 width: AppSpacing.xl,
                 height: AppSpacing.xs,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFE2DDD8),
                   borderRadius: AppRadius.borderMax,
                 ),
               ),

@@ -80,8 +80,6 @@ class _GapBox extends StatelessWidget {
       padding: const EdgeInsets.symmetric(
           horizontal: AppSpacing.sm, vertical: AppSpacing.xs),
       decoration: BoxDecoration(
-        color: const Color(0xFFF0EDE9),
-        border: Border.all(color: const Color(0xFFE2DDD8)),
         borderRadius: AppRadius.borderSm,
       ),
       child: Text(label, style: AppTextStyles.labelSmall),

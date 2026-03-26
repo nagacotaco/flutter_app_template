@@ -62,7 +62,6 @@ class _SampleCard extends StatelessWidget {
               backgroundColor: theme.colorScheme.primaryContainer,
               child: Text(
                 '${sample.id}',
-                style: TextStyle(color: theme.colorScheme.onPrimaryContainer),
               ),
             ),
             const SizedBox(width: 12),
@@ -117,7 +116,6 @@ class _RatingStars extends StatelessWidget {
         (i) => Icon(
           i < rating ? Icons.star : Icons.star_border,
           size: 14,
-          color: Colors.amber,
         ),
       ),
     );

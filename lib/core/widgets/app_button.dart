@@ -90,7 +90,6 @@ class AppButton extends StatelessWidget {
   static final ButtonStyle _outlinedStyle = OutlinedButton.styleFrom(
     padding: _basePadding,
     foregroundColor: const Color(0xFFC4622D),
-    side: const BorderSide(color: Color(0xFFC4622D)),
     textStyle: AppTextStyles.titleSmall,
     disabledForegroundColor: const Color(0xFFA09B97),
   );

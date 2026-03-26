@@ -29,7 +29,6 @@ class _AppTextFieldTabState extends State<AppTextFieldTab> {
           desc: 'label はフィールド上部に Text として表示',
         ),
         AppSpacing.gapVSm,
-        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVMd,
 
         // label あり

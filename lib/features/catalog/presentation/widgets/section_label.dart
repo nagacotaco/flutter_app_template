@@ -16,15 +16,13 @@ class SectionLabel extends StatelessWidget {
         Text(
           title.toUpperCase(),
           style: AppTextStyles.labelMedium.copyWith(
-            color: const Color(0xFF6B6460),
             letterSpacing: AppLetterSpacing.normal,
           ),
         ),
         AppSpacing.gapHSm,
         Text(
           desc,
-          style:
-              AppTextStyles.bodySmall.copyWith(color: const Color(0xFFA09B97)),
+          style: AppTextStyles.bodySmall,
         ),
       ],
     );

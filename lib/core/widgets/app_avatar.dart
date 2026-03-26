@@ -63,19 +63,16 @@ class AppAvatar extends StatelessWidget {
       width: d,
       height: d,
       decoration: BoxDecoration(
-        color: bg,
         shape: BoxShape.circle,
       ),
       alignment: Alignment.center,
       child: initials != null
           ? Text(
               initials!,
-              style: _textStyle.copyWith(color: const Color(0xFF6B6460)),
             )
           : Icon(
               Icons.person_outline,
               size: d * 0.55,
-              color: const Color(0xFFA09B97),
             ),
     );
   }

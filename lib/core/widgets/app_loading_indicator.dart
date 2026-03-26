@@ -30,7 +30,6 @@ class AppLoadingIndicator extends StatelessWidget {
       width: _dimension,
       child: CircularProgressIndicator(
         strokeWidth: strokeWidth,
-        color: color ?? const Color(0xFFC4622D),
       ),
     );
   }
@@ -38,7 +37,8 @@ class AppLoadingIndicator extends StatelessWidget {
 
 /// 画面全体をオーバーレイするローディング表示。
 class AppLoadingOverlay extends StatelessWidget {
-  const AppLoadingOverlay({super.key, required this.child, this.isLoading = false});
+  const AppLoadingOverlay(
+      {super.key, required this.child, this.isLoading = false});
 
   final Widget child;
   final bool isLoading;
@@ -48,11 +48,7 @@ class AppLoadingOverlay extends StatelessWidget {
     return Stack(
       children: [
         child,
-        if (isLoading)
-          const ColoredBox(
-            color: Colors.black26,
-            child: Center(child: AppLoadingIndicator()),
-          ),
+        if (isLoading) Center(child: AppLoadingIndicator()),
       ],
     );
   }

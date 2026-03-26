@@ -27,7 +27,6 @@ class AppOverlayTab extends StatelessWidget {
           desc: 'confirm / info / destructive',
         ),
         AppSpacing.gapVSm,
-        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVMd,
 
         CatalogCard(
@@ -94,7 +93,6 @@ class AppOverlayTab extends StatelessWidget {
           desc: 'info / success / warning / error',
         ),
         AppSpacing.gapVSm,
-        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVMd,
 
         CatalogCard(
@@ -160,7 +158,6 @@ class AppOverlayTab extends StatelessWidget {
           desc: 'モーダルボトムシート',
         ),
         AppSpacing.gapVSm,
-        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVMd,
 
         CatalogCard(
@@ -188,7 +185,6 @@ class AppOverlayTab extends StatelessWidget {
                         icon: Icons.flag_outlined,
                         label: '報告する',
                         onTap: () => Navigator.pop(context),
-                        color: const Color(0xFF9B2B2B),
                       ),
                     ],
                   ),
@@ -252,7 +248,6 @@ class _LaunchTile extends StatelessWidget {
           vertical: AppSpacing.sm,
         ),
         decoration: BoxDecoration(
-          border: Border.all(color: const Color(0xFFE2DDD8)),
           borderRadius: AppRadius.borderMd,
         ),
         child: Row(
@@ -265,12 +260,10 @@ class _LaunchTile extends StatelessWidget {
                   Text(
                     desc,
                     style: AppTextStyles.bodySmall
-                        .copyWith(color: const Color(0xFFA09B97)),
                   ),
                 ],
               ),
             ),
-            const Icon(Icons.chevron_right, color: Color(0xFFA09B97)),
           ],
         ),
       ),
@@ -304,9 +297,7 @@ class _SheetItem extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(icon, color: c, size: AppSize.iconMd),
             const AppGap.md(),
-            Text(label, style: AppTextStyles.bodyLarge.copyWith(color: c)),
           ],
         ),
       ),

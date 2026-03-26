@@ -74,7 +74,6 @@ class _CatalogScreenState extends State<CatalogScreen>
                   Text(
                     'samples',
                     style: AppTextStyles.labelSmall.copyWith(
-                      color: const Color(0xFFF7F5F2).withValues(alpha: 0.5),
                       letterSpacing: AppLetterSpacing.wide,
                     ),
                   ),
@@ -82,7 +81,6 @@ class _CatalogScreenState extends State<CatalogScreen>
                   Text(
                     'Catalog',
                     style: AppTextStyles.titleLarge.copyWith(
-                      color: const Color(0xFFF7F5F2),
                     ),
                   ),
                 ],

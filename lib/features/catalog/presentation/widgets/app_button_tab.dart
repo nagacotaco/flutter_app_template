@@ -32,7 +32,6 @@ class _AppButtonTabState extends State<AppButtonTab> {
       children: [
         const SectionLabel(title: 'AppButton', desc: 'filled / outlined / text'),
         AppSpacing.gapVSm,
-        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVMd,
 
         // filled

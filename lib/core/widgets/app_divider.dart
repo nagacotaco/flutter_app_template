@@ -18,7 +18,6 @@ class AppDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Divider(
-      color: color ?? const Color(0xFFE2DDD8),
       thickness: thickness,
       indent: indent,
       endIndent: endIndent,
@@ -41,7 +40,6 @@ class AppVerticalDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return VerticalDivider(
-      color: color ?? const Color(0xFFE2DDD8),
       thickness: thickness,
       width: thickness,
     );

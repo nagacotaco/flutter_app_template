@@ -34,7 +34,6 @@ class _AppComponentsTabState extends State<AppComponentsTab> {
         // ── AppStatusChip ──────────────────────────────────────
         const SectionLabel(title: 'AppStatusChip', desc: 'success / warning / error / neutral'),
         AppSpacing.gapVSm,
-        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVMd,
 
         CatalogCard(
@@ -86,7 +85,6 @@ class _AppComponentsTabState extends State<AppComponentsTab> {
         // ── AppAvatar ──────────────────────────────────────────
         const SectionLabel(title: 'AppAvatar', desc: 'xs / sm / md / lg'),
         AppSpacing.gapVSm,
-        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVMd,
 
         CatalogCard(
@@ -134,7 +132,6 @@ class _AppComponentsTabState extends State<AppComponentsTab> {
         // ── AppCard ────────────────────────────────────────────
         const SectionLabel(title: 'AppCard', desc: 'elevation / onTap'),
         AppSpacing.gapVSm,
-        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVMd,
 
         CatalogCard(
@@ -153,7 +150,6 @@ class _AppComponentsTabState extends State<AppComponentsTab> {
                       Text(
                         'タップして詳細を表示',
                         style: AppTextStyles.bodySmall.copyWith(
-                          color: const Color(0xFFA09B97),
                         ),
                       ),
                     ],
@@ -161,7 +157,6 @@ class _AppComponentsTabState extends State<AppComponentsTab> {
                 ),
                 const Icon(
                   Icons.chevron_right,
-                  color: Color(0xFFA09B97),
                 ),
               ],
             ),
@@ -194,7 +189,6 @@ class _AppComponentsTabState extends State<AppComponentsTab> {
         // ── AppDivider ─────────────────────────────────────────
         const SectionLabel(title: 'AppDivider', desc: 'horizontal / vertical'),
         AppSpacing.gapVSm,
-        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVMd,
 
         CatalogCard(
@@ -236,7 +230,6 @@ class _AppComponentsTabState extends State<AppComponentsTab> {
         // ── AppLoadingIndicator ────────────────────────────────
         const SectionLabel(title: 'AppLoadingIndicator', desc: 'sm / md / lg'),
         AppSpacing.gapVSm,
-        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVMd,
 
         CatalogCard(
@@ -252,7 +245,6 @@ class _AppComponentsTabState extends State<AppComponentsTab> {
                 'custom',
                 const AppLoadingIndicator(
                   size: AppLoadingSize.lg,
-                  color: Color(0xFFC4622D),
                 ),
               ),
             ],
@@ -271,7 +263,6 @@ class _AppComponentsTabState extends State<AppComponentsTab> {
         Text(
           label,
           style: AppTextStyles.labelSmall.copyWith(
-            color: const Color(0xFFA09B97),
           ),
         ),
       ],
@@ -287,7 +278,6 @@ class _AppComponentsTabState extends State<AppComponentsTab> {
         Text(
           label,
           style: AppTextStyles.labelSmall.copyWith(
-            color: const Color(0xFFA09B97),
           ),
         ),
       ],

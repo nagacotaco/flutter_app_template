@@ -58,7 +58,6 @@ class _SampleDetail extends StatelessWidget {
                 child: Text(
                   '${sample.id}',
                   style: TextStyle(
-                    color: theme.colorScheme.onPrimaryContainer,
                     fontSize: 18,
                   ),
                 ),
@@ -80,7 +79,6 @@ class _SampleDetail extends StatelessWidget {
               5,
               (i) => Icon(
                 i < sample.rating ? Icons.star : Icons.star_border,
-                color: Colors.amber,
               ),
             ),
           ),

@@ -49,7 +49,6 @@ class AppStatusChip extends StatelessWidget {
         vertical: AppSpacing.xs,
       ),
       decoration: BoxDecoration(
-        color: _bgColor,
         borderRadius: AppRadius.borderMax,
       ),
       child: Row(
@@ -60,7 +59,6 @@ class AppStatusChip extends StatelessWidget {
               width: AppSize.dotSm,
               height: AppSize.dotSm,
               decoration: BoxDecoration(
-                color: _dotColor,
                 shape: BoxShape.circle,
               ),
             ),
@@ -68,7 +66,6 @@ class AppStatusChip extends StatelessWidget {
           ],
           Text(
             label,
-            style: AppTextStyles.labelSmall.copyWith(color: _textColor),
           ),
         ],
       ),

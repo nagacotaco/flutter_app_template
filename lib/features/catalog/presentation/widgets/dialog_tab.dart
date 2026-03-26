@@ -17,7 +17,6 @@ class DialogTab extends StatelessWidget {
       children: [
         const SectionLabel(title: 'Dialog', desc: 'AppDialogTheme のサンプル'),
         AppSpacing.gapVSm,
-        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVMd,
         CatalogCard(
           label: 'AppDialogTheme — テーマ設定値',
@@ -96,7 +95,6 @@ class DialogTab extends StatelessWidget {
             child: Text(
               '保存する',
               style: AppTextStyles.labelLarge
-                  .copyWith(color: Colors.white),
             ),
           ),
         ],
@@ -118,7 +116,6 @@ class DialogTab extends StatelessWidget {
             child: Text(
               'OK',
               style: AppTextStyles.labelLarge
-                  .copyWith(color: Colors.white),
             ),
           ),
         ],
@@ -168,7 +165,6 @@ class _ThemePropRow extends StatelessWidget {
         border: isLast
             ? null
             : const Border(
-                bottom: BorderSide(color: Color(0xFFE2DDD8), width: 0.5),
               ),
       ),
       child: Row(
@@ -179,7 +175,6 @@ class _ThemePropRow extends StatelessWidget {
             child: Text(
               prop,
               style: AppTextStyles.labelSmall.copyWith(
-                color: const Color(0xFFC4622D),
                 letterSpacing: AppLetterSpacing.tight,
               ),
             ),
@@ -188,7 +183,6 @@ class _ThemePropRow extends StatelessWidget {
             child: Text(
               value,
               style: AppTextStyles.labelSmall.copyWith(
-                color: const Color(0xFF6B6460),
               ),
             ),
           ),
@@ -219,7 +213,6 @@ class _DialogLaunchButton extends StatelessWidget {
           vertical: AppSpacing.sm,
         ),
         decoration: BoxDecoration(
-          border: Border.all(color: const Color(0xFFE2DDD8)),
           borderRadius: AppRadius.borderMd,
         ),
         child: Row(
@@ -232,12 +225,10 @@ class _DialogLaunchButton extends StatelessWidget {
                   Text(
                     desc,
                     style: AppTextStyles.bodySmall
-                        .copyWith(color: const Color(0xFFA09B97)),
                   ),
                 ],
               ),
             ),
-            const Icon(Icons.chevron_right, color: Color(0xFFA09B97)),
           ],
         ),
       ),

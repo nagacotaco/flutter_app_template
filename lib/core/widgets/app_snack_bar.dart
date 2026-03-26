@@ -34,7 +34,6 @@ abstract final class AppSnackBar {
           margin: const EdgeInsets.all(AppSpacing.md),
           content: Text(
             message,
-            style: AppTextStyles.bodyMedium.copyWith(color: colors.$2),
           ),
           action: actionLabel != null
               ? SnackBarAction(

@@ -46,7 +46,6 @@ class LoginPage extends HookConsumerWidget {
                   const SizedBox(height: 12),
                   Text(
                     state.error.toString(),
-                    style: TextStyle(color: Theme.of(context).colorScheme.error),
                   ),
                 ],
                 const SizedBox(height: 24),

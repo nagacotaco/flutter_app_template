@@ -12,11 +12,9 @@ abstract final class AppDialog {
   );
 
   static final _titleTextStyle = AppTextStyles.titleLarge.copyWith(
-    color: const Color(0xFF2D2926),
   );
 
   static final _contentTextStyle = AppTextStyles.bodyMedium.copyWith(
-    color: const Color(0xFF6B6460),
   );
 
   static const _insetPadding = EdgeInsets.symmetric(

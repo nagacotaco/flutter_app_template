@@ -30,7 +30,6 @@ class AppCard extends StatelessWidget {
     final effectiveElevation = elevation ?? AppElevation.level1;
 
     return Material(
-      color: bg,
       elevation: effectiveElevation,
       shadowColor: Colors.black12,
       borderRadius: radius,

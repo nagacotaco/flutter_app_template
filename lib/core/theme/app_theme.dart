@@ -18,7 +18,6 @@ abstract final class AppTheme {
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.transparent,
           titleTextStyle: AppTextStyles.titleMedium.copyWith(
-            color: const Color(0xFF6B6460),
           ),
           elevation: 0,
         ),
@@ -29,7 +28,6 @@ abstract final class AppTheme {
           selectedItemColor: const Color(0xFFC4622D),
           selectedLabelStyle: AppTextStyles.bodySmall,
           selectedIconTheme: const IconThemeData(
-            color: Color(0xFFC4622D),
             fill: 1,
           ),
           enableFeedback: true,
