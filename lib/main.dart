@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_template/core/router/app_router.dart';
 import 'package:flutter_app_template/features/home/repositories/mock/sample_repository_mock.dart';
@@ -5,8 +6,12 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'core/theme/app_theme.dart';
 import 'features/home/domain/repositories/sample_repository.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(
     ProviderScope(
       overrides: [

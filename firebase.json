@@ -1,16 +1,19 @@
 {
-  "hosting": {
-    "public": "public",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/index.html"
-      }
-    ]
-  }
+    "hosting": {
+        "public": "build/web",
+        "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+        "rewrites": [{ "source": "**", "destination": "/index.html" }]
+    },
+    "flutter": {
+        "platforms": {
+            "dart": {
+                "lib/firebase_options.dart": {
+                    "projectId": "flutter-app-template-109f1",
+                    "configurations": {
+                        "web": "1:64933516130:web:6a471cb4f586ace6e8923b"
+                    }
+                }
+            }
+        }
+    }
 }

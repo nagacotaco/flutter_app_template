@@ -9,12 +9,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  firebase_core: 
   go_router: ^17.1.0
   hooks_riverpod:
   flutter_hooks:
   freezed_annotation:
   json_annotation:
-  collection: ^1.19.1
+  collection: ^1.19.1  
 
 dev_dependencies:
   flutter_test:
