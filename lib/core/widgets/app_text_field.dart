@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../theme/app_colors.dart';
 import '../theme/app_sizes.dart';
 import '../theme/app_text_styles.dart';
 
@@ -84,7 +83,7 @@ class AppTextField extends StatelessWidget {
       autocorrect: autocorrect,
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle: AppTextStyles.bodyLarge.copyWith(color: AppColors.textTertiary),
+        hintStyle: AppTextStyles.bodyLarge.copyWith(color: const Color(0xFFA09B97)),
         errorText: errorText,
         helperText: helperText,
         prefixIcon: prefixIcon,
@@ -94,23 +93,23 @@ class AppTextField extends StatelessWidget {
           vertical: AppSpacing.sm,
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.borderLight),
+          borderSide: const BorderSide(color: Color(0xFFC8C2BB)),
           borderRadius: AppRadius.borderMd,
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.border),
+          borderSide: const BorderSide(color: Color(0xFFE2DDD8)),
           borderRadius: AppRadius.borderMd,
         ),
         errorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.errorDot),
+          borderSide: const BorderSide(color: Color(0xFFD93535)),
           borderRadius: AppRadius.borderMd,
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.errorDot),
+          borderSide: const BorderSide(color: Color(0xFFD93535)),
           borderRadius: AppRadius.borderMd,
         ),
         disabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(color: AppColors.border),
+          borderSide: const BorderSide(color: Color(0xFFE2DDD8)),
           borderRadius: AppRadius.borderMd,
         ),
       ),
@@ -125,7 +124,7 @@ class AppTextField extends StatelessWidget {
         Text(
           label!,
           style: AppTextStyles.labelMedium.copyWith(
-            color: enabled ? AppColors.textSecondary : AppColors.textTertiary,
+            color: enabled ? const Color(0xFF6B6460) : const Color(0xFFA09B97),
           ),
         ),
         const SizedBox(height: AppSpacing.xs),

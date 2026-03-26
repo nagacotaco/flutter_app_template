@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_template/core/theme/app_colors.dart';
 import 'package:flutter_app_template/core/theme/app_sizes.dart';
 import 'package:flutter_app_template/core/theme/app_text_styles.dart';
 
@@ -160,7 +159,7 @@ class StyleGroupTab extends StatelessWidget {
             Text(
               group.label.toUpperCase(),
               style: AppTextStyles.labelMedium.copyWith(
-                color: AppColors.textSecondary,
+                color: const Color(0xFF6B6460),
                 letterSpacing: AppLetterSpacing.normal,
               ),
             ),
@@ -168,12 +167,12 @@ class StyleGroupTab extends StatelessWidget {
             Text(
               group.desc,
               style: AppTextStyles.bodySmall
-                  .copyWith(color: AppColors.textTertiary),
+                  .copyWith(color: const Color(0xFFA09B97)),
             ),
           ],
         ),
         AppSpacing.gapVSm,
-        const Divider(color: AppColors.border),
+        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVSm,
         ...group.entries.map((e) => _StyleRow(entry: e)),
       ],
@@ -190,7 +189,7 @@ class _StyleRow extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
       decoration: const BoxDecoration(
-        border: Border(bottom: BorderSide(color: AppColors.border, width: 0.5)),
+        border: Border(bottom: BorderSide(color: Color(0xFFE2DDD8), width: 0.5)),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -210,7 +209,7 @@ class _StyleRow extends StatelessWidget {
               Text(
                 entry.name,
                 style: AppTextStyles.labelSmall.copyWith(
-                  color: AppColors.accent,
+                  color: const Color(0xFFC4622D),
                   letterSpacing: AppLetterSpacing.tight,
                 ),
               ),
@@ -218,7 +217,7 @@ class _StyleRow extends StatelessWidget {
               Text(
                 entry.props,
                 style: AppTextStyles.labelSmall.copyWith(
-                  color: AppColors.textTertiary,
+                  color: const Color(0xFFA09B97),
                   fontSize: 10,
                 ),
                 textAlign: TextAlign.right,

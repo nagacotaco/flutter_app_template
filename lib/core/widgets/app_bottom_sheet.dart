@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../theme/app_colors.dart';
 import '../theme/app_sizes.dart';
 import '../theme/app_text_styles.dart';
 
@@ -27,7 +26,7 @@ abstract final class AppBottomSheet {
       isDismissible: isDismissible,
       enableDrag: enableDrag,
       isScrollControlled: isScrollControlled,
-      backgroundColor: AppColors.cardBackground,
+      backgroundColor: Colors.white,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
           top: Radius.circular(AppRadius.lg),
@@ -70,7 +69,7 @@ class _AppBottomSheetContent extends StatelessWidget {
                 width: AppSpacing.xl,
                 height: AppSpacing.xs,
                 decoration: BoxDecoration(
-                  color: AppColors.border,
+                  color: const Color(0xFFE2DDD8),
                   borderRadius: AppRadius.borderMax,
                 ),
               ),

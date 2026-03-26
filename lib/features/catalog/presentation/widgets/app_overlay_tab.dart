@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_template/core/theme/app_colors.dart';
 import 'package:flutter_app_template/core/theme/app_sizes.dart';
 import 'package:flutter_app_template/core/theme/app_text_styles.dart';
 import 'package:flutter_app_template/core/widgets/app_bottom_sheet.dart';
@@ -28,7 +27,7 @@ class AppOverlayTab extends StatelessWidget {
           desc: 'confirm / info / destructive',
         ),
         AppSpacing.gapVSm,
-        const Divider(color: AppColors.border),
+        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVMd,
 
         CatalogCard(
@@ -95,7 +94,7 @@ class AppOverlayTab extends StatelessWidget {
           desc: 'info / success / warning / error',
         ),
         AppSpacing.gapVSm,
-        const Divider(color: AppColors.border),
+        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVMd,
 
         CatalogCard(
@@ -161,7 +160,7 @@ class AppOverlayTab extends StatelessWidget {
           desc: 'モーダルボトムシート',
         ),
         AppSpacing.gapVSm,
-        const Divider(color: AppColors.border),
+        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVMd,
 
         CatalogCard(
@@ -189,7 +188,7 @@ class AppOverlayTab extends StatelessWidget {
                         icon: Icons.flag_outlined,
                         label: '報告する',
                         onTap: () => Navigator.pop(context),
-                        color: AppColors.errorText,
+                        color: const Color(0xFF9B2B2B),
                       ),
                     ],
                   ),
@@ -253,7 +252,7 @@ class _LaunchTile extends StatelessWidget {
           vertical: AppSpacing.sm,
         ),
         decoration: BoxDecoration(
-          border: Border.all(color: AppColors.border),
+          border: Border.all(color: const Color(0xFFE2DDD8)),
           borderRadius: AppRadius.borderMd,
         ),
         child: Row(
@@ -266,12 +265,12 @@ class _LaunchTile extends StatelessWidget {
                   Text(
                     desc,
                     style: AppTextStyles.bodySmall
-                        .copyWith(color: AppColors.textTertiary),
+                        .copyWith(color: const Color(0xFFA09B97)),
                   ),
                 ],
               ),
             ),
-            const Icon(Icons.chevron_right, color: AppColors.textTertiary),
+            const Icon(Icons.chevron_right, color: Color(0xFFA09B97)),
           ],
         ),
       ),
@@ -294,7 +293,7 @@ class _SheetItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final c = color ?? AppColors.textPrimary;
+    final c = color ?? const Color(0xFF2D2926);
     return InkWell(
       onTap: onTap,
       borderRadius: AppRadius.borderMd,

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../theme/app_colors.dart';
 import '../theme/app_sizes.dart';
 import '../theme/app_text_styles.dart';
 
@@ -51,9 +50,9 @@ abstract final class AppSnackBar {
   /// (backgroundColor, textColor)
   static (Color, Color) _resolveColors(AppSnackBarVariant variant) =>
       switch (variant) {
-        AppSnackBarVariant.success => (AppColors.successBg, AppColors.successText),
-        AppSnackBarVariant.warning => (AppColors.warningBg, AppColors.warningText),
-        AppSnackBarVariant.error => (AppColors.errorBg, AppColors.errorText),
-        AppSnackBarVariant.info => (AppColors.dark, AppColors.textOnDark),
+        AppSnackBarVariant.success => (const Color(0xFFEAF5EC), const Color(0xFF2A7A3B)),
+        AppSnackBarVariant.warning => (const Color(0xFFFEF3E2), const Color(0xFF9A5F10)),
+        AppSnackBarVariant.error => (const Color(0xFFFDECEA), const Color(0xFF9B2B2B)),
+        AppSnackBarVariant.info => (const Color(0xFF2D2926), Colors.white),
       };
 }

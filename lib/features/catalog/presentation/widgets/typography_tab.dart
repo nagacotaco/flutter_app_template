@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_template/core/theme/app_colors.dart';
 import 'package:flutter_app_template/core/theme/app_sizes.dart';
 import 'package:flutter_app_template/core/theme/app_text_styles.dart';
 import 'package:flutter_app_template/features/catalog/presentation/widgets/catalog_card.dart';
@@ -21,7 +20,7 @@ class TypographyTab extends StatelessWidget {
         for (final group in styleGroups) ...[
           SectionLabel(title: group.label, desc: group.desc),
           AppSpacing.gapVSm,
-          const Divider(color: AppColors.border),
+          const Divider(color: Color(0xFFE2DDD8)),
           AppSpacing.gapVXs,
           ...group.entries.map((e) => _StyleRow(entry: e)),
           AppSpacing.gapVLg,
@@ -30,7 +29,7 @@ class TypographyTab extends StatelessWidget {
         // 使用例
         const SectionLabel(title: '使用例', desc: '実際の Widget イメージ'),
         AppSpacing.gapVSm,
-        const Divider(color: AppColors.border),
+        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVMd,
         const _MessageListCard(),
         AppSpacing.gapVMd,
@@ -56,7 +55,7 @@ class _StyleRow extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: AppSpacing.md),
       decoration: const BoxDecoration(
-        border: Border(bottom: BorderSide(color: AppColors.border, width: 0.5)),
+        border: Border(bottom: BorderSide(color: Color(0xFFE2DDD8), width: 0.5)),
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -76,7 +75,7 @@ class _StyleRow extends StatelessWidget {
               Text(
                 entry.name,
                 style: AppTextStyles.labelSmall.copyWith(
-                  color: AppColors.accent,
+                  color: const Color(0xFFC4622D),
                   letterSpacing: AppLetterSpacing.tight,
                 ),
               ),
@@ -84,7 +83,7 @@ class _StyleRow extends StatelessWidget {
               Text(
                 entry.props,
                 style: AppTextStyles.labelSmall.copyWith(
-                  color: AppColors.textTertiary,
+                  color: const Color(0xFFA09B97),
                   fontSize: 10,
                 ),
                 textAlign: TextAlign.right,
@@ -119,7 +118,7 @@ class _MessageListCard extends StatelessWidget {
             decoration: BoxDecoration(
               border: item != items.last
                   ? const Border(
-                      bottom: BorderSide(color: AppColors.border, width: 0.5))
+                      bottom: BorderSide(color: Color(0xFFE2DDD8), width: 0.5))
                   : null,
             ),
             child: Row(
@@ -127,11 +126,11 @@ class _MessageListCard extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: AppSize.avatarXs,
-                  backgroundColor: AppColors.avatarBg,
+                  backgroundColor: const Color(0xFFEDE9E4),
                   child: Text(
                     initial,
                     style: AppTextStyles.labelLarge
-                        .copyWith(color: AppColors.textSecondary),
+                        .copyWith(color: const Color(0xFF6B6460)),
                   ),
                 ),
                 AppSpacing.gapHSm,
@@ -143,14 +142,14 @@ class _MessageListCard extends StatelessWidget {
                       Text(
                         preview,
                         style: AppTextStyles.bodyMedium
-                            .copyWith(color: AppColors.textSecondary),
+                            .copyWith(color: const Color(0xFF6B6460)),
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
                       Text(
                         time,
                         style: AppTextStyles.bodySmall
-                            .copyWith(color: AppColors.textTertiary),
+                            .copyWith(color: const Color(0xFFA09B97)),
                       ),
                     ],
                   ),
@@ -177,7 +176,7 @@ class _InvoiceCard extends StatelessWidget {
           Text(
             'INVOICE #0042',
             style: AppTextStyles.labelSmall.copyWith(
-              color: AppColors.textTertiary,
+              color: const Color(0xFFA09B97),
               letterSpacing: AppLetterSpacing.normal,
             ),
           ),
@@ -187,7 +186,7 @@ class _InvoiceCard extends StatelessWidget {
           Text(
             '2025年3月17日 発行',
             style: AppTextStyles.bodyMedium
-                .copyWith(color: AppColors.textSecondary),
+                .copyWith(color: const Color(0xFF6B6460)),
           ),
           AppSpacing.gapVMd,
           Row(
@@ -195,9 +194,9 @@ class _InvoiceCard extends StatelessWidget {
             children: [
               StatusChip(
                 label: '支払待ち',
-                color: AppColors.warningBg,
-                textColor: AppColors.warningText,
-                dotColor: AppColors.warningDot,
+                color: const Color(0xFFFEF3E2),
+                textColor: const Color(0xFF9A5F10),
+                dotColor: const Color(0xFFE08A1E),
               ),
               Text('¥128,000', style: AppTextStyles.titleLarge),
             ],
@@ -222,11 +221,11 @@ class _ButtonCard extends StatelessWidget {
             children: [
               FilledButton(
                 onPressed: () {},
-                style: FilledButton.styleFrom(backgroundColor: AppColors.dark),
+                style: FilledButton.styleFrom(backgroundColor: const Color(0xFF2D2926)),
                 child: Text(
                   '送信する',
                   style: AppTextStyles.labelLarge
-                      .copyWith(color: AppColors.textOnDark),
+                      .copyWith(color: Colors.white),
                 ),
               ),
               AppSpacing.gapHSm,
@@ -240,7 +239,7 @@ class _ButtonCard extends StatelessWidget {
           Text(
             '※ 送信後は取り消しできません',
             style: AppTextStyles.bodySmall
-                .copyWith(color: AppColors.textSecondary),
+                .copyWith(color: const Color(0xFF6B6460)),
           ),
         ],
       ),
@@ -260,25 +259,25 @@ class _StatusChipsCard extends StatelessWidget {
           _ChipRow(
             label: '完了',
             orderId: '注文 #1024',
-            color: AppColors.successBg,
-            textColor: AppColors.successText,
-            dotColor: AppColors.successDot,
+            color: const Color(0xFFEAF5EC),
+            textColor: const Color(0xFF2A7A3B),
+            dotColor: const Color(0xFF3DA050),
           ),
           AppSpacing.gapVSm,
           _ChipRow(
             label: '処理中',
             orderId: '注文 #1025',
-            color: AppColors.warningBg,
-            textColor: AppColors.warningText,
-            dotColor: AppColors.warningDot,
+            color: const Color(0xFFFEF3E2),
+            textColor: const Color(0xFF9A5F10),
+            dotColor: const Color(0xFFE08A1E),
           ),
           AppSpacing.gapVSm,
           _ChipRow(
             label: 'エラー',
             orderId: '注文 #1026',
-            color: AppColors.errorBg,
-            textColor: AppColors.errorText,
-            dotColor: AppColors.errorDot,
+            color: const Color(0xFFFDECEA),
+            textColor: const Color(0xFF9B2B2B),
+            dotColor: const Color(0xFFD93535),
           ),
         ],
       ),
@@ -314,7 +313,7 @@ class _ChipRow extends StatelessWidget {
         Text(
           orderId,
           style: AppTextStyles.bodyMedium
-              .copyWith(color: AppColors.textSecondary),
+              .copyWith(color: const Color(0xFF6B6460)),
         ),
       ],
     );
@@ -336,7 +335,7 @@ class _FormCard extends StatelessWidget {
           Text(
             'すでにアカウントをお持ちの方はログインしてください。',
             style: AppTextStyles.bodyMedium
-                .copyWith(color: AppColors.textSecondary),
+                .copyWith(color: const Color(0xFF6B6460)),
           ),
           AppSpacing.gapVMd,
           Row(
@@ -352,16 +351,16 @@ class _FormCard extends StatelessWidget {
           Text(
             '※ 確認メールが送信されます',
             style: AppTextStyles.bodySmall
-                .copyWith(color: AppColors.textTertiary),
+                .copyWith(color: const Color(0xFFA09B97)),
           ),
           AppSpacing.gapVMd,
           FilledButton(
             onPressed: () {},
-            style: FilledButton.styleFrom(backgroundColor: AppColors.dark),
+            style: FilledButton.styleFrom(backgroundColor: const Color(0xFF2D2926)),
             child: Text(
               'アカウントを作成',
               style: AppTextStyles.labelLarge
-                  .copyWith(color: AppColors.textOnDark),
+                  .copyWith(color: Colors.white),
             ),
           ),
         ],
@@ -383,7 +382,7 @@ class _FakeField extends StatelessWidget {
         Text(
           label,
           style:
-              AppTextStyles.labelMedium.copyWith(color: AppColors.textSecondary),
+              AppTextStyles.labelMedium.copyWith(color: const Color(0xFF6B6460)),
         ),
         AppSpacing.gapVXs,
         Container(
@@ -393,12 +392,12 @@ class _FakeField extends StatelessWidget {
             vertical: AppSpacing.sm,
           ),
           decoration: BoxDecoration(
-            border: Border.all(color: AppColors.borderLight),
+            border: Border.all(color: const Color(0xFFC8C2BB)),
             borderRadius: AppRadius.borderMd,
           ),
           child: Text(
             value,
-            style: AppTextStyles.bodyLarge.copyWith(color: AppColors.textTertiary),
+            style: AppTextStyles.bodyLarge.copyWith(color: const Color(0xFFA09B97)),
           ),
         ),
       ],

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_template/core/theme/app_colors.dart';
 import 'package:flutter_app_template/core/theme/app_sizes.dart';
 import 'package:flutter_app_template/core/theme/app_text_styles.dart';
 import 'package:flutter_app_template/features/catalog/presentation/widgets/app_button_tab.dart';
@@ -63,8 +62,8 @@ class _CatalogScreenState extends State<CatalogScreen>
           SliverAppBar(
             expandedHeight: 140,
             pinned: true,
-            backgroundColor: AppColors.dark,
-            foregroundColor: AppColors.cream,
+            backgroundColor: const Color(0xFF2D2926),
+            foregroundColor: const Color(0xFFF7F5F2),
             flexibleSpace: FlexibleSpaceBar(
               titlePadding: const EdgeInsets.fromLTRB(
                   AppSpacing.lg, 0, AppSpacing.lg, 56),
@@ -75,7 +74,7 @@ class _CatalogScreenState extends State<CatalogScreen>
                   Text(
                     'samples',
                     style: AppTextStyles.labelSmall.copyWith(
-                      color: AppColors.cream.withValues(alpha: 0.5),
+                      color: const Color(0xFFF7F5F2).withValues(alpha: 0.5),
                       letterSpacing: AppLetterSpacing.wide,
                     ),
                   ),
@@ -83,7 +82,7 @@ class _CatalogScreenState extends State<CatalogScreen>
                   Text(
                     'Catalog',
                     style: AppTextStyles.titleLarge.copyWith(
-                      color: AppColors.cream,
+                      color: const Color(0xFFF7F5F2),
                     ),
                   ),
                 ],
@@ -93,9 +92,9 @@ class _CatalogScreenState extends State<CatalogScreen>
               controller: _tabController,
               isScrollable: true,
               tabAlignment: TabAlignment.start,
-              indicatorColor: AppColors.accent,
-              labelColor: AppColors.cream,
-              unselectedLabelColor: AppColors.cream.withValues(alpha: 0.5),
+              indicatorColor: const Color(0xFFC4622D),
+              labelColor: const Color(0xFFF7F5F2),
+              unselectedLabelColor: const Color(0xFFF7F5F2).withValues(alpha: 0.5),
               labelStyle: AppTextStyles.labelMedium,
               unselectedLabelStyle: AppTextStyles.labelMedium,
               tabs: _tabs.map((t) => Tab(text: t)).toList(),

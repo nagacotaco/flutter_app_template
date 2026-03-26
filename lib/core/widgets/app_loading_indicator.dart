@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../theme/app_colors.dart';
 import '../theme/app_sizes.dart';
 
 enum AppLoadingSize { sm, md, lg }
@@ -31,7 +30,7 @@ class AppLoadingIndicator extends StatelessWidget {
       width: _dimension,
       child: CircularProgressIndicator(
         strokeWidth: strokeWidth,
-        color: color ?? AppColors.accent,
+        color: color ?? const Color(0xFFC4622D),
       ),
     );
   }
@@ -51,7 +50,7 @@ class AppLoadingOverlay extends StatelessWidget {
         child,
         if (isLoading)
           const ColoredBox(
-            color: AppColors.overlay,
+            color: Colors.black26,
             child: Center(child: AppLoadingIndicator()),
           ),
       ],

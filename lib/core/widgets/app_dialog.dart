@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../theme/app_colors.dart';
 import '../theme/app_sizes.dart';
 import '../theme/app_text_styles.dart';
 
@@ -13,11 +12,11 @@ abstract final class AppDialog {
   );
 
   static final _titleTextStyle = AppTextStyles.titleLarge.copyWith(
-    color: AppColors.textPrimary,
+    color: const Color(0xFF2D2926),
   );
 
   static final _contentTextStyle = AppTextStyles.bodyMedium.copyWith(
-    color: AppColors.textSecondary,
+    color: const Color(0xFF6B6460),
   );
 
   static const _insetPadding = EdgeInsets.symmetric(
@@ -35,8 +34,8 @@ abstract final class AppDialog {
   // ── 共通ボタンスタイル ───────────────────────────────────────────────────────
 
   static ButtonStyle get _confirmButtonStyle => FilledButton.styleFrom(
-        backgroundColor: AppColors.dark,
-        foregroundColor: AppColors.textOnDark,
+        backgroundColor: const Color(0xFF2D2926),
+        foregroundColor: Colors.white,
         textStyle: AppTextStyles.labelLarge,
       );
 
@@ -53,10 +52,10 @@ abstract final class AppDialog {
     return showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: AppColors.cardBackground,
+        backgroundColor: Colors.white,
         surfaceTintColor: Colors.transparent,
         elevation: AppElevation.level2,
-        shadowColor: AppColors.shadow,
+        shadowColor: Colors.black12,
         shape: _shape,
         titleTextStyle: _titleTextStyle,
         contentTextStyle: _contentTextStyle,
@@ -89,10 +88,10 @@ abstract final class AppDialog {
     return showDialog<void>(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: AppColors.cardBackground,
+        backgroundColor: Colors.white,
         surfaceTintColor: Colors.transparent,
         elevation: AppElevation.level2,
-        shadowColor: AppColors.shadow,
+        shadowColor: Colors.black12,
         shape: _shape,
         titleTextStyle: _titleTextStyle,
         contentTextStyle: _contentTextStyle,
@@ -124,10 +123,10 @@ abstract final class AppDialog {
     return showDialog<bool>(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: AppColors.cardBackground,
+        backgroundColor: Colors.white,
         surfaceTintColor: Colors.transparent,
         elevation: AppElevation.level2,
-        shadowColor: AppColors.shadow,
+        shadowColor: Colors.black12,
         shape: _shape,
         titleTextStyle: _titleTextStyle,
         contentTextStyle: _contentTextStyle,
@@ -142,7 +141,7 @@ abstract final class AppDialog {
           ),
           TextButton(
             onPressed: () => Navigator.pop(ctx, true),
-            style: TextButton.styleFrom(foregroundColor: AppColors.errorText),
+            style: TextButton.styleFrom(foregroundColor: const Color(0xFF9B2B2B)),
             child: Text(confirmLabel),
           ),
         ],

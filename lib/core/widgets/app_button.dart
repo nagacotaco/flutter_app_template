@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../theme/app_colors.dart';
 import '../theme/app_sizes.dart';
 import '../theme/app_text_styles.dart';
 import 'app_gap.dart';
@@ -81,26 +80,26 @@ class AppButton extends StatelessWidget {
 
   static final ButtonStyle _filledStyle = FilledButton.styleFrom(
     padding: _basePadding,
-    backgroundColor: AppColors.accent,
-    foregroundColor: AppColors.cream,
+    backgroundColor: const Color(0xFFC4622D),
+    foregroundColor: const Color(0xFFF7F5F2),
     textStyle: AppTextStyles.titleSmall,
-    disabledBackgroundColor: AppColors.surfaceMuted,
-    disabledForegroundColor: AppColors.textTertiary,
+    disabledBackgroundColor: const Color(0xFFF0EDE9),
+    disabledForegroundColor: const Color(0xFFA09B97),
   );
 
   static final ButtonStyle _outlinedStyle = OutlinedButton.styleFrom(
     padding: _basePadding,
-    foregroundColor: AppColors.accent,
-    side: const BorderSide(color: AppColors.accent),
+    foregroundColor: const Color(0xFFC4622D),
+    side: const BorderSide(color: Color(0xFFC4622D)),
     textStyle: AppTextStyles.titleSmall,
-    disabledForegroundColor: AppColors.textTertiary,
+    disabledForegroundColor: const Color(0xFFA09B97),
   );
 
   static final ButtonStyle _textStyle = TextButton.styleFrom(
     padding: _basePadding,
-    foregroundColor: AppColors.accent,
+    foregroundColor: const Color(0xFFC4622D),
     textStyle: AppTextStyles.titleSmall,
-    disabledForegroundColor: AppColors.textTertiary,
+    disabledForegroundColor: const Color(0xFFA09B97),
   );
 
   @override

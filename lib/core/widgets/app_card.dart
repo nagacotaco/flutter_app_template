@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../theme/app_colors.dart';
 import '../theme/app_sizes.dart';
 
 /// アプリ共通カード。
@@ -27,13 +26,13 @@ class AppCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final radius = borderRadius ?? AppRadius.borderMd;
-    final bg = backgroundColor ?? AppColors.cardBackground;
+    final bg = backgroundColor ?? Colors.white;
     final effectiveElevation = elevation ?? AppElevation.level1;
 
     return Material(
       color: bg,
       elevation: effectiveElevation,
-      shadowColor: AppColors.shadow,
+      shadowColor: Colors.black12,
       borderRadius: radius,
       child: InkWell(
         onTap: onTap,

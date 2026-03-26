@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../theme/app_colors.dart';
 import '../theme/app_sizes.dart';
 import '../theme/app_text_styles.dart';
 
@@ -22,24 +21,24 @@ class AppStatusChip extends StatelessWidget {
   final bool showDot;
 
   Color get _bgColor => switch (variant) {
-        AppChipVariant.success => AppColors.successBg,
-        AppChipVariant.warning => AppColors.warningBg,
-        AppChipVariant.error => AppColors.errorBg,
-        AppChipVariant.neutral => AppColors.surfaceMuted,
+        AppChipVariant.success => const Color(0xFFEAF5EC),
+        AppChipVariant.warning => const Color(0xFFFEF3E2),
+        AppChipVariant.error => const Color(0xFFFDECEA),
+        AppChipVariant.neutral => const Color(0xFFF0EDE9),
       };
 
   Color get _textColor => switch (variant) {
-        AppChipVariant.success => AppColors.successText,
-        AppChipVariant.warning => AppColors.warningText,
-        AppChipVariant.error => AppColors.errorText,
-        AppChipVariant.neutral => AppColors.textSecondary,
+        AppChipVariant.success => const Color(0xFF2A7A3B),
+        AppChipVariant.warning => const Color(0xFF9A5F10),
+        AppChipVariant.error => const Color(0xFF9B2B2B),
+        AppChipVariant.neutral => const Color(0xFF6B6460),
       };
 
   Color get _dotColor => switch (variant) {
-        AppChipVariant.success => AppColors.successDot,
-        AppChipVariant.warning => AppColors.warningDot,
-        AppChipVariant.error => AppColors.errorDot,
-        AppChipVariant.neutral => AppColors.textTertiary,
+        AppChipVariant.success => const Color(0xFF3DA050),
+        AppChipVariant.warning => const Color(0xFFE08A1E),
+        AppChipVariant.error => const Color(0xFFD93535),
+        AppChipVariant.neutral => const Color(0xFFA09B97),
       };
 
   @override

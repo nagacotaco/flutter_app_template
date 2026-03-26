@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'app_colors.dart';
 import 'app_text_styles.dart';
 
 /// ThemeData をまとめて提供するクラス
 abstract final class AppTheme {
   static ThemeData get light => ThemeData(
         useMaterial3: true,
-        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.dark),
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF2D2926)),
         textTheme: AppTextStyles.textTheme,
         // 波紋エフェクト（Ripple）を無くす
         splashColor: Colors.transparent,
@@ -19,7 +18,7 @@ abstract final class AppTheme {
         appBarTheme: AppBarTheme(
           backgroundColor: Colors.transparent,
           titleTextStyle: AppTextStyles.titleMedium.copyWith(
-            color: AppColors.textSecondary,
+            color: const Color(0xFF6B6460),
           ),
           elevation: 0,
         ),
@@ -27,14 +26,14 @@ abstract final class AppTheme {
         bottomNavigationBarTheme: BottomNavigationBarThemeData(
           backgroundColor: Colors.transparent,
           elevation: 0,
-          selectedItemColor: AppColors.accent,
+          selectedItemColor: const Color(0xFFC4622D),
           selectedLabelStyle: AppTextStyles.bodySmall,
           selectedIconTheme: const IconThemeData(
-            color: AppColors.accent,
+            color: Color(0xFFC4622D),
             fill: 1,
           ),
           enableFeedback: true,
-          unselectedItemColor: AppColors.textTertiary,
+          unselectedItemColor: const Color(0xFFA09B97),
           unselectedLabelStyle: AppTextStyles.bodySmall,
         ),
       );

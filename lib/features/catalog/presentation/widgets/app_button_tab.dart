@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_template/core/theme/app_colors.dart';
 import 'package:flutter_app_template/core/theme/app_sizes.dart';
 import 'package:flutter_app_template/core/widgets/app_button.dart';
 import 'package:flutter_app_template/core/widgets/app_gap.dart';
@@ -33,7 +32,7 @@ class _AppButtonTabState extends State<AppButtonTab> {
       children: [
         const SectionLabel(title: 'AppButton', desc: 'filled / outlined / text'),
         AppSpacing.gapVSm,
-        const Divider(color: AppColors.border),
+        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVMd,
 
         // filled

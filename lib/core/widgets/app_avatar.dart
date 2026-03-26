@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../theme/app_colors.dart';
 import '../theme/app_sizes.dart';
 import '../theme/app_text_styles.dart';
 
@@ -41,7 +40,7 @@ class AppAvatar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bg = backgroundColor ?? AppColors.avatarBg;
+    final bg = backgroundColor ?? const Color(0xFFEDE9E4);
     final d = _dimension;
 
     if (imageUrl != null) {
@@ -71,12 +70,12 @@ class AppAvatar extends StatelessWidget {
       child: initials != null
           ? Text(
               initials!,
-              style: _textStyle.copyWith(color: AppColors.textSecondary),
+              style: _textStyle.copyWith(color: const Color(0xFF6B6460)),
             )
           : Icon(
               Icons.person_outline,
               size: d * 0.55,
-              color: AppColors.textTertiary,
+              color: const Color(0xFFA09B97),
             ),
     );
   }

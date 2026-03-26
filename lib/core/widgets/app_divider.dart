@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../theme/app_colors.dart';
-
 /// アプリ共通区切り線。
 class AppDivider extends StatelessWidget {
   const AppDivider({
@@ -20,7 +18,7 @@ class AppDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Divider(
-      color: color ?? AppColors.border,
+      color: color ?? const Color(0xFFE2DDD8),
       thickness: thickness,
       indent: indent,
       endIndent: endIndent,
@@ -43,7 +41,7 @@ class AppVerticalDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return VerticalDivider(
-      color: color ?? AppColors.border,
+      color: color ?? const Color(0xFFE2DDD8),
       thickness: thickness,
       width: thickness,
     );

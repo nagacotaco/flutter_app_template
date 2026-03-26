@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_template/core/theme/app_colors.dart';
 import 'package:flutter_app_template/core/theme/app_sizes.dart';
 import 'package:flutter_app_template/core/theme/app_text_styles.dart';
 import 'package:flutter_app_template/core/widgets/app_avatar.dart';
@@ -35,7 +34,7 @@ class _AppComponentsTabState extends State<AppComponentsTab> {
         // ── AppStatusChip ──────────────────────────────────────
         const SectionLabel(title: 'AppStatusChip', desc: 'success / warning / error / neutral'),
         AppSpacing.gapVSm,
-        const Divider(color: AppColors.border),
+        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVMd,
 
         CatalogCard(
@@ -87,7 +86,7 @@ class _AppComponentsTabState extends State<AppComponentsTab> {
         // ── AppAvatar ──────────────────────────────────────────
         const SectionLabel(title: 'AppAvatar', desc: 'xs / sm / md / lg'),
         AppSpacing.gapVSm,
-        const Divider(color: AppColors.border),
+        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVMd,
 
         CatalogCard(
@@ -120,7 +119,7 @@ class _AppComponentsTabState extends State<AppComponentsTab> {
                 AppAvatar(
                   initials: 'YK',
                   size: AppAvatarSize.lg,
-                  backgroundColor: AppColors.accent.withValues(alpha: 0.15),
+                  backgroundColor: const Color(0xFFC4622D).withValues(alpha: 0.15),
                 ),
               ),
               _avatarWithLabel(
@@ -135,7 +134,7 @@ class _AppComponentsTabState extends State<AppComponentsTab> {
         // ── AppCard ────────────────────────────────────────────
         const SectionLabel(title: 'AppCard', desc: 'elevation / onTap'),
         AppSpacing.gapVSm,
-        const Divider(color: AppColors.border),
+        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVMd,
 
         CatalogCard(
@@ -154,7 +153,7 @@ class _AppComponentsTabState extends State<AppComponentsTab> {
                       Text(
                         'タップして詳細を表示',
                         style: AppTextStyles.bodySmall.copyWith(
-                          color: AppColors.textTertiary,
+                          color: const Color(0xFFA09B97),
                         ),
                       ),
                     ],
@@ -162,7 +161,7 @@ class _AppComponentsTabState extends State<AppComponentsTab> {
                 ),
                 const Icon(
                   Icons.chevron_right,
-                  color: AppColors.textTertiary,
+                  color: Color(0xFFA09B97),
                 ),
               ],
             ),
@@ -195,7 +194,7 @@ class _AppComponentsTabState extends State<AppComponentsTab> {
         // ── AppDivider ─────────────────────────────────────────
         const SectionLabel(title: 'AppDivider', desc: 'horizontal / vertical'),
         AppSpacing.gapVSm,
-        const Divider(color: AppColors.border),
+        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVMd,
 
         CatalogCard(
@@ -237,7 +236,7 @@ class _AppComponentsTabState extends State<AppComponentsTab> {
         // ── AppLoadingIndicator ────────────────────────────────
         const SectionLabel(title: 'AppLoadingIndicator', desc: 'sm / md / lg'),
         AppSpacing.gapVSm,
-        const Divider(color: AppColors.border),
+        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVMd,
 
         CatalogCard(
@@ -253,7 +252,7 @@ class _AppComponentsTabState extends State<AppComponentsTab> {
                 'custom',
                 const AppLoadingIndicator(
                   size: AppLoadingSize.lg,
-                  color: AppColors.accent,
+                  color: Color(0xFFC4622D),
                 ),
               ),
             ],
@@ -272,7 +271,7 @@ class _AppComponentsTabState extends State<AppComponentsTab> {
         Text(
           label,
           style: AppTextStyles.labelSmall.copyWith(
-            color: AppColors.textTertiary,
+            color: const Color(0xFFA09B97),
           ),
         ),
       ],
@@ -288,7 +287,7 @@ class _AppComponentsTabState extends State<AppComponentsTab> {
         Text(
           label,
           style: AppTextStyles.labelSmall.copyWith(
-            color: AppColors.textTertiary,
+            color: const Color(0xFFA09B97),
           ),
         ),
       ],

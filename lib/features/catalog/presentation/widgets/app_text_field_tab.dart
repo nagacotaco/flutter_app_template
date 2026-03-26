@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_template/core/theme/app_colors.dart';
 import 'package:flutter_app_template/core/theme/app_sizes.dart';
 import 'package:flutter_app_template/core/widgets/app_gap.dart';
 import 'package:flutter_app_template/core/widgets/app_text_field.dart';
@@ -30,7 +29,7 @@ class _AppTextFieldTabState extends State<AppTextFieldTab> {
           desc: 'label はフィールド上部に Text として表示',
         ),
         AppSpacing.gapVSm,
-        const Divider(color: AppColors.border),
+        const Divider(color: Color(0xFFE2DDD8)),
         AppSpacing.gapVMd,
 
         // label あり
