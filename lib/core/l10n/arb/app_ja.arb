@@ -1,0 +1,11 @@
+{
+  "@@locale": "ja",
+  "appTitle": "Flutter App Template",
+  "@appTitle": {
+    "description": "アプリ名"
+  },
+  "homeTitle": "ホーム",
+  "@homeTitle": {
+    "description": "ホーム画面のタイトル"
+  }
+}

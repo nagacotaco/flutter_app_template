@@ -1,0 +1,23 @@
+{
+  // Phase 4 で flavor 導入時に dev/prod 別の構成へ拡張する
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "app (debug)",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
+      "name": "app (profile)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile"
+    },
+    {
+      "name": "app (release)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release"
+    }
+  ]
+}

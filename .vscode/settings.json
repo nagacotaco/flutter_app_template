@@ -1,0 +1,41 @@
+{
+  // fvm の SDK を使う（fvm use が自動更新する）
+  "dart.flutterSdkPath": ".fvm/versions/3.44.8",
+
+  // 保存時にフォーマット + 自動修正 + import 整理
+  "[dart]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
+    },
+    "editor.rulers": [80],
+    "editor.selectionHighlight": false,
+    "editor.tabCompletion": "onlySnippets",
+    "editor.wordBasedSuggestions": "off"
+  },
+
+  // Widget ツリーのガイド線を表示
+  "dart.previewFlutterUiGuides": true,
+  "dart.previewFlutterUiGuidesCustomTracking": true,
+
+  // クラス名リネーム時にファイル名も追従（確認あり）
+  "dart.renameFilesWithClasses": "prompt",
+
+  // 生成ファイルを元ファイルの下にネスト表示
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.dart": "${capture}.g.dart, ${capture}.freezed.dart"
+  },
+
+  // 生成物・SDK キャッシュを検索とファイル監視から除外
+  "files.watcherExclude": {
+    "**/.fvm": true
+  },
+  "search.exclude": {
+    "**/.fvm": true,
+    "**/*.g.dart": true,
+    "**/*.freezed.dart": true,
+    "lib/core/l10n/gen": true
+  }
+}
