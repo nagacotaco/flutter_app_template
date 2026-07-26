@@ -16,9 +16,29 @@
   "@settingsTitle": {
     "description": "設定画面のタイトル"
   },
-  "settingsPlaceholder": "設定画面は Phase 3 で実装予定",
-  "@settingsPlaceholder": {
-    "description": "設定画面の仮表示文言"
+  "settingsThemeTitle": "テーマ",
+  "@settingsThemeTitle": {
+    "description": "設定: テーマ選択の項目名"
+  },
+  "settingsThemeSystem": "システム",
+  "@settingsThemeSystem": {
+    "description": "設定: テーマ「端末設定に従う」"
+  },
+  "settingsThemeLight": "ライト",
+  "@settingsThemeLight": {
+    "description": "設定: ライトテーマ"
+  },
+  "settingsThemeDark": "ダーク",
+  "@settingsThemeDark": {
+    "description": "設定: ダークテーマ"
+  },
+  "settingsLanguageTitle": "言語",
+  "@settingsLanguageTitle": {
+    "description": "設定: 言語選択の項目名"
+  },
+  "settingsLanguageSystem": "システム",
+  "@settingsLanguageSystem": {
+    "description": "設定: 言語「端末設定に従う」"
   },
   "errorMessage": "エラーが発生しました",
   "@errorMessage": {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_template/core/l10n/l10n.dart';
 import 'package:flutter_app_template/core/router/app_router.dart';
+import 'package:flutter_app_template/core/settings/app_settings_provider.dart';
 import 'package:flutter_app_template/core/theme/app_theme.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -10,11 +11,15 @@ class App extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final settings = ref.watch(appSettingsProvider);
+
     return MaterialApp.router(
       routerConfig: ref.watch(routerProvider),
       onGenerateTitle: (context) => context.l10n.appTitle,
       theme: AppTheme.light,
       darkTheme: AppTheme.dark,
+      themeMode: settings.themeMode,
+      locale: settings.locale,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
     );

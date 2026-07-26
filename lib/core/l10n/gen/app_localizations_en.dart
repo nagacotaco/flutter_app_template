@@ -21,7 +21,22 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsTitle => 'Settings';
 
   @override
-  String get settingsPlaceholder => 'Settings will be implemented in Phase 3';
+  String get settingsThemeTitle => 'Theme';
+
+  @override
+  String get settingsThemeSystem => 'System';
+
+  @override
+  String get settingsThemeLight => 'Light';
+
+  @override
+  String get settingsThemeDark => 'Dark';
+
+  @override
+  String get settingsLanguageTitle => 'Language';
+
+  @override
+  String get settingsLanguageSystem => 'System';
 
   @override
   String get errorMessage => 'Something went wrong';

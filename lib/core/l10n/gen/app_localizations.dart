@@ -122,11 +122,41 @@ abstract class AppLocalizations {
   /// **'設定'**
   String get settingsTitle;
 
-  /// 設定画面の仮表示文言
+  /// 設定: テーマ選択の項目名
   ///
   /// In ja, this message translates to:
-  /// **'設定画面は Phase 3 で実装予定'**
-  String get settingsPlaceholder;
+  /// **'テーマ'**
+  String get settingsThemeTitle;
+
+  /// 設定: テーマ「端末設定に従う」
+  ///
+  /// In ja, this message translates to:
+  /// **'システム'**
+  String get settingsThemeSystem;
+
+  /// 設定: ライトテーマ
+  ///
+  /// In ja, this message translates to:
+  /// **'ライト'**
+  String get settingsThemeLight;
+
+  /// 設定: ダークテーマ
+  ///
+  /// In ja, this message translates to:
+  /// **'ダーク'**
+  String get settingsThemeDark;
+
+  /// 設定: 言語選択の項目名
+  ///
+  /// In ja, this message translates to:
+  /// **'言語'**
+  String get settingsLanguageTitle;
+
+  /// 設定: 言語「端末設定に従う」
+  ///
+  /// In ja, this message translates to:
+  /// **'システム'**
+  String get settingsLanguageSystem;
 
   /// 共通エラー表示の文言
   ///

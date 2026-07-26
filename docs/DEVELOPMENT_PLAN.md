@@ -4,7 +4,7 @@
 機能追加・方針変更のたびにこのファイルを更新する（Living Document）。
 
 - 最終更新: 2026-07-26
-- ステータス: Phase 1 完了 / Phase 2 着手前
+- ステータス: Phase 0/1/4/5 完了、Phase 3 一部完了。Phase 2（認証）はユーザー判断で保留中
 
 ---
 
@@ -89,19 +89,21 @@ lib/
 
 - [ ] profiles テーブル定義（Supabase マイグレーション SQL をリポジトリ管理: `supabase/migrations/`）
 - [ ] プロフィール画面（表示・編集・アバター画像アップロード = Supabase Storage）
-- [ ] 設定画面（テーマ切替、言語切替、利用規約/プライバシーポリシーリンク、アプリバージョン表示、ログアウト、退会）
+- [x] 設定画面: テーマ切替・言語切替（core/settings、shared_preferences 永続化）
+- [ ] 設定画面の残り: 利用規約/プライバシーポリシーリンク、アプリバージョン表示、ログアウト、退会（認証導入後）
 
 ### Phase 4: flavor と環境変数
 
-- [ ] dev / prod flavor（Android productFlavors + iOS xcconfig/scheme）
-- [ ] Supabase URL / anon key を --dart-define-from-file で切替
-- [ ] launch.json に flavor 別の起動構成を追加
-- [ ] アプリアイコン・アプリ名の flavor 別出し分け
+- [x] dev / prod flavor（flutter_flavorizr で生成。定義は pubspec.yaml の flavorizr セクションが正。変更時は `fvm dart run flutter_flavorizr -f`）
+- [x] Supabase URL / anon key を --dart-define-from-file で切替（env/dev.json, env/prod.json → lib/core/env/app_env.dart）
+- [x] launch.json に flavor 別の起動構成を追加
+- [x] アプリ名の flavor 別出し分け（Template Dev / Template）
+- [ ] アプリアイコンの flavor 別出し分け
 
 ### Phase 5: CI・品質
 
-- [ ] GitHub Actions: format check + analyze + test
-- [ ] 基本のテスト雛形（Riverpod のユニットテスト、widget テスト各1つ以上）
+- [x] GitHub Actions: format check + analyze + custom_lint + test（.github/workflows/ci.yaml）
+- [ ] 基本のテスト雛形（widget テストは1本あり。Riverpod ViewModel のユニットテスト雛形が未）
 
 ### Backlog（今後の候補。着手順は都度このドキュメントで決める）
 

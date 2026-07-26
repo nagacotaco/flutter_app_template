@@ -5,7 +5,5 @@ part 'item_list_state.freezed.dart';
 
 @freezed
 abstract class ItemListState with _$ItemListState {
-  const factory ItemListState({
-    @Default([]) List<Item> items,
-  }) = _ItemListState;
+  const factory ItemListState({@Default([]) List<Item> items}) = _ItemListState;
 }

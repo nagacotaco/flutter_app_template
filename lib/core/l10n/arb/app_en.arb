@@ -4,7 +4,12 @@
   "homeTitle": "Home",
   "itemsTitle": "Items",
   "settingsTitle": "Settings",
-  "settingsPlaceholder": "Settings will be implemented in Phase 3",
+  "settingsThemeTitle": "Theme",
+  "settingsThemeSystem": "System",
+  "settingsThemeLight": "Light",
+  "settingsThemeDark": "Dark",
+  "settingsLanguageTitle": "Language",
+  "settingsLanguageSystem": "System",
   "errorMessage": "Something went wrong",
   "retry": "Retry"
 }

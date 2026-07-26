@@ -44,6 +44,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
+  shared_preferences: ^2.5.5
 
 dev_dependencies:
   flutter_test:
@@ -62,6 +63,7 @@ dev_dependencies:
   go_router_builder: ^4.4.0
   freezed: ^3.2.3
   json_serializable: ^6.11.2
+  flutter_flavorizr: ^2.6.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -107,3 +109,35 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+
+# dev/prod flavor の定義。変更後は `fvm dart run flutter_flavorizr` で再生成する。
+# コピー先アプリでは applicationId / bundleId / name を書き換えてから実行すること。
+flavorizr:
+  app:
+    android:
+      flavorDimensions: "flavor"
+    ios: {}
+  # ネイティブ設定のみ生成する（Dart 側の雛形生成は使わない。環境値は --dart-define-from-file で注入）
+  instructions:
+    - android:androidManifest
+    - android:flavorizrGradle
+    - android:buildGradle
+    - ios:xcconfig
+    - ios:buildTargets
+    - ios:schema
+    - ios:plist
+  flavors:
+    dev:
+      app:
+        name: "Template Dev"
+      android:
+        applicationId: "tech.tetrabox.flutter_app_template.dev"
+      ios:
+        bundleId: "tech.tetrabox.flutterAppTemplate.dev"
+    prod:
+      app:
+        name: "Template"
+      android:
+        applicationId: "tech.tetrabox.flutter_app_template"
+      ios:
+        bundleId: "tech.tetrabox.flutterAppTemplate"

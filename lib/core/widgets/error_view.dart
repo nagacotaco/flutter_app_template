@@ -19,10 +19,7 @@ class ErrorView extends StatelessWidget {
           Text(context.l10n.errorMessage),
           if (onRetry != null) ...[
             const SizedBox(height: 12),
-            FilledButton(
-              onPressed: onRetry,
-              child: Text(context.l10n.retry),
-            ),
+            FilledButton(onPressed: onRetry, child: Text(context.l10n.retry)),
           ],
         ],
       ),

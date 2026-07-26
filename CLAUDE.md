@@ -12,7 +12,8 @@
 
 flutter は必ず fvm 経由で実行する。
 
-- 起動: `fvm flutter run`
+- 起動: `fvm flutter run --flavor dev --dart-define-from-file=env/dev.json`（flavor 必須。本番接続は prod）
+- flavor 定義の変更: pubspec.yaml の `flavorizr:` を編集 → `fvm dart run flutter_flavorizr -f`
 - 静的解析: `fvm flutter analyze` と `fvm dart run custom_lint`（riverpod_lint）
 - テスト: `fvm flutter test`
 - コード生成（freezed / riverpod / go_router）: `fvm dart run build_runner build --delete-conflicting-outputs`

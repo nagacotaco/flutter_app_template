@@ -5,7 +5,5 @@ part 'item_detail_state.freezed.dart';
 
 @freezed
 abstract class ItemDetailState with _$ItemDetailState {
-  const factory ItemDetailState({
-    required Item item,
-  }) = _ItemDetailState;
+  const factory ItemDetailState({required Item item}) = _ItemDetailState;
 }

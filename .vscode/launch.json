@@ -1,23 +1,31 @@
 {
-  // Phase 4 で flavor 導入時に dev/prod 別の構成へ拡張する
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "app (debug)",
-      "request": "launch",
-      "type": "dart"
-    },
-    {
-      "name": "app (profile)",
+      "name": "dev (debug)",
       "request": "launch",
       "type": "dart",
-      "flutterMode": "profile"
+      "args": ["--flavor", "dev", "--dart-define-from-file=env/dev.json"]
     },
     {
-      "name": "app (release)",
+      "name": "dev (profile)",
       "request": "launch",
       "type": "dart",
-      "flutterMode": "release"
+      "flutterMode": "profile",
+      "args": ["--flavor", "dev", "--dart-define-from-file=env/dev.json"]
+    },
+    {
+      "name": "prod (debug)",
+      "request": "launch",
+      "type": "dart",
+      "args": ["--flavor", "prod", "--dart-define-from-file=env/prod.json"]
+    },
+    {
+      "name": "prod (release)",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release",
+      "args": ["--flavor", "prod", "--dart-define-from-file=env/prod.json"]
     }
   ]
 }

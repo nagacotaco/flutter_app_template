@@ -21,7 +21,22 @@ class AppLocalizationsJa extends AppLocalizations {
   String get settingsTitle => '設定';
 
   @override
-  String get settingsPlaceholder => '設定画面は Phase 3 で実装予定';
+  String get settingsThemeTitle => 'テーマ';
+
+  @override
+  String get settingsThemeSystem => 'システム';
+
+  @override
+  String get settingsThemeLight => 'ライト';
+
+  @override
+  String get settingsThemeDark => 'ダーク';
+
+  @override
+  String get settingsLanguageTitle => '言語';
+
+  @override
+  String get settingsLanguageSystem => 'システム';
 
   @override
   String get errorMessage => 'エラーが発生しました';

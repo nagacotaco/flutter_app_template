@@ -17,14 +17,13 @@ class ItemDetailScreen extends HookConsumerWidget {
       appBar: AppBar(title: Text(state.value?.item.title ?? '')),
       body: switch (state) {
         AsyncData(:final value) => Padding(
-            padding: const EdgeInsets.all(16),
-            child: Text(value.item.description),
-          ),
+          padding: const EdgeInsets.all(16),
+          child: Text(value.item.description),
+        ),
         AsyncError(:final error) => ErrorView(
-            error: error,
-            onRetry: () =>
-                ref.invalidate(itemDetailViewModelProvider(itemId)),
-          ),
+          error: error,
+          onRetry: () => ref.invalidate(itemDetailViewModelProvider(itemId)),
+        ),
         _ => const Center(child: CircularProgressIndicator()),
       },
     );

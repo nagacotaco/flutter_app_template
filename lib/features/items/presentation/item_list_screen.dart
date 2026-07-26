@@ -21,9 +21,9 @@ class ItemListScreen extends HookConsumerWidget {
       body: switch (state) {
         AsyncData(:final value) => _Body(state: value),
         AsyncError(:final error) => ErrorView(
-            error: error,
-            onRetry: () => ref.read(itemListViewModelProvider.notifier).refresh(),
-          ),
+          error: error,
+          onRetry: () => ref.read(itemListViewModelProvider.notifier).refresh(),
+        ),
         _ => const Center(child: CircularProgressIndicator()),
       },
     );
