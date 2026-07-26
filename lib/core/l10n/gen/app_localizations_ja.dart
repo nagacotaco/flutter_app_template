@@ -13,4 +13,19 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get homeTitle => 'ホーム';
+
+  @override
+  String get itemsTitle => 'アイテム';
+
+  @override
+  String get settingsTitle => '設定';
+
+  @override
+  String get settingsPlaceholder => '設定画面は Phase 3 で実装予定';
+
+  @override
+  String get errorMessage => 'エラーが発生しました';
+
+  @override
+  String get retry => '再試行';
 }

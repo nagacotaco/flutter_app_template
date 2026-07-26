@@ -13,4 +13,19 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homeTitle => 'Home';
+
+  @override
+  String get itemsTitle => 'Items';
+
+  @override
+  String get settingsTitle => 'Settings';
+
+  @override
+  String get settingsPlaceholder => 'Settings will be implemented in Phase 3';
+
+  @override
+  String get errorMessage => 'Something went wrong';
+
+  @override
+  String get retry => 'Retry';
 }

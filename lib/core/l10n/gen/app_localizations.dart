@@ -109,6 +109,36 @@ abstract class AppLocalizations {
   /// In ja, this message translates to:
   /// **'ホーム'**
   String get homeTitle;
+
+  /// アイテム一覧画面のタイトル
+  ///
+  /// In ja, this message translates to:
+  /// **'アイテム'**
+  String get itemsTitle;
+
+  /// 設定画面のタイトル
+  ///
+  /// In ja, this message translates to:
+  /// **'設定'**
+  String get settingsTitle;
+
+  /// 設定画面の仮表示文言
+  ///
+  /// In ja, this message translates to:
+  /// **'設定画面は Phase 3 で実装予定'**
+  String get settingsPlaceholder;
+
+  /// 共通エラー表示の文言
+  ///
+  /// In ja, this message translates to:
+  /// **'エラーが発生しました'**
+  String get errorMessage;
+
+  /// 再試行ボタン
+  ///
+  /// In ja, this message translates to:
+  /// **'再試行'**
+  String get retry;
 }
 
 class _AppLocalizationsDelegate

@@ -1,5 +1,10 @@
 {
   "@@locale": "en",
   "appTitle": "Flutter App Template",
-  "homeTitle": "Home"
+  "homeTitle": "Home",
+  "itemsTitle": "Items",
+  "settingsTitle": "Settings",
+  "settingsPlaceholder": "Settings will be implemented in Phase 3",
+  "errorMessage": "Something went wrong",
+  "retry": "Retry"
 }

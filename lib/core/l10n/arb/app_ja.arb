@@ -7,5 +7,25 @@
   "homeTitle": "ホーム",
   "@homeTitle": {
     "description": "ホーム画面のタイトル"
+  },
+  "itemsTitle": "アイテム",
+  "@itemsTitle": {
+    "description": "アイテム一覧画面のタイトル"
+  },
+  "settingsTitle": "設定",
+  "@settingsTitle": {
+    "description": "設定画面のタイトル"
+  },
+  "settingsPlaceholder": "設定画面は Phase 3 で実装予定",
+  "@settingsPlaceholder": {
+    "description": "設定画面の仮表示文言"
+  },
+  "errorMessage": "エラーが発生しました",
+  "@errorMessage": {
+    "description": "共通エラー表示の文言"
+  },
+  "retry": "再試行",
+  "@retry": {
+    "description": "再試行ボタン"
   }
 }

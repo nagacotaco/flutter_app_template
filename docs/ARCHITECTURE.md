@@ -100,7 +100,8 @@ class HomeViewModel extends _$HomeViewModel {
   }
 
   void updateSearchQuery(String query) {
-    final current = state.valueOrNull;
+    // Riverpod 3 では AsyncValue.value が null 許容（旧 valueOrNull 相当）
+    final current = state.value;
     if (current == null) return;
     state = AsyncData(current.copyWith(searchQuery: query));
   }

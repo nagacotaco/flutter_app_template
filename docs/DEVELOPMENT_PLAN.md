@@ -4,7 +4,7 @@
 機能追加・方針変更のたびにこのファイルを更新する（Living Document）。
 
 - 最終更新: 2026-07-26
-- ステータス: Phase 0 完了 / Phase 1 着手前
+- ステータス: Phase 1 完了 / Phase 2 着手前
 
 ---
 
@@ -71,10 +71,10 @@ lib/
 
 ### Phase 1: ナビゲーションとルーティング
 
-- [ ] go_router + go_router_builder で Typed Routes 定義
-- [ ] StatefulShellRoute によるボトムナビゲーション（タブ状態保持）
-- [ ] サンプルのリスト画面 → 詳細画面（`/items/:id`）
-- [ ] ディープリンク設定（iOS Universal Links / Android App Links の設定手順ドキュメント含む）
+- [x] go_router + go_router_builder で Typed Routes 定義（core/router/routes.dart）
+- [x] StatefulShellRoute によるボトムナビゲーション（ホーム/アイテム/設定、タブ状態保持）
+- [x] サンプルのリスト画面 → 詳細画面（`/items/:id`）。features/items/ が見本実装（正）
+- [x] ディープリンク設定手順ドキュメント（docs/DEEP_LINKS.md）。OS 側設定はドメイン確定後にコピー先で実施
 
 ### Phase 2: 認証（Supabase）
 
