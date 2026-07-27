@@ -8,9 +8,14 @@ part of 'profile_repository.dart';
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
+/// core/backend.dart の設定に応じた実装を返す。
+/// 選択されなかった側の依存（Supabase クライアント等）には触れない。
 
 @ProviderFor(profileRepository)
 final profileRepositoryProvider = ProfileRepositoryProvider._();
+
+/// core/backend.dart の設定に応じた実装を返す。
+/// 選択されなかった側の依存（Supabase クライアント等）には触れない。
 
 final class ProfileRepositoryProvider
     extends
@@ -20,6 +25,8 @@ final class ProfileRepositoryProvider
           ProfileRepository
         >
     with $Provider<ProfileRepository> {
+  /// core/backend.dart の設定に応じた実装を返す。
+  /// 選択されなかった側の依存（Supabase クライアント等）には触れない。
   ProfileRepositoryProvider._()
     : super(
         from: null,
@@ -54,4 +61,4 @@ final class ProfileRepositoryProvider
   }
 }
 
-String _$profileRepositoryHash() => r'7b32ba4955fb6146fa81a77ed9e994673f13f2a1';
+String _$profileRepositoryHash() => r'a31c4f094f8b85e6732b1582d48844971de328c0';

@@ -10,6 +10,9 @@ class FakeProfileRepository implements ProfileRepository {
 
   Profile profile;
 
+  @override
+  bool supportsAvatarUpload = true;
+
   /// 次の呼び出しで投げるエラー。一度投げたら自動でクリアされる。
   Object? nextError;
 

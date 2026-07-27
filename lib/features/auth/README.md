@@ -34,8 +34,8 @@ main.dart の初期化と AuthRepository の実装が連動して切り替わる
 
 ## 使わないバックエンドを削除する手順
 
-- **Supabase を削除**（Firebase 採用時）: `lib/core/auth/supabase_auth_repository.dart` と `lib/core/supabase/` を削除し、`auth_repository.dart` の switch と import、`lib/core/backend.dart` の enum 値、`main.dart` の Supabase 分岐を削除。pubspec から `supabase_flutter` を削除。`supabase/` ディレクトリも削除。profile feature は現状 Supabase 依存のため対応方針を決めてから消すこと
-- **Firebase を削除**（Supabase 採用時）: `lib/core/auth/firebase_auth_repository.dart` と `lib/core/firebase/`、`firebase.json` を削除し、同様に switch / enum / main.dart の分岐を削除。pubspec から `firebase_core` / `firebase_auth` を削除
+- **Supabase を削除**（Firebase 採用時）: `lib/core/auth/supabase_auth_repository.dart` と `lib/core/supabase/`、`lib/features/profile/data/supabase_profile_repository.dart` を削除し、`auth_repository.dart` / `profile_repository.dart` の switch と import、`lib/core/backend.dart` の enum 値、`main.dart` の Supabase 分岐を削除。pubspec から `supabase_flutter` を削除。`supabase/` ディレクトリも削除
+- **Firebase を削除**（Supabase 採用時）: `lib/core/auth/firebase_auth_repository.dart` と `lib/core/firebase/`、`lib/features/profile/data/firebase_profile_repository.dart`、`firebase.json` を削除し、同様に switch / enum / main.dart の分岐を削除。pubspec から `firebase_core` / `firebase_auth` を削除
 
 ## 機能を部分的に削除する手順
 

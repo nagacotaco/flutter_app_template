@@ -1,10 +1,16 @@
 # profile
 
-プロフィールの表示・編集（表示名・アバター画像 = Supabase Storage）。
-設定画面から `/settings/profile` で遷移する。DB 定義は `supabase/migrations/20260727000000_profiles.sql`（profiles テーブル + avatars バケット）。
+プロフィールの表示・編集。設定画面から `/settings/profile` で遷移する。
+バックエンドは `lib/core/backend.dart` で切り替わる（auth と同じ仕組み）:
 
-- `domain/profile.dart` — profiles テーブルと対応するモデル
-- `data/profile_repository.dart` — profiles テーブル / avatars Storage への読み書き
+- **Supabase**: profiles テーブル + avatars Storage。DB 定義は `supabase/migrations/20260727000000_profiles.sql`。アバター画像のアップロードに対応
+- **Firebase**: Firestore は使わず Firebase Auth のユーザープロフィール（displayName / photoURL）に保存。**アプリ内からのアバターアップロードは未対応**（Storage が Blaze プラン必須のため。Google / Apple ログイン時の自動設定分は表示される）。対応するには Blaze 化 + firebase_storage 追加のうえ `firebase_profile_repository.dart` に実装する
+
+ファイル構成:
+
+- `domain/profile.dart` — プロフィールのモデル
+- `data/profile_repository.dart` — 抽象インターフェース + 実装切替 provider。`supportsAvatarUpload` でアバター変更 UI の表示を制御
+- `data/supabase_profile_repository.dart` / `data/firebase_profile_repository.dart` — 各バックエンド実装
 - `presentation/` — 表示画面 + 編集画面（表示名の保存・アバターのアップロード）
 
 ## この機能を削除する手順

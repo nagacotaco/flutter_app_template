@@ -14,7 +14,8 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$ProfileEditState {
 
- Profile get profile; bool get isSaving; String? get errorMessage;
+ Profile get profile;/// アバター変更ボタンを表示するか（ProfileRepository.supportsAvatarUpload）。
+ bool get canChangeAvatar; bool get isSaving; String? get errorMessage;
 /// Create a copy of ProfileEditState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +26,16 @@ $ProfileEditStateCopyWith<ProfileEditState> get copyWith => _$ProfileEditStateCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileEditState&&(identical(other.profile, profile) || other.profile == profile)&&(identical(other.isSaving, isSaving) || other.isSaving == isSaving)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is ProfileEditState&&(identical(other.profile, profile) || other.profile == profile)&&(identical(other.canChangeAvatar, canChangeAvatar) || other.canChangeAvatar == canChangeAvatar)&&(identical(other.isSaving, isSaving) || other.isSaving == isSaving)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,profile,isSaving,errorMessage);
+int get hashCode => Object.hash(runtimeType,profile,canChangeAvatar,isSaving,errorMessage);
 
 @override
 String toString() {
-  return 'ProfileEditState(profile: $profile, isSaving: $isSaving, errorMessage: $errorMessage)';
+  return 'ProfileEditState(profile: $profile, canChangeAvatar: $canChangeAvatar, isSaving: $isSaving, errorMessage: $errorMessage)';
 }
 
 
@@ -45,7 +46,7 @@ abstract mixin class $ProfileEditStateCopyWith<$Res>  {
   factory $ProfileEditStateCopyWith(ProfileEditState value, $Res Function(ProfileEditState) _then) = _$ProfileEditStateCopyWithImpl;
 @useResult
 $Res call({
- Profile profile, bool isSaving, String? errorMessage
+ Profile profile, bool canChangeAvatar, bool isSaving, String? errorMessage
 });
 
 
@@ -62,10 +63,11 @@ class _$ProfileEditStateCopyWithImpl<$Res>
 
 /// Create a copy of ProfileEditState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? profile = null,Object? isSaving = null,Object? errorMessage = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? profile = null,Object? canChangeAvatar = null,Object? isSaving = null,Object? errorMessage = freezed,}) {
   return _then(_self.copyWith(
 profile: null == profile ? _self.profile : profile // ignore: cast_nullable_to_non_nullable
-as Profile,isSaving: null == isSaving ? _self.isSaving : isSaving // ignore: cast_nullable_to_non_nullable
+as Profile,canChangeAvatar: null == canChangeAvatar ? _self.canChangeAvatar : canChangeAvatar // ignore: cast_nullable_to_non_nullable
+as bool,isSaving: null == isSaving ? _self.isSaving : isSaving // ignore: cast_nullable_to_non_nullable
 as bool,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String?,
   ));
@@ -161,10 +163,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Profile profile,  bool isSaving,  String? errorMessage)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Profile profile,  bool canChangeAvatar,  bool isSaving,  String? errorMessage)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _ProfileEditState() when $default != null:
-return $default(_that.profile,_that.isSaving,_that.errorMessage);case _:
+return $default(_that.profile,_that.canChangeAvatar,_that.isSaving,_that.errorMessage);case _:
   return orElse();
 
 }
@@ -182,10 +184,10 @@ return $default(_that.profile,_that.isSaving,_that.errorMessage);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Profile profile,  bool isSaving,  String? errorMessage)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Profile profile,  bool canChangeAvatar,  bool isSaving,  String? errorMessage)  $default,) {final _that = this;
 switch (_that) {
 case _ProfileEditState():
-return $default(_that.profile,_that.isSaving,_that.errorMessage);case _:
+return $default(_that.profile,_that.canChangeAvatar,_that.isSaving,_that.errorMessage);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -202,10 +204,10 @@ return $default(_that.profile,_that.isSaving,_that.errorMessage);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Profile profile,  bool isSaving,  String? errorMessage)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Profile profile,  bool canChangeAvatar,  bool isSaving,  String? errorMessage)?  $default,) {final _that = this;
 switch (_that) {
 case _ProfileEditState() when $default != null:
-return $default(_that.profile,_that.isSaving,_that.errorMessage);case _:
+return $default(_that.profile,_that.canChangeAvatar,_that.isSaving,_that.errorMessage);case _:
   return null;
 
 }
@@ -217,10 +219,12 @@ return $default(_that.profile,_that.isSaving,_that.errorMessage);case _:
 
 
 class _ProfileEditState implements ProfileEditState {
-  const _ProfileEditState({required this.profile, this.isSaving = false, this.errorMessage});
+  const _ProfileEditState({required this.profile, this.canChangeAvatar = true, this.isSaving = false, this.errorMessage});
   
 
 @override final  Profile profile;
+/// アバター変更ボタンを表示するか（ProfileRepository.supportsAvatarUpload）。
+@override@JsonKey() final  bool canChangeAvatar;
 @override@JsonKey() final  bool isSaving;
 @override final  String? errorMessage;
 
@@ -234,16 +238,16 @@ _$ProfileEditStateCopyWith<_ProfileEditState> get copyWith => __$ProfileEditStat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProfileEditState&&(identical(other.profile, profile) || other.profile == profile)&&(identical(other.isSaving, isSaving) || other.isSaving == isSaving)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _ProfileEditState&&(identical(other.profile, profile) || other.profile == profile)&&(identical(other.canChangeAvatar, canChangeAvatar) || other.canChangeAvatar == canChangeAvatar)&&(identical(other.isSaving, isSaving) || other.isSaving == isSaving)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,profile,isSaving,errorMessage);
+int get hashCode => Object.hash(runtimeType,profile,canChangeAvatar,isSaving,errorMessage);
 
 @override
 String toString() {
-  return 'ProfileEditState(profile: $profile, isSaving: $isSaving, errorMessage: $errorMessage)';
+  return 'ProfileEditState(profile: $profile, canChangeAvatar: $canChangeAvatar, isSaving: $isSaving, errorMessage: $errorMessage)';
 }
 
 
@@ -254,7 +258,7 @@ abstract mixin class _$ProfileEditStateCopyWith<$Res> implements $ProfileEditSta
   factory _$ProfileEditStateCopyWith(_ProfileEditState value, $Res Function(_ProfileEditState) _then) = __$ProfileEditStateCopyWithImpl;
 @override @useResult
 $Res call({
- Profile profile, bool isSaving, String? errorMessage
+ Profile profile, bool canChangeAvatar, bool isSaving, String? errorMessage
 });
 
 
@@ -271,10 +275,11 @@ class __$ProfileEditStateCopyWithImpl<$Res>
 
 /// Create a copy of ProfileEditState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? profile = null,Object? isSaving = null,Object? errorMessage = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? profile = null,Object? canChangeAvatar = null,Object? isSaving = null,Object? errorMessage = freezed,}) {
   return _then(_ProfileEditState(
 profile: null == profile ? _self.profile : profile // ignore: cast_nullable_to_non_nullable
-as Profile,isSaving: null == isSaving ? _self.isSaving : isSaving // ignore: cast_nullable_to_non_nullable
+as Profile,canChangeAvatar: null == canChangeAvatar ? _self.canChangeAvatar : canChangeAvatar // ignore: cast_nullable_to_non_nullable
+as bool,isSaving: null == isSaving ? _self.isSaving : isSaving // ignore: cast_nullable_to_non_nullable
 as bool,errorMessage: freezed == errorMessage ? _self.errorMessage : errorMessage // ignore: cast_nullable_to_non_nullable
 as String?,
   ));

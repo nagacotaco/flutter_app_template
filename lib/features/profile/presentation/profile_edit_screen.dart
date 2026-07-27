@@ -54,10 +54,11 @@ class _Body extends HookConsumerWidget {
                 : null,
           ),
         ),
-        TextButton(
-          onPressed: state.isSaving ? null : viewModel.pickAndUploadAvatar,
-          child: Text(l10n.profileChangeAvatarButton),
-        ),
+        if (state.canChangeAvatar)
+          TextButton(
+            onPressed: state.isSaving ? null : viewModel.pickAndUploadAvatar,
+            child: Text(l10n.profileChangeAvatarButton),
+          ),
         const SizedBox(height: 12),
         TextField(
           controller: displayName,

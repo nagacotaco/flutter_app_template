@@ -34,7 +34,7 @@ final class ProfileEditViewModelProvider
 }
 
 String _$profileEditViewModelHash() =>
-    r'88543ab04fb4c9e9ffcbe9e17314a9cee7be8925';
+    r'3ba84d5561ee5b64b60194371719a03f5f8eea6b';
 
 abstract class _$ProfileEditViewModel extends $AsyncNotifier<ProfileEditState> {
   FutureOr<ProfileEditState> build();

@@ -3,8 +3,8 @@
 このドキュメントはテンプレートの「何を入れるか」「どの順で作るか」「どう運用するか」を管理する唯一の計画書。
 機能追加・方針変更のたびにこのファイルを更新する（Living Document）。
 
-- 最終更新: 2026-07-27
-- ステータス: Phase 0〜5 すべて完了。以降の追加は Backlog から選定する
+- 最終更新: 2026-07-28
+- ステータス: Phase 0〜5 すべて完了。以降の追加は Backlog から選定する（profile のバックエンド切替対応まで完了）
 
 ---
 
@@ -20,7 +20,7 @@
 
 | 項目 | 決定 | 備考 |
 |---|---|---|
-| バックエンド/認証 | **Supabase / Firebase 切替式** | `lib/core/backend.dart` で切替（現在は firebase）。認証は AuthRepository 抽象の2実装。電話番号認証はどちらもテスト電話番号+固定OTPで確認可能。**profile（DB/Storage）は現状 Supabase 実装のみ**（Firebase 対応は Backlog） |
+| バックエンド/認証 | **Supabase / Firebase 切替式** | `lib/core/backend.dart` で切替（現在は firebase）。認証は AuthRepository 抽象の2実装。電話番号認証はどちらもテスト電話番号+固定OTPで確認可能。profile も ProfileRepository 抽象の2実装（Firebase 版は Auth の displayName/photoURL に保存。アバターのアプリ内アップロードは Supabase 版のみ = Firebase Storage が Blaze 必須のため） |
 | 状態管理 | **Riverpod** | riverpod_generator + flutter_hooks（コード生成ベース） |
 | ルーティング | **go_router** (Typed Routes) | go_router_builder で型安全。`/items/:id` 形式でディープリンク対応 |
 | 機能の取捨選択 | **全部入り + コピー後に削除** | feature 単位でディレクトリ分離し、削除が1ディレクトリ+登録箇所数行で済む構造にする |
@@ -108,7 +108,7 @@ lib/
 
 ### Backlog（今後の候補。着手順は都度このドキュメントで決める）
 
-- **profile の Firebase 対応**（ProfileRepository を抽象化し Firestore + Storage 実装を追加。Storage は Blaze プラン必須のためアバターの扱いは要判断）
+- profile の Firebase Storage 対応（アバターのアプリ内アップロード。Blaze プラン化が前提。firebase_storage を追加し `firebase_profile_repository.dart` の uploadAvatar に実装、`supportsAvatarUpload` を true に）
 - Firebase 電話番号認証の iOS 本番設定（APNs / URL scheme）
 - プッシュ通知（Supabase + FCM）
 - 強制アップデート / メンテナンスモードの仕組み

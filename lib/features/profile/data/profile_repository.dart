@@ -1,67 +1,41 @@
 import 'dart:typed_data';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_app_template/core/backend.dart';
 import 'package:flutter_app_template/core/supabase/supabase_provider.dart';
+import 'package:flutter_app_template/features/profile/data/firebase_profile_repository.dart';
+import 'package:flutter_app_template/features/profile/data/supabase_profile_repository.dart';
 import 'package:flutter_app_template/features/profile/domain/profile.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'profile_repository.g.dart';
 
+/// core/backend.dart の設定に応じた実装を返す。
+/// 選択されなかった側の依存（Supabase クライアント等）には触れない。
 @riverpod
-ProfileRepository profileRepository(Ref ref) =>
-    ProfileRepository(ref.watch(supabaseClientProvider));
+ProfileRepository profileRepository(Ref ref) => switch (appBackend) {
+  AppBackend.supabase => SupabaseProfileRepository(
+    ref.watch(supabaseClientProvider),
+  ),
+  AppBackend.firebase => FirebaseProfileRepository(FirebaseAuth.instance),
+};
 
-/// profiles テーブルと avatars Storage の Repository。
-/// profiles 行はサインアップ時にトリガーで自動作成される（supabase/migrations/）。
-class ProfileRepository {
-  ProfileRepository(this._client);
+/// プロフィール読み書きの抽象。Supabase / Firebase の実装を
+/// core/backend.dart で切り替える。
+abstract interface class ProfileRepository {
+  /// アプリ内からのアバター画像アップロードに対応しているか。
+  /// false の場合、編集画面はアバター変更ボタンを表示しない
+  /// （Firebase は Storage が Blaze プラン必須のため未対応）。
+  bool get supportsAvatarUpload;
 
-  final SupabaseClient _client;
+  Future<Profile> fetchMyProfile();
 
-  String get _userId {
-    final user = _client.auth.currentUser;
-    if (user == null) {
-      throw const AuthException('Not signed in.');
-    }
-    return user.id;
-  }
+  Future<void> updateDisplayName(String displayName);
 
-  Future<Profile> fetchMyProfile() async {
-    final json = await _client
-        .from('profiles')
-        .select()
-        .eq('id', _userId)
-        .single();
-    return Profile.fromJson(json);
-  }
-
-  Future<void> updateDisplayName(String displayName) async {
-    await _client
-        .from('profiles')
-        .update({'display_name': displayName})
-        .eq('id', _userId);
-  }
-
-  /// アバター画像をアップロードし、profiles.avatar_url を更新して URL を返す。
+  /// アバター画像をアップロードし、プロフィールに反映して URL を返す。
+  /// [supportsAvatarUpload] が false の実装では [UnsupportedError] を投げる。
   Future<String> uploadAvatar({
     required Uint8List bytes,
     required String contentType,
-  }) async {
-    final path = '$_userId/avatar';
-    await _client.storage
-        .from('avatars')
-        .uploadBinary(
-          path,
-          bytes,
-          fileOptions: FileOptions(upsert: true, contentType: contentType),
-        );
-    // 同一パスへの上書きのため、キャッシュ回避にバージョンクエリを付ける
-    final baseUrl = _client.storage.from('avatars').getPublicUrl(path);
-    final url = '$baseUrl?v=${DateTime.now().millisecondsSinceEpoch}';
-    await _client
-        .from('profiles')
-        .update({'avatar_url': url})
-        .eq('id', _userId);
-    return url;
-  }
+  });
 }

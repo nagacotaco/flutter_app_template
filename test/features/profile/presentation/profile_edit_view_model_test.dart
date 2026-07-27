@@ -7,6 +7,22 @@ import '../fake_profile_repository.dart';
 
 void main() {
   group('ProfileEditViewModel', () {
+    test(
+      'build: Repository の supportsAvatarUpload が canChangeAvatar に入る',
+      () async {
+        final repository = FakeProfileRepository()
+          ..supportsAvatarUpload = false;
+        final container = createContainer(
+          overrides: [profileRepositoryProvider.overrideWithValue(repository)],
+        );
+        container.listen(profileEditViewModelProvider, (_, _) {});
+
+        final state = await container.read(profileEditViewModelProvider.future);
+
+        expect(state.canChangeAvatar, false);
+      },
+    );
+
     test('saveDisplayName: 成功したら true を返し Repository が更新される', () async {
       final repository = FakeProfileRepository();
       final container = createContainer(

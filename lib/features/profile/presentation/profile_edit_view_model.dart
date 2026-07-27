@@ -10,8 +10,12 @@ part 'profile_edit_view_model.g.dart';
 class ProfileEditViewModel extends _$ProfileEditViewModel {
   @override
   Future<ProfileEditState> build() async {
-    final profile = await ref.watch(profileRepositoryProvider).fetchMyProfile();
-    return ProfileEditState(profile: profile);
+    final repository = ref.watch(profileRepositoryProvider);
+    final profile = await repository.fetchMyProfile();
+    return ProfileEditState(
+      profile: profile,
+      canChangeAvatar: repository.supportsAvatarUpload,
+    );
   }
 
   /// 保存に成功したら true を返す（Screen 側で画面を閉じる判断に使う）。

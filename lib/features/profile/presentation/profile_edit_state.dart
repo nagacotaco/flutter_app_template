@@ -7,6 +7,9 @@ part 'profile_edit_state.freezed.dart';
 abstract class ProfileEditState with _$ProfileEditState {
   const factory ProfileEditState({
     required Profile profile,
+
+    /// アバター変更ボタンを表示するか（ProfileRepository.supportsAvatarUpload）。
+    @Default(true) bool canChangeAvatar,
     @Default(false) bool isSaving,
     String? errorMessage,
   }) = _ProfileEditState;
