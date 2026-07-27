@@ -4,7 +4,7 @@
 機能追加・方針変更のたびにこのファイルを更新する（Living Document）。
 
 - 最終更新: 2026-07-27
-- ステータス: Phase 0/1/2/3/5 完了。Phase 4 はアプリアイコンの flavor 別出し分けのみ残
+- ステータス: Phase 0〜5 すべて完了。以降の追加は Backlog から選定する
 
 ---
 
@@ -98,7 +98,7 @@ lib/
 - [x] Supabase URL / anon key を --dart-define-from-file で切替（env/dev.json, env/prod.json → lib/core/env/app_env.dart）
 - [x] launch.json に flavor 別の起動構成を追加
 - [x] アプリ名の flavor 別出し分け（Template Dev / Template）
-- [ ] アプリアイコンの flavor 別出し分け
+- [x] アプリアイコンの flavor 別出し分け（flutter_launcher_icons。`assets/icon/icon.png`（本番）/ `icon_dev.png`（dev バッジ相当）はプレースホルダー。コピー先で差し替え → `fvm dart run flutter_launcher_icons`）
 
 ### Phase 5: CI・品質
 
@@ -121,7 +121,7 @@ lib/
 ## 5. テンプレートのコピー手順（運用）
 
 1. このリポジトリをコピー（`git clone` → `.git` 削除 → 新規リポジトリ化）
-2. アプリ名・Bundle ID をリネーム（Backlog のスクリプト完成までは Claude Code に指示）
+2. アプリ名・Bundle ID をリネーム（Backlog のスクリプト完成までは Claude Code に指示）。アプリアイコンは `assets/icon/icon.png`（本番）と `icon_dev.png`（dev）を差し替えて `fvm dart run flutter_launcher_icons` を実行
 3. 新規 Supabase プロジェクトを作成し、`supabase/migrations/` を適用、env ファイルにキー設定
 4. 不要な機能を削除（例:「電話番号ログインと Apple ログインを削除して」と Claude Code に指示）
 5. アプリ固有の開発を開始

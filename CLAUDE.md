@@ -18,6 +18,7 @@ flutter は必ず fvm 経由で実行する。
 - テスト: `fvm flutter test`
 - コード生成（freezed / riverpod / go_router）: `fvm dart run build_runner build --delete-conflicting-outputs`
 - 文言生成: `fvm flutter gen-l10n`
+- アプリアイコン再生成: `assets/icon/icon.png`（本番）/ `icon_dev.png`（dev）を差し替え → `fvm dart run flutter_launcher_icons`（flavor 別に自動生成）
 
 ## 構造ルール（要約。正は docs/ARCHITECTURE.md）
 

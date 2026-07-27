@@ -1,0 +1,6 @@
+# prod flavor のアプリアイコン。差し替え後は `fvm dart run flutter_launcher_icons` を実行する
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
+  remove_alpha_ios: true
