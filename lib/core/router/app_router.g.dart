@@ -9,19 +9,19 @@ part of 'app_router.dart';
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint, type=warning
 /// アプリ全体のルーター。
-/// Phase 2 で認証状態による redirect（未ログイン → ログイン画面）を追加する。
+/// 認証状態の変化で redirect を再評価する（未ログイン → ログイン画面）。
 
 @ProviderFor(router)
 final routerProvider = RouterProvider._();
 
 /// アプリ全体のルーター。
-/// Phase 2 で認証状態による redirect（未ログイン → ログイン画面）を追加する。
+/// 認証状態の変化で redirect を再評価する（未ログイン → ログイン画面）。
 
 final class RouterProvider
     extends $FunctionalProvider<GoRouter, GoRouter, GoRouter>
     with $Provider<GoRouter> {
   /// アプリ全体のルーター。
-  /// Phase 2 で認証状態による redirect（未ログイン → ログイン画面）を追加する。
+  /// 認証状態の変化で redirect を再評価する（未ログイン → ログイン画面）。
   RouterProvider._()
     : super(
         from: null,
@@ -55,4 +55,4 @@ final class RouterProvider
   }
 }
 
-String _$routerHash() => r'e633b63534f0b2efe74b4d98a6847c46cdd1c3ec';
+String _$routerHash() => r'6a0c1515bbd8c849ae5ba5d6ee8b22bf44f19c84';

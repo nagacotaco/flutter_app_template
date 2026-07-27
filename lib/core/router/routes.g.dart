@@ -6,7 +6,112 @@ part of 'routes.dart';
 // GoRouterGenerator
 // **************************************************************************
 
-List<RouteBase> get $appRoutes => [$appShellRoute];
+List<RouteBase> get $appRoutes => [$loginRoute, $appShellRoute];
+
+RouteBase get $loginRoute => GoRouteData.$route(
+  path: '/login',
+  hasOverriddenOnExit: false,
+  factory: $LoginRoute._fromState,
+  routes: [
+    GoRouteData.$route(
+      path: 'signup',
+      hasOverriddenOnExit: false,
+      factory: $SignupRoute._fromState,
+    ),
+    GoRouteData.$route(
+      path: 'password-reset',
+      hasOverriddenOnExit: false,
+      factory: $PasswordResetRoute._fromState,
+    ),
+    GoRouteData.$route(
+      path: 'phone-login',
+      hasOverriddenOnExit: false,
+      factory: $PhoneLoginRoute._fromState,
+    ),
+  ],
+);
+
+mixin $LoginRoute on GoRouteData {
+  static LoginRoute _fromState(GoRouterState state) => const LoginRoute();
+
+  @override
+  String get location => GoRouteData.$location('/login');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+mixin $SignupRoute on GoRouteData {
+  static SignupRoute _fromState(GoRouterState state) => const SignupRoute();
+
+  @override
+  String get location => GoRouteData.$location('/login/signup');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+mixin $PasswordResetRoute on GoRouteData {
+  static PasswordResetRoute _fromState(GoRouterState state) =>
+      const PasswordResetRoute();
+
+  @override
+  String get location => GoRouteData.$location('/login/password-reset');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+mixin $PhoneLoginRoute on GoRouteData {
+  static PhoneLoginRoute _fromState(GoRouterState state) =>
+      const PhoneLoginRoute();
+
+  @override
+  String get location => GoRouteData.$location('/login/phone-login');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
 
 RouteBase get $appShellRoute => StatefulShellRouteData.$route(
   factory: $AppShellRouteExtension._fromState,

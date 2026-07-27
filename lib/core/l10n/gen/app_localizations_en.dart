@@ -43,4 +43,69 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get retry => 'Retry';
+
+  @override
+  String get loginTitle => 'Log in';
+
+  @override
+  String get loginButton => 'Log in';
+
+  @override
+  String get authEmailLabel => 'Email';
+
+  @override
+  String get authPasswordLabel => 'Password';
+
+  @override
+  String get loginWithGoogle => 'Continue with Google';
+
+  @override
+  String get loginWithApple => 'Continue with Apple';
+
+  @override
+  String get loginToSignup => 'Create an account';
+
+  @override
+  String get loginToPasswordReset => 'Forgot your password?';
+
+  @override
+  String get loginToPhoneLogin => 'Log in with phone number';
+
+  @override
+  String get signupTitle => 'Sign up';
+
+  @override
+  String get signupButton => 'Sign up';
+
+  @override
+  String get signupEmailSent =>
+      'A confirmation email has been sent. Follow the link in the email to complete sign up.';
+
+  @override
+  String get passwordResetTitle => 'Reset password';
+
+  @override
+  String get passwordResetButton => 'Send reset email';
+
+  @override
+  String get passwordResetSent =>
+      'A password reset email has been sent. Follow the link in the email to reset your password.';
+
+  @override
+  String get phoneLoginTitle => 'Phone login';
+
+  @override
+  String get authPhoneLabel => 'Phone number (+81... format)';
+
+  @override
+  String get authOtpLabel => 'Verification code';
+
+  @override
+  String get phoneSendOtpButton => 'Send verification code';
+
+  @override
+  String get phoneVerifyButton => 'Verify and log in';
+
+  @override
+  String get phoneBackToInput => 'Change phone number';
 }

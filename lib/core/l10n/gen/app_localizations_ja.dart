@@ -43,4 +43,67 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get retry => '再試行';
+
+  @override
+  String get loginTitle => 'ログイン';
+
+  @override
+  String get loginButton => 'ログイン';
+
+  @override
+  String get authEmailLabel => 'メールアドレス';
+
+  @override
+  String get authPasswordLabel => 'パスワード';
+
+  @override
+  String get loginWithGoogle => 'Googleでログイン';
+
+  @override
+  String get loginWithApple => 'Appleでログイン';
+
+  @override
+  String get loginToSignup => 'アカウント登録はこちら';
+
+  @override
+  String get loginToPasswordReset => 'パスワードをお忘れの方';
+
+  @override
+  String get loginToPhoneLogin => '電話番号でログイン';
+
+  @override
+  String get signupTitle => 'アカウント登録';
+
+  @override
+  String get signupButton => '登録する';
+
+  @override
+  String get signupEmailSent => '確認メールを送信しました。メール内のリンクから登録を完了してください。';
+
+  @override
+  String get passwordResetTitle => 'パスワード再設定';
+
+  @override
+  String get passwordResetButton => '再設定メールを送信';
+
+  @override
+  String get passwordResetSent => 'パスワード再設定メールを送信しました。メール内のリンクから再設定してください。';
+
+  @override
+  String get phoneLoginTitle => '電話番号ログイン';
+
+  @override
+  String get authPhoneLabel => '電話番号（+81... 形式）';
+
+  @override
+  String get authOtpLabel => '認証コード';
+
+  @override
+  String get phoneSendOtpButton => '認証コードを送信';
+
+  @override
+  String get phoneVerifyButton => '認証してログイン';
+
+  @override
+  String get phoneBackToInput => '電話番号を変更する';
 }

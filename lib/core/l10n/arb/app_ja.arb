@@ -47,5 +47,89 @@
   "retry": "再試行",
   "@retry": {
     "description": "再試行ボタン"
+  },
+  "loginTitle": "ログイン",
+  "@loginTitle": {
+    "description": "ログイン画面のタイトル"
+  },
+  "loginButton": "ログイン",
+  "@loginButton": {
+    "description": "ログイン実行ボタン"
+  },
+  "authEmailLabel": "メールアドレス",
+  "@authEmailLabel": {
+    "description": "認証: メールアドレス入力欄のラベル"
+  },
+  "authPasswordLabel": "パスワード",
+  "@authPasswordLabel": {
+    "description": "認証: パスワード入力欄のラベル"
+  },
+  "loginWithGoogle": "Googleでログイン",
+  "@loginWithGoogle": {
+    "description": "Google ログインボタン"
+  },
+  "loginWithApple": "Appleでログイン",
+  "@loginWithApple": {
+    "description": "Apple ログインボタン"
+  },
+  "loginToSignup": "アカウント登録はこちら",
+  "@loginToSignup": {
+    "description": "ログイン画面からサインアップ画面へのリンク"
+  },
+  "loginToPasswordReset": "パスワードをお忘れの方",
+  "@loginToPasswordReset": {
+    "description": "ログイン画面からパスワード再設定画面へのリンク"
+  },
+  "loginToPhoneLogin": "電話番号でログイン",
+  "@loginToPhoneLogin": {
+    "description": "ログイン画面から電話番号ログイン画面へのリンク"
+  },
+  "signupTitle": "アカウント登録",
+  "@signupTitle": {
+    "description": "サインアップ画面のタイトル"
+  },
+  "signupButton": "登録する",
+  "@signupButton": {
+    "description": "サインアップ実行ボタン"
+  },
+  "signupEmailSent": "確認メールを送信しました。メール内のリンクから登録を完了してください。",
+  "@signupEmailSent": {
+    "description": "サインアップ後の確認メール案内"
+  },
+  "passwordResetTitle": "パスワード再設定",
+  "@passwordResetTitle": {
+    "description": "パスワード再設定画面のタイトル"
+  },
+  "passwordResetButton": "再設定メールを送信",
+  "@passwordResetButton": {
+    "description": "パスワード再設定メール送信ボタン"
+  },
+  "passwordResetSent": "パスワード再設定メールを送信しました。メール内のリンクから再設定してください。",
+  "@passwordResetSent": {
+    "description": "パスワード再設定メール送信後の案内"
+  },
+  "phoneLoginTitle": "電話番号ログイン",
+  "@phoneLoginTitle": {
+    "description": "電話番号ログイン画面のタイトル"
+  },
+  "authPhoneLabel": "電話番号（+81... 形式）",
+  "@authPhoneLabel": {
+    "description": "認証: 電話番号入力欄のラベル"
+  },
+  "authOtpLabel": "認証コード",
+  "@authOtpLabel": {
+    "description": "認証: SMS 認証コード入力欄のラベル"
+  },
+  "phoneSendOtpButton": "認証コードを送信",
+  "@phoneSendOtpButton": {
+    "description": "SMS 認証コード送信ボタン"
+  },
+  "phoneVerifyButton": "認証してログイン",
+  "@phoneVerifyButton": {
+    "description": "SMS 認証コード検証ボタン"
+  },
+  "phoneBackToInput": "電話番号を変更する",
+  "@phoneBackToInput": {
+    "description": "OTP 入力から電話番号入力へ戻るリンク"
   }
 }

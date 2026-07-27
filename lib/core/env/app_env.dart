@@ -12,5 +12,16 @@ abstract final class AppEnv {
     'SUPABASE_ANON_KEY',
   );
 
+  /// Google ログイン用。Google Cloud Console の OAuth クライアント ID
+  /// （ウェブアプリケーション）。Supabase 側にも同じ ID を設定する。
+  static const String googleWebClientId = String.fromEnvironment(
+    'GOOGLE_WEB_CLIENT_ID',
+  );
+
+  /// Google ログイン用。OAuth クライアント ID（iOS）。
+  static const String googleIosClientId = String.fromEnvironment(
+    'GOOGLE_IOS_CLIENT_ID',
+  );
+
   static bool get isProd => flavor == 'prod';
 }

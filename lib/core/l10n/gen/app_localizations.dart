@@ -169,6 +169,132 @@ abstract class AppLocalizations {
   /// In ja, this message translates to:
   /// **'再試行'**
   String get retry;
+
+  /// ログイン画面のタイトル
+  ///
+  /// In ja, this message translates to:
+  /// **'ログイン'**
+  String get loginTitle;
+
+  /// ログイン実行ボタン
+  ///
+  /// In ja, this message translates to:
+  /// **'ログイン'**
+  String get loginButton;
+
+  /// 認証: メールアドレス入力欄のラベル
+  ///
+  /// In ja, this message translates to:
+  /// **'メールアドレス'**
+  String get authEmailLabel;
+
+  /// 認証: パスワード入力欄のラベル
+  ///
+  /// In ja, this message translates to:
+  /// **'パスワード'**
+  String get authPasswordLabel;
+
+  /// Google ログインボタン
+  ///
+  /// In ja, this message translates to:
+  /// **'Googleでログイン'**
+  String get loginWithGoogle;
+
+  /// Apple ログインボタン
+  ///
+  /// In ja, this message translates to:
+  /// **'Appleでログイン'**
+  String get loginWithApple;
+
+  /// ログイン画面からサインアップ画面へのリンク
+  ///
+  /// In ja, this message translates to:
+  /// **'アカウント登録はこちら'**
+  String get loginToSignup;
+
+  /// ログイン画面からパスワード再設定画面へのリンク
+  ///
+  /// In ja, this message translates to:
+  /// **'パスワードをお忘れの方'**
+  String get loginToPasswordReset;
+
+  /// ログイン画面から電話番号ログイン画面へのリンク
+  ///
+  /// In ja, this message translates to:
+  /// **'電話番号でログイン'**
+  String get loginToPhoneLogin;
+
+  /// サインアップ画面のタイトル
+  ///
+  /// In ja, this message translates to:
+  /// **'アカウント登録'**
+  String get signupTitle;
+
+  /// サインアップ実行ボタン
+  ///
+  /// In ja, this message translates to:
+  /// **'登録する'**
+  String get signupButton;
+
+  /// サインアップ後の確認メール案内
+  ///
+  /// In ja, this message translates to:
+  /// **'確認メールを送信しました。メール内のリンクから登録を完了してください。'**
+  String get signupEmailSent;
+
+  /// パスワード再設定画面のタイトル
+  ///
+  /// In ja, this message translates to:
+  /// **'パスワード再設定'**
+  String get passwordResetTitle;
+
+  /// パスワード再設定メール送信ボタン
+  ///
+  /// In ja, this message translates to:
+  /// **'再設定メールを送信'**
+  String get passwordResetButton;
+
+  /// パスワード再設定メール送信後の案内
+  ///
+  /// In ja, this message translates to:
+  /// **'パスワード再設定メールを送信しました。メール内のリンクから再設定してください。'**
+  String get passwordResetSent;
+
+  /// 電話番号ログイン画面のタイトル
+  ///
+  /// In ja, this message translates to:
+  /// **'電話番号ログイン'**
+  String get phoneLoginTitle;
+
+  /// 認証: 電話番号入力欄のラベル
+  ///
+  /// In ja, this message translates to:
+  /// **'電話番号（+81... 形式）'**
+  String get authPhoneLabel;
+
+  /// 認証: SMS 認証コード入力欄のラベル
+  ///
+  /// In ja, this message translates to:
+  /// **'認証コード'**
+  String get authOtpLabel;
+
+  /// SMS 認証コード送信ボタン
+  ///
+  /// In ja, this message translates to:
+  /// **'認証コードを送信'**
+  String get phoneSendOtpButton;
+
+  /// SMS 認証コード検証ボタン
+  ///
+  /// In ja, this message translates to:
+  /// **'認証してログイン'**
+  String get phoneVerifyButton;
+
+  /// OTP 入力から電話番号入力へ戻るリンク
+  ///
+  /// In ja, this message translates to:
+  /// **'電話番号を変更する'**
+  String get phoneBackToInput;
 }
 
 class _AppLocalizationsDelegate

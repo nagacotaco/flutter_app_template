@@ -78,12 +78,12 @@ lib/
 
 ### Phase 2: 認証（Supabase）
 
-- [ ] Supabase 初期化 + 認証状態を監視する Riverpod プロバイダ
-- [ ] 認証状態による redirect（未ログイン → ログイン画面）
-- [ ] メール+パスワード: ログイン / サインアップ / パスワードリセット
-- [ ] 電話番号ログイン（OTP）。SMS プロバイダ未契約でも動作確認できるよう Supabase のテスト OTP を利用
-- [ ] Google ログイン / Apple ログイン（sign_in_with_apple + google_sign_in → Supabase OAuth）
-- [ ] ログアウト / アカウント削除
+- [x] Supabase 初期化 + 認証状態を監視する Riverpod プロバイダ（core/supabase, core/auth）
+- [x] 認証状態による redirect（未ログイン → ログイン画面。core/router/app_router.dart）
+- [x] メール+パスワード: ログイン / サインアップ / パスワードリセット（features/auth）
+- [x] 電話番号ログイン（OTP）。SMS プロバイダ未契約でも動作確認できるよう Supabase のテスト OTP を利用
+- [x] Google ログイン / Apple ログイン（ネイティブサインイン → signInWithIdToken。設定手順は lib/features/auth/README.md）
+- [x] ログアウト / アカウント削除（AuthRepository に実装。画面は Phase 3 の設定画面に配置）
 
 ### Phase 3: プロフィール・設定
 

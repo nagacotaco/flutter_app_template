@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_template/core/router/app_shell.dart';
+import 'package:flutter_app_template/features/auth/presentation/login_screen.dart';
+import 'package:flutter_app_template/features/auth/presentation/password_reset_screen.dart';
+import 'package:flutter_app_template/features/auth/presentation/phone_login_screen.dart';
+import 'package:flutter_app_template/features/auth/presentation/signup_screen.dart';
 import 'package:flutter_app_template/features/home/presentation/home_screen.dart';
 import 'package:flutter_app_template/features/items/presentation/item_detail_screen.dart';
 import 'package:flutter_app_template/features/items/presentation/item_list_screen.dart';
@@ -7,6 +11,48 @@ import 'package:flutter_app_template/features/settings/presentation/settings_scr
 import 'package:go_router/go_router.dart';
 
 part 'routes.g.dart';
+
+/// 認証画面群（シェル外）。未ログイン時は app_router.dart の redirect で
+/// `/login` 配下へ誘導される。
+@TypedGoRoute<LoginRoute>(
+  path: '/login',
+  routes: [
+    TypedGoRoute<SignupRoute>(path: 'signup'),
+    TypedGoRoute<PasswordResetRoute>(path: 'password-reset'),
+    TypedGoRoute<PhoneLoginRoute>(path: 'phone-login'),
+  ],
+)
+class LoginRoute extends GoRouteData with $LoginRoute {
+  const LoginRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const LoginScreen();
+}
+
+class SignupRoute extends GoRouteData with $SignupRoute {
+  const SignupRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const SignupScreen();
+}
+
+class PasswordResetRoute extends GoRouteData with $PasswordResetRoute {
+  const PasswordResetRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const PasswordResetScreen();
+}
+
+class PhoneLoginRoute extends GoRouteData with $PhoneLoginRoute {
+  const PhoneLoginRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const PhoneLoginScreen();
+}
 
 /// ルート定義（Typed Routes）。
 /// feature を追加/削除するときは、このファイルの該当ブランチと
