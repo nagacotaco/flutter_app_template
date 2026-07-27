@@ -295,6 +295,96 @@ abstract class AppLocalizations {
   /// In ja, this message translates to:
   /// **'電話番号を変更する'**
   String get phoneBackToInput;
+
+  /// プロフィール画面のタイトル・設定画面の項目名
+  ///
+  /// In ja, this message translates to:
+  /// **'プロフィール'**
+  String get profileTitle;
+
+  /// プロフィール編集画面のタイトル・編集ボタン
+  ///
+  /// In ja, this message translates to:
+  /// **'プロフィール編集'**
+  String get profileEditTitle;
+
+  /// プロフィール: 表示名のラベル
+  ///
+  /// In ja, this message translates to:
+  /// **'表示名'**
+  String get profileDisplayNameLabel;
+
+  /// プロフィール編集の保存ボタン
+  ///
+  /// In ja, this message translates to:
+  /// **'保存'**
+  String get profileSaveButton;
+
+  /// アバター画像の変更ボタン
+  ///
+  /// In ja, this message translates to:
+  /// **'アバター画像を変更'**
+  String get profileChangeAvatarButton;
+
+  /// プロフィール項目が未設定のときの表示
+  ///
+  /// In ja, this message translates to:
+  /// **'未設定'**
+  String get profileNotSet;
+
+  /// 設定: 利用規約リンク
+  ///
+  /// In ja, this message translates to:
+  /// **'利用規約'**
+  String get settingsTermsOfService;
+
+  /// 設定: プライバシーポリシーリンク
+  ///
+  /// In ja, this message translates to:
+  /// **'プライバシーポリシー'**
+  String get settingsPrivacyPolicy;
+
+  /// 設定: アプリバージョン表示の項目名
+  ///
+  /// In ja, this message translates to:
+  /// **'アプリバージョン'**
+  String get settingsVersion;
+
+  /// 設定: ログアウト
+  ///
+  /// In ja, this message translates to:
+  /// **'ログアウト'**
+  String get settingsLogout;
+
+  /// 設定: 退会
+  ///
+  /// In ja, this message translates to:
+  /// **'退会（アカウント削除）'**
+  String get settingsDeleteAccount;
+
+  /// 退会確認ダイアログのタイトル
+  ///
+  /// In ja, this message translates to:
+  /// **'退会しますか？'**
+  String get settingsDeleteAccountConfirmTitle;
+
+  /// 退会確認ダイアログの本文
+  ///
+  /// In ja, this message translates to:
+  /// **'アカウントとすべてのデータが削除されます。この操作は取り消せません。'**
+  String get settingsDeleteAccountConfirmMessage;
+
+  /// 退会確認ダイアログの実行ボタン
+  ///
+  /// In ja, this message translates to:
+  /// **'退会する'**
+  String get settingsDeleteAccountConfirmButton;
+
+  /// 共通: キャンセルボタン
+  ///
+  /// In ja, this message translates to:
+  /// **'キャンセル'**
+  String get commonCancel;
 }
 
 class _AppLocalizationsDelegate

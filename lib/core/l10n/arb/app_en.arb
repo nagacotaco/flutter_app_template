@@ -32,5 +32,20 @@
   "authOtpLabel": "Verification code",
   "phoneSendOtpButton": "Send verification code",
   "phoneVerifyButton": "Verify and log in",
-  "phoneBackToInput": "Change phone number"
+  "phoneBackToInput": "Change phone number",
+  "profileTitle": "Profile",
+  "profileEditTitle": "Edit profile",
+  "profileDisplayNameLabel": "Display name",
+  "profileSaveButton": "Save",
+  "profileChangeAvatarButton": "Change avatar",
+  "profileNotSet": "Not set",
+  "settingsTermsOfService": "Terms of Service",
+  "settingsPrivacyPolicy": "Privacy Policy",
+  "settingsVersion": "App version",
+  "settingsLogout": "Log out",
+  "settingsDeleteAccount": "Delete account",
+  "settingsDeleteAccountConfirmTitle": "Delete account?",
+  "settingsDeleteAccountConfirmMessage": "Your account and all data will be deleted. This cannot be undone.",
+  "settingsDeleteAccountConfirmButton": "Delete",
+  "commonCancel": "Cancel"
 }

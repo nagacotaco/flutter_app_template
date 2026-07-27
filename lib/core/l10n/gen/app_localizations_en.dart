@@ -108,4 +108,50 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get phoneBackToInput => 'Change phone number';
+
+  @override
+  String get profileTitle => 'Profile';
+
+  @override
+  String get profileEditTitle => 'Edit profile';
+
+  @override
+  String get profileDisplayNameLabel => 'Display name';
+
+  @override
+  String get profileSaveButton => 'Save';
+
+  @override
+  String get profileChangeAvatarButton => 'Change avatar';
+
+  @override
+  String get profileNotSet => 'Not set';
+
+  @override
+  String get settingsTermsOfService => 'Terms of Service';
+
+  @override
+  String get settingsPrivacyPolicy => 'Privacy Policy';
+
+  @override
+  String get settingsVersion => 'App version';
+
+  @override
+  String get settingsLogout => 'Log out';
+
+  @override
+  String get settingsDeleteAccount => 'Delete account';
+
+  @override
+  String get settingsDeleteAccountConfirmTitle => 'Delete account?';
+
+  @override
+  String get settingsDeleteAccountConfirmMessage =>
+      'Your account and all data will be deleted. This cannot be undone.';
+
+  @override
+  String get settingsDeleteAccountConfirmButton => 'Delete';
+
+  @override
+  String get commonCancel => 'Cancel';
 }

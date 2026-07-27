@@ -131,5 +131,65 @@
   "phoneBackToInput": "電話番号を変更する",
   "@phoneBackToInput": {
     "description": "OTP 入力から電話番号入力へ戻るリンク"
+  },
+  "profileTitle": "プロフィール",
+  "@profileTitle": {
+    "description": "プロフィール画面のタイトル・設定画面の項目名"
+  },
+  "profileEditTitle": "プロフィール編集",
+  "@profileEditTitle": {
+    "description": "プロフィール編集画面のタイトル・編集ボタン"
+  },
+  "profileDisplayNameLabel": "表示名",
+  "@profileDisplayNameLabel": {
+    "description": "プロフィール: 表示名のラベル"
+  },
+  "profileSaveButton": "保存",
+  "@profileSaveButton": {
+    "description": "プロフィール編集の保存ボタン"
+  },
+  "profileChangeAvatarButton": "アバター画像を変更",
+  "@profileChangeAvatarButton": {
+    "description": "アバター画像の変更ボタン"
+  },
+  "profileNotSet": "未設定",
+  "@profileNotSet": {
+    "description": "プロフィール項目が未設定のときの表示"
+  },
+  "settingsTermsOfService": "利用規約",
+  "@settingsTermsOfService": {
+    "description": "設定: 利用規約リンク"
+  },
+  "settingsPrivacyPolicy": "プライバシーポリシー",
+  "@settingsPrivacyPolicy": {
+    "description": "設定: プライバシーポリシーリンク"
+  },
+  "settingsVersion": "アプリバージョン",
+  "@settingsVersion": {
+    "description": "設定: アプリバージョン表示の項目名"
+  },
+  "settingsLogout": "ログアウト",
+  "@settingsLogout": {
+    "description": "設定: ログアウト"
+  },
+  "settingsDeleteAccount": "退会（アカウント削除）",
+  "@settingsDeleteAccount": {
+    "description": "設定: 退会"
+  },
+  "settingsDeleteAccountConfirmTitle": "退会しますか？",
+  "@settingsDeleteAccountConfirmTitle": {
+    "description": "退会確認ダイアログのタイトル"
+  },
+  "settingsDeleteAccountConfirmMessage": "アカウントとすべてのデータが削除されます。この操作は取り消せません。",
+  "@settingsDeleteAccountConfirmMessage": {
+    "description": "退会確認ダイアログの本文"
+  },
+  "settingsDeleteAccountConfirmButton": "退会する",
+  "@settingsDeleteAccountConfirmButton": {
+    "description": "退会確認ダイアログの実行ボタン"
+  },
+  "commonCancel": "キャンセル",
+  "@commonCancel": {
+    "description": "共通: キャンセルボタン"
   }
 }

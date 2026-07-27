@@ -4,6 +4,9 @@ include: package:flutter_lints/flutter.yaml
 analyzer:
   plugins:
     - custom_lint # riverpod_lint を有効化する（実行: fvm dart run custom_lint）
+  errors:
+    # freezed のコンストラクタ引数に @JsonKey を付けるため（freezed 公式推奨）
+    invalid_annotation_target: ignore
   exclude:
     - "**/*.g.dart"
     - "**/*.freezed.dart"

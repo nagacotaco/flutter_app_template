@@ -7,6 +7,8 @@ import 'package:flutter_app_template/features/auth/presentation/signup_screen.da
 import 'package:flutter_app_template/features/home/presentation/home_screen.dart';
 import 'package:flutter_app_template/features/items/presentation/item_detail_screen.dart';
 import 'package:flutter_app_template/features/items/presentation/item_list_screen.dart';
+import 'package:flutter_app_template/features/profile/presentation/profile_edit_screen.dart';
+import 'package:flutter_app_template/features/profile/presentation/profile_screen.dart';
 import 'package:flutter_app_template/features/settings/presentation/settings_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -71,7 +73,17 @@ class PhoneLoginRoute extends GoRouteData with $PhoneLoginRoute {
       ],
     ),
     TypedStatefulShellBranch<SettingsBranch>(
-      routes: [TypedGoRoute<SettingsRoute>(path: '/settings')],
+      routes: [
+        TypedGoRoute<SettingsRoute>(
+          path: '/settings',
+          routes: [
+            TypedGoRoute<ProfileRoute>(
+              path: 'profile',
+              routes: [TypedGoRoute<ProfileEditRoute>(path: 'edit')],
+            ),
+          ],
+        ),
+      ],
     ),
   ],
 )
@@ -132,4 +144,20 @@ class SettingsRoute extends GoRouteData with $SettingsRoute {
   @override
   Widget build(BuildContext context, GoRouterState state) =>
       const SettingsScreen();
+}
+
+class ProfileRoute extends GoRouteData with $ProfileRoute {
+  const ProfileRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const ProfileScreen();
+}
+
+class ProfileEditRoute extends GoRouteData with $ProfileEditRoute {
+  const ProfileEditRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const ProfileEditScreen();
 }

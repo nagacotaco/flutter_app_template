@@ -106,4 +106,50 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get phoneBackToInput => '電話番号を変更する';
+
+  @override
+  String get profileTitle => 'プロフィール';
+
+  @override
+  String get profileEditTitle => 'プロフィール編集';
+
+  @override
+  String get profileDisplayNameLabel => '表示名';
+
+  @override
+  String get profileSaveButton => '保存';
+
+  @override
+  String get profileChangeAvatarButton => 'アバター画像を変更';
+
+  @override
+  String get profileNotSet => '未設定';
+
+  @override
+  String get settingsTermsOfService => '利用規約';
+
+  @override
+  String get settingsPrivacyPolicy => 'プライバシーポリシー';
+
+  @override
+  String get settingsVersion => 'アプリバージョン';
+
+  @override
+  String get settingsLogout => 'ログアウト';
+
+  @override
+  String get settingsDeleteAccount => '退会（アカウント削除）';
+
+  @override
+  String get settingsDeleteAccountConfirmTitle => '退会しますか？';
+
+  @override
+  String get settingsDeleteAccountConfirmMessage =>
+      'アカウントとすべてのデータが削除されます。この操作は取り消せません。';
+
+  @override
+  String get settingsDeleteAccountConfirmButton => '退会する';
+
+  @override
+  String get commonCancel => 'キャンセル';
 }

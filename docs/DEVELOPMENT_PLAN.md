@@ -4,7 +4,7 @@
 機能追加・方針変更のたびにこのファイルを更新する（Living Document）。
 
 - 最終更新: 2026-07-27
-- ステータス: Phase 0/1/5 完了、Phase 3/4 一部完了。Phase 2（認証）はユーザー判断で保留中
+- ステータス: Phase 0/1/2/3/5 完了。Phase 4 はアプリアイコンの flavor 別出し分けのみ残
 
 ---
 
@@ -87,10 +87,10 @@ lib/
 
 ### Phase 3: プロフィール・設定
 
-- [ ] profiles テーブル定義（Supabase マイグレーション SQL をリポジトリ管理: `supabase/migrations/`）
-- [ ] プロフィール画面（表示・編集・アバター画像アップロード = Supabase Storage）
+- [x] profiles テーブル定義（`supabase/migrations/20260727000000_profiles.sql`。RLS・サインアップトリガー・退会 RPC・avatars バケット込み）
+- [x] プロフィール画面（表示・編集・アバター画像アップロード = Supabase Storage。features/profile、/settings/profile）
 - [x] 設定画面: テーマ切替・言語切替（core/settings、shared_preferences 永続化）
-- [ ] 設定画面の残り: 利用規約/プライバシーポリシーリンク、アプリバージョン表示、ログアウト、退会（認証導入後）
+- [x] 設定画面の残り: 利用規約/プライバシーポリシーリンク（core/constants/app_links.dart は要差し替え）、アプリバージョン表示、ログアウト、退会
 
 ### Phase 4: flavor と環境変数
 

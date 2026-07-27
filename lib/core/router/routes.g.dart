@@ -147,6 +147,20 @@ RouteBase get $appShellRoute => StatefulShellRouteData.$route(
           path: '/settings',
           hasOverriddenOnExit: false,
           factory: $SettingsRoute._fromState,
+          routes: [
+            GoRouteData.$route(
+              path: 'profile',
+              hasOverriddenOnExit: false,
+              factory: $ProfileRoute._fromState,
+              routes: [
+                GoRouteData.$route(
+                  path: 'edit',
+                  hasOverriddenOnExit: false,
+                  factory: $ProfileEditRoute._fromState,
+                ),
+              ],
+            ),
+          ],
         ),
       ],
     ),
@@ -226,6 +240,47 @@ mixin $SettingsRoute on GoRouteData {
 
   @override
   String get location => GoRouteData.$location('/settings');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+mixin $ProfileRoute on GoRouteData {
+  static ProfileRoute _fromState(GoRouterState state) => const ProfileRoute();
+
+  @override
+  String get location => GoRouteData.$location('/settings/profile');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+mixin $ProfileEditRoute on GoRouteData {
+  static ProfileEditRoute _fromState(GoRouterState state) =>
+      const ProfileEditRoute();
+
+  @override
+  String get location => GoRouteData.$location('/settings/profile/edit');
 
   @override
   void go(BuildContext context) => context.go(location);
