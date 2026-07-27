@@ -17,6 +17,7 @@ main.dart の初期化と AuthRepository の実装が連動して切り替わる
 ## 動作に必要な設定（Firebase 使用時）
 
 - **初期設定**: `flutterfire configure` 済み（`lib/core/firebase/firebase_options_{dev,prod}.dart`）。Dart オプション初期化のため google-services.json / GoogleService-Info.plist は不要。コピー先アプリでは Bundle ID 変更後に `flutterfire configure` を再実行して2ファイルを再生成する
+- **iOS 最低バージョン**: Firebase iOS SDK の要件で deployment target は 15.0 以上（ios/Runner.xcodeproj に設定済み。13.0 に下げると Firebase 使用時にビルドできない）
 - **メール**: Firebase Console > Authentication > Sign-in method で Email/Password を有効化
 - **電話番号**: 同 Phone を有効化。SMS 契約不要のテスト電話番号 + 固定 OTP を登録して確認する（実 SMS は Blaze プラン必須）。iOS 実機で本番利用する場合は APNs 設定が別途必要
 - **Google**: 同 Google を有効化。表示される Web クライアント ID を `env/*.json` の `GOOGLE_WEB_CLIENT_ID` に設定（Android で必須）。iOS は `GOOGLE_IOS_CLIENT_ID` も設定し、Info.plist に reversed client ID の URL scheme を追加

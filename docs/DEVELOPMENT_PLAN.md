@@ -28,7 +28,7 @@
 | Flutterバージョン管理 | **fvm** | .fvmrc をリポジトリに含める |
 | 多言語 | **l10n の下地**（日本語ベース） | arb ファイル構成。文言のコード直書き禁止 |
 | CI | **GitHub Actions** | analyze + test の最小構成から |
-| 対象プラットフォーム | iOS / Android | web/desktop ディレクトリは削除（必要なら再生成できる） |
+| 対象プラットフォーム | iOS / Android | web/desktop ディレクトリは削除（必要なら再生成できる）。iOS deployment target は 15.0（Firebase iOS SDK の最低要件） |
 
 ## 3. ディレクトリ構成方針（feature-first）
 
