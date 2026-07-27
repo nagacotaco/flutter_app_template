@@ -3,8 +3,8 @@
 このドキュメントはテンプレートの「何を入れるか」「どの順で作るか」「どう運用するか」を管理する唯一の計画書。
 機能追加・方針変更のたびにこのファイルを更新する（Living Document）。
 
-- 最終更新: 2026-07-26
-- ステータス: Phase 0/1/4/5 完了、Phase 3 一部完了。Phase 2（認証）はユーザー判断で保留中
+- 最終更新: 2026-07-27
+- ステータス: Phase 0/1/5 完了、Phase 3/4 一部完了。Phase 2（認証）はユーザー判断で保留中
 
 ---
 
@@ -103,7 +103,8 @@ lib/
 ### Phase 5: CI・品質
 
 - [x] GitHub Actions: format check + analyze + custom_lint + test（.github/workflows/ci.yaml）
-- [ ] 基本のテスト雛形（widget テストは1本あり。Riverpod ViewModel のユニットテスト雛形が未）
+- [x] 基本のテスト雛形（widget テスト1本 + ViewModel ユニットテスト見本 `test/features/items/`。書き方は docs/ARCHITECTURE.md §6）
+- [x] 各 feature 直下に削除手順 README.md（セクション3の削除容易性ルールの実装）
 
 ### Backlog（今後の候補。着手順は都度このドキュメントで決める）
 

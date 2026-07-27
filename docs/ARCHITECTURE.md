@@ -176,7 +176,35 @@ features/signup/presentation/
 
 1つでも状態や非同期取得が入った時点で、3ファイル構成に移行すること。中間形態（Screen 内に状態を持つ等）を作らない。
 
-## 6. その他の禁止事項
+## 6. ViewModel のユニットテスト
+
+ViewModel を追加したら、対応するユニットテストを `test/features/<feature>/presentation/` に置く（lib と同じディレクトリ構成をミラーする）。見本は `test/features/items/`。
+
+書き方の標準パターン:
+
+- Repository は**手書きの fake** に差し替える（mockito 等のモックパッケージは使わない）。fake は `test/features/<feature>/fake_xxx_repository.dart` に置く
+- コンテナは `test/helpers/create_container.dart` の `createContainer(overrides: [...])` で作る（テスト終了時に自動 dispose。Riverpod 3 のビルド失敗時自動リトライも無効化済み）
+- `@riverpod` は autoDispose のため、`container.listen(provider, (_, _) {})` で provider を保持してから検証する
+- 初期表示は `await container.read(provider.future)` で取得した State を検証する
+- 更新系メソッドは notifier 経由で呼び、`container.read(provider)` の AsyncValue を検証する。失敗系（`AsyncError` になること）も必ず1本書く
+
+```dart
+test('build: Repository から取得したアイテムが state に入る', () async {
+  final repository = FakeItemRepository();
+  final container = createContainer(
+    overrides: [itemRepositoryProvider.overrideWithValue(repository)],
+  );
+  container.listen(itemListViewModelProvider, (_, _) {});
+
+  final state = await container.read(itemListViewModelProvider.future);
+
+  expect(state.items, FakeItemRepository.defaultItems);
+});
+```
+
+注意: Riverpod 3 では `Override` 型は `package:hooks_riverpod/misc.dart` からエクスポートされる（`hooks_riverpod.dart` には含まれない）。
+
+## 7. その他の禁止事項
 
 - feature をまたぐ import（`features/a/` から `features/b/` を import）は禁止。画面遷移は router 経由、データ共有は `core/` または Repository 経由
 - Screen から Repository・Supabase クライアントを直接呼ばない。必ず ViewModel を経由する
