@@ -11,6 +11,8 @@ analyzer:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
     - "lib/core/l10n/gen/**"
+    # SwiftPM が build/ 配下に展開するパッケージソースを解析対象から外す
+    - "build/**"
   language:
     strict-casts: true
     strict-inference: true

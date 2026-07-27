@@ -2,7 +2,6 @@ import 'package:flutter_app_template/core/auth/auth_repository.dart';
 import 'package:flutter_app_template/features/settings/presentation/settings_view_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../helpers/create_container.dart';
 import '../../auth/fake_auth_repository.dart';
@@ -53,7 +52,7 @@ void main() {
 
     test('deleteAccount: 失敗したら errorMessage が入る', () async {
       final repository = FakeAuthRepository()
-        ..nextError = const AuthException('delete failed');
+        ..nextError = const AuthFailure('delete failed');
       final container = createContainer(
         overrides: [authRepositoryProvider.overrideWithValue(repository)],
       );

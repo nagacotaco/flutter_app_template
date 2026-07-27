@@ -1,124 +1,67 @@
-import 'dart:convert';
-
-import 'package:crypto/crypto.dart';
-import 'package:flutter_app_template/core/env/app_env.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_app_template/core/auth/app_user.dart';
+import 'package:flutter_app_template/core/auth/firebase_auth_repository.dart';
+import 'package:flutter_app_template/core/auth/supabase_auth_repository.dart';
+import 'package:flutter_app_template/core/backend.dart';
 import 'package:flutter_app_template/core/supabase/supabase_provider.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:sign_in_with_apple/sign_in_with_apple.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'auth_repository.g.dart';
 
+/// core/backend.dart の設定に応じた実装を返す。
+/// 選択されなかった側の依存（Supabase クライアント等）には触れない。
 @Riverpod(keepAlive: true)
-AuthRepository authRepository(Ref ref) =>
-    AuthRepository(ref.watch(supabaseClientProvider));
+AuthRepository authRepository(Ref ref) => switch (appBackend) {
+  AppBackend.supabase => SupabaseAuthRepository(
+    ref.watch(supabaseClientProvider),
+  ),
+  AppBackend.firebase => FirebaseAuthRepository(FirebaseAuth.instance),
+};
 
-/// 認証操作の Repository。
+/// 認証エラーの共通例外。バックエンド固有の例外は各実装がこれに変換する。
+/// [message] はそのまま画面のエラー表示に使われる。
+class AuthFailure implements Exception {
+  const AuthFailure(this.message);
+
+  final String message;
+
+  @override
+  String toString() => message;
+}
+
+/// 認証操作の抽象。Supabase / Firebase の実装を core/backend.dart で切り替える。
 /// auth / settings / profile の複数 feature から使うため core に置く
 /// （docs/ARCHITECTURE.md: 複数 feature から使う Repository は core）。
-class AuthRepository {
-  AuthRepository(this._client);
+abstract interface class AuthRepository {
+  /// ログイン中のユーザー。未ログインなら null。
+  AppUser? get currentUser;
 
-  final SupabaseClient _client;
-
-  static bool _googleInitialized = false;
+  /// 認証状態の変化ストリーム（ログイン/ログアウトで発火する）。
+  Stream<AppUser?> authStateChanges();
 
   Future<void> signInWithPassword({
     required String email,
     required String password,
-  }) => _client.auth.signInWithPassword(email: email, password: password);
+  });
 
   /// 戻り値はセッションが発行されたかどうか。
-  /// Supabase のメール確認が有効な場合は false（確認メール送信済み）になる。
-  Future<bool> signUp({required String email, required String password}) async {
-    final response = await _client.auth.signUp(
-      email: email,
-      password: password,
-    );
-    return response.session != null;
-  }
+  /// メール確認が必要な設定の場合は false（確認メール送信済み）になる。
+  Future<bool> signUp({required String email, required String password});
 
-  Future<void> sendPasswordResetEmail(String email) =>
-      _client.auth.resetPasswordForEmail(email);
+  Future<void> sendPasswordResetEmail(String email);
 
-  /// SMS プロバイダ未契約でも Supabase ダッシュボードの
-  /// テスト用電話番号 + OTP で動作確認できる（Auth > Providers > Phone）。
-  Future<void> sendPhoneOtp(String phone) =>
-      _client.auth.signInWithOtp(phone: phone);
+  Future<void> sendPhoneOtp(String phone);
 
-  Future<void> verifyPhoneOtp({required String phone, required String token}) =>
-      _client.auth.verifyOTP(type: OtpType.sms, phone: phone, token: token);
+  Future<void> verifyPhoneOtp({required String phone, required String token});
 
-  /// Google ネイティブサインイン → ID トークンを Supabase に渡す方式。
-  /// GOOGLE_WEB_CLIENT_ID / GOOGLE_IOS_CLIENT_ID を env/*.json に設定すること
-  /// （手順は lib/features/auth/README.md）。キャンセル時は何もせず戻る。
-  Future<void> signInWithGoogle() async {
-    final googleSignIn = GoogleSignIn.instance;
-    if (!_googleInitialized) {
-      await googleSignIn.initialize(
-        clientId: AppEnv.googleIosClientId.isEmpty
-            ? null
-            : AppEnv.googleIosClientId,
-        serverClientId: AppEnv.googleWebClientId.isEmpty
-            ? null
-            : AppEnv.googleWebClientId,
-      );
-      _googleInitialized = true;
-    }
-    final GoogleSignInAccount account;
-    try {
-      account = await googleSignIn.authenticate();
-    } on GoogleSignInException catch (e) {
-      if (e.code == GoogleSignInExceptionCode.canceled) return;
-      rethrow;
-    }
-    final idToken = account.authentication.idToken;
-    if (idToken == null) {
-      throw const AuthException('Missing Google ID token.');
-    }
-    await _client.auth.signInWithIdToken(
-      provider: OAuthProvider.google,
-      idToken: idToken,
-    );
-  }
+  /// キャンセル時は例外を投げず何もせず戻る。
+  Future<void> signInWithGoogle();
 
-  /// Apple サインイン（nonce 検証付き）。キャンセル時は何もせず戻る。
-  /// Xcode で Sign in with Apple の Capability 追加が必要
-  /// （手順は lib/features/auth/README.md）。
-  Future<void> signInWithApple() async {
-    final rawNonce = _client.auth.generateRawNonce();
-    final hashedNonce = sha256.convert(utf8.encode(rawNonce)).toString();
-    final AuthorizationCredentialAppleID credential;
-    try {
-      credential = await SignInWithApple.getAppleIDCredential(
-        scopes: [
-          AppleIDAuthorizationScopes.email,
-          AppleIDAuthorizationScopes.fullName,
-        ],
-        nonce: hashedNonce,
-      );
-    } on SignInWithAppleAuthorizationException catch (e) {
-      if (e.code == AuthorizationErrorCode.canceled) return;
-      rethrow;
-    }
-    final idToken = credential.identityToken;
-    if (idToken == null) {
-      throw const AuthException('Missing Apple ID token.');
-    }
-    await _client.auth.signInWithIdToken(
-      provider: OAuthProvider.apple,
-      idToken: idToken,
-      nonce: rawNonce,
-    );
-  }
+  /// キャンセル時は例外を投げず何もせず戻る。
+  Future<void> signInWithApple();
 
-  Future<void> signOut() => _client.auth.signOut();
+  Future<void> signOut();
 
-  /// supabase/migrations の delete_account 関数（SECURITY DEFINER）で
-  /// 自分のアカウントを削除し、ローカルセッションを破棄する。
-  Future<void> deleteAccount() async {
-    await _client.rpc<void>('delete_account');
-    await _client.auth.signOut();
-  }
+  /// アカウントを削除し、ローカルセッションも破棄する。
+  Future<void> deleteAccount();
 }

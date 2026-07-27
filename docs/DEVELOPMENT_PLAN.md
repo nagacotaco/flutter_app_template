@@ -20,7 +20,7 @@
 
 | 項目 | 決定 | 備考 |
 |---|---|---|
-| バックエンド/認証 | **Supabase** | supabase_flutter。電話番号認証は Twilio 等の SMS プロバイダ契約が別途必要（テンプレートでは実装+モック動作まで） |
+| バックエンド/認証 | **Supabase / Firebase 切替式** | `lib/core/backend.dart` で切替（現在は firebase）。認証は AuthRepository 抽象の2実装。電話番号認証はどちらもテスト電話番号+固定OTPで確認可能。**profile（DB/Storage）は現状 Supabase 実装のみ**（Firebase 対応は Backlog） |
 | 状態管理 | **Riverpod** | riverpod_generator + flutter_hooks（コード生成ベース） |
 | ルーティング | **go_router** (Typed Routes) | go_router_builder で型安全。`/items/:id` 形式でディープリンク対応 |
 | 機能の取捨選択 | **全部入り + コピー後に削除** | feature 単位でディレクトリ分離し、削除が1ディレクトリ+登録箇所数行で済む構造にする |
@@ -108,6 +108,8 @@ lib/
 
 ### Backlog（今後の候補。着手順は都度このドキュメントで決める）
 
+- **profile の Firebase 対応**（ProfileRepository を抽象化し Firestore + Storage 実装を追加。Storage は Blaze プラン必須のためアバターの扱いは要判断）
+- Firebase 電話番号認証の iOS 本番設定（APNs / URL scheme）
 - プッシュ通知（Supabase + FCM）
 - 強制アップデート / メンテナンスモードの仕組み
 - Sentry によるクラッシュレポート

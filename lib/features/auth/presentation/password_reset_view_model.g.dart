@@ -42,7 +42,7 @@ final class PasswordResetViewModelProvider
 }
 
 String _$passwordResetViewModelHash() =>
-    r'76cdaf13149a706f9f6240844da95b1b4d3de3f1';
+    r'863aac0eebef70beede3370c24c57e691bc4c19a';
 
 abstract class _$PasswordResetViewModel extends $Notifier<PasswordResetState> {
   PasswordResetState build();

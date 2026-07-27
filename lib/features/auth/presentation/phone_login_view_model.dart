@@ -1,7 +1,6 @@
 import 'package:flutter_app_template/core/auth/auth_repository.dart';
 import 'package:flutter_app_template/features/auth/presentation/phone_login_state.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 part 'phone_login_view_model.g.dart';
 
@@ -21,7 +20,7 @@ class PhoneLoginViewModel extends _$PhoneLoginViewModel {
         phone: phone,
         step: PhoneLoginStep.inputOtp,
       );
-    } on AuthException catch (e) {
+    } on AuthFailure catch (e) {
       state = state.copyWith(isSubmitting: false, errorMessage: e.message);
     } on Exception catch (e) {
       state = state.copyWith(isSubmitting: false, errorMessage: e.toString());
@@ -37,7 +36,7 @@ class PhoneLoginViewModel extends _$PhoneLoginViewModel {
           .read(authRepositoryProvider)
           .verifyPhoneOtp(phone: state.phone, token: token);
       state = state.copyWith(isSubmitting: false);
-    } on AuthException catch (e) {
+    } on AuthFailure catch (e) {
       state = state.copyWith(isSubmitting: false, errorMessage: e.message);
     } on Exception catch (e) {
       state = state.copyWith(isSubmitting: false, errorMessage: e.toString());

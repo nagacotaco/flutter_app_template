@@ -1,9 +1,16 @@
+import 'package:flutter_app_template/core/auth/app_user.dart';
 import 'package:flutter_app_template/core/auth/auth_repository.dart';
 
 /// [AuthRepository] のテスト用 fake（手書き fake が標準。docs/ARCHITECTURE.md §6）。
 class FakeAuthRepository implements AuthRepository {
   /// 呼ばれたメソッド名の記録。
   final List<String> calls = [];
+
+  @override
+  AppUser? currentUser;
+
+  @override
+  Stream<AppUser?> authStateChanges() => const Stream.empty();
 
   /// 次の呼び出しで投げるエラー。一度投げたら自動でクリアされる。
   Object? nextError;

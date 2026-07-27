@@ -17,8 +17,8 @@ final authStateChangesProvider = AuthStateChangesProvider._();
 
 final class AuthStateChangesProvider
     extends
-        $FunctionalProvider<AsyncValue<AuthState>, AuthState, Stream<AuthState>>
-    with $FutureModifier<AuthState>, $StreamProvider<AuthState> {
+        $FunctionalProvider<AsyncValue<AppUser?>, AppUser?, Stream<AppUser?>>
+    with $FutureModifier<AppUser?>, $StreamProvider<AppUser?> {
   /// 認証状態の変化ストリーム。router の redirect 再評価に使う。
   AuthStateChangesProvider._()
     : super(
@@ -36,16 +36,16 @@ final class AuthStateChangesProvider
 
   @$internal
   @override
-  $StreamProviderElement<AuthState> $createElement($ProviderPointer pointer) =>
+  $StreamProviderElement<AppUser?> $createElement($ProviderPointer pointer) =>
       $StreamProviderElement(pointer);
 
   @override
-  Stream<AuthState> create(Ref ref) {
+  Stream<AppUser?> create(Ref ref) {
     return authStateChanges(ref);
   }
 }
 
-String _$authStateChangesHash() => r'310af7ac668b2f2faabbc6d8fc00b2b768260eed';
+String _$authStateChangesHash() => r'995fef4731106f818c965a60e5d33d573d5a83d7';
 
 /// ログイン中のユーザー。未ログインなら null。
 /// グローバル状態のため core に置く（docs/ARCHITECTURE.md）。
@@ -56,8 +56,9 @@ final currentUserProvider = CurrentUserProvider._();
 /// ログイン中のユーザー。未ログインなら null。
 /// グローバル状態のため core に置く（docs/ARCHITECTURE.md）。
 
-final class CurrentUserProvider extends $FunctionalProvider<User?, User?, User?>
-    with $Provider<User?> {
+final class CurrentUserProvider
+    extends $FunctionalProvider<AppUser?, AppUser?, AppUser?>
+    with $Provider<AppUser?> {
   /// ログイン中のユーザー。未ログインなら null。
   /// グローバル状態のため core に置く（docs/ARCHITECTURE.md）。
   CurrentUserProvider._()
@@ -76,21 +77,21 @@ final class CurrentUserProvider extends $FunctionalProvider<User?, User?, User?>
 
   @$internal
   @override
-  $ProviderElement<User?> $createElement($ProviderPointer pointer) =>
+  $ProviderElement<AppUser?> $createElement($ProviderPointer pointer) =>
       $ProviderElement(pointer);
 
   @override
-  User? create(Ref ref) {
+  AppUser? create(Ref ref) {
     return currentUser(ref);
   }
 
   /// {@macro riverpod.override_with_value}
-  Override overrideWithValue(User? value) {
+  Override overrideWithValue(AppUser? value) {
     return $ProviderOverride(
       origin: this,
-      providerOverride: $SyncValueProvider<User?>(value),
+      providerOverride: $SyncValueProvider<AppUser?>(value),
     );
   }
 }
 
-String _$currentUserHash() => r'18cf8d7a817a4acbffe7f9b1c912490aee4f8e93';
+String _$currentUserHash() => r'056c6c13d2c56e41378f6a43f65ab250207875af';

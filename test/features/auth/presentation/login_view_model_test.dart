@@ -1,7 +1,6 @@
 import 'package:flutter_app_template/core/auth/auth_repository.dart';
 import 'package:flutter_app_template/features/auth/presentation/login_view_model.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../helpers/create_container.dart';
 import '../fake_auth_repository.dart';
@@ -27,7 +26,7 @@ void main() {
 
     test('signInWithPassword: AuthException の message が state に入る', () async {
       final repository = FakeAuthRepository()
-        ..nextError = const AuthException('Invalid login credentials');
+        ..nextError = const AuthFailure('Invalid login credentials');
       final container = createContainer(
         overrides: [authRepositoryProvider.overrideWithValue(repository)],
       );
@@ -44,7 +43,7 @@ void main() {
 
     test('signInWithGoogle: 失敗が state に反映される', () async {
       final repository = FakeAuthRepository()
-        ..nextError = const AuthException('Missing Google ID token.');
+        ..nextError = const AuthFailure('Missing Google ID token.');
       final container = createContainer(
         overrides: [authRepositoryProvider.overrideWithValue(repository)],
       );

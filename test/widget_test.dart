@@ -1,10 +1,10 @@
 import 'package:flutter_app_template/app/app.dart';
+import 'package:flutter_app_template/core/auth/app_user.dart';
 import 'package:flutter_app_template/core/auth/auth_providers.dart';
 import 'package:flutter_app_template/core/settings/app_settings_provider.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 void main() {
   testWidgets('未ログインで起動するとログイン画面が表示される', (tester) async {
@@ -15,9 +15,9 @@ void main() {
       ProviderScope(
         overrides: [
           sharedPreferencesProvider.overrideWithValue(prefs),
-          // テストでは Supabase.initialize を行わないため、認証状態を override する
+          // テストではバックエンドを初期化しないため、認証状態を override する
           authStateChangesProvider.overrideWith(
-            (ref) => const Stream<AuthState>.empty(),
+            (ref) => const Stream<AppUser?>.empty(),
           ),
           currentUserProvider.overrideWith((ref) => null),
         ],
