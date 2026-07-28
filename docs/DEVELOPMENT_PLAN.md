@@ -30,6 +30,7 @@
 | CI | **GitHub Actions** | analyze + test の最小構成から |
 | クラッシュレポート | **Sentry** | `env/*.json` の `SENTRY_DSN` を設定すると有効化（空なら無効のまま動く）。environment に flavor が入る |
 | 強制アップデート/メンテナンス | **AppConfigRepository 切替式** | Firebase = Remote Config / Supabase = app_config テーブル。起動時1回取得・失敗時 fail-open。詳細は `lib/core/config/README.md` |
+| プッシュ通知 | **FCM（firebase_messaging）** | `pushNotificationsEnabled` で無効化可。通知タップで data の `path` へ遷移。iOS は APNs 設定が別途必要。詳細は `lib/core/notifications/README.md` |
 | 対象プラットフォーム | iOS / Android | web/desktop ディレクトリは削除（必要なら再生成できる）。iOS deployment target は 15.0（Firebase iOS SDK の最低要件） |
 
 ## 3. ディレクトリ構成方針（feature-first）
@@ -113,7 +114,6 @@ lib/
 
 - profile の Firebase Storage 対応（アバターのアプリ内アップロード。Blaze プラン化が前提。firebase_storage を追加し `firebase_profile_repository.dart` の uploadAvatar に実装、`supportsAvatarUpload` を true に）
 - Firebase 電話番号認証の iOS 本番設定（APNs / URL scheme）
-- プッシュ通知（Supabase + FCM）
 - アプリ内課金（RevenueCat）の下地
 - Web View 画面の雛形（利用規約表示等）
 - スケルトンローディング・エラー/空状態の共通 UI パターン

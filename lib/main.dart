@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_template/app/app.dart';
 import 'package:flutter_app_template/core/backend.dart';
@@ -7,6 +8,7 @@ import 'package:flutter_app_template/core/firebase/firebase_options_dev.dart'
     as firebase_dev;
 import 'package:flutter_app_template/core/firebase/firebase_options_prod.dart'
     as firebase_prod;
+import 'package:flutter_app_template/core/notifications/push_notifications.dart';
 import 'package:flutter_app_template/core/settings/app_settings_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -36,14 +38,15 @@ Future<Widget> _bootstrap() async {
         url: AppEnv.supabaseUrl,
         publishableKey: AppEnv.supabaseAnonKey,
       );
+      // Supabase バックエンドでもプッシュ通知（FCM）には Firebase Core が必要
+      if (pushNotificationsEnabled) {
+        await _initializeFirebase();
+      }
     case AppBackend.firebase:
-      // flavor ごとの設定は flutterfire configure で生成した Dart オプションを使う
-      // （ネイティブの google-services.json / GoogleService-Info.plist は不要）
-      await Firebase.initializeApp(
-        options: AppEnv.isProd
-            ? firebase_prod.DefaultFirebaseOptions.currentPlatform
-            : firebase_dev.DefaultFirebaseOptions.currentPlatform,
-      );
+      await _initializeFirebase();
+  }
+  if (pushNotificationsEnabled) {
+    FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
   }
   final prefs = await SharedPreferences.getInstance();
   return ProviderScope(
@@ -51,3 +54,11 @@ Future<Widget> _bootstrap() async {
     child: const App(),
   );
 }
+
+/// flavor ごとの設定は flutterfire configure で生成した Dart オプションを使う
+/// （ネイティブの google-services.json / GoogleService-Info.plist は不要）。
+Future<void> _initializeFirebase() => Firebase.initializeApp(
+  options: AppEnv.isProd
+      ? firebase_prod.DefaultFirebaseOptions.currentPlatform
+      : firebase_dev.DefaultFirebaseOptions.currentPlatform,
+);
