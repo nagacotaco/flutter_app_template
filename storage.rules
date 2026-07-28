@@ -1,0 +1,20 @@
+rules_version = '2';
+
+// Firebase Storage のセキュリティルール。
+// デプロイ: firebase deploy --only storage（Storage の有効化 = Blaze プランが前提）
+service firebase.storage {
+  match /b/{bucket}/o {
+    // アバター画像: 誰でも閲覧可・書き込みは本人のみ（5MB までの画像に限定）
+    match /avatars/{userId}/{fileName} {
+      allow read;
+      allow write: if request.auth != null
+        && request.auth.uid == userId
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+    }
+    // 上記以外のパスはすべて拒否
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

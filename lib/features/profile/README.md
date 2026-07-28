@@ -4,7 +4,17 @@
 バックエンドは `lib/core/backend.dart` で切り替わる（auth と同じ仕組み）:
 
 - **Supabase**: profiles テーブル + avatars Storage。DB 定義は `supabase/migrations/20260727000000_profiles.sql`。アバター画像のアップロードに対応
-- **Firebase**: Firestore は使わず Firebase Auth のユーザープロフィール（displayName / photoURL）に保存。**アプリ内からのアバターアップロードは未対応**（Storage が Blaze プラン必須のため。Google / Apple ログイン時の自動設定分は表示される）。対応するには Blaze 化 + firebase_storage 追加のうえ `firebase_profile_repository.dart` に実装する
+- **Firebase**: Firestore は使わず Firebase Auth のユーザープロフィール（displayName / photoURL）に保存。アバター画像は Firebase Storage の `avatars/{uid}/avatar` にアップロードし、ダウンロード URL を photoURL に保存する
+
+## Firebase Storage のセットアップ（コピー先で必要）
+
+Firebase Storage は **Blaze プラン（従量課金）が前提**。アバターアップロードを使う場合のみ:
+
+1. Firebase Console でプロジェクトを Blaze プランに変更する
+2. Console の Storage タブから Storage を有効化する（デフォルトバケット作成）
+3. セキュリティルールをデプロイする: `firebase deploy --only storage`（ルール本体はリポジトリルートの `storage.rules`。avatars 配下のみ読み取り公開・書き込みは本人限定）
+
+Blaze 化しない場合は `firebase_profile_repository.dart` の `supportsAvatarUpload` を `false` に戻せば、編集画面からアバター変更 UI が消える（Google / Apple ログイン時の自動設定分の表示はそのまま動く）。
 
 ファイル構成:
 
@@ -23,7 +33,7 @@
    - `ProfileRoute` / `ProfileEditRoute` クラス
 4. `lib/features/settings/presentation/settings_screen.dart` からプロフィールの `ListTile` を削除する
 5. `lib/core/l10n/arb/app_ja.arb` / `app_en.arb` から `profile` で始まるキー（ja は `@profile...` も）を削除する
-6. pubspec.yaml から `image_picker` を削除し、`ios/Runner/Info.plist` の `NSPhotoLibraryUsageDescription` を削除する
-7. `supabase/migrations/` の profiles / avatars 関連 SQL を削除する（新規プロジェクトに適用しない場合）
+6. pubspec.yaml から `image_picker` と `firebase_storage` を削除し、`ios/Runner/Info.plist` の `NSPhotoLibraryUsageDescription` を削除する
+7. `supabase/migrations/` の profiles / avatars 関連 SQL を削除する（新規プロジェクトに適用しない場合）。ルートの `storage.rules` と firebase.json の `storage` キーも削除する
 8. 再生成: `fvm dart run build_runner build --delete-conflicting-outputs` と `fvm flutter gen-l10n`
 9. `fvm flutter analyze` と `fvm flutter test` が通ることを確認する

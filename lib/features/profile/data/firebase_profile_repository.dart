@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_app_template/core/auth/auth_repository.dart';
 import 'package:flutter_app_template/features/profile/data/profile_repository.dart';
 import 'package:flutter_app_template/features/profile/domain/profile.dart';
@@ -8,16 +9,16 @@ import 'package:flutter_app_template/features/profile/domain/profile.dart';
 /// [ProfileRepository] の Firebase 実装。
 /// Firestore は使わず、Firebase Auth のユーザープロフィール
 /// （displayName / photoURL）に保存する。
-/// photoURL は Google / Apple ログイン時に各サービスの画像が自動設定される。
+/// アバター画像は Firebase Storage の `avatars/{uid}/avatar` に保存する
+/// （Storage の有効化には Blaze プランが必要。手順は features/profile/README.md）。
 class FirebaseProfileRepository implements ProfileRepository {
-  FirebaseProfileRepository(this._auth);
+  FirebaseProfileRepository(this._auth, this._storage);
 
   final FirebaseAuth _auth;
+  final FirebaseStorage _storage;
 
-  /// Firebase Storage が Blaze プラン必須のため、アップロードは未対応。
-  /// 対応する場合は Blaze 化のうえ firebase_storage を追加してここに実装する。
   @override
-  bool get supportsAvatarUpload => false;
+  bool get supportsAvatarUpload => true;
 
   User get _user {
     final user = _auth.currentUser;
@@ -51,8 +52,18 @@ class FirebaseProfileRepository implements ProfileRepository {
     required Uint8List bytes,
     required String contentType,
   }) async {
-    throw UnsupportedError(
-      'Avatar upload is not supported on the Firebase backend.',
-    );
+    final user = _user;
+    final ref = _storage.ref('avatars/${user.uid}/avatar');
+    await ref.putData(bytes, SettableMetadata(contentType: contentType));
+    // 同一パスへの上書きのため、キャッシュ回避にバージョンクエリを付ける
+    final baseUrl = await ref.getDownloadURL();
+    final separator = baseUrl.contains('?') ? '&' : '?';
+    final url = '$baseUrl${separator}v=${DateTime.now().millisecondsSinceEpoch}';
+    try {
+      await user.updatePhotoURL(url);
+    } on FirebaseAuthException catch (e) {
+      throw AuthFailure(e.message ?? e.code);
+    }
+    return url;
   }
 }

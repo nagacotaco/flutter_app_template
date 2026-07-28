@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_app_template/core/backend.dart';
 import 'package:flutter_app_template/core/supabase/supabase_provider.dart';
 import 'package:flutter_app_template/features/profile/data/firebase_profile_repository.dart';
@@ -17,15 +18,17 @@ ProfileRepository profileRepository(Ref ref) => switch (appBackend) {
   AppBackend.supabase => SupabaseProfileRepository(
     ref.watch(supabaseClientProvider),
   ),
-  AppBackend.firebase => FirebaseProfileRepository(FirebaseAuth.instance),
+  AppBackend.firebase => FirebaseProfileRepository(
+    FirebaseAuth.instance,
+    FirebaseStorage.instance,
+  ),
 };
 
 /// プロフィール読み書きの抽象。Supabase / Firebase の実装を
 /// core/backend.dart で切り替える。
 abstract interface class ProfileRepository {
   /// アプリ内からのアバター画像アップロードに対応しているか。
-  /// false の場合、編集画面はアバター変更ボタンを表示しない
-  /// （Firebase は Storage が Blaze プラン必須のため未対応）。
+  /// false の場合、編集画面はアバター変更ボタンを表示しない。
   bool get supportsAvatarUpload;
 
   Future<Profile> fetchMyProfile();

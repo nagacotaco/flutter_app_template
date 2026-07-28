@@ -4,7 +4,7 @@
 機能追加・方針変更のたびにこのファイルを更新する（Living Document）。
 
 - 最終更新: 2026-07-29
-- ステータス: Phase 0〜5 すべて完了。以降の追加は Backlog から選定する（Firebase 電話番号認証の iOS 本番設定まで完了）
+- ステータス: Phase 0〜5 すべて完了。以降の追加は Backlog から選定する（profile の Firebase Storage 対応まで完了）
 
 ---
 
@@ -20,7 +20,7 @@
 
 | 項目 | 決定 | 備考 |
 |---|---|---|
-| バックエンド/認証 | **Supabase / Firebase 切替式** | `lib/core/backend.dart` で切替（現在は firebase）。認証は AuthRepository 抽象の2実装。電話番号認証はどちらもテスト電話番号+固定OTPで確認可能。profile も ProfileRepository 抽象の2実装（Firebase 版は Auth の displayName/photoURL に保存。アバターのアプリ内アップロードは Supabase 版のみ = Firebase Storage が Blaze 必須のため） |
+| バックエンド/認証 | **Supabase / Firebase 切替式** | `lib/core/backend.dart` で切替（現在は firebase）。認証は AuthRepository 抽象の2実装。電話番号認証はどちらもテスト電話番号+固定OTPで確認可能。profile も ProfileRepository 抽象の2実装（Firebase 版は Auth の displayName/photoURL に保存、アバターは Firebase Storage `avatars/{uid}` にアップロード。Storage 有効化 = Blaze プランが前提。手順は `lib/features/profile/README.md`） |
 | 状態管理 | **Riverpod** | riverpod_generator + flutter_hooks（コード生成ベース） |
 | ルーティング | **go_router** (Typed Routes) | go_router_builder で型安全。`/items/:id` 形式でディープリンク対応 |
 | 機能の取捨選択 | **全部入り + コピー後に削除** | feature 単位でディレクトリ分離し、削除が1ディレクトリ+登録箇所数行で済む構造にする |
@@ -112,7 +112,7 @@ lib/
 
 ### Backlog（今後の候補。着手順は都度このドキュメントで決める）
 
-- profile の Firebase Storage 対応（アバターのアプリ内アップロード。Blaze プラン化が前提。firebase_storage を追加し `firebase_profile_repository.dart` の uploadAvatar に実装、`supportsAvatarUpload` を true に）
+- [x] profile の Firebase Storage 対応（firebase_storage 追加、`firebase_profile_repository.dart` の uploadAvatar 実装、`storage.rules` + firebase.json デプロイ設定。Blaze 化・Storage 有効化・ルールデプロイの手動手順は `lib/features/profile/README.md`）
 - [x] Firebase 電話番号認証の iOS 本番設定（APNs / URL scheme。entitlements + Info.plist + xcconfig 設定済み。APNs キーのアップロード等の手動手順は `lib/features/auth/README.md`）
 - アプリ内課金（RevenueCat）の下地
 - Web View 画面の雛形（利用規約表示等）
