@@ -191,5 +191,25 @@
   "commonCancel": "キャンセル",
   "@commonCancel": {
     "description": "共通: キャンセルボタン"
+  },
+  "appConfigMaintenanceTitle": "メンテナンス中",
+  "@appConfigMaintenanceTitle": {
+    "description": "メンテナンス画面のタイトル"
+  },
+  "appConfigMaintenanceMessage": "ただいまメンテナンス中です。しばらくしてからもう一度お試しください。",
+  "@appConfigMaintenanceMessage": {
+    "description": "メンテナンス画面のデフォルト本文（サーバー配信の文言がない場合）"
+  },
+  "appConfigUpdateTitle": "アップデートが必要です",
+  "@appConfigUpdateTitle": {
+    "description": "強制アップデート画面のタイトル"
+  },
+  "appConfigUpdateMessage": "新しいバージョンが公開されています。ストアから最新版に更新してください。",
+  "@appConfigUpdateMessage": {
+    "description": "強制アップデート画面の本文"
+  },
+  "appConfigUpdateButton": "更新する",
+  "@appConfigUpdateButton": {
+    "description": "強制アップデート画面のストア誘導ボタン"
   }
 }

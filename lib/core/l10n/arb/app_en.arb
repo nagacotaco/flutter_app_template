@@ -47,5 +47,10 @@
   "settingsDeleteAccountConfirmTitle": "Delete account?",
   "settingsDeleteAccountConfirmMessage": "Your account and all data will be deleted. This cannot be undone.",
   "settingsDeleteAccountConfirmButton": "Delete",
-  "commonCancel": "Cancel"
+  "commonCancel": "Cancel",
+  "appConfigMaintenanceTitle": "Under maintenance",
+  "appConfigMaintenanceMessage": "The app is currently under maintenance. Please try again later.",
+  "appConfigUpdateTitle": "Update required",
+  "appConfigUpdateMessage": "A new version is available. Please update from the store.",
+  "appConfigUpdateButton": "Update"
 }

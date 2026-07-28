@@ -154,4 +154,21 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get commonCancel => 'Cancel';
+
+  @override
+  String get appConfigMaintenanceTitle => 'Under maintenance';
+
+  @override
+  String get appConfigMaintenanceMessage =>
+      'The app is currently under maintenance. Please try again later.';
+
+  @override
+  String get appConfigUpdateTitle => 'Update required';
+
+  @override
+  String get appConfigUpdateMessage =>
+      'A new version is available. Please update from the store.';
+
+  @override
+  String get appConfigUpdateButton => 'Update';
 }

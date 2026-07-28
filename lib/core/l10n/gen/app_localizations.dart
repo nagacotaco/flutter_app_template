@@ -385,6 +385,36 @@ abstract class AppLocalizations {
   /// In ja, this message translates to:
   /// **'キャンセル'**
   String get commonCancel;
+
+  /// メンテナンス画面のタイトル
+  ///
+  /// In ja, this message translates to:
+  /// **'メンテナンス中'**
+  String get appConfigMaintenanceTitle;
+
+  /// メンテナンス画面のデフォルト本文（サーバー配信の文言がない場合）
+  ///
+  /// In ja, this message translates to:
+  /// **'ただいまメンテナンス中です。しばらくしてからもう一度お試しください。'**
+  String get appConfigMaintenanceMessage;
+
+  /// 強制アップデート画面のタイトル
+  ///
+  /// In ja, this message translates to:
+  /// **'アップデートが必要です'**
+  String get appConfigUpdateTitle;
+
+  /// 強制アップデート画面の本文
+  ///
+  /// In ja, this message translates to:
+  /// **'新しいバージョンが公開されています。ストアから最新版に更新してください。'**
+  String get appConfigUpdateMessage;
+
+  /// 強制アップデート画面のストア誘導ボタン
+  ///
+  /// In ja, this message translates to:
+  /// **'更新する'**
+  String get appConfigUpdateButton;
 }
 
 class _AppLocalizationsDelegate

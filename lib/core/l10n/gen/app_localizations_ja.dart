@@ -152,4 +152,20 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get commonCancel => 'キャンセル';
+
+  @override
+  String get appConfigMaintenanceTitle => 'メンテナンス中';
+
+  @override
+  String get appConfigMaintenanceMessage =>
+      'ただいまメンテナンス中です。しばらくしてからもう一度お試しください。';
+
+  @override
+  String get appConfigUpdateTitle => 'アップデートが必要です';
+
+  @override
+  String get appConfigUpdateMessage => '新しいバージョンが公開されています。ストアから最新版に更新してください。';
+
+  @override
+  String get appConfigUpdateButton => '更新する';
 }
