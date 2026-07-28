@@ -18,9 +18,8 @@ Supabase バックエンドでも FCM を使う場合は main.dart が Firebase 
 
 - **Android**: 追加設定なし（POST_NOTIFICATIONS は AndroidManifest 設定済み）
 - **iOS（実機で必須）**:
-  1. Apple Developer で APNs 認証キー（.p8）を作成し、Firebase Console > プロジェクト設定 > Cloud Messaging にアップロード
-  2. Xcode > Runner > Signing & Capabilities で Capability「Push Notifications」を追加
-  3. 同じく「Background Modes」を追加し Remote notifications にチェック
+  1. Apple Developer で APNs 認証キー（.p8）を作成し、Firebase Console > プロジェクト設定 > Cloud Messaging にアップロード（電話番号認証と共用。詳細手順は `lib/features/auth/README.md` の「電話番号認証の iOS 本番設定」）
+  2. Capability「Push Notifications」（`ios/Runner/Runner.entitlements` の `aps-environment`）と「Background Modes > Remote notifications」（Info.plist の `UIBackgroundModes`）は設定済み。Xcode での手動追加は不要
 
 ## この機能を削除する手順
 

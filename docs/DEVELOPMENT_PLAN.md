@@ -4,7 +4,7 @@
 機能追加・方針変更のたびにこのファイルを更新する（Living Document）。
 
 - 最終更新: 2026-07-29
-- ステータス: Phase 0〜5 すべて完了。以降の追加は Backlog から選定する（profile のバックエンド切替対応まで完了）
+- ステータス: Phase 0〜5 すべて完了。以降の追加は Backlog から選定する（Firebase 電話番号認証の iOS 本番設定まで完了）
 
 ---
 
@@ -113,7 +113,7 @@ lib/
 ### Backlog（今後の候補。着手順は都度このドキュメントで決める）
 
 - profile の Firebase Storage 対応（アバターのアプリ内アップロード。Blaze プラン化が前提。firebase_storage を追加し `firebase_profile_repository.dart` の uploadAvatar に実装、`supportsAvatarUpload` を true に）
-- Firebase 電話番号認証の iOS 本番設定（APNs / URL scheme）
+- [x] Firebase 電話番号認証の iOS 本番設定（APNs / URL scheme。entitlements + Info.plist + xcconfig 設定済み。APNs キーのアップロード等の手動手順は `lib/features/auth/README.md`）
 - アプリ内課金（RevenueCat）の下地
 - Web View 画面の雛形（利用規約表示等）
 - コピー後の初期化スクリプト（アプリ名・Bundle ID 一括リネーム）

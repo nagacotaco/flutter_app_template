@@ -19,12 +19,30 @@ main.dart の初期化と AuthRepository の実装が連動して切り替わる
 - **初期設定**: `flutterfire configure` 済み（`lib/core/firebase/firebase_options_{dev,prod}.dart`）。Dart オプション初期化のため google-services.json / GoogleService-Info.plist は不要。コピー先アプリでは Bundle ID 変更後に `flutterfire configure` を再実行して2ファイルを再生成する
 - **iOS 最低バージョン**: Firebase iOS SDK の要件で deployment target は 15.0 以上（ios/Runner.xcodeproj に設定済み。13.0 に下げると Firebase 使用時にビルドできない）
 - **メール**: Firebase Console > Authentication > Sign-in method で Email/Password を有効化
-- **電話番号**: 同 Phone を有効化。SMS 契約不要のテスト電話番号 + 固定 OTP を登録して確認する（実 SMS は Blaze プラン必須）。iOS 実機で本番利用する場合は APNs 設定が別途必要
+- **電話番号**: 同 Phone を有効化。SMS 契約不要のテスト電話番号 + 固定 OTP を登録して確認する（実 SMS は Blaze プラン必須）。iOS 実機で本番利用する場合は後述「電話番号認証の iOS 本番設定」を実施する
 - **Google**: 同 Google を有効化。表示される Web クライアント ID を `env/*.json` の `GOOGLE_WEB_CLIENT_ID` に設定（Android で必須）。iOS は `GOOGLE_IOS_CLIENT_ID` も設定し、Info.plist に reversed client ID の URL scheme を追加
 - **Apple**: 同 Apple を有効化し、Xcode で Runner に Capability「Sign in with Apple」を追加
 - **退会**: 最終ログインから時間が経つと requires-recent-login エラーになる（再ログイン後に退会し直す仕様）
 
-## 動作に必要な設定（Supabase 使用時）
+### 電話番号認証の iOS 本番設定（APNs / reCAPTCHA フォールバック）
+
+Firebase の iOS 電話番号認証は、まずサイレントプッシュ（APNs）でアプリの正当性を検証し、
+届かない場合に reCAPTCHA（URL scheme でアプリに戻る）へフォールバックする。
+
+**リポジトリに設定済み（追加作業不要）:**
+
+- `ios/Runner/Runner.entitlements`（`aps-environment: development`。App Store 配布時のアーカイブで自動的に production へ置換される）
+- Info.plist の `UIBackgroundModes: remote-notification` と `CFBundleURLTypes: $(FIREBASE_APP_ID_SCHEME)`
+- flavor 別 xcconfig（`ios/Flutter/{dev,prod}{Debug,Profile,Release}.xcconfig`）の `FIREBASE_APP_ID_SCHEME`。値は Firebase iOS appId のコロンをハイフンにした `app-1-64933516130-ios-<suffix>` 形式。**コピー先アプリでは `flutterfire configure` 再実行後に新しい appId で書き換えること**
+
+**手動で必要な作業（Apple Developer / Firebase Console）:**
+
+1. [Apple Developer](https://developer.apple.com/account/resources/authkeys/list) > Keys で APNs 認証キー（.p8）を作成しダウンロード（Key ID と Team ID を控える）
+2. Firebase Console > プロジェクト設定 > Cloud Messaging > 「Apple アプリの構成」に .p8 / Key ID / Team ID をアップロード（dev / prod 両アプリ分）
+3. Apple Developer > Identifiers で対象 App ID の Push Notifications capability を有効化（Xcode の自動署名を使っていれば entitlements から自動で反映される）
+4. 確認: 実機ビルドで電話番号ログイン → 実 SMS が届けば APNs 経路が動作。reCAPTCHA が表示された場合も、完了後アプリに戻り OTP 入力まで進めれば URL scheme は正しい
+
+補足: APNs キーはプッシュ通知（`lib/core/notifications/`）と共用。既に FCM 用にアップロード済みなら手順 1〜2 は不要。
 
 - **メール / 電話番号**: `env/dev.json` に `SUPABASE_URL` / `SUPABASE_ANON_KEY` を設定。電話番号は SMS プロバイダ未契約でも Supabase ダッシュボード（Auth > Providers > Phone）のテスト用電話番号+OTP で確認できる
 - **パスワード再設定**: メール内リンクは Web で開く。アプリ内で完結させたい場合はディープリンク設定（docs/DEEP_LINKS.md）後に redirectTo を指定する
