@@ -28,6 +28,7 @@
 | Flutterバージョン管理 | **fvm** | .fvmrc をリポジトリに含める |
 | 多言語 | **l10n の下地**（日本語ベース） | arb ファイル構成。文言のコード直書き禁止 |
 | CI | **GitHub Actions** | analyze + test の最小構成から |
+| クラッシュレポート | **Sentry** | `env/*.json` の `SENTRY_DSN` を設定すると有効化（空なら無効のまま動く）。environment に flavor が入る |
 | 対象プラットフォーム | iOS / Android | web/desktop ディレクトリは削除（必要なら再生成できる）。iOS deployment target は 15.0（Firebase iOS SDK の最低要件） |
 
 ## 3. ディレクトリ構成方針（feature-first）
@@ -112,7 +113,6 @@ lib/
 - Firebase 電話番号認証の iOS 本番設定（APNs / URL scheme）
 - プッシュ通知（Supabase + FCM）
 - 強制アップデート / メンテナンスモードの仕組み
-- Sentry によるクラッシュレポート
 - アプリ内課金（RevenueCat）の下地
 - オンボーディング（初回起動時のウォークスルー）
 - Web View 画面の雛形（利用規約表示等）

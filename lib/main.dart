@@ -9,10 +9,24 @@ import 'package:flutter_app_template/core/firebase/firebase_options_prod.dart'
     as firebase_prod;
 import 'package:flutter_app_template/core/settings/app_settings_provider.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<void> main() async {
+  // SENTRY_DSN 未設定（空文字）なら Sentry を使わずそのまま起動する
+  if (AppEnv.sentryDsn.isEmpty) {
+    runApp(await _bootstrap());
+    return;
+  }
+  await SentryFlutter.init((options) {
+    options
+      ..dsn = AppEnv.sentryDsn
+      ..environment = AppEnv.flavor;
+  }, appRunner: () async => runApp(await _bootstrap()));
+}
+
+Future<Widget> _bootstrap() async {
   WidgetsFlutterBinding.ensureInitialized();
   switch (appBackend) {
     case AppBackend.supabase:
@@ -32,10 +46,8 @@ Future<void> main() async {
       );
   }
   final prefs = await SharedPreferences.getInstance();
-  runApp(
-    ProviderScope(
-      overrides: [sharedPreferencesProvider.overrideWithValue(prefs)],
-      child: const App(),
-    ),
+  return ProviderScope(
+    overrides: [sharedPreferencesProvider.overrideWithValue(prefs)],
+    child: const App(),
   );
 }

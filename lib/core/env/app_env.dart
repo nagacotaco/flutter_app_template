@@ -23,5 +23,8 @@ abstract final class AppEnv {
     'GOOGLE_IOS_CLIENT_ID',
   );
 
+  /// Sentry の DSN。空文字なら Sentry を初期化しない（クラッシュレポート無効）。
+  static const String sentryDsn = String.fromEnvironment('SENTRY_DSN');
+
   static bool get isProd => flavor == 'prod';
 }
