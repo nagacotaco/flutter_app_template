@@ -116,7 +116,6 @@ lib/
 - Firebase 電話番号認証の iOS 本番設定（APNs / URL scheme）
 - アプリ内課金（RevenueCat）の下地
 - Web View 画面の雛形（利用規約表示等）
-- スケルトンローディング・エラー/空状態の共通 UI パターン
 - コピー後の初期化スクリプト（アプリ名・Bundle ID 一括リネーム）
 - マルチプラットフォーム展開（web / macos / windows）。ディレクトリは `fvm flutter create --platforms=web,macos,windows .` で再生成できる。着手時は flavor・認証リダイレクト・ディープリンクの各プラットフォーム対応もスコープに含めること
 

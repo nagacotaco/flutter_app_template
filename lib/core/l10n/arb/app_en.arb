@@ -61,5 +61,6 @@
   "onboardingBody3": "Let's get started.",
   "onboardingSkip": "Skip",
   "onboardingNext": "Next",
-  "onboardingStart": "Get started"
+  "onboardingStart": "Get started",
+  "itemsEmptyMessage": "No items yet"
 }

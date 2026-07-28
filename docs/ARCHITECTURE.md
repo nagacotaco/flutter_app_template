@@ -142,7 +142,10 @@ class HomeScreen extends HookConsumerWidget {
 
 - 基底クラスは `HookConsumerWidget` に統一（hooks を使わない画面でも同じ。基底クラスの選択で迷わない）
 - `StatefulWidget` / `setState` は全面禁止。一時的な UI 状態（TextEditingController、タブ index 等）は flutter_hooks（`useTextEditingController` 等）を使う
-- AsyncValue の分岐は上記の `switch` パターンに統一。エラー表示・ローディング表示は共通ウィジェット（`core/widgets/`）を使う
+- AsyncValue の分岐は上記の `switch` パターンに統一。エラー・ローディング・空状態は共通ウィジェット（`core/widgets/`）を使う
+  - エラー: `ErrorView(error:, onRetry:)`
+  - ローディング: リスト画面は `SkeletonListView()`、リスト以外は実レイアウトを `Skeletonizer(enabled: true, child: ...)` で包む（skeletonizer パッケージ）。スピナー（CircularProgressIndicator）はダイアログ内などスケルトンが作れない場面のみ
+  - 空状態: `EmptyView(message: context.l10n.xxx)`。データが空のときに素のリストを出さない
 - 画面内の部分 Widget は同ファイル内のプライベートクラス（`_Body` 等）に切り出す。ビルダーメソッド（`Widget _buildBody()`）は禁止
 
 ## 4. ViewModel を共有してよい判断基準

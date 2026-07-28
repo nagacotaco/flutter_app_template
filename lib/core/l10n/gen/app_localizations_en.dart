@@ -200,4 +200,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get onboardingStart => 'Get started';
+
+  @override
+  String get itemsEmptyMessage => 'No items yet';
 }

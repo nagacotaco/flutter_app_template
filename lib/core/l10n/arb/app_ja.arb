@@ -247,5 +247,9 @@
   "onboardingStart": "はじめる",
   "@onboardingStart": {
     "description": "オンボーディング最終ページの完了ボタン"
+  },
+  "itemsEmptyMessage": "アイテムがまだありません",
+  "@itemsEmptyMessage": {
+    "description": "アイテム一覧の空状態メッセージ"
   }
 }

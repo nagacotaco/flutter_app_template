@@ -195,4 +195,7 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get onboardingStart => 'はじめる';
+
+  @override
+  String get itemsEmptyMessage => 'アイテムがまだありません';
 }

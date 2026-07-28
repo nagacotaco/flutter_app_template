@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_template/core/l10n/l10n.dart';
 import 'package:flutter_app_template/core/router/routes.dart';
+import 'package:flutter_app_template/core/widgets/empty_view.dart';
 import 'package:flutter_app_template/core/widgets/error_view.dart';
+import 'package:flutter_app_template/core/widgets/skeleton_list_view.dart';
 import 'package:flutter_app_template/features/items/presentation/item_list_state.dart';
 import 'package:flutter_app_template/features/items/presentation/item_list_view_model.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -24,7 +26,8 @@ class ItemListScreen extends HookConsumerWidget {
           error: error,
           onRetry: () => ref.read(itemListViewModelProvider.notifier).refresh(),
         ),
-        _ => const Center(child: CircularProgressIndicator()),
+        // リスト画面のローディングは共通スケルトンを使う（docs/ARCHITECTURE.md）
+        _ => const SkeletonListView(),
       },
     );
   }
@@ -37,6 +40,10 @@ class _Body extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // 空状態は共通の EmptyView を使う（docs/ARCHITECTURE.md）
+    if (state.items.isEmpty) {
+      return EmptyView(message: context.l10n.itemsEmptyMessage);
+    }
     return RefreshIndicator(
       onRefresh: () => ref.read(itemListViewModelProvider.notifier).refresh(),
       child: ListView.separated(

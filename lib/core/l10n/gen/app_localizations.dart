@@ -469,6 +469,12 @@ abstract class AppLocalizations {
   /// In ja, this message translates to:
   /// **'はじめる'**
   String get onboardingStart;
+
+  /// アイテム一覧の空状態メッセージ
+  ///
+  /// In ja, this message translates to:
+  /// **'アイテムがまだありません'**
+  String get itemsEmptyMessage;
 }
 
 class _AppLocalizationsDelegate
