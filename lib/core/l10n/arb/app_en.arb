@@ -52,5 +52,14 @@
   "appConfigMaintenanceMessage": "The app is currently under maintenance. Please try again later.",
   "appConfigUpdateTitle": "Update required",
   "appConfigUpdateMessage": "A new version is available. Please update from the store.",
-  "appConfigUpdateButton": "Update"
+  "appConfigUpdateButton": "Update",
+  "onboardingTitle1": "Welcome",
+  "onboardingBody1": "A quick tour of what you can do with this app.",
+  "onboardingTitle2": "Make it yours",
+  "onboardingBody2": "Change the theme and language anytime in Settings.",
+  "onboardingTitle3": "You're all set",
+  "onboardingBody3": "Let's get started.",
+  "onboardingSkip": "Skip",
+  "onboardingNext": "Next",
+  "onboardingStart": "Get started"
 }

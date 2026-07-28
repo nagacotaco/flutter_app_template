@@ -168,4 +168,31 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get appConfigUpdateButton => '更新する';
+
+  @override
+  String get onboardingTitle1 => 'ようこそ';
+
+  @override
+  String get onboardingBody1 => 'このアプリでできることを数ステップで紹介します。';
+
+  @override
+  String get onboardingTitle2 => '自分好みに';
+
+  @override
+  String get onboardingBody2 => 'テーマや言語は設定画面からいつでも変更できます。';
+
+  @override
+  String get onboardingTitle3 => '準備完了';
+
+  @override
+  String get onboardingBody3 => 'さっそく始めましょう。';
+
+  @override
+  String get onboardingSkip => 'スキップ';
+
+  @override
+  String get onboardingNext => '次へ';
+
+  @override
+  String get onboardingStart => 'はじめる';
 }

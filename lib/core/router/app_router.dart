@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_app_template/core/auth/auth_providers.dart';
 import 'package:flutter_app_template/core/router/routes.dart';
+import 'package:flutter_app_template/features/onboarding/data/onboarding_providers.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -17,6 +18,7 @@ GoRouter router(Ref ref) {
   final refresh = ValueNotifier(0);
   ref
     ..listen(currentUserProvider, (_, _) => refresh.value++)
+    ..listen(onboardingCompletedProvider, (_, _) => refresh.value++)
     ..onDispose(refresh.dispose);
 
   return GoRouter(
@@ -24,6 +26,15 @@ GoRouter router(Ref ref) {
     initialLocation: const HomeRoute().location,
     refreshListenable: refresh,
     redirect: (context, state) {
+      // 初回起動はオンボーディングを最優先で表示する
+      final onboardingCompleted = ref.read(onboardingCompletedProvider);
+      final onOnboarding =
+          state.matchedLocation == const OnboardingRoute().location;
+      if (!onboardingCompleted) {
+        return onOnboarding ? null : const OnboardingRoute().location;
+      }
+      if (onOnboarding) return const HomeRoute().location;
+
       final loggedIn = ref.read(currentUserProvider) != null;
       final onAuthScreen = state.matchedLocation.startsWith(
         const LoginRoute().location,

@@ -415,6 +415,60 @@ abstract class AppLocalizations {
   /// In ja, this message translates to:
   /// **'更新する'**
   String get appConfigUpdateButton;
+
+  /// オンボーディング1ページ目タイトル（プレースホルダー）
+  ///
+  /// In ja, this message translates to:
+  /// **'ようこそ'**
+  String get onboardingTitle1;
+
+  /// オンボーディング1ページ目本文（プレースホルダー）
+  ///
+  /// In ja, this message translates to:
+  /// **'このアプリでできることを数ステップで紹介します。'**
+  String get onboardingBody1;
+
+  /// オンボーディング2ページ目タイトル（プレースホルダー）
+  ///
+  /// In ja, this message translates to:
+  /// **'自分好みに'**
+  String get onboardingTitle2;
+
+  /// オンボーディング2ページ目本文（プレースホルダー）
+  ///
+  /// In ja, this message translates to:
+  /// **'テーマや言語は設定画面からいつでも変更できます。'**
+  String get onboardingBody2;
+
+  /// オンボーディング3ページ目タイトル（プレースホルダー）
+  ///
+  /// In ja, this message translates to:
+  /// **'準備完了'**
+  String get onboardingTitle3;
+
+  /// オンボーディング3ページ目本文（プレースホルダー）
+  ///
+  /// In ja, this message translates to:
+  /// **'さっそく始めましょう。'**
+  String get onboardingBody3;
+
+  /// オンボーディングのスキップボタン
+  ///
+  /// In ja, this message translates to:
+  /// **'スキップ'**
+  String get onboardingSkip;
+
+  /// オンボーディングの次ページボタン
+  ///
+  /// In ja, this message translates to:
+  /// **'次へ'**
+  String get onboardingNext;
+
+  /// オンボーディング最終ページの完了ボタン
+  ///
+  /// In ja, this message translates to:
+  /// **'はじめる'**
+  String get onboardingStart;
 }
 
 class _AppLocalizationsDelegate

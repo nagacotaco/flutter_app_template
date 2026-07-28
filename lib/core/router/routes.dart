@@ -7,12 +7,24 @@ import 'package:flutter_app_template/features/auth/presentation/signup_screen.da
 import 'package:flutter_app_template/features/home/presentation/home_screen.dart';
 import 'package:flutter_app_template/features/items/presentation/item_detail_screen.dart';
 import 'package:flutter_app_template/features/items/presentation/item_list_screen.dart';
+import 'package:flutter_app_template/features/onboarding/presentation/onboarding_screen.dart';
 import 'package:flutter_app_template/features/profile/presentation/profile_edit_screen.dart';
 import 'package:flutter_app_template/features/profile/presentation/profile_screen.dart';
 import 'package:flutter_app_template/features/settings/presentation/settings_screen.dart';
 import 'package:go_router/go_router.dart';
 
 part 'routes.g.dart';
+
+/// 初回起動のオンボーディング（シェル外）。
+/// 未完了時は app_router.dart の redirect で誘導される。
+@TypedGoRoute<OnboardingRoute>(path: '/onboarding')
+class OnboardingRoute extends GoRouteData with $OnboardingRoute {
+  const OnboardingRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const OnboardingScreen();
+}
 
 /// 認証画面群（シェル外）。未ログイン時は app_router.dart の redirect で
 /// `/login` 配下へ誘導される。

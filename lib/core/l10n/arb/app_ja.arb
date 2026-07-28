@@ -211,5 +211,41 @@
   "appConfigUpdateButton": "更新する",
   "@appConfigUpdateButton": {
     "description": "強制アップデート画面のストア誘導ボタン"
+  },
+  "onboardingTitle1": "ようこそ",
+  "@onboardingTitle1": {
+    "description": "オンボーディング1ページ目タイトル（プレースホルダー）"
+  },
+  "onboardingBody1": "このアプリでできることを数ステップで紹介します。",
+  "@onboardingBody1": {
+    "description": "オンボーディング1ページ目本文（プレースホルダー）"
+  },
+  "onboardingTitle2": "自分好みに",
+  "@onboardingTitle2": {
+    "description": "オンボーディング2ページ目タイトル（プレースホルダー）"
+  },
+  "onboardingBody2": "テーマや言語は設定画面からいつでも変更できます。",
+  "@onboardingBody2": {
+    "description": "オンボーディング2ページ目本文（プレースホルダー）"
+  },
+  "onboardingTitle3": "準備完了",
+  "@onboardingTitle3": {
+    "description": "オンボーディング3ページ目タイトル（プレースホルダー）"
+  },
+  "onboardingBody3": "さっそく始めましょう。",
+  "@onboardingBody3": {
+    "description": "オンボーディング3ページ目本文（プレースホルダー）"
+  },
+  "onboardingSkip": "スキップ",
+  "@onboardingSkip": {
+    "description": "オンボーディングのスキップボタン"
+  },
+  "onboardingNext": "次へ",
+  "@onboardingNext": {
+    "description": "オンボーディングの次ページボタン"
+  },
+  "onboardingStart": "はじめる",
+  "@onboardingStart": {
+    "description": "オンボーディング最終ページの完了ボタン"
   }
 }

@@ -20,7 +20,8 @@ class _StreamingFakeAuthRepository extends FakeAuthRepository {
 
 void main() {
   testWidgets('ログイン状態になると自動でホームへ遷移する', (tester) async {
-    SharedPreferences.setMockInitialValues({});
+    // オンボーディングは完了済みとして起動する
+    SharedPreferences.setMockInitialValues({'onboarding.completed': true});
     final prefs = await SharedPreferences.getInstance();
     final auth = _StreamingFakeAuthRepository();
 

@@ -171,4 +171,33 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get appConfigUpdateButton => 'Update';
+
+  @override
+  String get onboardingTitle1 => 'Welcome';
+
+  @override
+  String get onboardingBody1 =>
+      'A quick tour of what you can do with this app.';
+
+  @override
+  String get onboardingTitle2 => 'Make it yours';
+
+  @override
+  String get onboardingBody2 =>
+      'Change the theme and language anytime in Settings.';
+
+  @override
+  String get onboardingTitle3 => 'You\'re all set';
+
+  @override
+  String get onboardingBody3 => 'Let\'s get started.';
+
+  @override
+  String get onboardingSkip => 'Skip';
+
+  @override
+  String get onboardingNext => 'Next';
+
+  @override
+  String get onboardingStart => 'Get started';
 }

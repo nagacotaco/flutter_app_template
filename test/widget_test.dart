@@ -8,7 +8,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   testWidgets('未ログインで起動するとログイン画面が表示される', (tester) async {
-    SharedPreferences.setMockInitialValues({});
+    // オンボーディングは完了済みとして起動する（初回表示は onboarding のテストで検証）
+    SharedPreferences.setMockInitialValues({'onboarding.completed': true});
     final prefs = await SharedPreferences.getInstance();
 
     await tester.pumpWidget(
