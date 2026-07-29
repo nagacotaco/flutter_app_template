@@ -16,6 +16,15 @@ Firebase Storage は **Blaze プラン（従量課金）が前提**。アバタ�
 
 Blaze 化しない場合は `firebase_profile_repository.dart` の `supportsAvatarUpload` を `false` に戻せば、編集画面からアバター変更 UI が消える（Google / Apple ログイン時の自動設定分の表示はそのまま動く）。
 
+動作確認は実機不要で以下で可能（実 Firebase の dev プロジェクトに捨てアカウントを作って upload → 削除する）:
+
+```sh
+fvm flutter test integration_test/avatar_upload_test.dart \
+  --flavor dev --dart-define-from-file=env/dev.json -d <シミュレータのデバイスID>
+```
+
+注意: firebase_storage はネイティブプラグインのため、追加後は hot reload / hot restart では反映されない。アプリを完全に停止して `fvm flutter run` からビルドし直すこと。
+
 ファイル構成:
 
 - `domain/profile.dart` — プロフィールのモデル
@@ -26,7 +35,7 @@ Blaze 化しない場合は `firebase_profile_repository.dart` の `supportsAvat
 ## この機能を削除する手順
 
 1. `lib/features/profile/` を削除する
-2. `test/features/profile/` を削除する
+2. `test/features/profile/` と `integration_test/avatar_upload_test.dart` を削除する
 3. `lib/core/router/routes.dart` から以下を削除する
    - profile 画面2つの import
    - `TypedGoRoute<ProfileRoute>`（`ProfileEditRoute` 含むブロック）
