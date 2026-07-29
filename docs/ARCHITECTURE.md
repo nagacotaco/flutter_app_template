@@ -146,6 +146,7 @@ class HomeScreen extends HookConsumerWidget {
   - エラー: `ErrorView(error:, onRetry:)`
   - ローディング: リスト画面は `SkeletonListView()`、リスト以外は実レイアウトを `Skeletonizer(enabled: true, child: ...)` で包む（skeletonizer パッケージ）。スピナー（CircularProgressIndicator）はダイアログ内などスケルトンが作れない場面のみ
   - 空状態: `EmptyView(message: context.l10n.xxx)`。データが空のときに素のリストを出さない
+- ネットワーク画像は `AppNetworkImage(url:)` / アバターは `AppAvatar(url:, radius:)`（core/widgets）を使う。`Image.network` / `NetworkImage` / `CachedNetworkImage` を feature 側で直接使わない（ディスクキャッシュの統一と、画像パッケージの差し替え・削除を core 1ファイルに閉じるため）
 - 画面内の部分 Widget は同ファイル内のプライベートクラス（`_Body` 等）に切り出す。ビルダーメソッド（`Widget _buildBody()`）は禁止
 
 ## 4. ViewModel を共有してよい判断基準

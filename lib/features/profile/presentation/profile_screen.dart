@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app_template/core/auth/auth_providers.dart';
 import 'package:flutter_app_template/core/l10n/l10n.dart';
 import 'package:flutter_app_template/core/router/routes.dart';
+import 'package:flutter_app_template/core/widgets/app_avatar.dart';
 import 'package:flutter_app_template/core/widgets/error_view.dart';
 import 'package:flutter_app_template/features/profile/presentation/profile_state.dart';
 import 'package:flutter_app_template/features/profile/presentation/profile_view_model.dart';
@@ -42,15 +43,7 @@ class _Body extends HookConsumerWidget {
     return ListView(
       padding: const EdgeInsets.all(24),
       children: [
-        Center(
-          child: CircleAvatar(
-            radius: 48,
-            backgroundImage: avatarUrl == null ? null : NetworkImage(avatarUrl),
-            child: avatarUrl == null
-                ? const Icon(Icons.person, size: 48)
-                : null,
-          ),
-        ),
+        Center(child: AppAvatar(url: avatarUrl, radius: 48)),
         const SizedBox(height: 24),
         ListTile(
           leading: const Icon(Icons.badge_outlined),

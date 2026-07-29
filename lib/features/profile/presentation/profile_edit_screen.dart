@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_template/core/l10n/l10n.dart';
+import 'package:flutter_app_template/core/widgets/app_avatar.dart';
 import 'package:flutter_app_template/core/widgets/error_view.dart';
 import 'package:flutter_app_template/features/profile/presentation/profile_edit_state.dart';
 import 'package:flutter_app_template/features/profile/presentation/profile_edit_view_model.dart';
@@ -45,15 +46,7 @@ class _Body extends HookConsumerWidget {
     return ListView(
       padding: const EdgeInsets.all(24),
       children: [
-        Center(
-          child: CircleAvatar(
-            radius: 48,
-            backgroundImage: avatarUrl == null ? null : NetworkImage(avatarUrl),
-            child: avatarUrl == null
-                ? const Icon(Icons.person, size: 48)
-                : null,
-          ),
-        ),
+        Center(child: AppAvatar(url: avatarUrl, radius: 48)),
         if (state.canChangeAvatar)
           TextButton(
             onPressed: state.isSaving ? null : viewModel.pickAndUploadAvatar,
