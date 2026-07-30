@@ -115,6 +115,7 @@ lib/
 - [x] profile の Firebase Storage 対応（firebase_storage 追加、`firebase_profile_repository.dart` の uploadAvatar 実装、`storage.rules` + firebase.json デプロイ設定。Blaze 化・Storage 有効化・ルールデプロイの手動手順は `lib/features/profile/README.md`）
 - [x] Firebase 電話番号認証の iOS 本番設定（APNs / URL scheme。entitlements + Info.plist + xcconfig 設定済み。APNs キーのアップロード等の手動手順は `lib/features/auth/README.md`）
 - [x] コピー後の初期化スクリプト（`tool/rename.dart`。アプリ名・Bundle ID・Dart パッケージ名の一括リネーム）
+- UI 刷新（Pure Mono）。仕様は **`DESIGN.md`（見た目の正。トークン / タイポグラフィ / 13画面の変更点 / 新規文言7件）**。既存13画面の見た目のみを刷新し、画面・機能は追加しない。着手時は `lib/core/theme/` → `lib/core/widgets/`（LabelValue / DisplayHeader 追加）→ 画面の順。フォント（Noto Sans JP / Archivo）の `assets/fonts/` 追加と pubspec 登録が前提
 - Web View 画面の雛形（利用規約表示等）
 - アプリ内課金（RevenueCat）の下地。**保留**: 商品 ID・Offering 設計はアプリ固有で、テンプレートに置ける「下地」が薄い。課金するアプリ側で書く方が速い
 - マルチプラットフォーム展開（web / macos / windows）。**保留**: 対象プラットフォームを iOS / Android に限定する現行方針と矛盾する。着手する場合はディレクトリを `fvm flutter create --platforms=web,macos,windows .` で再生成し、flavor・認証リダイレクト・ディープリンクの各プラットフォーム対応もスコープに含めること

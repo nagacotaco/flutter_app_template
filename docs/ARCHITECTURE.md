@@ -4,6 +4,7 @@
 
 - このルールと見本実装（`features/items/`、Phase 1 で作成）がズレた場合は**見本実装が正**。ズレに気づいたらこのドキュメントを直す
 - ルールの変更はこのファイルの更新をもって行う。コードレビュー時の指摘根拠もこのファイル
+- **このファイルは「構造」の正、`DESIGN.md` は「見た目」の正。** 色・タイポグラフィ・余白・共通コンポーネントの見え方は `DESIGN.md`（Pure Mono）に従う。衝突したらこのファイルが優先で、`DESIGN.md` 側を直す
 
 ---
 
@@ -148,6 +149,7 @@ class HomeScreen extends HookConsumerWidget {
   - 空状態: `EmptyView(message: context.l10n.xxx)`。データが空のときに素のリストを出さない
 - ネットワーク画像は `AppNetworkImage(url:)` / アバターは `AppAvatar(url:, radius:)`（core/widgets）を使う。`Image.network` / `NetworkImage` / `CachedNetworkImage` を feature 側で直接使わない（ディスクキャッシュの統一と、画像パッケージの差し替え・削除を core 1ファイルに閉じるため）
 - 画面内の部分 Widget は同ファイル内のプライベートクラス（`_Body` 等）に切り出す。ビルダーメソッド（`Widget _buildBody()`）は禁止
+- 色・文字サイズ・ウェイトを画面側にハードコードしない。`Theme.of(context).colorScheme` / `textTheme` 経由で参照し、値の定義は `lib/core/theme/` に閉じる（トークンとコンポーネント仕様は `DESIGN.md` §2〜§5 が正）
 
 ## 4. ViewModel を共有してよい判断基準
 

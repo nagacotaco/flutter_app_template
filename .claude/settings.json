@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path // \"\"' | grep -qE 'lib/core/theme/|lib/core/widgets/|_screen\\.dart$|lib/core/l10n/arb/' && printf '%s' '{\"hookSpecificOutput\":{\"hookEventName\":\"PreToolUse\",\"additionalContext\":\"見た目に関わるファイルへの変更です。DESIGN.md（Pure Mono の設計仕様: カラートークン / タイポグラフィ / 共通コンポーネント仕様 / 画面ごとの変更点 / 文言キー）をこのセッションでまだ読んでいなければ、編集前に必ず読むこと。守るべき不変条件: (1) 色は無彩色のみ (2) カード・境界線・影・Divider で階層を作らない（余白と字の大小で作る） (3) 状態を色で表さない（エラー=太字+下線+「！」）。仕様とズレた実装をするなら、先に DESIGN.md 側を更新する。\"}}' || true",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
