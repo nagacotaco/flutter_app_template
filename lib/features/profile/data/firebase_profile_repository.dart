@@ -58,7 +58,8 @@ class FirebaseProfileRepository implements ProfileRepository {
     // 同一パスへの上書きのため、キャッシュ回避にバージョンクエリを付ける
     final baseUrl = await ref.getDownloadURL();
     final separator = baseUrl.contains('?') ? '&' : '?';
-    final url = '$baseUrl${separator}v=${DateTime.now().millisecondsSinceEpoch}';
+    final url =
+        '$baseUrl${separator}v=${DateTime.now().millisecondsSinceEpoch}';
     try {
       await user.updatePhotoURL(url);
     } on FirebaseAuthException catch (e) {

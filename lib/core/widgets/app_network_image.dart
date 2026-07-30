@@ -26,8 +26,7 @@ class AppNetworkImage extends StatelessWidget {
       width: width,
       height: height,
       fit: fit,
-      placeholder: (_, _) =>
-          ColoredBox(color: colors.surfaceContainerHighest),
+      placeholder: (_, _) => ColoredBox(color: colors.surfaceContainerHighest),
       errorWidget: (_, _, _) => ColoredBox(
         color: colors.surfaceContainerHighest,
         child: Icon(Icons.broken_image_outlined, color: colors.outline),
