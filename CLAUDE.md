@@ -19,6 +19,7 @@ flutter は必ず fvm 経由で実行する。
 - コード生成（freezed / riverpod / go_router）: `fvm dart run build_runner build --delete-conflicting-outputs`
 - 文言生成: `fvm flutter gen-l10n`
 - アプリアイコン再生成: `assets/icon/icon.png`（本番）/ `icon_dev.png`（dev）を差し替え → `fvm dart run flutter_launcher_icons`（flavor 別に自動生成）
+- コピー直後のリネーム: `fvm dart run tool/rename.dart --name "MyApp" --bundle-id com.example.myapp`（`--dry-run` で事前確認。アプリ名・Bundle ID の定義元は pubspec.yaml の `flavorizr:`。`flutter_flavorizr -f` は iOS の手動設定を壊すのでリネームでは使わない）
 
 ## 構造ルール（要約。正は docs/ARCHITECTURE.md）
 

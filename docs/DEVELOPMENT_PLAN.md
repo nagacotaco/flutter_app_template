@@ -3,8 +3,8 @@
 このドキュメントはテンプレートの「何を入れるか」「どの順で作るか」「どう運用するか」を管理する唯一の計画書。
 機能追加・方針変更のたびにこのファイルを更新する（Living Document）。
 
-- 最終更新: 2026-07-29
-- ステータス: Phase 0〜5 すべて完了。以降の追加は Backlog から選定する（profile の Firebase Storage 対応まで完了）
+- 最終更新: 2026-07-30
+- ステータス: Phase 0〜5 すべて完了。以降の追加は Backlog から選定する（コピー後の初期化スクリプトまで完了）
 
 ---
 
@@ -114,16 +114,22 @@ lib/
 
 - [x] profile の Firebase Storage 対応（firebase_storage 追加、`firebase_profile_repository.dart` の uploadAvatar 実装、`storage.rules` + firebase.json デプロイ設定。Blaze 化・Storage 有効化・ルールデプロイの手動手順は `lib/features/profile/README.md`）
 - [x] Firebase 電話番号認証の iOS 本番設定（APNs / URL scheme。entitlements + Info.plist + xcconfig 設定済み。APNs キーのアップロード等の手動手順は `lib/features/auth/README.md`）
-- アプリ内課金（RevenueCat）の下地
+- [x] コピー後の初期化スクリプト（`tool/rename.dart`。アプリ名・Bundle ID・Dart パッケージ名の一括リネーム）
 - Web View 画面の雛形（利用規約表示等）
-- コピー後の初期化スクリプト（アプリ名・Bundle ID 一括リネーム）
-- マルチプラットフォーム展開（web / macos / windows）。ディレクトリは `fvm flutter create --platforms=web,macos,windows .` で再生成できる。着手時は flavor・認証リダイレクト・ディープリンクの各プラットフォーム対応もスコープに含めること
+- アプリ内課金（RevenueCat）の下地。**保留**: 商品 ID・Offering 設計はアプリ固有で、テンプレートに置ける「下地」が薄い。課金するアプリ側で書く方が速い
+- マルチプラットフォーム展開（web / macos / windows）。**保留**: 対象プラットフォームを iOS / Android に限定する現行方針と矛盾する。着手する場合はディレクトリを `fvm flutter create --platforms=web,macos,windows .` で再生成し、flavor・認証リダイレクト・ディープリンクの各プラットフォーム対応もスコープに含めること
 
 ## 5. テンプレートのコピー手順（運用）
 
 1. このリポジトリをコピー（`git clone` → `.git` 削除 → 新規リポジトリ化）
-2. アプリ名・Bundle ID をリネーム（Backlog のスクリプト完成までは Claude Code に指示）。アプリアイコンは `assets/icon/icon.png`（本番）と `icon_dev.png`（dev）を差し替えて `fvm dart run flutter_launcher_icons` を実行
-3. 新規 Supabase プロジェクトを作成し、`supabase/migrations/` を適用、env ファイルにキー設定
+2. アプリ名・Bundle ID・Dart パッケージ名を一括リネーム
+   ```
+   fvm dart run tool/rename.dart --name "MyApp" --bundle-id com.example.myapp --dry-run
+   fvm dart run tool/rename.dart --name "MyApp" --bundle-id com.example.myapp
+   fvm flutter clean && fvm flutter pub get && fvm dart fix --apply
+   ```
+   実行後にスクリプトが手作業の残タスク（Firebase 再設定・アイコン差し替え・署名など）を一覧表示する
+3. 新規 Firebase / Supabase プロジェクトを作成し、設定ファイルを差し替え、env ファイルにキー設定
 4. 不要な機能を削除（例:「電話番号ログインと Apple ログインを削除して」と Claude Code に指示）
 5. アプリ固有の開発を開始
 
