@@ -158,11 +158,17 @@ abstract class AppLocalizations {
   /// **'システム'**
   String get settingsLanguageSystem;
 
-  /// 共通エラー表示の文言
+  /// 共通エラー表示の見出し
   ///
   /// In ja, this message translates to:
   /// **'エラーが発生しました'**
   String get errorMessage;
+
+  /// 共通エラー表示の説明文（ErrorView）
+  ///
+  /// In ja, this message translates to:
+  /// **'通信状況を確認して、もう一度お試しください。'**
+  String get errorRetryBody;
 
   /// 再試行ボタン
   ///
@@ -224,11 +230,29 @@ abstract class AppLocalizations {
   /// **'電話番号でログイン'**
   String get loginToPhoneLogin;
 
-  /// サインアップ画面のタイトル
+  /// ログイン画面下部のリンク／ボトムシートの見出し（Google・Apple・電話番号をまとめる）
+  ///
+  /// In ja, this message translates to:
+  /// **'他の方法でログイン'**
+  String get authOtherMethods;
+
+  /// 送信完了状態からログイン画面へ戻るリンク
+  ///
+  /// In ja, this message translates to:
+  /// **'ログインに戻る'**
+  String get authBackToLogin;
+
+  /// サインアップ画面のタイトル（AppBar）
   ///
   /// In ja, this message translates to:
   /// **'アカウント登録'**
   String get signupTitle;
+
+  /// サインアップ画面の大型見出し
+  ///
+  /// In ja, this message translates to:
+  /// **'はじめる'**
+  String get signupHeadline;
 
   /// サインアップ実行ボタン
   ///
@@ -236,11 +260,17 @@ abstract class AppLocalizations {
   /// **'登録する'**
   String get signupButton;
 
-  /// サインアップ後の確認メール案内
+  /// サインアップ後の見出し
   ///
   /// In ja, this message translates to:
-  /// **'確認メールを送信しました。メール内のリンクから登録を完了してください。'**
-  String get signupEmailSent;
+  /// **'確認メールを送信しました'**
+  String get signupEmailSentTitle;
+
+  /// サインアップ後の説明文
+  ///
+  /// In ja, this message translates to:
+  /// **'メール内のリンクから登録を完了してください。'**
+  String get signupEmailSentBody;
 
   /// パスワード再設定画面のタイトル
   ///
@@ -254,17 +284,41 @@ abstract class AppLocalizations {
   /// **'再設定メールを送信'**
   String get passwordResetButton;
 
-  /// パスワード再設定メール送信後の案内
+  /// パスワード再設定メール送信後の見出し
   ///
   /// In ja, this message translates to:
-  /// **'パスワード再設定メールを送信しました。メール内のリンクから再設定してください。'**
-  String get passwordResetSent;
+  /// **'再設定メールを送信しました'**
+  String get passwordResetSentTitle;
 
-  /// 電話番号ログイン画面のタイトル
+  /// パスワード再設定メール送信後の説明文
+  ///
+  /// In ja, this message translates to:
+  /// **'メール内のリンクから新しいパスワードを設定してください。届かない場合は迷惑メールフォルダをご確認ください。'**
+  String get passwordResetSentBody;
+
+  /// 電話番号ログイン画面のタイトル（AppBar）
   ///
   /// In ja, this message translates to:
   /// **'電話番号ログイン'**
   String get phoneLoginTitle;
+
+  /// 電話番号ログインのステップインジケータ
+  ///
+  /// In ja, this message translates to:
+  /// **'STEP {n}'**
+  String phoneStepLabel(int n);
+
+  /// 電話番号ログイン STEP 1 の大型見出し
+  ///
+  /// In ja, this message translates to:
+  /// **'電話番号を入力'**
+  String get phoneStep1Headline;
+
+  /// 電話番号ログイン STEP 2 の大型見出し
+  ///
+  /// In ja, this message translates to:
+  /// **'認証コードを入力'**
+  String get phoneStep2Headline;
 
   /// 認証: 電話番号入力欄のラベル
   ///
@@ -386,6 +440,12 @@ abstract class AppLocalizations {
   /// **'キャンセル'**
   String get commonCancel;
 
+  /// メンテナンス画面の小見出し（欧文固定。Archivo で表示する）
+  ///
+  /// In ja, this message translates to:
+  /// **'MAINTENANCE'**
+  String get appConfigMaintenanceEyebrow;
+
   /// メンテナンス画面のタイトル
   ///
   /// In ja, this message translates to:
@@ -397,6 +457,12 @@ abstract class AppLocalizations {
   /// In ja, this message translates to:
   /// **'ただいまメンテナンス中です。しばらくしてからもう一度お試しください。'**
   String get appConfigMaintenanceMessage;
+
+  /// 強制アップデート画面の小見出し（欧文固定。Archivo で表示する）
+  ///
+  /// In ja, this message translates to:
+  /// **'UPDATE REQUIRED'**
+  String get appConfigUpdateEyebrow;
 
   /// 強制アップデート画面のタイトル
   ///
@@ -470,11 +536,71 @@ abstract class AppLocalizations {
   /// **'はじめる'**
   String get onboardingStart;
 
-  /// アイテム一覧の空状態メッセージ
+  /// アイテム一覧の空状態の見出し
   ///
   /// In ja, this message translates to:
   /// **'アイテムがまだありません'**
   String get itemsEmptyMessage;
+
+  /// アイテム一覧の空状態の説明文
+  ///
+  /// In ja, this message translates to:
+  /// **'最初のアイテムを追加すると、ここに一覧が表示されます。'**
+  String get itemsEmptyBody;
+
+  /// アイテム一覧の件数の単位（大型数値の隣に置く）
+  ///
+  /// In ja, this message translates to:
+  /// **'件'**
+  String get itemsCountUnit;
+
+  /// アイテム詳細のメタ行
+  ///
+  /// In ja, this message translates to:
+  /// **'ID {id}'**
+  String itemsDetailMeta(String id);
+
+  /// ホームの空状態の見出し
+  ///
+  /// In ja, this message translates to:
+  /// **'表示できる情報がまだありません'**
+  String get homeEmptyTitle;
+
+  /// ホームの空状態の説明文
+  ///
+  /// In ja, this message translates to:
+  /// **'アイテムを追加すると、ここに概要が表示されます。'**
+  String get homeEmptyBody;
+
+  /// 【雛形のダミー文言】ホームの主数値の単位。コピー先アプリで homePlaceholder* ごと差し替える
+  ///
+  /// In ja, this message translates to:
+  /// **'件の未対応'**
+  String get homePlaceholderPendingUnit;
+
+  /// 【雛形のダミー文言】ホームのラベル値ペア1
+  ///
+  /// In ja, this message translates to:
+  /// **'今週の完了'**
+  String get homePlaceholderWeeklyDone;
+
+  /// 【雛形のダミー文言】ホームのラベル値ペア2
+  ///
+  /// In ja, this message translates to:
+  /// **'最終同期'**
+  String get homePlaceholderLastSync;
+
+  /// 【雛形のダミー文言】ホームの直近リストの見出し
+  ///
+  /// In ja, this message translates to:
+  /// **'最近のアイテム'**
+  String get homePlaceholderRecentItems;
+
+  /// 【雛形のダミー文言】ホーム空状態の CTA
+  ///
+  /// In ja, this message translates to:
+  /// **'アイテムを見る'**
+  String get homePlaceholderViewItems;
 }
 
 class _AppLocalizationsDelegate

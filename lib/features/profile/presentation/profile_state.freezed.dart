@@ -214,8 +214,8 @@ return $default(_that.profile);case _:
 /// @nodoc
 
 
-class _ProfileState implements ProfileState {
-  const _ProfileState({required this.profile});
+class _ProfileState extends ProfileState {
+  const _ProfileState({required this.profile}): super._();
   
 
 @override final  Profile profile;

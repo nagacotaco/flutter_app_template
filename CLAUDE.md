@@ -6,7 +6,7 @@
 ## 必読ドキュメント
 
 - IMPORTANT: 画面を新規作成・変更する前に `docs/ARCHITECTURE.md` を必ず読む（Screen/ViewModel/State の厳格ルール）
-- IMPORTANT: 見た目に関わる変更（`lib/core/theme/` / `lib/core/widgets/` / `*_screen.dart` / 新規文言の追加）の前に `DESIGN.md` を必ず読む（デザイン仕様 Pure Mono の正）
+- IMPORTANT: 見た目に関わる変更（`lib/core/theme/` / `lib/core/widgets/` / `*_screen.dart` / 新規文言の追加）の前に `DESIGN.md` を必ず読む（デザイン仕様 Pure Mono の正）。カンプ実体は `docs/design/`（更新手順は同ディレクトリの README）
 - 機能追加・方針変更をしたら `docs/DEVELOPMENT_PLAN.md` を更新する
 
 ## コマンド
@@ -29,6 +29,7 @@ flutter は必ず fvm 経由で実行する。
 - `StatefulWidget` / `setState` 禁止。一時 UI 状態は flutter_hooks
 - 文言のコード直書き禁止。`lib/core/l10n/arb/` に追加して `context.l10n.xxx` で参照
 - 共通ウィジェット・テーマ・グローバル状態は `lib/core/`
+- 画面を追加したら `test/design_layout_test.dart` の `screens` に1行足す（全画面 × light/dark × ja/en のはみ出し検出）
 
 ## デザインルール（要約。正は DESIGN.md）
 
@@ -36,9 +37,11 @@ flutter は必ず fvm 経由で実行する。
 
 - 色は無彩色のみ。有彩色を足すのはコピー先アプリが `seedColor` / `primary` / `onPrimary` を差し替えるときだけ
 - カード・境界線・影・Divider で階層を作らない。階層は **余白 × 字の太さ × 字の大きさ** で作る
-- 状態を色で表さない（エラー＝太字＋下線＋「！」／無効＝不透明度 30%／選択＝塗り）。SnackBar は使わずインライン表示
+- 状態を色で表さない（エラー＝太字＋下線＋「！」／無効＝不透明度 30%／選択＝塗り）。SnackBar は使わず `InlineError` でインライン表示
 - 新規の共通ウィジェットは `lib/core/widgets/` にのみ置く（feature 間 import を作らない）
-- 実装ステータスは未着手（仕様のみ）。着手・進捗は `docs/DEVELOPMENT_PLAN.md` の Backlog「UI 刷新（Pure Mono）」で管理
+- 余白・角丸・寸法は `AppSpacing` / `AppRadius` / `AppSize`（`lib/core/theme/app_spacing.dart`）の値だけを使う。数値の直書き禁止
+- 和文 Noto Sans JP / 欧文・数字 Archivo。Archivo への切り替えは `TextStyle?.archivo`（`app_text_theme.dart`）
+- **実装ステータス: 13画面すべて反映済み（2026-07-31）**
 
 ## テンプレート運用の前提
 

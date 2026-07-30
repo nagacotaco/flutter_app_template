@@ -14,5 +14,6 @@
 4. `lib/core/router/app_router.dart` から onboarding_providers の import、`onboardingCompletedProvider` の listen 1行、redirect のオンボーディング分岐（先頭の if 2つ）を削除する
 5. arb から `onboarding` で始まるキー（ja は `@onboarding...` も）を削除する
 6. `test/widget_test.dart` / `test/auth_redirect_test.dart` の `SharedPreferences.setMockInitialValues` から `onboarding.completed` を削除する
-7. 再生成: `fvm dart run build_runner build --delete-conflicting-outputs` と `fvm flutter gen-l10n`
-8. `fvm flutter analyze` と `fvm flutter test` が通ることを確認する
+7. `test/design_layout_test.dart` の `screens` から `'onboarding'` の行を削除する
+8. 再生成: `fvm dart run build_runner build --delete-conflicting-outputs` と `fvm flutter gen-l10n`
+9. `fvm flutter analyze` と `fvm flutter test` が通ることを確認する

@@ -42,6 +42,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get errorMessage => 'エラーが発生しました';
 
   @override
+  String get errorRetryBody => '通信状況を確認して、もう一度お試しください。';
+
+  @override
   String get retry => '再試行';
 
   @override
@@ -72,13 +75,25 @@ class AppLocalizationsJa extends AppLocalizations {
   String get loginToPhoneLogin => '電話番号でログイン';
 
   @override
+  String get authOtherMethods => '他の方法でログイン';
+
+  @override
+  String get authBackToLogin => 'ログインに戻る';
+
+  @override
   String get signupTitle => 'アカウント登録';
+
+  @override
+  String get signupHeadline => 'はじめる';
 
   @override
   String get signupButton => '登録する';
 
   @override
-  String get signupEmailSent => '確認メールを送信しました。メール内のリンクから登録を完了してください。';
+  String get signupEmailSentTitle => '確認メールを送信しました';
+
+  @override
+  String get signupEmailSentBody => 'メール内のリンクから登録を完了してください。';
 
   @override
   String get passwordResetTitle => 'パスワード再設定';
@@ -87,10 +102,25 @@ class AppLocalizationsJa extends AppLocalizations {
   String get passwordResetButton => '再設定メールを送信';
 
   @override
-  String get passwordResetSent => 'パスワード再設定メールを送信しました。メール内のリンクから再設定してください。';
+  String get passwordResetSentTitle => '再設定メールを送信しました';
+
+  @override
+  String get passwordResetSentBody =>
+      'メール内のリンクから新しいパスワードを設定してください。届かない場合は迷惑メールフォルダをご確認ください。';
 
   @override
   String get phoneLoginTitle => '電話番号ログイン';
+
+  @override
+  String phoneStepLabel(int n) {
+    return 'STEP $n';
+  }
+
+  @override
+  String get phoneStep1Headline => '電話番号を入力';
+
+  @override
+  String get phoneStep2Headline => '認証コードを入力';
 
   @override
   String get authPhoneLabel => '電話番号（+81... 形式）';
@@ -154,11 +184,17 @@ class AppLocalizationsJa extends AppLocalizations {
   String get commonCancel => 'キャンセル';
 
   @override
+  String get appConfigMaintenanceEyebrow => 'MAINTENANCE';
+
+  @override
   String get appConfigMaintenanceTitle => 'メンテナンス中';
 
   @override
   String get appConfigMaintenanceMessage =>
       'ただいまメンテナンス中です。しばらくしてからもう一度お試しください。';
+
+  @override
+  String get appConfigUpdateEyebrow => 'UPDATE REQUIRED';
 
   @override
   String get appConfigUpdateTitle => 'アップデートが必要です';
@@ -198,4 +234,36 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get itemsEmptyMessage => 'アイテムがまだありません';
+
+  @override
+  String get itemsEmptyBody => '最初のアイテムを追加すると、ここに一覧が表示されます。';
+
+  @override
+  String get itemsCountUnit => '件';
+
+  @override
+  String itemsDetailMeta(String id) {
+    return 'ID $id';
+  }
+
+  @override
+  String get homeEmptyTitle => '表示できる情報がまだありません';
+
+  @override
+  String get homeEmptyBody => 'アイテムを追加すると、ここに概要が表示されます。';
+
+  @override
+  String get homePlaceholderPendingUnit => '件の未対応';
+
+  @override
+  String get homePlaceholderWeeklyDone => '今週の完了';
+
+  @override
+  String get homePlaceholderLastSync => '最終同期';
+
+  @override
+  String get homePlaceholderRecentItems => '最近のアイテム';
+
+  @override
+  String get homePlaceholderViewItems => 'アイテムを見る';
 }

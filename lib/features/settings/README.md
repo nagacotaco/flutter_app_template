@@ -22,5 +22,6 @@
    - `lib/app/app.dart` から `appSettingsProvider` の watch と `themeMode:` / `locale:` を削除する
    - `lib/main.dart` と `test/widget_test.dart` から `sharedPreferencesProvider` の override を削除する
    - pubspec.yaml から `shared_preferences` を削除する
-8. 再生成する: `fvm dart run build_runner build --delete-conflicting-outputs` と `fvm flutter gen-l10n`
-9. `fvm flutter analyze` と `fvm flutter test` が通ることを確認する
+8. `test/design_layout_test.dart` の `screens` から `'settings'` の行を削除する
+9. 再生成する: `fvm dart run build_runner build --delete-conflicting-outputs` と `fvm flutter gen-l10n`
+10. `fvm flutter analyze` と `fvm flutter test` が通ることを確認する

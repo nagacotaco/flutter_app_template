@@ -4,6 +4,10 @@ import 'package:go_router/go_router.dart';
 
 /// ボトムナビゲーションを持つシェル。
 /// 各タブのナビゲーション状態は StatefulShellRoute が保持する。
+///
+/// ラベルは表示しない（`labelBehavior: alwaysHide` と indicator の透過は
+/// NavigationBarTheme 側で指定）。選択状態は**塗りアイコン／輪郭アイコン**で示し、
+/// 色では示さない（DESIGN.md §5）。label 引数はスクリーンリーダー用に残している。
 class AppShell extends StatelessWidget {
   const AppShell({required this.navigationShell, super.key});
 

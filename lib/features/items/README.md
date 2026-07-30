@@ -17,8 +17,10 @@ Screen/ViewModel/State + Repository 構成の**見本実装（正）**。アー�
    - `TypedStatefulShellBranch<ItemsBranch>(...)` のブロック
    - `ItemsBranch` / `ItemsRoute` / `ItemDetailRoute` クラス
 4. `lib/core/router/app_shell.dart` からアイテムタブの `NavigationDestination`（`itemsTitle` を使う項目）を削除する
-5. `lib/core/l10n/arb/app_ja.arb` / `app_en.arb` から `itemsTitle`（ja は `@itemsTitle` も）を削除する
-6. 再生成する: `fvm dart run build_runner build --delete-conflicting-outputs` と `fvm flutter gen-l10n`
-7. `fvm flutter analyze` と `fvm flutter test` が通ることを確認する
+5. `lib/core/l10n/arb/app_ja.arb` / `app_en.arb` から `items` で始まるキー（ja は `@items...` も）を削除する
+6. `lib/features/home/presentation/home_screen.dart` の空状態 CTA（`ItemsRoute` への遷移）を差し替える
+7. `test/design_layout_test.dart` の `screens` から `'itemList'` / `'itemDetail'` の行と、`itemRepositoryProvider` の override を削除する
+8. 再生成する: `fvm dart run build_runner build --delete-conflicting-outputs` と `fvm flutter gen-l10n`
+9. `fvm flutter analyze` と `fvm flutter test` が通ることを確認する
 
 削除後は見本実装がなくなるため、画面の書き方は docs/ARCHITECTURE.md のコード例が正になる。

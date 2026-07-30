@@ -144,12 +144,15 @@ class HomeScreen extends HookConsumerWidget {
 - 基底クラスは `HookConsumerWidget` に統一（hooks を使わない画面でも同じ。基底クラスの選択で迷わない）
 - `StatefulWidget` / `setState` は全面禁止。一時的な UI 状態（TextEditingController、タブ index 等）は flutter_hooks（`useTextEditingController` 等）を使う
 - AsyncValue の分岐は上記の `switch` パターンに統一。エラー・ローディング・空状態は共通ウィジェット（`core/widgets/`）を使う
-  - エラー: `ErrorView(error:, onRetry:)`
-  - ローディング: リスト画面は `SkeletonListView()`、リスト以外は実レイアウトを `Skeletonizer(enabled: true, child: ...)` で包む（skeletonizer パッケージ）。スピナー（CircularProgressIndicator）はダイアログ内などスケルトンが作れない場面のみ
-  - 空状態: `EmptyView(message: context.l10n.xxx)`。データが空のときに素のリストを出さない
-- ネットワーク画像は `AppNetworkImage(url:)` / アバターは `AppAvatar(url:, radius:)`（core/widgets）を使う。`Image.network` / `NetworkImage` / `CachedNetworkImage` を feature 側で直接使わない（ディスクキャッシュの統一と、画像パッケージの差し替え・削除を core 1ファイルに閉じるため）
+  - エラー: `ErrorView(error:, onRetry:)`。画面遷移を伴わない操作の失敗（保存・ログイン等）は画面を潰さず `InlineError(message:)` を該当箇所の直下に出す。**SnackBar は使わない**
+  - ローディング: リスト画面は `SkeletonListView()`、詳細・プロフィール系は `SkeletonListView(variant: SkeletonVariant.detail)`。この2形で足りないレイアウトのみ実レイアウトを `Skeletonizer(enabled: true, child: ...)` で包む（skeletonizer パッケージ）。スピナー（CircularProgressIndicator）はダイアログ内などスケルトンが作れない場面のみ
+  - 空状態: `EmptyView(title: context.l10n.xxx, body:, action:)`。データが空のときに素のリストを出さない
+  - `EmptyView` / `ErrorView` / `SkeletonListView` は左右パディングを自分で持つ。呼び出し側で重ねてつけない
+- 入力欄は `LabeledField(label:, child: TextField(...))` で組む（floatingLabel は使わない）。ラベル＋値の表示は `LabelValue(label:, value:, mono:)`、画面冒頭の見出しは `DisplayHeader(title:, meta:, display:, displayUnit:)`
+- ネットワーク画像は `AppNetworkImage(url:)` / アバターは `AppAvatar(url:, size:, initials:)`（core/widgets）を使う。`size` は直径。`Image.network` / `NetworkImage` / `CachedNetworkImage` を feature 側で直接使わない（ディスクキャッシュの統一と、画像パッケージの差し替え・削除を core 1ファイルに閉じるため）
 - 画面内の部分 Widget は同ファイル内のプライベートクラス（`_Body` 等）に切り出す。ビルダーメソッド（`Widget _buildBody()`）は禁止
-- 色・文字サイズ・ウェイトを画面側にハードコードしない。`Theme.of(context).colorScheme` / `textTheme` 経由で参照し、値の定義は `lib/core/theme/` に閉じる（トークンとコンポーネント仕様は `DESIGN.md` §2〜§5 が正）
+- 色・文字サイズ・ウェイト・余白を画面側にハードコードしない。色と字は `Theme.of(context).colorScheme` / `textTheme`、余白は `AppSpacing` / `AppRadius` / `AppSize` 経由で参照し、値の定義は `lib/core/theme/` に閉じる（トークンとコンポーネント仕様は `DESIGN.md` §2〜§5 が正）
+- 画面を追加したら `test/design_layout_test.dart` の `screens` に1行足す。全画面をライト/ダーク × 日本語/英語で描画し、はみ出し（RenderFlex overflow）が出ないことを見るテスト
 
 ## 4. ViewModel を共有してよい判断基準
 

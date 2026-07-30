@@ -218,8 +218,8 @@ return $default(_that.profile,_that.canChangeAvatar,_that.isSaving,_that.errorMe
 /// @nodoc
 
 
-class _ProfileEditState implements ProfileEditState {
-  const _ProfileEditState({required this.profile, this.canChangeAvatar = true, this.isSaving = false, this.errorMessage});
+class _ProfileEditState extends ProfileEditState {
+  const _ProfileEditState({required this.profile, this.canChangeAvatar = true, this.isSaving = false, this.errorMessage}): super._();
   
 
 @override final  Profile profile;

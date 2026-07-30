@@ -40,8 +40,9 @@ fvm flutter test integration_test/avatar_upload_test.dart \
    - profile 画面2つの import
    - `TypedGoRoute<ProfileRoute>`（`ProfileEditRoute` 含むブロック）
    - `ProfileRoute` / `ProfileEditRoute` クラス
-4. `lib/features/settings/presentation/settings_screen.dart` からプロフィールの `ListTile` を削除する
-5. `lib/core/l10n/arb/app_ja.arb` / `app_en.arb` から `profile` で始まるキー（ja は `@profile...` も）を削除する
+4. `lib/features/settings/presentation/settings_screen.dart` からプロフィールの `_LinkRow` を削除する
+5. `lib/core/l10n/arb/app_ja.arb` / `app_en.arb` から `profile` で始まるキー（ja は `@profile...` も）を削除する。ただし `profileNotSet` は設定画面のアカウント欄でも使っているので残すか差し替える
+   `test/design_layout_test.dart` の `screens` から `'profile'` / `'profileEdit'` の行と `profileRepositoryProvider` の override も削除する
 6. pubspec.yaml から `image_picker` と `firebase_storage` を削除し、`ios/Runner/Info.plist` の `NSPhotoLibraryUsageDescription` を削除する
 7. `supabase/migrations/` の profiles / avatars 関連 SQL を削除する（新規プロジェクトに適用しない場合）。ルートの `storage.rules` と firebase.json の `storage` キーも削除する
 8. 再生成: `fvm dart run build_runner build --delete-conflicting-outputs` と `fvm flutter gen-l10n`

@@ -3,8 +3,8 @@
 このドキュメントはテンプレートの「何を入れるか」「どの順で作るか」「どう運用するか」を管理する唯一の計画書。
 機能追加・方針変更のたびにこのファイルを更新する（Living Document）。
 
-- 最終更新: 2026-07-30
-- ステータス: Phase 0〜5 すべて完了。以降の追加は Backlog から選定する（コピー後の初期化スクリプトまで完了）
+- 最終更新: 2026-07-31
+- ステータス: Phase 0〜5 すべて完了 ＋ UI 刷新（Pure Mono）完了。以降の追加は Backlog から選定する
 
 ---
 
@@ -115,7 +115,12 @@ lib/
 - [x] profile の Firebase Storage 対応（firebase_storage 追加、`firebase_profile_repository.dart` の uploadAvatar 実装、`storage.rules` + firebase.json デプロイ設定。Blaze 化・Storage 有効化・ルールデプロイの手動手順は `lib/features/profile/README.md`）
 - [x] Firebase 電話番号認証の iOS 本番設定（APNs / URL scheme。entitlements + Info.plist + xcconfig 設定済み。APNs キーのアップロード等の手動手順は `lib/features/auth/README.md`）
 - [x] コピー後の初期化スクリプト（`tool/rename.dart`。アプリ名・Bundle ID・Dart パッケージ名の一括リネーム）
-- UI 刷新（Pure Mono）。仕様は **`DESIGN.md`（見た目の正。トークン / タイポグラフィ / 13画面の変更点 / 新規文言7件）**。既存13画面の見た目のみを刷新し、画面・機能は追加しない。着手時は `lib/core/theme/` → `lib/core/widgets/`（LabelValue / DisplayHeader 追加）→ 画面の順。フォント（Noto Sans JP / Archivo）の `assets/fonts/` 追加と pubspec 登録が前提
+- [x] UI 刷新（Pure Mono）。仕様は **`DESIGN.md`（見た目の正）**、カンプ実体は `docs/design/`。既存13画面の見た目のみを刷新（画面・機能は追加なし）
+  - `lib/core/theme/` を4ファイルに分割（`app_color_scheme.dart` / `app_text_theme.dart` / `app_spacing.dart` / `app_theme.dart`）
+  - `lib/core/widgets/` に LabelValue / DisplayHeader / InlineError / LabeledField を追加、EmptyView / ErrorView / SkeletonListView / AppAvatar を作り直し
+  - フォントは `assets/fonts/` 同梱ではなく **google_fonts パッケージ**（実行時取得＋キャッシュ）。オフライン初回起動でフォールバック表示になるのを避けたいコピー先アプリは、ここを同梱に差し替える
+  - ホームは feature 間 import を避けるため `features/home/{domain,data}` に自己完結のダミー Repository を持つ（実データ接続はコピー先の作業）
+  - レイアウト回帰は `test/design_layout_test.dart`（全画面 × light/dark × ja/en）で担保
 - Web View 画面の雛形（利用規約表示等）
 - アプリ内課金（RevenueCat）の下地。**保留**: 商品 ID・Offering 設計はアプリ固有で、テンプレートに置ける「下地」が薄い。課金するアプリ側で書く方が速い
 - マルチプラットフォーム展開（web / macos / windows）。**保留**: 対象プラットフォームを iOS / Android に限定する現行方針と矛盾する。着手する場合はディレクトリを `fvm flutter create --platforms=web,macos,windows .` で再生成し、flavor・認証リダイレクト・ディープリンクの各プラットフォーム対応もスコープに含めること

@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app_template/core/l10n/l10n.dart';
+import 'package:flutter_app_template/core/theme/app_spacing.dart';
+import 'package:flutter_app_template/core/theme/app_text_theme.dart';
 
-/// AsyncValue のエラー分岐で使う共通エラー表示（docs/ARCHITECTURE.md）。
+/// AsyncValue のエラー分岐で使う共通エラー表示
+/// （docs/ARCHITECTURE.md / DESIGN.md §5）。
+///
+/// モノクロなので赤は使えない。異常であることは
+/// **大きな「！」＋下線付きの見出し**という字の形だけで示す。
+/// 左右パディングはこの widget が持つので、呼び出し側で重ねてつけないこと。
 class ErrorView extends StatelessWidget {
   const ErrorView({required this.error, this.onRetry, super.key});
 
@@ -12,14 +19,34 @@ class ErrorView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    final theme = Theme.of(context);
+    final l10n = context.l10n;
+
+    return Padding(
+      padding: AppSpacing.screenPadding,
       child: Column(
-        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(context.l10n.errorMessage),
+          // 記号なので l10n には置かない
+          Text('！', style: theme.textTheme.displayMedium.archivo),
+          const SizedBox(height: AppSpacing.md),
+          Text(
+            l10n.errorMessage,
+            style: theme.textTheme.headlineSmall?.copyWith(
+              decoration: TextDecoration.underline,
+            ),
+          ),
+          const SizedBox(height: AppSpacing.md),
+          Text(
+            l10n.errorRetryBody,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
+          ),
           if (onRetry != null) ...[
-            const SizedBox(height: 12),
-            FilledButton(onPressed: onRetry, child: Text(context.l10n.retry)),
+            const SizedBox(height: AppSpacing.xl),
+            FilledButton(onPressed: onRetry, child: Text(l10n.retry)),
           ],
         ],
       ),

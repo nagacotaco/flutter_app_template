@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;600;700&family=Archivo:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#f0eee9;font-family:"IBM Plex Sans JP",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#2a5bd7;text-decoration:none}a:hover{color:#1a3f9e}
+.dv-turn{padding:44px 48px 36px;border-bottom:1px solid rgba(0,0,0,.08);scroll-margin-top:16px}
+.dv-thd{display:flex;align-items:baseline;gap:10px;margin:0 0 8px}
+.dv-tid{font:600 10px "IBM Plex Mono",monospace;padding:3px 7px;background:#1a1a1a;color:#fff;border-radius:4px;text-decoration:none}
+.dv-tname{font:600 13px/1.2 "IBM Plex Sans JP",sans-serif;color:#1a1a1a}
+.dv-opts{display:flex;flex-wrap:wrap;gap:32px;align-items:flex-start}
+.dv-opt{flex:none;display:flex;flex-direction:column;gap:10px;scroll-margin-top:16px;width:720px}
+.dv-oid{font:600 10.5px "IBM Plex Mono",monospace;padding:3px 7px;background:rgba(0,0,0,.08);color:#1a1a1a;border-radius:5px;text-decoration:none}
+.dv-olabel{display:flex;align-items:baseline;gap:8px;font:400 11px/1.3 "IBM Plex Sans JP",sans-serif;color:rgba(0,0,0,.55)}
+.dv-card{max-width:100%;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:10px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden}
+.dv-opt:target .dv-oid{background:#2a78d6;color:#fff}
+.dv-next{margin:26px 0 0;font:12px/1.6 "IBM Plex Sans JP",sans-serif;color:rgba(0,0,0,.5)}
+</style></helmet>
+
+<section class="dv-turn" id="t3">
+<div class="dv-thd"><a class="dv-tid" href="#t3">3</a><span class="dv-tname">添付リファレンス方向 ／ モノクローム・大型タイポ・面なし</span></div>
+<p style="margin:0 0 24px;font:400 12px/1.6 'Archivo',sans-serif;color:rgba(0,0,0,.55);max-width:820px">リファレンスから抽出した規則：<strong style="font-weight:600">カード・枠線・影ゼロ</strong>／<strong style="font-weight:600">小さいグレーのラベル＋太い値</strong>の2段ペア／<strong style="font-weight:600">画面上部に極端に大きい表示文字</strong>／色は原則なし。3案はこの規則の「厳格さ」を段階的に変えたもの。左＝ライト、右＝ダーク。</p>
+<div class="dv-opts">
+
+<!-- 3a -->
+<div class="dv-opt" id="3a">
+<div class="dv-olabel"><a class="dv-oid" href="#3a">3a</a>Pure Mono ／ 完全モノクローム・忠実版</div>
+<div class="dv-card" style="padding:26px 28px 30px">
+  <div style="display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap">
+    <div style="flex:1 1 290px;min-width:270px;display:flex;flex-direction:column;gap:16px">
+      <div>
+        <div style="font:700 20px/1.25 'Archivo',sans-serif;color:#111;letter-spacing:-.02em">Pure Mono</div>
+        <div style="font:400 12px/1.6 'IBM Plex Mono',monospace;color:rgba(0,0,0,.45);margin-top:4px">「色を捨てて、字の大小だけで語る。」</div>
+      </div>
+      <p style="margin:0;font:400 13px/1.75 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.66);text-wrap:pretty">リファレンス最忠実。ColorScheme はほぼ無彩色に潰し、primary＝ほぼ黒／ダークではほぼ白。区切り線もカードも使わず、余白と字の太さ・大きさだけで階層を作る。テンプレートとしては最も中立で、コピー後に seed を差し替えれば一気に色が乗る構造。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">editorial</span>
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">austere</span>
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">typo-driven</span>
+      </div>
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font:400 11.5px/1.55 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.55);border-top:1px solid rgba(0,0,0,.09);padding-top:14px">
+        <div style="color:rgba(0,0,0,.4)">Font</div><div>Archivo（欧文・字間 -0.03em）＋ Noto Sans JP（和文 400/700/900）</div>
+        <div style="color:rgba(0,0,0,.4)">Radius</div><div>ボタン 8 ／ 面・入力は 0（入力は下線のみ）</div>
+        <div style="color:rgba(0,0,0,.4)">面</div><div>elevation 0・境界線なし・Divider 廃止</div>
+        <div style="color:rgba(0,0,0,.4)">ナビ</div><div>アイコンのみ（ラベルなし）。選択＝塗り／非選択＝線・背景罫線なし</div>
+        <div style="color:rgba(0,0,0,.4)">注意</div><div>色で状態を示せないため、error は太字＋記号で表現する必要あり</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;margin-top:2px">
+        <div style="width:34px;height:34px;background:#111"></div>
+        <div style="width:34px;height:34px;background:#F1F1EF;border:1px solid rgba(0,0,0,.1)"></div>
+        <div style="width:34px;height:34px;background:#8A8A88"></div>
+        <div style="font:400 10.5px/1.4 'IBM Plex Mono',monospace;color:rgba(0,0,0,.45);margin-left:4px">seed #111111<br>surface #F1F1EF / #1C1C1C</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:16px;flex:none">
+      <!-- light: items -->
+      <div style="width:250px;height:552px;overflow:hidden;background:#F1F1EF;border-radius:30px;box-shadow:0 10px 30px rgba(0,0,0,.1);display:flex;flex-direction:column">
+        <div style="padding:12px 22px 0;display:flex;justify-content:space-between;font:500 9.5px 'Archivo',sans-serif;color:rgba(0,0,0,.55)"><span>00:12</span><span>▮▮▮</span></div>
+        <div style="padding:22px 22px 0">
+          <div style="font:500 12.5px/1.3 'Noto Sans JP',sans-serif;color:#111">アイテム</div>
+          <div style="font:400 10px/1.4 'Archivo',sans-serif;color:rgba(0,0,0,.42);margin-top:3px">Sunday, 23 April</div>
+          <div style="font:800 68px/1 'Archivo',sans-serif;color:#111;letter-spacing:-.05em;margin-top:14px">24</div>
+        </div>
+        <div style="flex:1;min-height:0;padding:26px 22px 0;display:flex;flex-direction:column;gap:20px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px 14px">
+            <div><div style="font:400 10px/1.4 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.45)">未読</div><div style="font:700 15px/1.3 'Archivo',sans-serif;color:#111;margin-top:2px">8</div></div>
+            <div><div style="font:400 10px/1.4 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.45)">最終同期</div><div style="font:700 15px/1.3 'Archivo',sans-serif;color:#111;margin-top:2px">2h ago</div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div><div style="font:500 13px/1.5 'Noto Sans JP',sans-serif;color:#111">配送スケジュールの見直し</div><div style="font:400 11px/1.5 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.45);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">週次バッチの実行時間を変更しました</div></div>
+            <div><div style="font:500 13px/1.5 'Noto Sans JP',sans-serif;color:#111">Quarterly report draft</div><div style="font:400 11px/1.5 'Archivo',sans-serif;color:rgba(0,0,0,.45);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Needs review before Friday</div></div>
+            <div><div style="font:500 13px/1.5 'Noto Sans JP',sans-serif;color:#111">請求書テンプレートの更新</div><div style="font:400 11px/1.5 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.45);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">保存済み・未送信</div></div>
+          </div>
+          <div style="height:44px;border-radius:8px;background:#111;color:#F1F1EF;font:600 12.5px 'Noto Sans JP',sans-serif;display:flex;align-items:center;justify-content:center">新しいアイテム</div>
+        </div>
+        <div style="display:flex;padding:18px 22px 24px">
+          <div style="flex:1;display:flex;justify-content:center"><div style="width:15px;height:15px;border:1.6px solid rgba(0,0,0,.35)"></div></div>
+          <div style="flex:1;display:flex;justify-content:center"><div style="width:15px;height:15px;display:flex;flex-direction:column;justify-content:space-between"><div style="height:2.6px;background:#111"></div><div style="height:2.6px;background:#111"></div><div style="height:2.6px;background:#111"></div></div></div>
+          <div style="flex:1;display:flex;justify-content:center"><div style="width:15px;height:15px;border:1.6px solid rgba(0,0,0,.35);border-radius:50%"></div></div>
+        </div>
+      </div>
+      <!-- dark: settings -->
+      <div style="width:250px;height:552px;overflow:hidden;background:#1C1C1C;border-radius:30px;box-shadow:0 10px 30px rgba(0,0,0,.22);display:flex;flex-direction:column">
+        <div style="padding:12px 22px 0;display:flex;justify-content:space-between;font:500 9.5px 'Archivo',sans-serif;color:rgba(255,255,255,.6)"><span>00:12</span><span>▮▮▮</span></div>
+        <div style="padding:22px 22px 0">
+          <div style="font:500 12.5px/1.3 'Noto Sans JP',sans-serif;color:#F2F2F0">設定</div>
+          <div style="font:400 10px/1.4 'Archivo',sans-serif;color:rgba(255,255,255,.4);margin-top:3px">Version 1.0.0</div>
+          <div style="font:800 44px/1 'Noto Sans JP',sans-serif;color:#F2F2F0;letter-spacing:-.04em;margin-top:16px">日本語</div>
+        </div>
+        <div style="flex:1;min-height:0;padding:28px 22px 0;display:flex;flex-direction:column;gap:20px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px 14px">
+            <div><div style="font:400 10px/1.4 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.42)">テーマ</div><div style="font:700 14px/1.35 'Noto Sans JP',sans-serif;color:#F2F2F0;margin-top:3px">ダーク</div></div>
+            <div><div style="font:400 10px/1.4 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.42)">言語</div><div style="font:700 14px/1.35 'Noto Sans JP',sans-serif;color:#F2F2F0;margin-top:3px">日本語</div></div>
+            <div><div style="font:400 10px/1.4 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.42)">プロフィール</div><div style="font:700 14px/1.35 'Archivo',sans-serif;color:#F2F2F0;margin-top:3px">taro.y</div></div>
+            <div><div style="font:400 10px/1.4 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.42)">アプリバージョン</div><div style="font:700 14px/1.35 'Archivo',sans-serif;color:#F2F2F0;margin-top:3px">1.0.0</div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:14px;margin-top:4px">
+            <div style="font:500 12.5px 'Noto Sans JP',sans-serif;color:rgba(242,242,240,.85)">利用規約</div>
+            <div style="font:500 12.5px 'Noto Sans JP',sans-serif;color:rgba(242,242,240,.85)">プライバシーポリシー</div>
+            <div style="font:500 12.5px 'Noto Sans JP',sans-serif;color:rgba(242,242,240,.85)">ログアウト</div>
+            <div style="font:700 12.5px 'Noto Sans JP',sans-serif;color:#F2F2F0;text-decoration:underline;text-underline-offset:3px">退会（アカウント削除）</div>
+          </div>
+        </div>
+        <div style="display:flex;padding:18px 22px 24px">
+          <div style="flex:1;display:flex;justify-content:center"><div style="width:15px;height:15px;border:1.6px solid rgba(255,255,255,.35)"></div></div>
+          <div style="flex:1;display:flex;justify-content:center"><div style="width:15px;height:15px;display:flex;flex-direction:column;justify-content:space-between"><div style="height:2.6px;background:rgba(255,255,255,.35)"></div><div style="height:2.6px;background:rgba(255,255,255,.35)"></div><div style="height:2.6px;background:rgba(255,255,255,.35)"></div></div></div>
+          <div style="flex:1;display:flex;justify-content:center"><div style="width:15px;height:15px;border-radius:50%;background:#F2F2F0"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 3b -->
+<div class="dv-opt" id="3b">
+<div class="dv-olabel"><a class="dv-oid" href="#3b">3b</a>Mono + One Accent ／ 差し色1色だけ許す版</div>
+<div class="dv-card" style="padding:26px 28px 30px">
+  <div style="display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap">
+    <div style="flex:1 1 290px;min-width:270px;display:flex;flex-direction:column;gap:16px">
+      <div>
+        <div style="font:700 20px/1.25 'Archivo',sans-serif;color:#111;letter-spacing:-.02em">Mono + One Accent</div>
+        <div style="font:400 12px/1.6 'IBM Plex Mono',monospace;color:rgba(0,0,0,.45);margin-top:4px">「モノクロの誌面に、1色だけ電気を通す。」</div>
+      </div>
+      <p style="margin:0;font:400 13px/1.75 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.66);text-wrap:pretty">見た目は <a class="dv-oid" href="#3a">3a</a> と同一。違いは色を<em style="font-style:normal;font-weight:600">主ボタン・選択中タブ・リンク・エラー</em>の4用途にだけ解放すること。テンプレートとしては「seed を変える＝アプリの個性が変わる」が体感でき、色で状態を示せるので実装上の安全度も高い。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">confident</span>
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">brandable</span>
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">safe-for-states</span>
+      </div>
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font:400 11.5px/1.55 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.55);border-top:1px solid rgba(0,0,0,.09);padding-top:14px">
+        <div style="color:rgba(0,0,0,.4)">Font</div><div>Archivo ＋ Noto Sans JP</div>
+        <div style="color:rgba(0,0,0,.4)">Radius</div><div>0 ／ ボタンのみ 4</div>
+        <div style="color:rgba(0,0,0,.4)">面</div><div>elevation 0・境界線なし</div>
+        <div style="color:rgba(0,0,0,.4)">色の用途</div><div>主ボタン／選択中タブ／リンク／エラー のみ（4箇所固定）</div>
+        <div style="color:rgba(0,0,0,.4)">注意</div><div>アクセントの面積上限を決めておく（画面の5%以内）</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;margin-top:2px">
+        <div style="width:34px;height:34px;background:#2438FF"></div>
+        <div style="width:34px;height:34px;background:#111"></div>
+        <div style="width:34px;height:34px;background:#F1F1EF;border:1px solid rgba(0,0,0,.1)"></div>
+        <div style="font:400 10.5px/1.4 'IBM Plex Mono',monospace;color:rgba(0,0,0,.45);margin-left:4px">accent #2438FF<br>（seed 1行差し替えで着せ替え）</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:16px;flex:none">
+      <!-- light: profile -->
+      <div style="width:250px;height:552px;overflow:hidden;background:#F1F1EF;border-radius:30px;box-shadow:0 10px 30px rgba(0,0,0,.1);display:flex;flex-direction:column">
+        <div style="padding:12px 22px 0;display:flex;justify-content:space-between;font:500 9.5px 'Archivo',sans-serif;color:rgba(0,0,0,.55)"><span>00:12</span><span>▮▮▮</span></div>
+        <div style="padding:20px 22px 0;display:flex;align-items:center;gap:10px">
+          <div style="width:7px;height:7px;border-left:1.6px solid #111;border-bottom:1.6px solid #111;transform:rotate(45deg)"></div>
+          <div style="font:500 12.5px 'Noto Sans JP',sans-serif;color:#111">プロフィール</div>
+        </div>
+        <div style="padding:18px 22px 0;display:flex;align-items:flex-end;gap:14px">
+          <div style="width:72px;height:72px;border-radius:50%;background:#E3E3E0;display:flex;align-items:center;justify-content:center;font:700 22px 'Archivo',sans-serif;color:rgba(0,0,0,.35)">TY</div>
+          <div style="padding-bottom:4px"><div style="font:400 10px/1.4 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.45)">表示名</div><div style="font:800 24px/1.1 'Noto Sans JP',sans-serif;color:#111;letter-spacing:-.03em;margin-top:2px">未設定</div></div>
+        </div>
+        <div style="flex:1;min-height:0;padding:28px 22px 0;display:flex;flex-direction:column;gap:20px">
+          <div style="display:grid;grid-template-columns:1fr;gap:18px">
+            <div><div style="font:400 10px/1.4 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.45)">メールアドレス</div><div style="font:700 14px/1.35 'Archivo',sans-serif;color:#111;margin-top:2px">taro.yamada@example.com</div></div>
+            <div><div style="font:400 10px/1.4 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.45)">アカウント作成</div><div style="font:700 14px/1.35 'Archivo',sans-serif;color:#111;margin-top:2px">12 Mar 2026</div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-top:2px">
+            <div style="height:44px;border-radius:4px;background:#2438FF;color:#fff;font:600 12.5px 'Noto Sans JP',sans-serif;display:flex;align-items:center;justify-content:center">プロフィール編集</div>
+            <div style="font:600 11.5px 'Noto Sans JP',sans-serif;color:#2438FF;text-align:center;padding:6px 0">アバター画像を変更</div>
+          </div>
+        </div>
+        <div style="display:flex;padding:16px 22px 20px;gap:20px;align-items:center">
+          <span style="font:400 11.5px 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.4)">ホーム</span>
+          <span style="font:400 11.5px 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.4)">アイテム</span>
+          <span style="font:700 11.5px 'Noto Sans JP',sans-serif;color:#2438FF;border-bottom:2px solid #2438FF;padding-bottom:2px">設定</span>
+        </div>
+      </div>
+      <!-- dark: items -->
+      <div style="width:250px;height:552px;overflow:hidden;background:#1C1C1C;border-radius:30px;box-shadow:0 10px 30px rgba(0,0,0,.22);display:flex;flex-direction:column">
+        <div style="padding:12px 22px 0;display:flex;justify-content:space-between;font:500 9.5px 'Archivo',sans-serif;color:rgba(255,255,255,.6)"><span>00:12</span><span>▮▮▮</span></div>
+        <div style="padding:22px 22px 0">
+          <div style="font:500 12.5px/1.3 'Noto Sans JP',sans-serif;color:#F2F2F0">アイテム</div>
+          <div style="font:400 10px/1.4 'Archivo',sans-serif;color:rgba(255,255,255,.4);margin-top:3px">Sunday, 24 April</div>
+          <div style="font:800 68px/1 'Archivo',sans-serif;color:#F2F2F0;letter-spacing:-.05em;margin-top:14px">24</div>
+        </div>
+        <div style="flex:1;min-height:0;padding:26px 22px 0;display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div><div style="font:500 13px/1.5 'Noto Sans JP',sans-serif;color:#F2F2F0">配送スケジュールの見直し</div><div style="font:400 11px/1.5 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.45);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">週次バッチの実行時間を変更しました</div></div>
+            <div><div style="font:500 13px/1.5 'Noto Sans JP',sans-serif;color:#F2F2F0">Quarterly report draft</div><div style="font:400 11px/1.5 'Archivo',sans-serif;color:rgba(255,255,255,.45);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Needs review before Friday</div></div>
+            <div><div style="font:500 13px/1.5 'Noto Sans JP',sans-serif;color:#F2F2F0">請求書テンプレートの更新</div><div style="font:400 11px/1.5 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.45);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">保存済み・未送信</div></div>
+          </div>
+          <div style="font:700 11.5px/1.6 'Noto Sans JP',sans-serif;color:#8C9BFF">エラーが発生しました</div>
+          <div style="height:44px;border-radius:4px;background:#8C9BFF;color:#0B1040;font:600 12.5px 'Noto Sans JP',sans-serif;display:flex;align-items:center;justify-content:center">再試行</div>
+        </div>
+        <div style="display:flex;padding:16px 22px 20px;gap:20px;align-items:center">
+          <span style="font:400 11.5px 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.4)">ホーム</span>
+          <span style="font:700 11.5px 'Noto Sans JP',sans-serif;color:#8C9BFF;border-bottom:2px solid #8C9BFF;padding-bottom:2px">アイテム</span>
+          <span style="font:400 11.5px 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.4)">設定</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 3c -->
+<div class="dv-opt" id="3c">
+<div class="dv-olabel"><a class="dv-oid" href="#3c">3c</a>Mono Grid ／ 罫線と等幅メタを足した情報密度版</div>
+<div class="dv-card" style="padding:26px 28px 30px">
+  <div style="display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap">
+    <div style="flex:1 1 290px;min-width:270px;display:flex;flex-direction:column;gap:16px">
+      <div>
+        <div style="font:700 20px/1.25 'Archivo',sans-serif;color:#111;letter-spacing:-.02em">Mono Grid</div>
+        <div style="font:400 12px/1.6 'IBM Plex Mono',monospace;color:rgba(0,0,0,.45);margin-top:4px">「同じ無彩色に、グリッドの骨を入れる。」</div>
+      </div>
+      <p style="margin:0;font:400 13px/1.75 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.66);text-wrap:pretty">モノクロと大型タイポは保ちつつ、ヘアラインと等幅の小さなメタ文字（<span style="font:500 11px 'IBM Plex Mono',monospace">ITEMS / 01 / 1.0.0</span>）を足す。リファレンスの「ラベル＋値」ペアを罫線付きの表として扱うので、設定・プロフィールのような項目の多い画面が最も安定する。長い日本語ラベルにも強い。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">technical</span>
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">dense</span>
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">robust-for-JA</span>
+      </div>
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font:400 11.5px/1.55 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.55);border-top:1px solid rgba(0,0,0,.09);padding-top:14px">
+        <div style="color:rgba(0,0,0,.4)">Font</div><div>Archivo ＋ Noto Sans JP ＋ IBM Plex Mono（メタのみ）</div>
+        <div style="color:rgba(0,0,0,.4)">Radius</div><div>0（全要素）</div>
+        <div style="color:rgba(0,0,0,.4)">面</div><div>1px 罫線のグリッド・反転ブロックで見出しを立てる</div>
+        <div style="color:rgba(0,0,0,.4)">ナビ</div><div>等分割・区切り罫線・選択＝反転</div>
+        <div style="color:rgba(0,0,0,.4)">注意</div><div>角丸0なので端末の角丸とのコントラストが強く出る（意図通りか確認）</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;margin-top:2px">
+        <div style="width:34px;height:34px;background:#0E0E0E"></div>
+        <div style="width:34px;height:34px;background:#EFEFEC;border:1px solid rgba(0,0,0,.1)"></div>
+        <div style="width:34px;height:34px;background:#767674"></div>
+        <div style="font:400 10.5px/1.4 'IBM Plex Mono',monospace;color:rgba(0,0,0,.45);margin-left:4px">seed #0E0E0E<br>surface #EFEFEC / #171717</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:16px;flex:none">
+      <!-- light: items -->
+      <div style="width:250px;height:552px;overflow:hidden;background:#EFEFEC;border-radius:30px;box-shadow:0 10px 30px rgba(0,0,0,.1);display:flex;flex-direction:column">
+        <div style="padding:12px 20px 0;display:flex;justify-content:space-between;font:500 9.5px 'IBM Plex Mono',monospace;color:rgba(0,0,0,.55)"><span>00:12</span><span>▮▮▮</span></div>
+        <div style="padding:20px 20px 14px;border-bottom:1px solid #0E0E0E">
+          <div style="display:flex;justify-content:space-between;align-items:baseline">
+            <div style="font:500 9.5px 'IBM Plex Mono',monospace;color:rgba(0,0,0,.5);letter-spacing:.16em">ITEMS</div>
+            <div style="font:500 9.5px 'IBM Plex Mono',monospace;color:rgba(0,0,0,.5)">24 / 24</div>
+          </div>
+          <div style="font:800 56px/1 'Archivo',sans-serif;color:#0E0E0E;letter-spacing:-.05em;margin-top:12px">24</div>
+        </div>
+        <div style="flex:1;min-height:0;display:flex;flex-direction:column">
+          <div style="display:flex;gap:12px;padding:13px 20px;border-bottom:1px solid rgba(14,14,14,.14)">
+            <div style="font:500 9.5px 'IBM Plex Mono',monospace;color:rgba(0,0,0,.4);padding-top:3px">01</div>
+            <div style="flex:1;min-width:0"><div style="font:500 13px/1.45 'Noto Sans JP',sans-serif;color:#0E0E0E">配送スケジュールの見直し</div><div style="font:400 11px/1.45 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.48);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">週次バッチの実行時間を変更しました</div></div>
+          </div>
+          <div style="display:flex;gap:12px;padding:13px 20px;border-bottom:1px solid rgba(14,14,14,.14)">
+            <div style="font:500 9.5px 'IBM Plex Mono',monospace;color:rgba(0,0,0,.4);padding-top:3px">02</div>
+            <div style="flex:1;min-width:0"><div style="font:500 13px/1.45 'Noto Sans JP',sans-serif;color:#0E0E0E">Quarterly report draft</div><div style="font:400 11px/1.45 'Archivo',sans-serif;color:rgba(0,0,0,.48);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Needs review before Friday</div></div>
+          </div>
+          <div style="display:flex;gap:12px;padding:13px 20px;border-bottom:1px solid rgba(14,14,14,.14)">
+            <div style="font:500 9.5px 'IBM Plex Mono',monospace;color:rgba(0,0,0,.4);padding-top:3px">03</div>
+            <div style="flex:1;min-width:0"><div style="font:500 13px/1.45 'Noto Sans JP',sans-serif;color:#0E0E0E">請求書テンプレートの更新</div><div style="font:400 11px/1.45 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.48);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">保存済み・未送信</div></div>
+          </div>
+          <div style="display:flex;gap:12px;padding:13px 20px;border-bottom:1px solid rgba(14,14,14,.14)">
+            <div style="font:500 9.5px 'IBM Plex Mono',monospace;color:rgba(0,0,0,.4);padding-top:3px">04</div>
+            <div style="flex:1;min-width:0"><div style="font:500 13px/1.45 'Noto Sans JP',sans-serif;color:#0E0E0E">アクセス権限の棚卸し</div><div style="font:400 11px/1.45 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.48);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">3名分の権限を見直す必要があります</div></div>
+          </div>
+          <div style="margin:auto 20px 0;height:44px;background:#0E0E0E;color:#EFEFEC;font:600 12.5px 'Noto Sans JP',sans-serif;display:flex;align-items:center;justify-content:center">新しいアイテム</div>
+          <div style="height:16px"></div>
+        </div>
+        <div style="display:flex;border-top:1px solid #0E0E0E">
+          <div style="flex:1;padding:13px 0 18px;text-align:center;font:400 10.5px 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.45);border-right:1px solid rgba(14,14,14,.14)">ホーム</div>
+          <div style="flex:1;padding:13px 0 18px;text-align:center;font:700 10.5px 'Noto Sans JP',sans-serif;background:#0E0E0E;color:#EFEFEC">アイテム</div>
+          <div style="flex:1;padding:13px 0 18px;text-align:center;font:400 10.5px 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.45);border-left:1px solid rgba(14,14,14,.14)">設定</div>
+        </div>
+      </div>
+      <!-- dark: settings -->
+      <div style="width:250px;height:552px;overflow:hidden;background:#171717;border-radius:30px;box-shadow:0 10px 30px rgba(0,0,0,.22);display:flex;flex-direction:column">
+        <div style="padding:12px 20px 0;display:flex;justify-content:space-between;font:500 9.5px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.6)"><span>00:12</span><span>▮▮▮</span></div>
+        <div style="padding:20px 20px 14px;border-bottom:1px solid rgba(255,255,255,.55)">
+          <div style="display:flex;justify-content:space-between;align-items:baseline">
+            <div style="font:500 9.5px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.5);letter-spacing:.16em">SETTINGS</div>
+            <div style="font:500 9.5px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.5)">v1.0.0</div>
+          </div>
+          <div style="font:800 34px/1.05 'Noto Sans JP',sans-serif;color:#F0F0EE;letter-spacing:-.04em;margin-top:12px">設定</div>
+        </div>
+        <div style="flex:1;min-height:0;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:center;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,.13)"><div style="flex:1"><div style="font:500 9.5px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.42);letter-spacing:.1em">THEME</div><div style="font:500 13px/1.45 'Noto Sans JP',sans-serif;color:#F0F0EE;margin-top:2px">ダーク</div></div><div style="font:400 10px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.45)">▾</div></div>
+          <div style="display:flex;align-items:center;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,.13)"><div style="flex:1"><div style="font:500 9.5px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.42);letter-spacing:.1em">LANGUAGE</div><div style="font:500 13px/1.45 'Noto Sans JP',sans-serif;color:#F0F0EE;margin-top:2px">日本語</div></div><div style="font:400 10px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.45)">▾</div></div>
+          <div style="display:flex;align-items:center;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,.13)"><div style="flex:1;font:500 12.5px 'Noto Sans JP',sans-serif;color:#F0F0EE">プロフィール</div><div style="font:400 10px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.45)">→</div></div>
+          <div style="display:flex;align-items:center;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,.13)"><div style="flex:1;font:500 12.5px 'Noto Sans JP',sans-serif;color:#F0F0EE">利用規約</div><div style="font:400 10px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.45)">↗</div></div>
+          <div style="display:flex;align-items:center;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,.13)"><div style="flex:1;font:500 12.5px 'Noto Sans JP',sans-serif;color:#F0F0EE">プライバシーポリシー</div><div style="font:400 10px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.45)">↗</div></div>
+          <div style="display:flex;align-items:center;padding:13px 20px;border-bottom:1px solid rgba(255,255,255,.13)"><div style="flex:1;font:500 12.5px 'Noto Sans JP',sans-serif;color:#F0F0EE">ログアウト</div></div>
+          <div style="display:flex;align-items:center;padding:13px 20px"><div style="flex:1;font:700 12.5px 'Noto Sans JP',sans-serif;color:#F0F0EE;text-decoration:underline;text-underline-offset:3px">退会（アカウント削除）</div></div>
+        </div>
+        <div style="display:flex;border-top:1px solid rgba(255,255,255,.55)">
+          <div style="flex:1;padding:13px 0 18px;text-align:center;font:400 10.5px 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.45);border-right:1px solid rgba(255,255,255,.13)">ホーム</div>
+          <div style="flex:1;padding:13px 0 18px;text-align:center;font:400 10.5px 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.45);border-right:1px solid rgba(255,255,255,.13)">アイテム</div>
+          <div style="flex:1;padding:13px 0 18px;text-align:center;font:700 10.5px 'Noto Sans JP',sans-serif;background:#F0F0EE;color:#171717">設定</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">次の一手：「<a class="dv-oid" href="#3a">3a</a> で進めてトークンを定義して」／「<a class="dv-oid" href="#3b">3b</a> のアクセントを別の色で試したい」／「<a class="dv-oid" href="#3c">3c</a> を英語UIでも確認したい」</p>
+</section>
+
+<section class="dv-turn" id="t2">
+<div class="dv-thd"><a class="dv-tid" href="#t2">2</a><span class="dv-tname">ニューモーフィズム／グラスモーフィズム／ミニマル ・ プライマリ＝青系</span></div>
+<p style="margin:0 0 24px;font:400 12px/1.6 'IBM Plex Sans JP',sans-serif;color:rgba(0,0,0,.55);max-width:820px">SCREEN_INVENTORY を反映し、左＝<strong style="font-weight:600">アイテム一覧（ライト）</strong>、右＝<strong style="font-weight:600">設定（ダーク）</strong>で表示。どれも既存13画面の構成・文言そのままで、面の作り方だけを変えています。青系seedは3案で意図的に温度を変えました。Flutter実装上の注意は各案の下に記載。</p>
+<div class="dv-opts">
+
+<!-- 2a Neumorphism -->
+<div class="dv-opt" id="2a">
+<div class="dv-olabel"><a class="dv-oid" href="#2a">2a</a>Soft Depth ／ ニューモーフィズム主体</div>
+<div class="dv-card" style="padding:26px 28px 30px">
+  <div style="display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap">
+    <div style="flex:1 1 290px;min-width:270px;display:flex;flex-direction:column;gap:16px">
+      <div>
+        <div style="font:600 20px/1.3 'IBM Plex Sans JP',sans-serif;color:#1B2230;letter-spacing:-.01em">Soft Depth</div>
+        <div style="font:400 12px/1.6 'IBM Plex Mono',monospace;color:rgba(0,0,0,.45);margin-top:4px">「押せる面。地と一体の凹凸。」</div>
+      </div>
+      <p style="margin:0;font:400 13px/1.75 'IBM Plex Sans JP',sans-serif;color:rgba(0,0,0,.66);text-wrap:pretty">背景と同色の面に二方向の影（明＋暗）で凹凸を作る。カードの境界線を使わず、余白と陰影だけで階層。入力欄は「凹」、ボタンは「凸」という一貫ルールにすると学習が要らない。青は押下・選択時の一点にだけ入る。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">tactile</span>
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">calm</span>
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">quiet-premium</span>
+      </div>
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font:400 11.5px/1.55 'IBM Plex Sans JP',sans-serif;color:rgba(0,0,0,.55);border-top:1px solid rgba(0,0,0,.09);padding-top:14px">
+        <div style="color:rgba(0,0,0,.4)">Font</div><div>IBM Plex Sans JP</div>
+        <div style="color:rgba(0,0,0,.4)">Radius</div><div>16 / 入力14 / ボタン16</div>
+        <div style="color:rgba(0,0,0,.4)">面</div><div>elevation 0＋二方向シャドウ（白 -2,-2 / 影 3,4）</div>
+        <div style="color:rgba(0,0,0,.4)">実装</div><div>Container + BoxShadow×2。M3 elevation は全て 0 に落とす</div>
+        <div style="color:rgba(0,0,0,.4)">注意</div><div>白背景不可（#EDF0F6 前提）／薄い文字はコントラスト検証必須</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;margin-top:2px">
+        <div style="width:34px;height:34px;border-radius:10px;background:#3C6FE0"></div>
+        <div style="width:34px;height:34px;border-radius:10px;background:#EDF0F6;border:1px solid rgba(0,0,0,.08)"></div>
+        <div style="width:34px;height:34px;border-radius:10px;background:#1B2230"></div>
+        <div style="font:400 10.5px/1.4 'IBM Plex Mono',monospace;color:rgba(0,0,0,.45);margin-left:4px">seed #3C6FE0<br>surface #EDF0F6 / #20242C</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:16px;flex:none">
+      <!-- light: items -->
+      <div style="width:250px;height:552px;border-radius:26px;overflow:hidden;background:#EDF0F6;border:1px solid rgba(0,0,0,.08);display:flex;flex-direction:column">
+        <div style="padding:10px 18px 0;display:flex;justify-content:space-between;font:500 10px 'IBM Plex Mono',monospace;color:rgba(0,0,0,.42)"><span>9:41</span><span>▮▮▮</span></div>
+        <div style="padding:16px 18px 14px;display:flex;align-items:center;justify-content:space-between">
+          <div style="font:600 20px/1.3 'IBM Plex Sans JP',sans-serif;color:#1B2230">アイテム</div>
+          <div style="width:34px;height:34px;border-radius:12px;background:#EDF0F6;box-shadow:3px 4px 8px rgba(19,32,61,.16),-3px -3px 7px rgba(255,255,255,.9);display:flex;align-items:center;justify-content:center"><div style="width:12px;height:12px;border:1.5px solid #47506A;border-radius:50%"></div></div>
+        </div>
+        <div style="flex:1;min-height:0;padding:0 18px;display:flex;flex-direction:column;gap:10px">
+          <div style="border-radius:16px;background:#EDF0F6;box-shadow:4px 5px 12px rgba(19,32,61,.16),-4px -4px 10px rgba(255,255,255,.92);padding:4px 14px">
+            <div style="display:flex;gap:10px;align-items:center;padding:13px 0;border-bottom:1px solid rgba(19,32,61,.07)">
+              <div style="flex:1;min-width:0"><div style="font:500 13px/1.45 'IBM Plex Sans JP',sans-serif;color:#1B2230">配送スケジュールの見直し</div><div style="font:400 11.5px/1.45 'IBM Plex Sans JP',sans-serif;color:rgba(27,34,48,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">週次バッチの実行時間を変更しました</div></div>
+              <div style="width:6px;height:6px;border-right:1.5px solid rgba(27,34,48,.35);border-top:1.5px solid rgba(27,34,48,.35);transform:rotate(45deg)"></div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center;padding:13px 0;border-bottom:1px solid rgba(19,32,61,.07)">
+              <div style="flex:1;min-width:0"><div style="font:500 13px/1.45 'IBM Plex Sans JP',sans-serif;color:#1B2230">Quarterly report draft</div><div style="font:400 11.5px/1.45 'IBM Plex Sans JP',sans-serif;color:rgba(27,34,48,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Needs review before Friday</div></div>
+              <div style="width:6px;height:6px;border-right:1.5px solid rgba(27,34,48,.35);border-top:1.5px solid rgba(27,34,48,.35);transform:rotate(45deg)"></div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center;padding:13px 0">
+              <div style="flex:1;min-width:0"><div style="font:500 13px/1.45 'IBM Plex Sans JP',sans-serif;color:#1B2230">請求書テンプレートの更新</div><div style="font:400 11.5px/1.45 'IBM Plex Sans JP',sans-serif;color:rgba(27,34,48,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">保存済み・未送信</div></div>
+              <div style="width:6px;height:6px;border-right:1.5px solid rgba(27,34,48,.35);border-top:1.5px solid rgba(27,34,48,.35);transform:rotate(45deg)"></div>
+            </div>
+          </div>
+          <div style="border-radius:16px;background:#EDF0F6;box-shadow:inset 3px 3px 7px rgba(19,32,61,.14),inset -3px -3px 7px rgba(255,255,255,.9);padding:14px;display:flex;flex-direction:column;gap:9px">
+            <div style="font:500 9.5px 'IBM Plex Mono',monospace;color:rgba(27,34,48,.42);letter-spacing:.08em">LOADING (skeleton)</div>
+            <div style="height:11px;width:72%;border-radius:6px;background:linear-gradient(90deg,rgba(19,32,61,.09),rgba(19,32,61,.04),rgba(19,32,61,.09))"></div>
+            <div style="height:9px;width:48%;border-radius:6px;background:linear-gradient(90deg,rgba(19,32,61,.07),rgba(19,32,61,.03),rgba(19,32,61,.07))"></div>
+            <div style="height:11px;width:64%;border-radius:6px;background:linear-gradient(90deg,rgba(19,32,61,.09),rgba(19,32,61,.04),rgba(19,32,61,.09))"></div>
+          </div>
+          <div style="height:42px;border-radius:16px;background:#3C6FE0;box-shadow:4px 5px 12px rgba(60,111,224,.34);color:#fff;font:500 12.5px 'IBM Plex Sans JP',sans-serif;display:flex;align-items:center;justify-content:center">再試行</div>
+        </div>
+        <div style="margin:12px 14px 16px;border-radius:20px;background:#EDF0F6;box-shadow:4px 5px 12px rgba(19,32,61,.15),-4px -4px 10px rgba(255,255,255,.92);display:flex;padding:9px 6px">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:9px;height:9px;border:1.5px solid rgba(27,34,48,.4);border-radius:2px"></div><span style="font:400 9.5px 'IBM Plex Sans JP',sans-serif;color:rgba(27,34,48,.45)">ホーム</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:26px;height:18px;border-radius:8px;background:#3C6FE0;display:flex;align-items:center;justify-content:center"><div style="width:9px;height:9px;background:#fff;border-radius:2px"></div></div><span style="font:500 9.5px 'IBM Plex Sans JP',sans-serif;color:#2C55B5">アイテム</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:9px;height:9px;border:1.5px solid rgba(27,34,48,.4);border-radius:50%"></div><span style="font:400 9.5px 'IBM Plex Sans JP',sans-serif;color:rgba(27,34,48,.45)">設定</span></div>
+        </div>
+      </div>
+      <!-- dark: settings -->
+      <div style="width:250px;height:552px;border-radius:26px;overflow:hidden;background:#20242C;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column">
+        <div style="padding:10px 18px 0;display:flex;justify-content:space-between;font:500 10px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.42)"><span>9:41</span><span>▮▮▮</span></div>
+        <div style="padding:16px 18px 14px"><div style="font:600 20px/1.3 'IBM Plex Sans JP',sans-serif;color:#E8EBF2">設定</div></div>
+        <div style="flex:1;min-height:0;padding:0 18px;display:flex;flex-direction:column;gap:10px">
+          <div style="border-radius:16px;background:#20242C;box-shadow:5px 6px 12px rgba(0,0,0,.45),-3px -3px 8px rgba(255,255,255,.05);padding:4px 14px">
+            <div style="display:flex;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06)">
+              <div style="width:8px;height:8px;border-radius:50%;background:#8FB0F5"></div>
+              <div style="flex:1;font:500 12.5px 'IBM Plex Sans JP',sans-serif;color:#E8EBF2">テーマ</div>
+              <div style="font:400 11.5px 'IBM Plex Sans JP',sans-serif;color:#8FB0F5;display:flex;gap:5px;align-items:center">システム<span style="font-size:8px">▾</span></div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center;padding:12px 0">
+              <div style="width:8px;height:8px;border-radius:50%;background:#8FB0F5"></div>
+              <div style="flex:1;font:500 12.5px 'IBM Plex Sans JP',sans-serif;color:#E8EBF2">言語</div>
+              <div style="font:400 11.5px 'IBM Plex Sans JP',sans-serif;color:#8FB0F5;display:flex;gap:5px;align-items:center">日本語<span style="font-size:8px">▾</span></div>
+            </div>
+          </div>
+          <div style="border-radius:16px;background:#20242C;box-shadow:5px 6px 12px rgba(0,0,0,.45),-3px -3px 8px rgba(255,255,255,.05);padding:4px 14px">
+            <div style="display:flex;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div style="width:8px;height:8px;border-radius:2px;background:rgba(255,255,255,.35)"></div><div style="flex:1;font:500 12.5px 'IBM Plex Sans JP',sans-serif;color:#E8EBF2">プロフィール</div><div style="width:6px;height:6px;border-right:1.5px solid rgba(255,255,255,.4);border-top:1.5px solid rgba(255,255,255,.4);transform:rotate(45deg)"></div></div>
+            <div style="display:flex;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div style="width:8px;height:8px;border-radius:2px;background:rgba(255,255,255,.35)"></div><div style="flex:1;font:500 12.5px 'IBM Plex Sans JP',sans-serif;color:#E8EBF2">利用規約</div><div style="font:400 10px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.35)">↗</div></div>
+            <div style="display:flex;gap:10px;align-items:center;padding:12px 0"><div style="width:8px;height:8px;border-radius:2px;background:rgba(255,255,255,.35)"></div><div style="flex:1;font:500 12.5px 'IBM Plex Sans JP',sans-serif;color:#E8EBF2">アプリバージョン</div><div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.4)">1.0.0</div></div>
+          </div>
+          <div style="border-radius:16px;background:#20242C;box-shadow:5px 6px 12px rgba(0,0,0,.45),-3px -3px 8px rgba(255,255,255,.05);padding:4px 14px">
+            <div style="display:flex;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.06)"><div style="width:8px;height:8px;border-radius:2px;background:rgba(255,255,255,.35)"></div><div style="flex:1;font:500 12.5px 'IBM Plex Sans JP',sans-serif;color:#E8EBF2">ログアウト</div></div>
+            <div style="display:flex;gap:10px;align-items:center;padding:12px 0"><div style="width:8px;height:8px;border-radius:2px;background:#FF8A80"></div><div style="flex:1;font:500 12.5px 'IBM Plex Sans JP',sans-serif;color:#FF8A80">退会（アカウント削除）</div></div>
+          </div>
+        </div>
+        <div style="margin:12px 14px 16px;border-radius:20px;background:#20242C;box-shadow:5px 6px 12px rgba(0,0,0,.45),-3px -3px 8px rgba(255,255,255,.05);display:flex;padding:9px 6px">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:9px;height:9px;border:1.5px solid rgba(255,255,255,.4);border-radius:2px"></div><span style="font:400 9.5px 'IBM Plex Sans JP',sans-serif;color:rgba(255,255,255,.45)">ホーム</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:9px;height:9px;border:1.5px solid rgba(255,255,255,.4)"></div><span style="font:400 9.5px 'IBM Plex Sans JP',sans-serif;color:rgba(255,255,255,.45)">アイテム</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:26px;height:18px;border-radius:8px;background:#2C55B5;display:flex;align-items:center;justify-content:center"><div style="width:9px;height:9px;background:#CFDCFB;border-radius:50%"></div></div><span style="font:500 9.5px 'IBM Plex Sans JP',sans-serif;color:#8FB0F5">設定</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 2b Glassmorphism -->
+<div class="dv-opt" id="2b">
+<div class="dv-olabel"><a class="dv-oid" href="#2b">2b</a>Frosted Layers ／ グラスモーフィズム主体</div>
+<div class="dv-card" style="padding:26px 28px 30px">
+  <div style="display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap">
+    <div style="flex:1 1 290px;min-width:270px;display:flex;flex-direction:column;gap:16px">
+      <div>
+        <div style="font:600 20px/1.3 'IBM Plex Sans JP',sans-serif;color:#101828;letter-spacing:-.01em">Frosted Layers</div>
+        <div style="font:400 12px/1.6 'IBM Plex Mono',monospace;color:rgba(0,0,0,.45);margin-top:4px">「奥にコンテンツ、手前に半透明の操作層。」</div>
+      </div>
+      <p style="margin:0;font:400 13px/1.75 'IBM Plex Sans JP',sans-serif;color:rgba(0,0,0,.66);text-wrap:pretty">AppBar・ボトムナビ・ダイアログだけを frosted（blur 24 + 白/黒 60%）にし、コンテンツは不透明のまま。背景に極薄の青いグラデーション面を1枚だけ敷いて、ガラス感の"下地"にする。テンプレートでも成立するよう、ガラスは<em style="font-style:normal;font-weight:600">常に浮いている要素だけ</em>に限定。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">modern</span>
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">airy</span>
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">iOS-native feel</span>
+      </div>
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font:400 11.5px/1.55 'IBM Plex Sans JP',sans-serif;color:rgba(0,0,0,.55);border-top:1px solid rgba(0,0,0,.09);padding-top:14px">
+        <div style="color:rgba(0,0,0,.4)">Font</div><div>IBM Plex Sans JP</div>
+        <div style="color:rgba(0,0,0,.4)">Radius</div><div>18 / ガラス面20 / ボタン999</div>
+        <div style="color:rgba(0,0,0,.4)">面</div><div>blur 24・境界に1pxの白24%ハイライト</div>
+        <div style="color:rgba(0,0,0,.4)">実装</div><div>ClipRRect + BackdropFilter。scrolledUnderElevation は 0</div>
+        <div style="color:rgba(0,0,0,.4)">注意</div><div>blur はGPU負荷。常時表示3要素までに限定／文字は必ず不透明面の上に</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;margin-top:2px">
+        <div style="width:34px;height:34px;border-radius:10px;background:#2F6BFF"></div>
+        <div style="width:34px;height:34px;border-radius:10px;background:#F4F7FE;border:1px solid rgba(0,0,0,.08)"></div>
+        <div style="width:34px;height:34px;border-radius:10px;background:#0D1120"></div>
+        <div style="font:400 10.5px/1.4 'IBM Plex Mono',monospace;color:rgba(0,0,0,.45);margin-left:4px">seed #2F6BFF<br>surface #F4F7FE / #0D1120</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:16px;flex:none">
+      <!-- light: items -->
+      <div style="width:250px;height:552px;border-radius:26px;overflow:hidden;position:relative;background:#F4F7FE;border:1px solid rgba(0,0,0,.08);display:flex;flex-direction:column">
+        <div style="position:absolute;top:-60px;left:-40px;width:220px;height:220px;border-radius:50%;background:rgba(47,107,255,.22);filter:blur(46px)"></div>
+        <div style="position:absolute;bottom:20px;right:-50px;width:200px;height:200px;border-radius:50%;background:rgba(0,190,190,.16);filter:blur(48px)"></div>
+        <div style="position:relative;z-index:2;backdrop-filter:blur(20px);background:rgba(255,255,255,.62);border-bottom:1px solid rgba(255,255,255,.7)">
+          <div style="padding:10px 18px 0;display:flex;justify-content:space-between;font:500 10px 'IBM Plex Mono',monospace;color:rgba(16,24,40,.5)"><span>9:41</span><span>▮▮▮</span></div>
+          <div style="padding:12px 18px 14px;display:flex;align-items:center;justify-content:space-between">
+            <div style="font:600 20px/1.3 'IBM Plex Sans JP',sans-serif;color:#101828">アイテム</div>
+            <div style="width:30px;height:30px;border-radius:999px;background:rgba(47,107,255,.1);display:flex;align-items:center;justify-content:center"><div style="width:11px;height:11px;border:1.5px solid #2F6BFF;border-radius:50%"></div></div>
+          </div>
+        </div>
+        <div style="flex:1;min-height:0;position:relative;z-index:2;padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+          <div style="border-radius:20px;background:rgba(255,255,255,.78);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.85);box-shadow:0 6px 20px rgba(16,36,94,.08);padding:4px 14px">
+            <div style="display:flex;gap:10px;align-items:center;padding:13px 0;border-bottom:1px solid rgba(16,24,40,.07)">
+              <div style="flex:1;min-width:0"><div style="font:500 13px/1.45 'IBM Plex Sans JP',sans-serif;color:#101828">配送スケジュールの見直し</div><div style="font:400 11.5px/1.45 'IBM Plex Sans JP',sans-serif;color:rgba(16,24,40,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">週次バッチの実行時間を変更しました</div></div>
+              <div style="width:6px;height:6px;border-right:1.5px solid rgba(16,24,40,.32);border-top:1.5px solid rgba(16,24,40,.32);transform:rotate(45deg)"></div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center;padding:13px 0;border-bottom:1px solid rgba(16,24,40,.07)">
+              <div style="flex:1;min-width:0"><div style="font:500 13px/1.45 'IBM Plex Sans JP',sans-serif;color:#101828">Quarterly report draft</div><div style="font:400 11.5px/1.45 'IBM Plex Sans JP',sans-serif;color:rgba(16,24,40,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Needs review before Friday</div></div>
+              <div style="width:6px;height:6px;border-right:1.5px solid rgba(16,24,40,.32);border-top:1.5px solid rgba(16,24,40,.32);transform:rotate(45deg)"></div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center;padding:13px 0">
+              <div style="flex:1;min-width:0"><div style="font:500 13px/1.45 'IBM Plex Sans JP',sans-serif;color:#101828">請求書テンプレートの更新</div><div style="font:400 11.5px/1.45 'IBM Plex Sans JP',sans-serif;color:rgba(16,24,40,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">保存済み・未送信</div></div>
+              <div style="width:6px;height:6px;border-right:1.5px solid rgba(16,24,40,.32);border-top:1.5px solid rgba(16,24,40,.32);transform:rotate(45deg)"></div>
+            </div>
+          </div>
+          <div style="border-radius:20px;background:rgba(255,255,255,.55);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.8);padding:20px 14px;display:flex;flex-direction:column;align-items:center;gap:9px">
+            <div style="width:34px;height:34px;border-radius:10px;border:1.5px solid rgba(47,107,255,.45)"></div>
+            <div style="font:500 12px/1.5 'IBM Plex Sans JP',sans-serif;color:rgba(16,24,40,.62);text-align:center">アイテムがまだありません</div>
+            <div style="height:32px;border-radius:999px;background:#2F6BFF;color:#fff;padding:0 18px;font:500 11.5px 'IBM Plex Sans JP',sans-serif;display:flex;align-items:center">追加する</div>
+          </div>
+        </div>
+        <div style="position:relative;z-index:2;margin:0 14px 16px;border-radius:22px;background:rgba(255,255,255,.6);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,.85);box-shadow:0 8px 24px rgba(16,36,94,.1);display:flex;padding:9px 6px">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:9px;height:9px;border:1.5px solid rgba(16,24,40,.38);border-radius:2px"></div><span style="font:400 9.5px 'IBM Plex Sans JP',sans-serif;color:rgba(16,24,40,.45)">ホーム</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:26px;height:18px;border-radius:999px;background:rgba(47,107,255,.16);display:flex;align-items:center;justify-content:center"><div style="width:9px;height:9px;background:#2F6BFF;border-radius:2px"></div></div><span style="font:500 9.5px 'IBM Plex Sans JP',sans-serif;color:#2F6BFF">アイテム</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:9px;height:9px;border:1.5px solid rgba(16,24,40,.38);border-radius:50%"></div><span style="font:400 9.5px 'IBM Plex Sans JP',sans-serif;color:rgba(16,24,40,.45)">設定</span></div>
+        </div>
+      </div>
+      <!-- dark: settings + dialog -->
+      <div style="width:250px;height:552px;border-radius:26px;overflow:hidden;position:relative;background:#0D1120;border:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column">
+        <div style="position:absolute;top:-50px;right:-50px;width:220px;height:220px;border-radius:50%;background:rgba(47,107,255,.4);filter:blur(52px)"></div>
+        <div style="position:absolute;bottom:60px;left:-60px;width:200px;height:200px;border-radius:50%;background:rgba(0,170,190,.22);filter:blur(54px)"></div>
+        <div style="position:relative;z-index:2;backdrop-filter:blur(20px);background:rgba(16,22,42,.6);border-bottom:1px solid rgba(255,255,255,.09)">
+          <div style="padding:10px 18px 0;display:flex;justify-content:space-between;font:500 10px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.5)"><span>9:41</span><span>▮▮▮</span></div>
+          <div style="padding:12px 18px 14px"><div style="font:600 20px/1.3 'IBM Plex Sans JP',sans-serif;color:#EAEFFA">設定</div></div>
+        </div>
+        <div style="flex:1;min-height:0;position:relative;z-index:2;padding:14px 16px;display:flex;flex-direction:column;gap:10px">
+          <div style="border-radius:20px;background:rgba(255,255,255,.07);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.12);padding:4px 14px">
+            <div style="display:flex;gap:10px;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.08)"><div style="flex:1;font:500 12.5px 'IBM Plex Sans JP',sans-serif;color:#EAEFFA">テーマ</div><div style="font:400 11.5px 'IBM Plex Sans JP',sans-serif;color:#8FB4FF;display:flex;gap:5px;align-items:center">ダーク<span style="font-size:8px">▾</span></div></div>
+            <div style="display:flex;gap:10px;align-items:center;padding:12px 0"><div style="flex:1;font:500 12.5px 'IBM Plex Sans JP',sans-serif;color:#EAEFFA">言語</div><div style="font:400 11.5px 'IBM Plex Sans JP',sans-serif;color:#8FB4FF;display:flex;gap:5px;align-items:center">English<span style="font-size:8px">▾</span></div></div>
+          </div>
+          <div style="flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:4px 0">
+            <div style="width:100%;border-radius:24px;background:rgba(22,29,54,.72);backdrop-filter:blur(26px);border:1px solid rgba(255,255,255,.14);box-shadow:0 18px 40px rgba(0,0,0,.5);padding:20px 18px">
+              <div style="font:600 15px/1.5 'IBM Plex Sans JP',sans-serif;color:#EAEFFA">退会しますか？</div>
+              <p style="margin:8px 0 0;font:400 11.5px/1.7 'IBM Plex Sans JP',sans-serif;color:rgba(234,239,250,.62);text-wrap:pretty">アカウントとすべてのデータが削除されます。この操作は取り消せません。</p>
+              <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:16px">
+                <div style="height:34px;padding:0 14px;border-radius:999px;display:flex;align-items:center;font:500 11.5px 'IBM Plex Sans JP',sans-serif;color:rgba(234,239,250,.7)">キャンセル</div>
+                <div style="height:34px;padding:0 16px;border-radius:999px;background:#FF6F60;color:#2B0B07;display:flex;align-items:center;font:500 11.5px 'IBM Plex Sans JP',sans-serif">退会する</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="position:relative;z-index:2;margin:0 14px 16px;border-radius:22px;background:rgba(255,255,255,.08);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,.13);display:flex;padding:9px 6px">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:9px;height:9px;border:1.5px solid rgba(255,255,255,.4);border-radius:2px"></div><span style="font:400 9.5px 'IBM Plex Sans JP',sans-serif;color:rgba(255,255,255,.45)">ホーム</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:9px;height:9px;border:1.5px solid rgba(255,255,255,.4)"></div><span style="font:400 9.5px 'IBM Plex Sans JP',sans-serif;color:rgba(255,255,255,.45)">アイテム</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:26px;height:18px;border-radius:999px;background:rgba(47,107,255,.35);display:flex;align-items:center;justify-content:center"><div style="width:9px;height:9px;background:#BBD1FF;border-radius:50%"></div></div><span style="font:500 9.5px 'IBM Plex Sans JP',sans-serif;color:#8FB4FF">設定</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 2c Minimal -->
+<div class="dv-opt" id="2c">
+<div class="dv-olabel"><a class="dv-oid" href="#2c">2c</a>Blue Hairline ／ ミニマル主体（＋一点だけ質感）</div>
+<div class="dv-card" style="padding:26px 28px 30px">
+  <div style="display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap">
+    <div style="flex:1 1 290px;min-width:270px;display:flex;flex-direction:column;gap:16px">
+      <div>
+        <div style="font:600 20px/1.3 'IBM Plex Sans JP',sans-serif;color:#0F1522;letter-spacing:-.01em">Blue Hairline</div>
+        <div style="font:400 12px/1.6 'IBM Plex Mono',monospace;color:rgba(0,0,0,.45);margin-top:4px">「線と余白。色は判断のためだけに。」</div>
+      </div>
+      <p style="margin:0;font:400 13px/1.75 'IBM Plex Sans JP',sans-serif;color:rgba(0,0,0,.66);text-wrap:pretty">影・ガラス・凹凸を全部やめ、1pxの罫線・大きな余白・タイトなタイポで質を出す。青は<em style="font-style:normal;font-weight:600">選択中・主ボタン・リンク</em>の3用途のみ。3案で最も実装が軽く、コピー後にブランド色を変えても崩れない。質感は主ボタンの薄いグラデーション1箇所だけに残す。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">restrained</span>
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">crisp</span>
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">brand-agnostic</span>
+      </div>
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font:400 11.5px/1.55 'IBM Plex Sans JP',sans-serif;color:rgba(0,0,0,.55);border-top:1px solid rgba(0,0,0,.09);padding-top:14px">
+        <div style="color:rgba(0,0,0,.4)">Font</div><div>IBM Plex Sans JP（和欧統一・字間 -0.01em）</div>
+        <div style="color:rgba(0,0,0,.4)">Radius</div><div>10 / 入力10 / ボタン10</div>
+        <div style="color:rgba(0,0,0,.4)">面</div><div>elevation 0・outlineVariant の1px罫線のみ</div>
+        <div style="color:rgba(0,0,0,.4)">実装</div><div>ThemeData のみで完結（カスタム描画ゼロ）</div>
+        <div style="color:rgba(0,0,0,.4)">注意</div><div>密度が上がるので余白トークンを守ることが品質の要</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;margin-top:2px">
+        <div style="width:34px;height:34px;border-radius:8px;background:#1B50D8"></div>
+        <div style="width:34px;height:34px;border-radius:8px;background:#F8F9FB;border:1px solid rgba(0,0,0,.1)"></div>
+        <div style="width:34px;height:34px;border-radius:8px;background:#0F1218"></div>
+        <div style="font:400 10.5px/1.4 'IBM Plex Mono',monospace;color:rgba(0,0,0,.45);margin-left:4px">seed #1B50D8<br>surface #F8F9FB / #0F1218</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:16px;flex:none">
+      <!-- light: items -->
+      <div style="width:250px;height:552px;border-radius:26px;overflow:hidden;background:#F8F9FB;border:1px solid rgba(0,0,0,.1);display:flex;flex-direction:column">
+        <div style="padding:10px 18px 0;display:flex;justify-content:space-between;font:500 10px 'IBM Plex Mono',monospace;color:rgba(0,0,0,.45)"><span>9:41</span><span>▮▮▮</span></div>
+        <div style="padding:14px 18px 12px;display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid rgba(15,21,34,.1)">
+          <div style="font:600 20px/1.3 'IBM Plex Sans JP',sans-serif;color:#0F1522;letter-spacing:-.015em">アイテム</div>
+          <div style="font:400 10px 'IBM Plex Mono',monospace;color:rgba(15,21,34,.4)">24 items</div>
+        </div>
+        <div style="flex:1;min-height:0;padding:0 18px;display:flex;flex-direction:column">
+          <div style="height:38px;margin:14px 0 6px;border-radius:10px;border:1px solid rgba(15,21,34,.16);background:#fff;display:flex;align-items:center;padding:0 12px;gap:8px;font:400 12px 'IBM Plex Sans JP',sans-serif;color:rgba(15,21,34,.38)"><div style="width:12px;height:12px;border:1.4px solid rgba(15,21,34,.3);border-radius:50%"></div>検索</div>
+          <div style="display:flex;flex-direction:column">
+            <div style="display:flex;gap:10px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(15,21,34,.09)">
+              <div style="flex:1;min-width:0"><div style="font:500 13px/1.45 'IBM Plex Sans JP',sans-serif;color:#0F1522;letter-spacing:-.005em">配送スケジュールの見直し</div><div style="font:400 11.5px/1.45 'IBM Plex Sans JP',sans-serif;color:rgba(15,21,34,.48);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px">週次バッチの実行時間を変更しました</div></div>
+              <div style="width:6px;height:6px;border-right:1.5px solid rgba(15,21,34,.3);border-top:1.5px solid rgba(15,21,34,.3);transform:rotate(45deg)"></div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(15,21,34,.09)">
+              <div style="flex:1;min-width:0"><div style="font:500 13px/1.45 'IBM Plex Sans JP',sans-serif;color:#0F1522">Quarterly report draft</div><div style="font:400 11.5px/1.45 'IBM Plex Sans JP',sans-serif;color:rgba(15,21,34,.48);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px">Needs review before Friday</div></div>
+              <div style="width:6px;height:6px;border-right:1.5px solid rgba(15,21,34,.3);border-top:1.5px solid rgba(15,21,34,.3);transform:rotate(45deg)"></div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(15,21,34,.09)">
+              <div style="flex:1;min-width:0"><div style="font:500 13px/1.45 'IBM Plex Sans JP',sans-serif;color:#0F1522">請求書テンプレートの更新</div><div style="font:400 11.5px/1.45 'IBM Plex Sans JP',sans-serif;color:rgba(15,21,34,.48);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px">保存済み・未送信</div></div>
+              <div style="width:6px;height:6px;border-right:1.5px solid rgba(15,21,34,.3);border-top:1.5px solid rgba(15,21,34,.3);transform:rotate(45deg)"></div>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center;padding:14px 0;border-bottom:1px solid rgba(15,21,34,.09)">
+              <div style="flex:1;min-width:0"><div style="font:500 13px/1.45 'IBM Plex Sans JP',sans-serif;color:#0F1522">アクセス権限の棚卸し</div><div style="font:400 11.5px/1.45 'IBM Plex Sans JP',sans-serif;color:rgba(15,21,34,.48);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px">3名分の権限を見直す必要があります</div></div>
+              <div style="width:6px;height:6px;border-right:1.5px solid rgba(15,21,34,.3);border-top:1.5px solid rgba(15,21,34,.3);transform:rotate(45deg)"></div>
+            </div>
+          </div>
+          <div style="height:42px;margin-top:16px;border-radius:10px;background:linear-gradient(180deg,#2A5FE6,#1B50D8);color:#fff;font:500 12.5px 'IBM Plex Sans JP',sans-serif;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 2px rgba(15,32,86,.28)">新しいアイテム</div>
+        </div>
+        <div style="display:flex;border-top:1px solid rgba(15,21,34,.12);background:#fff;padding:9px 0 15px">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:9px;height:9px;border:1.5px solid rgba(15,21,34,.38);border-radius:2px"></div><span style="font:400 9.5px 'IBM Plex Sans JP',sans-serif;color:rgba(15,21,34,.45)">ホーム</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;position:relative"><div style="width:9px;height:9px;background:#1B50D8;border-radius:2px"></div><span style="font:500 9.5px 'IBM Plex Sans JP',sans-serif;color:#1B50D8">アイテム</span><div style="position:absolute;top:-9px;width:22px;height:2px;background:#1B50D8;border-radius:2px"></div></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:9px;height:9px;border:1.5px solid rgba(15,21,34,.38);border-radius:50%"></div><span style="font:400 9.5px 'IBM Plex Sans JP',sans-serif;color:rgba(15,21,34,.45)">設定</span></div>
+        </div>
+      </div>
+      <!-- dark: profile -->
+      <div style="width:250px;height:552px;border-radius:26px;overflow:hidden;background:#0F1218;border:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column">
+        <div style="padding:10px 18px 0;display:flex;justify-content:space-between;font:500 10px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.45)"><span>9:41</span><span>▮▮▮</span></div>
+        <div style="padding:14px 18px 12px;display:flex;gap:10px;align-items:center;border-bottom:1px solid rgba(255,255,255,.1)">
+          <div style="width:7px;height:7px;border-left:1.6px solid rgba(255,255,255,.6);border-bottom:1.6px solid rgba(255,255,255,.6);transform:rotate(45deg)"></div>
+          <div style="font:600 17px/1.3 'IBM Plex Sans JP',sans-serif;color:#EDEFF4;letter-spacing:-.01em">プロフィール</div>
+        </div>
+        <div style="flex:1;min-height:0;padding:24px 18px 0;display:flex;flex-direction:column;align-items:center">
+          <div style="width:84px;height:84px;border-radius:50%;border:1px solid rgba(255,255,255,.14);background:#171B23;display:flex;align-items:center;justify-content:center"><div style="width:26px;height:26px;border-radius:50%;border:1.5px solid rgba(255,255,255,.35)"></div></div>
+          <div style="width:100%;margin-top:26px;display:flex;flex-direction:column">
+            <div style="display:flex;align-items:center;padding:14px 0;border-top:1px solid rgba(255,255,255,.1)">
+              <div style="flex:1"><div style="font:400 10px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.4);letter-spacing:.06em">DISPLAY NAME</div><div style="font:500 13.5px/1.4 'IBM Plex Sans JP',sans-serif;color:#EDEFF4;margin-top:4px">未設定</div></div>
+            </div>
+            <div style="display:flex;align-items:center;padding:14px 0;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1)">
+              <div style="flex:1"><div style="font:400 10px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.4);letter-spacing:.06em">EMAIL</div><div style="font:500 13.5px/1.4 'IBM Plex Sans JP',sans-serif;color:#EDEFF4;margin-top:4px">taro.yamada@example.com</div></div>
+            </div>
+          </div>
+          <div style="width:100%;height:42px;margin-top:20px;border-radius:10px;background:linear-gradient(180deg,#7EA4FF,#6B95FF);color:#0B1B47;font:500 12.5px 'IBM Plex Sans JP',sans-serif;display:flex;align-items:center;justify-content:center">プロフィール編集</div>
+          <div style="width:100%;margin-top:10px;height:42px;border-radius:10px;border:1px solid rgba(255,255,255,.16);color:#EDEFF4;font:500 12.5px 'IBM Plex Sans JP',sans-serif;display:flex;align-items:center;justify-content:center">アバター画像を変更</div>
+        </div>
+        <div style="display:flex;border-top:1px solid rgba(255,255,255,.12);padding:9px 0 15px">
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:9px;height:9px;border:1.5px solid rgba(255,255,255,.38);border-radius:2px"></div><span style="font:400 9.5px 'IBM Plex Sans JP',sans-serif;color:rgba(255,255,255,.45)">ホーム</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:9px;height:9px;border:1.5px solid rgba(255,255,255,.38)"></div><span style="font:400 9.5px 'IBM Plex Sans JP',sans-serif;color:rgba(255,255,255,.45)">アイテム</span></div>
+          <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;position:relative"><div style="width:9px;height:9px;background:#7EA4FF;border-radius:50%"></div><span style="font:500 9.5px 'IBM Plex Sans JP',sans-serif;color:#7EA4FF">設定</span><div style="position:absolute;top:-9px;width:22px;height:2px;background:#7EA4FF;border-radius:2px"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">次の一手：「<a class="dv-oid" href="#2c">2c</a> で進めて、トークンとコンポーネント仕様を定義して」／「<a class="dv-oid" href="#2a">2a</a> のニューモーフィズムを入力欄・ボタンだけに限定した版を見たい」／「<a class="dv-oid" href="#2b">2b</a> のガラスをボトムナビだけに絞った控えめ版が見たい」</p>
+</section>
+
+<section class="dv-turn" id="t1">
+<div class="dv-thd"><a class="dv-tid" href="#t1">1</a><span class="dv-tname">方向性 3案 ／ Flutter Material 3 テンプレート</span></div>
+<p style="margin:0 0 24px;font:400 12px/1.6 'IBM Plex Sans JP',sans-serif;color:rgba(0,0,0,.55);max-width:760px">どれも「業種を持たない」中立な骨格。差は<strong style="font-weight:600">面の作り方</strong>（罫線か／影か／余白か）と<strong style="font-weight:600">文字の性格</strong>。ブランドカラーは1トークン（seed）差し替えで着せ替え可能な前提で選定。プレビューは同一画面をライト／ダークで並べたもの。</p>
+<div class="dv-opts">
+
+<!-- 1a -->
+<div class="dv-opt" id="1a">
+<div class="dv-olabel"><a class="dv-oid" href="#1a">1a</a>Quiet Canvas ／ 静けさと余白</div>
+<div class="dv-card" style="padding:26px 28px 30px">
+  <div style="display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap">
+    <div style="flex:1 1 300px;min-width:280px;display:flex;flex-direction:column;gap:16px">
+      <div>
+        <div style="font:600 20px/1.3 'IBM Plex Sans JP',sans-serif;color:#16171a;letter-spacing:-.01em">Quiet Canvas</div>
+        <div style="font:400 12px/1.6 'IBM Plex Mono',monospace;color:rgba(0,0,0,.45);margin-top:4px">「UIは黙る。中身が話す。」</div>
+      </div>
+      <p style="margin:0;font:400 13px/1.75 'IBM Plex Sans JP',sans-serif;color:rgba(0,0,0,.66);text-wrap:pretty">影をほぼ使わず、1pxの罫線と広い余白で階層を作る。M3のトーナル面（surfaceContainer系）を弱め、ニュートラル寄りに再定義してブランド色は<em style="font-style:normal;font-weight:600">操作可能なものだけ</em>に限定する。安っぽさの主因＝過剰な紫トーンと厚い塗りを消す方向。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">calm</span>
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">neutral</span>
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">precise</span>
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">business-safe</span>
+      </div>
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font:400 11.5px/1.5 'IBM Plex Sans JP',sans-serif;color:rgba(0,0,0,.55);border-top:1px solid rgba(0,0,0,.09);padding-top:14px">
+        <div style="color:rgba(0,0,0,.4)">Font</div><div>IBM Plex Sans JP（和欧1書体で統一）</div>
+        <div style="color:rgba(0,0,0,.4)">Radius</div><div>12 / 一部 8・999（chip）</div>
+        <div style="color:rgba(0,0,0,.4)">面</div><div>罫線主体・elevation 0〜1</div>
+        <div style="color:rgba(0,0,0,.4)">向く用途</div><div>業務系・SaaS・金融・汎用テンプレ</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;margin-top:2px">
+        <div style="width:34px;height:34px;border-radius:8px;background:#3B4CCA"></div>
+        <div style="width:34px;height:34px;border-radius:8px;background:#16171A"></div>
+        <div style="width:34px;height:34px;border-radius:8px;background:#F7F7F5;border:1px solid rgba(0,0,0,.12)"></div>
+        <div style="font:400 10.5px/1.4 'IBM Plex Mono',monospace;color:rgba(0,0,0,.45);margin-left:4px">seed #3B4CCA<br>（差替えで無彩→彩へ追従）</div>
+      </div>
+    </div>
+
+    <!-- phones -->
+    <div style="display:flex;gap:16px;flex:none">
+      <!-- light -->
+      <div style="width:250px;border-radius:26px;overflow:hidden;background:#F7F7F5;border:1px solid rgba(0,0,0,.12);display:flex;flex-direction:column;height:552px">
+        <div style="padding:10px 18px 0;display:flex;justify-content:space-between;font:500 10px 'IBM Plex Mono',monospace;color:rgba(0,0,0,.5)"><span>9:41</span><span>▮▮▮</span></div>
+        <div style="padding:14px 18px 12px">
+          <div style="font:600 22px/1.25 'IBM Plex Sans JP',sans-serif;color:#16171A;letter-spacing:-.015em">ホーム</div>
+        </div>
+        <div style="padding:0 18px 14px">
+          <div style="height:38px;border-radius:10px;border:1px solid #E2E2DE;background:#fff;display:flex;align-items:center;padding:0 12px;gap:8px;font:400 12px 'IBM Plex Sans JP',sans-serif;color:rgba(0,0,0,.38)"><div style="width:13px;height:13px;border:1.4px solid rgba(0,0,0,.3);border-radius:50%"></div>検索</div>
+        </div>
+        <div style="flex:1;min-height:0;display:flex;flex-direction:column;padding:0 18px;gap:0">
+          <div style="font:500 10.5px 'IBM Plex Mono',monospace;color:rgba(0,0,0,.4);letter-spacing:.06em;padding:6px 0 10px">RECENT</div>
+          <div style="display:flex;flex-direction:column;border-top:1px solid #E9E9E5">
+            <div style="display:flex;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid #E9E9E5">
+              <div style="width:34px;height:34px;border-radius:50%;background:#ECEEFB;color:#3B4CCA;font:600 12px 'IBM Plex Sans JP',sans-serif;display:flex;align-items:center;justify-content:center">AS</div>
+              <div style="flex:1;min-height:0;min-width:0"><div style="font:500 13px/1.4 'IBM Plex Sans JP',sans-serif;color:#16171A">プロジェクト設定の更新</div><div style="font:400 11.5px/1.4 'IBM Plex Sans JP',sans-serif;color:rgba(0,0,0,.5);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">通知のしきい値を変更しました</div></div>
+              <div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(0,0,0,.35)">2h</div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid #E9E9E5">
+              <div style="width:34px;height:34px;border-radius:50%;background:#F0F0EC;color:rgba(0,0,0,.55);font:600 12px 'IBM Plex Sans JP',sans-serif;display:flex;align-items:center;justify-content:center">MK</div>
+              <div style="flex:1;min-height:0;min-width:0"><div style="font:500 13px/1.4 'IBM Plex Sans JP',sans-serif;color:#16171A">Weekly digest</div><div style="font:400 11.5px/1.4 'IBM Plex Sans JP',sans-serif;color:rgba(0,0,0,.5)">4 items need review</div></div>
+              <div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(0,0,0,.35)">1d</div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid #E9E9E5">
+              <div style="width:34px;height:34px;border-radius:50%;background:#F0F0EC;color:rgba(0,0,0,.55);font:600 12px 'IBM Plex Sans JP',sans-serif;display:flex;align-items:center;justify-content:center">TY</div>
+              <div style="flex:1;min-height:0;min-width:0"><div style="font:500 13px/1.4 'IBM Plex Sans JP',sans-serif;color:#16171A">請求書の下書きを保存</div><div style="font:400 11.5px/1.4 'IBM Plex Sans JP',sans-serif;color:rgba(0,0,0,.5)">保存済み・未送信</div></div>
+              <div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(0,0,0,.35)">3d</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:16px">
+            <div style="flex:1;min-height:0;height:40px;border-radius:10px;background:#3B4CCA;color:#fff;font:500 12.5px 'IBM Plex Sans JP',sans-serif;display:flex;align-items:center;justify-content:center">新規作成</div>
+            <div style="flex:1;min-height:0;height:40px;border-radius:10px;border:1px solid #CFCFC9;color:#16171A;font:500 12.5px 'IBM Plex Sans JP',sans-serif;display:flex;align-items:center;justify-content:center">読み込む</div>
+          </div>
+        </div>
+        <div style="display:flex;border-top:1px solid #E2E2DE;background:#fff;padding:8px 0 14px">
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:26px;height:16px;border-radius:999px;background:#ECEEFB;display:flex;align-items:center;justify-content:center"><div style="width:9px;height:9px;border-radius:2px;background:#3B4CCA"></div></div><span style="font:500 9.5px 'IBM Plex Sans JP',sans-serif;color:#3B4CCA">ホーム</span></div>
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:26px;height:16px;display:flex;align-items:center;justify-content:center"><div style="width:9px;height:9px;border:1.5px solid rgba(0,0,0,.4);border-radius:50%"></div></div><span style="font:400 9.5px 'IBM Plex Sans JP',sans-serif;color:rgba(0,0,0,.45)">検索</span></div>
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:26px;height:16px;display:flex;align-items:center;justify-content:center"><div style="width:9px;height:9px;border:1.5px solid rgba(0,0,0,.4)"></div></div><span style="font:400 9.5px 'IBM Plex Sans JP',sans-serif;color:rgba(0,0,0,.45)">設定</span></div>
+        </div>
+      </div>
+      <!-- dark -->
+      <div style="width:250px;border-radius:26px;overflow:hidden;background:#121316;border:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;height:552px">
+        <div style="padding:10px 18px 0;display:flex;justify-content:space-between;font:500 10px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.5)"><span>9:41</span><span>▮▮▮</span></div>
+        <div style="padding:14px 18px 12px"><div style="font:600 22px/1.25 'IBM Plex Sans JP',sans-serif;color:#ECECEA;letter-spacing:-.015em">ホーム</div></div>
+        <div style="padding:0 18px 14px">
+          <div style="height:38px;border-radius:10px;border:1px solid #2C2E33;background:#1A1B1F;display:flex;align-items:center;padding:0 12px;gap:8px;font:400 12px 'IBM Plex Sans JP',sans-serif;color:rgba(255,255,255,.35)"><div style="width:13px;height:13px;border:1.4px solid rgba(255,255,255,.3);border-radius:50%"></div>検索</div>
+        </div>
+        <div style="flex:1;min-height:0;display:flex;flex-direction:column;padding:0 18px">
+          <div style="font:500 10.5px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.38);letter-spacing:.06em;padding:6px 0 10px">RECENT</div>
+          <div style="display:flex;flex-direction:column;border-top:1px solid #24262B">
+            <div style="display:flex;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid #24262B">
+              <div style="width:34px;height:34px;border-radius:50%;background:#22254A;color:#A7B0F5;font:600 12px 'IBM Plex Sans JP',sans-serif;display:flex;align-items:center;justify-content:center">AS</div>
+              <div style="flex:1;min-height:0;min-width:0"><div style="font:500 13px/1.4 'IBM Plex Sans JP',sans-serif;color:#ECECEA">プロジェクト設定の更新</div><div style="font:400 11.5px/1.4 'IBM Plex Sans JP',sans-serif;color:rgba(255,255,255,.48);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">通知のしきい値を変更しました</div></div>
+              <div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.3)">2h</div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid #24262B">
+              <div style="width:34px;height:34px;border-radius:50%;background:#232529;color:rgba(255,255,255,.6);font:600 12px 'IBM Plex Sans JP',sans-serif;display:flex;align-items:center;justify-content:center">MK</div>
+              <div style="flex:1;min-height:0;min-width:0"><div style="font:500 13px/1.4 'IBM Plex Sans JP',sans-serif;color:#ECECEA">Weekly digest</div><div style="font:400 11.5px/1.4 'IBM Plex Sans JP',sans-serif;color:rgba(255,255,255,.48)">4 items need review</div></div>
+              <div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.3)">1d</div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:center;padding:13px 0;border-bottom:1px solid #24262B">
+              <div style="width:34px;height:34px;border-radius:50%;background:#232529;color:rgba(255,255,255,.6);font:600 12px 'IBM Plex Sans JP',sans-serif;display:flex;align-items:center;justify-content:center">TY</div>
+              <div style="flex:1;min-height:0;min-width:0"><div style="font:500 13px/1.4 'IBM Plex Sans JP',sans-serif;color:#ECECEA">請求書の下書きを保存</div><div style="font:400 11.5px/1.4 'IBM Plex Sans JP',sans-serif;color:rgba(255,255,255,.48)">保存済み・未送信</div></div>
+              <div style="font:400 10.5px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.3)">3d</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:16px">
+            <div style="flex:1;min-height:0;height:40px;border-radius:10px;background:#A7B0F5;color:#151742;font:500 12.5px 'IBM Plex Sans JP',sans-serif;display:flex;align-items:center;justify-content:center">新規作成</div>
+            <div style="flex:1;min-height:0;height:40px;border-radius:10px;border:1px solid #3A3D45;color:#ECECEA;font:500 12.5px 'IBM Plex Sans JP',sans-serif;display:flex;align-items:center;justify-content:center">読み込む</div>
+          </div>
+        </div>
+        <div style="display:flex;border-top:1px solid #24262B;background:#1A1B1F;padding:8px 0 14px">
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:26px;height:16px;border-radius:999px;background:#22254A;display:flex;align-items:center;justify-content:center"><div style="width:9px;height:9px;border-radius:2px;background:#A7B0F5"></div></div><span style="font:500 9.5px 'IBM Plex Sans JP',sans-serif;color:#A7B0F5">ホーム</span></div>
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:26px;height:16px;display:flex;align-items:center;justify-content:center"><div style="width:9px;height:9px;border:1.5px solid rgba(255,255,255,.42);border-radius:50%"></div></div><span style="font:400 9.5px 'IBM Plex Sans JP',sans-serif;color:rgba(255,255,255,.45)">検索</span></div>
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:26px;height:16px;display:flex;align-items:center;justify-content:center"><div style="width:9px;height:9px;border:1.5px solid rgba(255,255,255,.42)"></div></div><span style="font:400 9.5px 'IBM Plex Sans JP',sans-serif;color:rgba(255,255,255,.45)">設定</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 1b -->
+<div class="dv-opt" id="1b">
+<div class="dv-olabel"><a class="dv-oid" href="#1b">1b</a>Soft Surface ／ やわらかい面</div>
+<div class="dv-card" style="padding:26px 28px 30px">
+  <div style="display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap">
+    <div style="flex:1 1 300px;min-width:280px;display:flex;flex-direction:column;gap:16px">
+      <div>
+        <div style="font:700 20px/1.3 'Zen Maru Gothic',sans-serif;color:#171A19">Soft Surface</div>
+        <div style="font:400 12px/1.6 'IBM Plex Mono',monospace;color:rgba(0,0,0,.45);margin-top:4px">「触れられる面。角がやさしい。」</div>
+      </div>
+      <p style="margin:0;font:400 13px/1.8 'Zen Kaku Gothic New',sans-serif;color:rgba(0,0,0,.68);text-wrap:pretty">M3のカード／面を積極的に使うが、影は極薄・角丸は大きめ（16〜24）。背景をわずかに温かい無彩色にして、白い面が浮く構造にする。コンシューマ向けアプリの土台として最も"アプリらしい"見え方。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">friendly</span>
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">warm</span>
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">tactile</span>
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">consumer</span>
+      </div>
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font:400 11.5px/1.5 'Zen Kaku Gothic New',sans-serif;color:rgba(0,0,0,.55);border-top:1px solid rgba(0,0,0,.09);padding-top:14px">
+        <div style="color:rgba(0,0,0,.4)">Font</div><div>Zen Maru Gothic（見出し）＋ Zen Kaku Gothic New（本文）</div>
+        <div style="color:rgba(0,0,0,.4)">Radius</div><div>20 / カード24 / ボタン999</div>
+        <div style="color:rgba(0,0,0,.4)">面</div><div>カード主体・影は 0 2 8 / 5%</div>
+        <div style="color:rgba(0,0,0,.4)">向く用途</div><div>生活系・健康・教育・コミュニティ</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;margin-top:2px">
+        <div style="width:34px;height:34px;border-radius:12px;background:#12857A"></div>
+        <div style="width:34px;height:34px;border-radius:12px;background:#171A19"></div>
+        <div style="width:34px;height:34px;border-radius:12px;background:#F3F1EC;border:1px solid rgba(0,0,0,.12)"></div>
+        <div style="font:400 10.5px/1.4 'IBM Plex Mono',monospace;color:rgba(0,0,0,.45);margin-left:4px">seed #12857A<br>（暖色seedでも成立）</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:16px;flex:none">
+      <!-- light -->
+      <div style="width:250px;border-radius:26px;overflow:hidden;background:#F3F1EC;border:1px solid rgba(0,0,0,.1);display:flex;flex-direction:column;height:552px">
+        <div style="padding:10px 18px 0;display:flex;justify-content:space-between;font:500 10px 'IBM Plex Mono',monospace;color:rgba(0,0,0,.45)"><span>9:41</span><span>▮▮▮</span></div>
+        <div style="padding:14px 18px 10px;display:flex;align-items:center;justify-content:space-between">
+          <div style="font:700 21px/1.3 'Zen Maru Gothic',sans-serif;color:#171A19">ホーム</div>
+          <div style="width:32px;height:32px;border-radius:50%;background:#DDEDE9;color:#0B5F57;font:700 11px 'Zen Maru Gothic',sans-serif;display:flex;align-items:center;justify-content:center">YT</div>
+        </div>
+        <div style="padding:0 18px 12px">
+          <div style="height:42px;border-radius:999px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.05);display:flex;align-items:center;padding:0 16px;gap:9px;font:400 12px 'Zen Kaku Gothic New',sans-serif;color:rgba(0,0,0,.35)"><div style="width:13px;height:13px;border:1.5px solid rgba(0,0,0,.28);border-radius:50%"></div>さがす</div>
+        </div>
+        <div style="flex:1;min-height:0;padding:0 18px;display:flex;flex-direction:column;gap:10px">
+          <div style="background:#12857A;border-radius:22px;padding:16px 18px;color:#fff">
+            <div style="font:400 10.5px 'IBM Plex Mono',monospace;opacity:.75;letter-spacing:.05em">TODAY</div>
+            <div style="font:700 17px/1.45 'Zen Maru Gothic',sans-serif;margin-top:6px">3件のタスクが残っています</div>
+            <div style="margin-top:12px;height:32px;border-radius:999px;background:rgba(255,255,255,.16);display:inline-flex;align-items:center;padding:0 16px;font:500 12px 'Zen Kaku Gothic New',sans-serif">確認する</div>
+          </div>
+          <div style="background:#fff;border-radius:22px;box-shadow:0 2px 8px rgba(0,0,0,.05);padding:6px 14px">
+            <div style="display:flex;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid #EEECE7">
+              <div style="width:32px;height:32px;border-radius:50%;background:#DDEDE9;color:#0B5F57;font:700 11px 'Zen Maru Gothic',sans-serif;display:flex;align-items:center;justify-content:center">AS</div>
+              <div style="flex:1;min-height:0;min-width:0"><div style="font:500 12.5px/1.4 'Zen Kaku Gothic New',sans-serif;color:#171A19">プロジェクト設定の更新</div><div style="font:400 11px/1.4 'Zen Kaku Gothic New',sans-serif;color:rgba(0,0,0,.48);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">しきい値を変更しました</div></div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid #EEECE7">
+              <div style="width:32px;height:32px;border-radius:50%;background:#F1EFE9;color:rgba(0,0,0,.5);font:700 11px 'Zen Maru Gothic',sans-serif;display:flex;align-items:center;justify-content:center">MK</div>
+              <div style="flex:1;min-height:0;min-width:0"><div style="font:500 12.5px/1.4 'Zen Kaku Gothic New',sans-serif;color:#171A19">Weekly digest</div><div style="font:400 11px/1.4 'Zen Kaku Gothic New',sans-serif;color:rgba(0,0,0,.48)">4 items to review</div></div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:center;padding:11px 0">
+              <div style="width:32px;height:32px;border-radius:50%;background:#F1EFE9;color:rgba(0,0,0,.5);font:700 11px 'Zen Maru Gothic',sans-serif;display:flex;align-items:center;justify-content:center">TY</div>
+              <div style="flex:1;min-height:0;min-width:0"><div style="font:500 12.5px/1.4 'Zen Kaku Gothic New',sans-serif;color:#171A19">請求書の下書き</div><div style="font:400 11px/1.4 'Zen Kaku Gothic New',sans-serif;color:rgba(0,0,0,.48)">保存済み・未送信</div></div>
+            </div>
+          </div>
+        </div>
+        <div style="margin:12px 14px 16px;background:#fff;border-radius:999px;box-shadow:0 2px 10px rgba(0,0,0,.07);display:flex;padding:7px 6px">
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:9px;height:9px;border-radius:2px;background:#12857A"></div><span style="font:500 9.5px 'Zen Kaku Gothic New',sans-serif;color:#12857A">ホーム</span></div>
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:9px;height:9px;border:1.5px solid rgba(0,0,0,.38);border-radius:50%"></div><span style="font:400 9.5px 'Zen Kaku Gothic New',sans-serif;color:rgba(0,0,0,.45)">さがす</span></div>
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:9px;height:9px;border:1.5px solid rgba(0,0,0,.38)"></div><span style="font:400 9.5px 'Zen Kaku Gothic New',sans-serif;color:rgba(0,0,0,.45)">設定</span></div>
+        </div>
+      </div>
+      <!-- dark -->
+      <div style="width:250px;border-radius:26px;overflow:hidden;background:#14181A;border:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;height:552px">
+        <div style="padding:10px 18px 0;display:flex;justify-content:space-between;font:500 10px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.45)"><span>9:41</span><span>▮▮▮</span></div>
+        <div style="padding:14px 18px 10px;display:flex;align-items:center;justify-content:space-between">
+          <div style="font:700 21px/1.3 'Zen Maru Gothic',sans-serif;color:#E9EDEB">ホーム</div>
+          <div style="width:32px;height:32px;border-radius:50%;background:#123833;color:#7FD7CB;font:700 11px 'Zen Maru Gothic',sans-serif;display:flex;align-items:center;justify-content:center">YT</div>
+        </div>
+        <div style="padding:0 18px 12px">
+          <div style="height:42px;border-radius:999px;background:#1E2426;display:flex;align-items:center;padding:0 16px;gap:9px;font:400 12px 'Zen Kaku Gothic New',sans-serif;color:rgba(255,255,255,.33)"><div style="width:13px;height:13px;border:1.5px solid rgba(255,255,255,.28);border-radius:50%"></div>さがす</div>
+        </div>
+        <div style="flex:1;min-height:0;padding:0 18px;display:flex;flex-direction:column;gap:10px">
+          <div style="background:#0E4C46;border-radius:22px;padding:16px 18px;color:#DCF2EE">
+            <div style="font:400 10.5px 'IBM Plex Mono',monospace;opacity:.7;letter-spacing:.05em">TODAY</div>
+            <div style="font:700 17px/1.45 'Zen Maru Gothic',sans-serif;margin-top:6px">3件のタスクが残っています</div>
+            <div style="margin-top:12px;height:32px;border-radius:999px;background:rgba(255,255,255,.14);display:inline-flex;align-items:center;padding:0 16px;font:500 12px 'Zen Kaku Gothic New',sans-serif">確認する</div>
+          </div>
+          <div style="background:#1E2426;border-radius:22px;padding:6px 14px">
+            <div style="display:flex;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid #2A3134">
+              <div style="width:32px;height:32px;border-radius:50%;background:#123833;color:#7FD7CB;font:700 11px 'Zen Maru Gothic',sans-serif;display:flex;align-items:center;justify-content:center">AS</div>
+              <div style="flex:1;min-height:0;min-width:0"><div style="font:500 12.5px/1.4 'Zen Kaku Gothic New',sans-serif;color:#E9EDEB">プロジェクト設定の更新</div><div style="font:400 11px/1.4 'Zen Kaku Gothic New',sans-serif;color:rgba(255,255,255,.45);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">しきい値を変更しました</div></div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid #2A3134">
+              <div style="width:32px;height:32px;border-radius:50%;background:#262D30;color:rgba(255,255,255,.55);font:700 11px 'Zen Maru Gothic',sans-serif;display:flex;align-items:center;justify-content:center">MK</div>
+              <div style="flex:1;min-height:0;min-width:0"><div style="font:500 12.5px/1.4 'Zen Kaku Gothic New',sans-serif;color:#E9EDEB">Weekly digest</div><div style="font:400 11px/1.4 'Zen Kaku Gothic New',sans-serif;color:rgba(255,255,255,.45)">4 items to review</div></div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:center;padding:11px 0">
+              <div style="width:32px;height:32px;border-radius:50%;background:#262D30;color:rgba(255,255,255,.55);font:700 11px 'Zen Maru Gothic',sans-serif;display:flex;align-items:center;justify-content:center">TY</div>
+              <div style="flex:1;min-height:0;min-width:0"><div style="font:500 12.5px/1.4 'Zen Kaku Gothic New',sans-serif;color:#E9EDEB">請求書の下書き</div><div style="font:400 11px/1.4 'Zen Kaku Gothic New',sans-serif;color:rgba(255,255,255,.45)">保存済み・未送信</div></div>
+            </div>
+          </div>
+        </div>
+        <div style="margin:12px 14px 16px;background:#1E2426;border-radius:999px;display:flex;padding:7px 6px">
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:9px;height:9px;border-radius:2px;background:#7FD7CB"></div><span style="font:500 9.5px 'Zen Kaku Gothic New',sans-serif;color:#7FD7CB">ホーム</span></div>
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:9px;height:9px;border:1.5px solid rgba(255,255,255,.4);border-radius:50%"></div><span style="font:400 9.5px 'Zen Kaku Gothic New',sans-serif;color:rgba(255,255,255,.45)">さがす</span></div>
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;gap:4px"><div style="width:9px;height:9px;border:1.5px solid rgba(255,255,255,.4)"></div><span style="font:400 9.5px 'Zen Kaku Gothic New',sans-serif;color:rgba(255,255,255,.45)">設定</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- 1c -->
+<div class="dv-opt" id="1c">
+<div class="dv-olabel"><a class="dv-oid" href="#1c">1c</a>Editorial Grid ／ 誌面の規律</div>
+<div class="dv-card" style="padding:26px 28px 30px">
+  <div style="display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap">
+    <div style="flex:1 1 300px;min-width:280px;display:flex;flex-direction:column;gap:16px">
+      <div>
+        <div style="font:700 21px/1.25 'Noto Serif JP',serif;color:#141414">Editorial Grid</div>
+        <div style="font:400 12px/1.6 'IBM Plex Mono',monospace;color:rgba(0,0,0,.45);margin-top:5px">「アプリの中に、誌面の規律を。」</div>
+      </div>
+      <p style="margin:0;font:400 13px/1.8 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.68);text-wrap:pretty">見出しに明朝（Noto Serif JP）、本文にゴシック。角丸は 6〜8 と小さく、ヘアラインと余白でグリッドを見せる。高コントラストで「無料テンプレ感」から最も遠い一方、業種を選ばない。ブランド色は差し色として面積を絞る。</p>
+      <div style="display:flex;flex-wrap:wrap;gap:6px">
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">refined</span>
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">editorial</span>
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">high-contrast</span>
+        <span style="font:500 10.5px 'IBM Plex Mono',monospace;padding:5px 9px;border:1px solid rgba(0,0,0,.14);border-radius:999px;color:rgba(0,0,0,.6)">premium</span>
+      </div>
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font:400 11.5px/1.5 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.55);border-top:1px solid rgba(0,0,0,.09);padding-top:14px">
+        <div style="color:rgba(0,0,0,.4)">Font</div><div>Noto Serif JP（見出し）＋ Noto Sans JP（本文）</div>
+        <div style="color:rgba(0,0,0,.4)">Radius</div><div>8 / 入力6 / ボタン8</div>
+        <div style="color:rgba(0,0,0,.4)">面</div><div>ヘアライン＋地色ブロック・elevation 0</div>
+        <div style="color:rgba(0,0,0,.4)">向く用途</div><div>メディア・不動産・旅行・BtoBブランド</div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;margin-top:2px">
+        <div style="width:34px;height:34px;border-radius:6px;background:#A83A28"></div>
+        <div style="width:34px;height:34px;border-radius:6px;background:#141414"></div>
+        <div style="width:34px;height:34px;border-radius:6px;background:#FAF8F4;border:1px solid rgba(0,0,0,.12)"></div>
+        <div style="font:400 10.5px/1.4 'IBM Plex Mono',monospace;color:rgba(0,0,0,.45);margin-left:4px">seed #A83A28<br>（差し色として少面積）</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:16px;flex:none">
+      <!-- light -->
+      <div style="width:250px;border-radius:26px;overflow:hidden;background:#FAF8F4;border:1px solid rgba(0,0,0,.14);display:flex;flex-direction:column;height:552px">
+        <div style="padding:10px 18px 0;display:flex;justify-content:space-between;font:500 10px 'IBM Plex Mono',monospace;color:rgba(0,0,0,.5)"><span>9:41</span><span>▮▮▮</span></div>
+        <div style="padding:16px 18px 12px;border-bottom:1px solid #141414">
+          <div style="font:400 9.5px 'IBM Plex Mono',monospace;color:#A83A28;letter-spacing:.14em">HOME</div>
+          <div style="font:600 23px/1.3 'Noto Serif JP',serif;color:#141414;margin-top:5px">ホーム</div>
+        </div>
+        <div style="padding:14px 18px 0">
+          <div style="height:38px;border-radius:6px;border:1px solid rgba(0,0,0,.22);display:flex;align-items:center;padding:0 12px;gap:8px;font:400 12px 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.4)"><div style="width:12px;height:12px;border:1.4px solid rgba(0,0,0,.35);border-radius:50%"></div>検索</div>
+        </div>
+        <div style="flex:1;min-height:0;padding:16px 18px 0;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;padding-bottom:8px;border-bottom:1px solid #141414">
+            <div style="font:600 12px 'Noto Serif JP',serif;color:#141414">最近の更新</div>
+            <div style="font:400 9.5px 'IBM Plex Mono',monospace;color:rgba(0,0,0,.4)">03</div>
+          </div>
+          <div style="display:flex;gap:12px;padding:13px 0;border-bottom:1px solid rgba(0,0,0,.12)">
+            <div style="font:400 10px 'IBM Plex Mono',monospace;color:#A83A28;padding-top:3px">01</div>
+            <div style="flex:1;min-height:0;min-width:0"><div style="font:500 13px/1.5 'Noto Sans JP',sans-serif;color:#141414">プロジェクト設定の更新</div><div style="font:400 11px/1.5 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.5);margin-top:2px">通知のしきい値を変更しました</div></div>
+            <div style="font:400 9.5px 'IBM Plex Mono',monospace;color:rgba(0,0,0,.35);padding-top:4px">2h</div>
+          </div>
+          <div style="display:flex;gap:12px;padding:13px 0;border-bottom:1px solid rgba(0,0,0,.12)">
+            <div style="font:400 10px 'IBM Plex Mono',monospace;color:#A83A28;padding-top:3px">02</div>
+            <div style="flex:1;min-height:0;min-width:0"><div style="font:500 13px/1.5 'Noto Sans JP',sans-serif;color:#141414">Weekly digest</div><div style="font:400 11px/1.5 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.5);margin-top:2px">4 items need review</div></div>
+            <div style="font:400 9.5px 'IBM Plex Mono',monospace;color:rgba(0,0,0,.35);padding-top:4px">1d</div>
+          </div>
+          <div style="display:flex;gap:12px;padding:13px 0;border-bottom:1px solid rgba(0,0,0,.12)">
+            <div style="font:400 10px 'IBM Plex Mono',monospace;color:#A83A28;padding-top:3px">03</div>
+            <div style="flex:1;min-height:0;min-width:0"><div style="font:500 13px/1.5 'Noto Sans JP',sans-serif;color:#141414">請求書の下書きを保存</div><div style="font:400 11px/1.5 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.5);margin-top:2px">保存済み・未送信</div></div>
+            <div style="font:400 9.5px 'IBM Plex Mono',monospace;color:rgba(0,0,0,.35);padding-top:4px">3d</div>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:16px">
+            <div style="flex:1;min-height:0;height:40px;border-radius:8px;background:#141414;color:#FAF8F4;font:500 12.5px 'Noto Sans JP',sans-serif;display:flex;align-items:center;justify-content:center">新規作成</div>
+            <div style="width:40px;height:40px;border-radius:8px;border:1px solid rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center"><div style="width:11px;height:11px;border:1.5px solid #141414"></div></div>
+          </div>
+        </div>
+        <div style="display:flex;border-top:1px solid #141414;padding:9px 0 14px;background:#FAF8F4">
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;gap:5px;border-right:1px solid rgba(0,0,0,.1)"><div style="width:9px;height:9px;background:#A83A28"></div><span style="font:500 9.5px 'Noto Sans JP',sans-serif;color:#141414">ホーム</span></div>
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;gap:5px;border-right:1px solid rgba(0,0,0,.1)"><div style="width:9px;height:9px;border:1.5px solid rgba(0,0,0,.4);border-radius:50%"></div><span style="font:400 9.5px 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.45)">検索</span></div>
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:9px;height:9px;border:1.5px solid rgba(0,0,0,.4)"></div><span style="font:400 9.5px 'Noto Sans JP',sans-serif;color:rgba(0,0,0,.45)">設定</span></div>
+        </div>
+      </div>
+      <!-- dark -->
+      <div style="width:250px;border-radius:26px;overflow:hidden;background:#101010;border:1px solid rgba(255,255,255,.14);display:flex;flex-direction:column;height:552px">
+        <div style="padding:10px 18px 0;display:flex;justify-content:space-between;font:500 10px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.5)"><span>9:41</span><span>▮▮▮</span></div>
+        <div style="padding:16px 18px 12px;border-bottom:1px solid rgba(255,255,255,.55)">
+          <div style="font:400 9.5px 'IBM Plex Mono',monospace;color:#E98570;letter-spacing:.14em">HOME</div>
+          <div style="font:600 23px/1.3 'Noto Serif JP',serif;color:#F2EFEA;margin-top:5px">ホーム</div>
+        </div>
+        <div style="padding:14px 18px 0">
+          <div style="height:38px;border-radius:6px;border:1px solid rgba(255,255,255,.24);display:flex;align-items:center;padding:0 12px;gap:8px;font:400 12px 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.38)"><div style="width:12px;height:12px;border:1.4px solid rgba(255,255,255,.35);border-radius:50%"></div>検索</div>
+        </div>
+        <div style="flex:1;min-height:0;padding:16px 18px 0;display:flex;flex-direction:column">
+          <div style="display:flex;align-items:baseline;justify-content:space-between;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.55)">
+            <div style="font:600 12px 'Noto Serif JP',serif;color:#F2EFEA">最近の更新</div>
+            <div style="font:400 9.5px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.4)">03</div>
+          </div>
+          <div style="display:flex;gap:12px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.12)">
+            <div style="font:400 10px 'IBM Plex Mono',monospace;color:#E98570;padding-top:3px">01</div>
+            <div style="flex:1;min-height:0;min-width:0"><div style="font:500 13px/1.5 'Noto Sans JP',sans-serif;color:#F2EFEA">プロジェクト設定の更新</div><div style="font:400 11px/1.5 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.48);margin-top:2px">通知のしきい値を変更しました</div></div>
+            <div style="font:400 9.5px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.32);padding-top:4px">2h</div>
+          </div>
+          <div style="display:flex;gap:12px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.12)">
+            <div style="font:400 10px 'IBM Plex Mono',monospace;color:#E98570;padding-top:3px">02</div>
+            <div style="flex:1;min-height:0;min-width:0"><div style="font:500 13px/1.5 'Noto Sans JP',sans-serif;color:#F2EFEA">Weekly digest</div><div style="font:400 11px/1.5 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.48);margin-top:2px">4 items need review</div></div>
+            <div style="font:400 9.5px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.32);padding-top:4px">1d</div>
+          </div>
+          <div style="display:flex;gap:12px;padding:13px 0;border-bottom:1px solid rgba(255,255,255,.12)">
+            <div style="font:400 10px 'IBM Plex Mono',monospace;color:#E98570;padding-top:3px">03</div>
+            <div style="flex:1;min-height:0;min-width:0"><div style="font:500 13px/1.5 'Noto Sans JP',sans-serif;color:#F2EFEA">請求書の下書きを保存</div><div style="font:400 11px/1.5 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.48);margin-top:2px">保存済み・未送信</div></div>
+            <div style="font:400 9.5px 'IBM Plex Mono',monospace;color:rgba(255,255,255,.32);padding-top:4px">3d</div>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:16px">
+            <div style="flex:1;min-height:0;height:40px;border-radius:8px;background:#F2EFEA;color:#101010;font:500 12.5px 'Noto Sans JP',sans-serif;display:flex;align-items:center;justify-content:center">新規作成</div>
+            <div style="width:40px;height:40px;border-radius:8px;border:1px solid rgba(255,255,255,.24);display:flex;align-items:center;justify-content:center"><div style="width:11px;height:11px;border:1.5px solid #F2EFEA"></div></div>
+          </div>
+        </div>
+        <div style="display:flex;border-top:1px solid rgba(255,255,255,.55);padding:9px 0 14px">
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;gap:5px;border-right:1px solid rgba(255,255,255,.1)"><div style="width:9px;height:9px;background:#E98570"></div><span style="font:500 9.5px 'Noto Sans JP',sans-serif;color:#F2EFEA">ホーム</span></div>
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;gap:5px;border-right:1px solid rgba(255,255,255,.1)"><div style="width:9px;height:9px;border:1.5px solid rgba(255,255,255,.4);border-radius:50%"></div><span style="font:400 9.5px 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.45)">検索</span></div>
+          <div style="flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;gap:5px"><div style="width:9px;height:9px;border:1.5px solid rgba(255,255,255,.4)"></div><span style="font:400 9.5px 'Noto Sans JP',sans-serif;color:rgba(255,255,255,.45)">設定</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+<p class="dv-next">次の一手：「<a class="dv-oid" href="#1a">1a</a> で進めて、トークンを定義して」／「<a class="dv-oid" href="#1b">1b</a> の角丸をもう少し締めた版も見たい」／「<a class="dv-oid" href="#1c">1c</a> の明朝を英語UIでも確認したい」</p>
+</section>
+
+</x-dc>
+</body>
+</html>

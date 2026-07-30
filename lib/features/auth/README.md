@@ -59,9 +59,13 @@ Firebase の iOS 電話番号認証は、まずサイレントプッシュ（APN
 
 ログイン方式単位で消せる。
 
-- **電話番号ログイン**: `phone_login_*.dart` 3ファイル削除、routes.dart の `PhoneLoginRoute`、login_screen.dart の該当ボタン、auth_repository.dart の `sendPhoneOtp` / `verifyPhoneOtp`、arb の `phone*` / `authPhone*` / `authOtp*` キー
-- **Google ログイン**: login_screen.dart の該当ボタン、login_view_model.dart の `signInWithGoogle`、auth_repository.dart の `signInWithGoogle`、pubspec の `google_sign_in`、arb の `loginWithGoogle`、AppEnv と env/*.json の `GOOGLE_*`
+Google / Apple / 電話番号は login_screen.dart の `_showOtherMethods`（ボトムシート）に集約してあるので、
+消すのはその中の `ListTile` 1つ。**画面本体にログインボタンを平置きしないこと**（DESIGN.md §6 でボタン数を1つに絞った構成）。
+
+- **電話番号ログイン**: `phone_login_*.dart` 3ファイル削除、routes.dart の `PhoneLoginRoute`、login_screen.dart のボトムシート内 `ListTile`、auth_repository.dart の `sendPhoneOtp` / `verifyPhoneOtp`、arb の `phone*` / `authPhone*` / `authOtp*` キー、`test/design_layout_test.dart` の `'phoneLogin'` 行
+- **Google ログイン**: login_screen.dart のボトムシート内 `ListTile`、login_view_model.dart の `signInWithGoogle`、auth_repository.dart の `signInWithGoogle`、pubspec の `google_sign_in`、arb の `loginWithGoogle`、AppEnv と env/*.json の `GOOGLE_*`
 - **Apple ログイン**: 同様に `signInWithApple` 関連と pubspec の `sign_in_with_apple`、arb の `loginWithApple`
+- 3つすべて消す場合は「他の方法でログイン」の TextButton と `_showOtherMethods`、arb の `authOtherMethods` も消す
 
 ## この機能を丸ごと削除する手順（認証なしアプリにする）
 
@@ -73,5 +77,6 @@ Firebase の iOS 電話番号認証は、まずサイレントプッシュ（APN
 6. pubspec.yaml から `google_sign_in` / `sign_in_with_apple` / `crypto`（他で未使用なら）を削除する
 7. arb から `login*` / `signup*` / `passwordReset*` / `phone*` / `auth*` キーを削除する
 8. `test/widget_test.dart` の認証 override を削除する
-9. 再生成: `fvm dart run build_runner build --delete-conflicting-outputs` と `fvm flutter gen-l10n`
-10. `fvm flutter analyze` と `fvm flutter test` が通ることを確認する
+9. `test/design_layout_test.dart` の `screens` から auth 4画面の行と認証系 override を削除する
+10. 再生成: `fvm dart run build_runner build --delete-conflicting-outputs` と `fvm flutter gen-l10n`
+11. `fvm flutter analyze` と `fvm flutter test` が通ることを確認する

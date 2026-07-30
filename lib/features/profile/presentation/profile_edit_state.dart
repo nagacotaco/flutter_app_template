@@ -13,4 +13,13 @@ abstract class ProfileEditState with _$ProfileEditState {
     @Default(false) bool isSaving,
     String? errorMessage,
   }) = _ProfileEditState;
+
+  const ProfileEditState._();
+
+  /// アバター画像が未設定のときに円の中へ出す頭文字（ProfileState と同じ規則）。
+  String? get avatarInitials {
+    final name = profile.displayName?.trim();
+    if (name == null || name.isEmpty) return null;
+    return String.fromCharCode(name.runes.first).toUpperCase();
+  }
 }

@@ -42,6 +42,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get errorMessage => 'Something went wrong';
 
   @override
+  String get errorRetryBody => 'Check your connection and try again.';
+
+  @override
   String get retry => 'Retry';
 
   @override
@@ -72,14 +75,26 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loginToPhoneLogin => 'Log in with phone number';
 
   @override
+  String get authOtherMethods => 'Other sign-in options';
+
+  @override
+  String get authBackToLogin => 'Back to sign in';
+
+  @override
   String get signupTitle => 'Sign up';
+
+  @override
+  String get signupHeadline => 'Get started';
 
   @override
   String get signupButton => 'Sign up';
 
   @override
-  String get signupEmailSent =>
-      'A confirmation email has been sent. Follow the link in the email to complete sign up.';
+  String get signupEmailSentTitle => 'Confirmation email sent';
+
+  @override
+  String get signupEmailSentBody =>
+      'Follow the link in the email to complete sign up.';
 
   @override
   String get passwordResetTitle => 'Reset password';
@@ -88,11 +103,25 @@ class AppLocalizationsEn extends AppLocalizations {
   String get passwordResetButton => 'Send reset email';
 
   @override
-  String get passwordResetSent =>
-      'A password reset email has been sent. Follow the link in the email to reset your password.';
+  String get passwordResetSentTitle => 'Reset email sent';
+
+  @override
+  String get passwordResetSentBody =>
+      'Follow the link in the email to set a new password. If it does not arrive, check your spam folder.';
 
   @override
   String get phoneLoginTitle => 'Phone login';
+
+  @override
+  String phoneStepLabel(int n) {
+    return 'STEP $n';
+  }
+
+  @override
+  String get phoneStep1Headline => 'Enter your phone number';
+
+  @override
+  String get phoneStep2Headline => 'Enter the code';
 
   @override
   String get authPhoneLabel => 'Phone number (+81... format)';
@@ -156,11 +185,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get commonCancel => 'Cancel';
 
   @override
+  String get appConfigMaintenanceEyebrow => 'MAINTENANCE';
+
+  @override
   String get appConfigMaintenanceTitle => 'Under maintenance';
 
   @override
   String get appConfigMaintenanceMessage =>
       'The app is currently under maintenance. Please try again later.';
+
+  @override
+  String get appConfigUpdateEyebrow => 'UPDATE REQUIRED';
 
   @override
   String get appConfigUpdateTitle => 'Update required';
@@ -203,4 +238,36 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get itemsEmptyMessage => 'No items yet';
+
+  @override
+  String get itemsEmptyBody => 'Add your first item and it will appear here.';
+
+  @override
+  String get itemsCountUnit => 'items';
+
+  @override
+  String itemsDetailMeta(String id) {
+    return 'ID $id';
+  }
+
+  @override
+  String get homeEmptyTitle => 'Nothing to show yet';
+
+  @override
+  String get homeEmptyBody => 'Add an item and a summary will appear here.';
+
+  @override
+  String get homePlaceholderPendingUnit => 'pending';
+
+  @override
+  String get homePlaceholderWeeklyDone => 'Done this week';
+
+  @override
+  String get homePlaceholderLastSync => 'Last sync';
+
+  @override
+  String get homePlaceholderRecentItems => 'Recent items';
+
+  @override
+  String get homePlaceholderViewItems => 'View items';
 }

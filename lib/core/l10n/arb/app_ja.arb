@@ -42,7 +42,11 @@
   },
   "errorMessage": "エラーが発生しました",
   "@errorMessage": {
-    "description": "共通エラー表示の文言"
+    "description": "共通エラー表示の見出し"
+  },
+  "errorRetryBody": "通信状況を確認して、もう一度お試しください。",
+  "@errorRetryBody": {
+    "description": "共通エラー表示の説明文（ErrorView）"
   },
   "retry": "再試行",
   "@retry": {
@@ -84,17 +88,33 @@
   "@loginToPhoneLogin": {
     "description": "ログイン画面から電話番号ログイン画面へのリンク"
   },
+  "authOtherMethods": "他の方法でログイン",
+  "@authOtherMethods": {
+    "description": "ログイン画面下部のリンク／ボトムシートの見出し（Google・Apple・電話番号をまとめる）"
+  },
+  "authBackToLogin": "ログインに戻る",
+  "@authBackToLogin": {
+    "description": "送信完了状態からログイン画面へ戻るリンク"
+  },
   "signupTitle": "アカウント登録",
   "@signupTitle": {
-    "description": "サインアップ画面のタイトル"
+    "description": "サインアップ画面のタイトル（AppBar）"
+  },
+  "signupHeadline": "はじめる",
+  "@signupHeadline": {
+    "description": "サインアップ画面の大型見出し"
   },
   "signupButton": "登録する",
   "@signupButton": {
     "description": "サインアップ実行ボタン"
   },
-  "signupEmailSent": "確認メールを送信しました。メール内のリンクから登録を完了してください。",
-  "@signupEmailSent": {
-    "description": "サインアップ後の確認メール案内"
+  "signupEmailSentTitle": "確認メールを送信しました",
+  "@signupEmailSentTitle": {
+    "description": "サインアップ後の見出し"
+  },
+  "signupEmailSentBody": "メール内のリンクから登録を完了してください。",
+  "@signupEmailSentBody": {
+    "description": "サインアップ後の説明文"
   },
   "passwordResetTitle": "パスワード再設定",
   "@passwordResetTitle": {
@@ -104,13 +124,34 @@
   "@passwordResetButton": {
     "description": "パスワード再設定メール送信ボタン"
   },
-  "passwordResetSent": "パスワード再設定メールを送信しました。メール内のリンクから再設定してください。",
-  "@passwordResetSent": {
-    "description": "パスワード再設定メール送信後の案内"
+  "passwordResetSentTitle": "再設定メールを送信しました",
+  "@passwordResetSentTitle": {
+    "description": "パスワード再設定メール送信後の見出し"
+  },
+  "passwordResetSentBody": "メール内のリンクから新しいパスワードを設定してください。届かない場合は迷惑メールフォルダをご確認ください。",
+  "@passwordResetSentBody": {
+    "description": "パスワード再設定メール送信後の説明文"
   },
   "phoneLoginTitle": "電話番号ログイン",
   "@phoneLoginTitle": {
-    "description": "電話番号ログイン画面のタイトル"
+    "description": "電話番号ログイン画面のタイトル（AppBar）"
+  },
+  "phoneStepLabel": "STEP {n}",
+  "@phoneStepLabel": {
+    "description": "電話番号ログインのステップインジケータ",
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "phoneStep1Headline": "電話番号を入力",
+  "@phoneStep1Headline": {
+    "description": "電話番号ログイン STEP 1 の大型見出し"
+  },
+  "phoneStep2Headline": "認証コードを入力",
+  "@phoneStep2Headline": {
+    "description": "電話番号ログイン STEP 2 の大型見出し"
   },
   "authPhoneLabel": "電話番号（+81... 形式）",
   "@authPhoneLabel": {
@@ -192,6 +233,10 @@
   "@commonCancel": {
     "description": "共通: キャンセルボタン"
   },
+  "appConfigMaintenanceEyebrow": "MAINTENANCE",
+  "@appConfigMaintenanceEyebrow": {
+    "description": "メンテナンス画面の小見出し（欧文固定。Archivo で表示する）"
+  },
   "appConfigMaintenanceTitle": "メンテナンス中",
   "@appConfigMaintenanceTitle": {
     "description": "メンテナンス画面のタイトル"
@@ -199,6 +244,10 @@
   "appConfigMaintenanceMessage": "ただいまメンテナンス中です。しばらくしてからもう一度お試しください。",
   "@appConfigMaintenanceMessage": {
     "description": "メンテナンス画面のデフォルト本文（サーバー配信の文言がない場合）"
+  },
+  "appConfigUpdateEyebrow": "UPDATE REQUIRED",
+  "@appConfigUpdateEyebrow": {
+    "description": "強制アップデート画面の小見出し（欧文固定。Archivo で表示する）"
   },
   "appConfigUpdateTitle": "アップデートが必要です",
   "@appConfigUpdateTitle": {
@@ -250,6 +299,51 @@
   },
   "itemsEmptyMessage": "アイテムがまだありません",
   "@itemsEmptyMessage": {
-    "description": "アイテム一覧の空状態メッセージ"
+    "description": "アイテム一覧の空状態の見出し"
+  },
+  "itemsEmptyBody": "最初のアイテムを追加すると、ここに一覧が表示されます。",
+  "@itemsEmptyBody": {
+    "description": "アイテム一覧の空状態の説明文"
+  },
+  "itemsCountUnit": "件",
+  "@itemsCountUnit": {
+    "description": "アイテム一覧の件数の単位（大型数値の隣に置く）"
+  },
+  "itemsDetailMeta": "ID {id}",
+  "@itemsDetailMeta": {
+    "description": "アイテム詳細のメタ行",
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "homeEmptyTitle": "表示できる情報がまだありません",
+  "@homeEmptyTitle": {
+    "description": "ホームの空状態の見出し"
+  },
+  "homeEmptyBody": "アイテムを追加すると、ここに概要が表示されます。",
+  "@homeEmptyBody": {
+    "description": "ホームの空状態の説明文"
+  },
+  "homePlaceholderPendingUnit": "件の未対応",
+  "@homePlaceholderPendingUnit": {
+    "description": "【雛形のダミー文言】ホームの主数値の単位。コピー先アプリで homePlaceholder* ごと差し替える"
+  },
+  "homePlaceholderWeeklyDone": "今週の完了",
+  "@homePlaceholderWeeklyDone": {
+    "description": "【雛形のダミー文言】ホームのラベル値ペア1"
+  },
+  "homePlaceholderLastSync": "最終同期",
+  "@homePlaceholderLastSync": {
+    "description": "【雛形のダミー文言】ホームのラベル値ペア2"
+  },
+  "homePlaceholderRecentItems": "最近のアイテム",
+  "@homePlaceholderRecentItems": {
+    "description": "【雛形のダミー文言】ホームの直近リストの見出し"
+  },
+  "homePlaceholderViewItems": "アイテムを見る",
+  "@homePlaceholderViewItems": {
+    "description": "【雛形のダミー文言】ホーム空状態の CTA"
   }
 }
