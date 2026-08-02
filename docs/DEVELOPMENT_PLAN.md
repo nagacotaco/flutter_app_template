@@ -118,6 +118,7 @@ lib/
 
 - [x] profile の Firebase Storage 対応（firebase_storage 追加、`firebase_profile_repository.dart` の uploadAvatar 実装、`storage.rules` + firebase.json デプロイ設定。Blaze 化・Storage 有効化・ルールデプロイの手動手順は `lib/features/profile/README.md`）
 - [x] Firebase 電話番号認証の iOS 本番設定（APNs / URL scheme。entitlements + Info.plist + xcconfig 設定済み。APNs キーのアップロード等の手動手順は `lib/features/auth/README.md`）
+- [x] Google / Apple ログインのプラットフォーム設定（2026-08-02。Sign in with Apple の entitlement、Google 用 URL scheme（`GOOGLE_REVERSED_CLIENT_ID` を flavor 別 xcconfig で定義）、debug SHA-1 の Firebase 登録。Console でのプロバイダ有効化とクライアント ID 設定の手動手順は `lib/features/auth/README.md`）
 - [x] コピー後の初期化スクリプト（`tool/rename.dart`。アプリ名・Bundle ID・Dart パッケージ名の一括リネーム）
 - [x] UI 刷新（Pure Mono）。仕様は **`DESIGN.md`（見た目の正）**、カンプ実体は `docs/design/`。既存13画面の見た目のみを刷新（画面・機能は追加なし）
   - `lib/core/theme/` を4ファイルに分割（`app_color_scheme.dart` / `app_text_theme.dart` / `app_spacing.dart` / `app_theme.dart`）

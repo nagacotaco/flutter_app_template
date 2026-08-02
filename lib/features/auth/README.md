@@ -20,9 +20,23 @@ main.dart の初期化と AuthRepository の実装が連動して切り替わる
 - **iOS 最低バージョン**: Firebase iOS SDK の要件で deployment target は 15.0 以上（ios/Runner.xcodeproj に設定済み。13.0 に下げると Firebase 使用時にビルドできない）
 - **メール**: Firebase Console > Authentication > Sign-in method で Email/Password を有効化
 - **電話番号**: 同 Phone を有効化。SMS 契約不要のテスト電話番号 + 固定 OTP を登録して確認する（実 SMS は Blaze プラン必須）。iOS 実機で本番利用する場合は後述「電話番号認証の iOS 本番設定」を実施する
-- **Google**: 同 Google を有効化。表示される Web クライアント ID を `env/*.json` の `GOOGLE_WEB_CLIENT_ID` に設定（Android で必須）。iOS は `GOOGLE_IOS_CLIENT_ID` も設定し、Info.plist に reversed client ID の URL scheme を追加
-- **Apple**: 同 Apple を有効化し、Xcode で Runner に Capability「Sign in with Apple」を追加
+- **Google**: 後述「Google ログインの設定手順」を実施
+- **Apple**: 同 Apple を有効化する。Xcode 側の Capability「Sign in with Apple」は `ios/Runner/Runner.entitlements` に設定済み（追加作業不要）。Apple Developer の App ID への capability 反映は、自動署名なら次回実機ビルド時に Xcode が行う
 - **退会**: 最終ログインから時間が経つと requires-recent-login エラーになる（再ログイン後に退会し直す仕様）
+
+### Google ログインの設定手順
+
+**リポジトリ / Firebase プロジェクトに設定済み（追加作業不要）:**
+
+- Info.plist の URL scheme（`$(GOOGLE_REVERSED_CLIENT_ID)`。値は flavor 別 xcconfig `ios/Flutter/{dev,prod}{Debug,Profile,Release}.xcconfig` で定義）
+- debug keystore の SHA-1 を dev / prod 両 Android アプリに登録済み（2026-08-02）。**リリースビルド用の keystore を作ったら、その SHA-1 も `firebase apps:android:sha:create <appId> <sha1>` で追加すること**
+
+**手動で必要な作業（Firebase Console）:**
+
+1. Firebase Console > Authentication > Sign-in method で Google を有効化（サポートメールを選んで保存）
+2. 有効化すると OAuth クライアントが自動作成される。`fvm flutter pub global run flutterfire_cli:flutterfire configure` を再実行するか、`firebase apps:sdkconfig ios <iOS appId>` で `CLIENT_ID` / `REVERSED_CLIENT_ID` を取得する
+3. `env/dev.json` / `env/prod.json` に設定: `GOOGLE_WEB_CLIENT_ID`（ウェブクライアント ID。Android で必須）と `GOOGLE_IOS_CLIENT_ID`（iOS クライアント ID）
+4. flavor 別 xcconfig の `GOOGLE_REVERSED_CLIENT_ID=` に reversed client ID（iOS クライアント ID を逆順にした `com.googleusercontent.apps.xxx`）を設定
 
 ### 電話番号認証の iOS 本番設定（APNs / reCAPTCHA フォールバック）
 
