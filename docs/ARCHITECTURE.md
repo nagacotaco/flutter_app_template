@@ -148,6 +148,7 @@ class HomeScreen extends HookConsumerWidget {
   - ローディング: リスト画面は `SkeletonListView()`、詳細・プロフィール系は `SkeletonListView(variant: SkeletonVariant.detail)`。この2形で足りないレイアウトのみ実レイアウトを `Skeletonizer(enabled: true, child: ...)` で包む（skeletonizer パッケージ）。スピナー（CircularProgressIndicator）はダイアログ内などスケルトンが作れない場面のみ
   - 空状態: `EmptyView(title: context.l10n.xxx, body:, action:)`。データが空のときに素のリストを出さない
   - `EmptyView` / `ErrorView` / `SkeletonListView` は左右パディングを自分で持つ。呼び出し側で重ねてつけない
+- ダイアログは `AppDialog.show<T>(context, title:, message:, actions: (dialogContext) => [...])`、ボトムシートは `AppBottomSheet.show<T>(context, title:, children: (sheetContext) => [...])` を使う。`AlertDialog` / `showModalBottomSheet` を画面側で直接組まない（ボタン縦積み・パディング・SafeArea の統一を core 側に閉じるため）
 - 入力欄は `LabeledField(label:, child: TextField(...))` で組む（floatingLabel は使わない）。ラベル＋値の表示は `LabelValue(label:, value:, mono:)`、画面冒頭の見出しは `DisplayHeader(title:, meta:, display:, displayUnit:)`
 - ネットワーク画像は `AppNetworkImage(url:)` / アバターは `AppAvatar(url:, size:, initials:)`（core/widgets）を使う。`size` は直径。`Image.network` / `NetworkImage` / `CachedNetworkImage` を feature 側で直接使わない（ディスクキャッシュの統一と、画像パッケージの差し替え・削除を core 1ファイルに閉じるため）
 - 画面内の部分 Widget は同ファイル内のプライベートクラス（`_Body` 等）に切り出す。ビルダーメソッド（`Widget _buildBody()`）は禁止

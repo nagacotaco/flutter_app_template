@@ -3,6 +3,7 @@ import 'package:flutter_app_template/core/l10n/l10n.dart';
 import 'package:flutter_app_template/core/router/routes.dart';
 import 'package:flutter_app_template/core/theme/app_spacing.dart';
 import 'package:flutter_app_template/core/theme/app_theme.dart';
+import 'package:flutter_app_template/core/widgets/app_bottom_sheet.dart';
 import 'package:flutter_app_template/core/widgets/inline_error.dart';
 import 'package:flutter_app_template/core/widgets/labeled_field.dart';
 import 'package:flutter_app_template/features/auth/presentation/login_view_model.dart';
@@ -127,53 +128,33 @@ class LoginScreen extends HookConsumerWidget {
   /// ログイン手段を増やすときはここに1行足す（画面本体には足さない）。
   Future<void> _showOtherMethods(BuildContext context, WidgetRef ref) {
     final viewModel = ref.read(loginViewModelProvider.notifier);
-    return showModalBottomSheet<void>(
-      context: context,
-      builder: (sheetContext) {
-        final l10n = sheetContext.l10n;
-        return SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(
-              AppSpacing.screenHorizontal,
-              0,
-              AppSpacing.screenHorizontal,
-              AppSpacing.xl,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  l10n.authOtherMethods,
-                  style: Theme.of(sheetContext).textTheme.titleMedium,
-                ),
-                const SizedBox(height: AppSpacing.lg),
-                ListTile(
-                  title: Text(l10n.loginWithGoogle),
-                  onTap: () {
-                    Navigator.of(sheetContext).pop();
-                    viewModel.signInWithGoogle();
-                  },
-                ),
-                ListTile(
-                  title: Text(l10n.loginWithApple),
-                  onTap: () {
-                    Navigator.of(sheetContext).pop();
-                    viewModel.signInWithApple();
-                  },
-                ),
-                ListTile(
-                  title: Text(l10n.loginToPhoneLogin),
-                  onTap: () {
-                    Navigator.of(sheetContext).pop();
-                    PhoneLoginRoute(from: context.routeFrom).go(context);
-                  },
-                ),
-              ],
-            ),
-          ),
-        );
-      },
+    final l10n = context.l10n;
+    return AppBottomSheet.show<void>(
+      context,
+      title: l10n.authOtherMethods,
+      children: (sheetContext) => [
+        ListTile(
+          title: Text(l10n.loginWithGoogle),
+          onTap: () {
+            Navigator.of(sheetContext).pop();
+            viewModel.signInWithGoogle();
+          },
+        ),
+        ListTile(
+          title: Text(l10n.loginWithApple),
+          onTap: () {
+            Navigator.of(sheetContext).pop();
+            viewModel.signInWithApple();
+          },
+        ),
+        ListTile(
+          title: Text(l10n.loginToPhoneLogin),
+          onTap: () {
+            Navigator.of(sheetContext).pop();
+            PhoneLoginRoute(from: context.routeFrom).go(context);
+          },
+        ),
+      ],
     );
   }
 }

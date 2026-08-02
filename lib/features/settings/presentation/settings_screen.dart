@@ -5,6 +5,7 @@ import 'package:flutter_app_template/core/l10n/l10n.dart';
 import 'package:flutter_app_template/core/router/routes.dart';
 import 'package:flutter_app_template/core/settings/app_settings_provider.dart';
 import 'package:flutter_app_template/core/theme/app_spacing.dart';
+import 'package:flutter_app_template/core/widgets/app_dialog.dart';
 import 'package:flutter_app_template/core/widgets/display_header.dart';
 import 'package:flutter_app_template/core/widgets/error_view.dart';
 import 'package:flutter_app_template/core/widgets/inline_error.dart';
@@ -209,30 +210,21 @@ class _Body extends HookConsumerWidget {
     BuildContext context,
     SettingsViewModel viewModel,
   ) async {
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (dialogContext) {
-        final l10n = dialogContext.l10n;
-        return AlertDialog(
-          title: Text(l10n.settingsDeleteAccountConfirmTitle),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text(l10n.settingsDeleteAccountConfirmMessage),
-              const SizedBox(height: AppSpacing.xl),
-              FilledButton(
-                onPressed: () => Navigator.of(dialogContext).pop(false),
-                child: Text(l10n.commonCancel),
-              ),
-              TextButton(
-                onPressed: () => Navigator.of(dialogContext).pop(true),
-                child: Text(l10n.settingsDeleteAccountConfirmButton),
-              ),
-            ],
-          ),
-        );
-      },
+    final l10n = context.l10n;
+    final confirmed = await AppDialog.show<bool>(
+      context,
+      title: l10n.settingsDeleteAccountConfirmTitle,
+      message: l10n.settingsDeleteAccountConfirmMessage,
+      actions: (dialogContext) => [
+        FilledButton(
+          onPressed: () => Navigator.of(dialogContext).pop(false),
+          child: Text(l10n.commonCancel),
+        ),
+        TextButton(
+          onPressed: () => Navigator.of(dialogContext).pop(true),
+          child: Text(l10n.settingsDeleteAccountConfirmButton),
+        ),
+      ],
     );
     if (confirmed ?? false) {
       await viewModel.deleteAccount();

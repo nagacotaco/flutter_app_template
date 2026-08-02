@@ -133,8 +133,8 @@ hit target 最小 48
 | ListTile 行 | contentPadding 水平 0 / minVerticalPadding 0。leading アイコンと trailing chevron を削除。行間 20 |
 | AppBar | elevation 0 / scrolledUnderElevation 0 / centerTitle **false**（左寄せ）。タイトルは titleSmall。長い日本語は body 側で再掲する。**ボトムナビの3タブ（ホーム / アイテム / 設定）は AppBar を置かず DisplayHeader が同じ位置・同じ字送りで肩代わりする**（戻るボタンもアクションも無い AppBar は余白を食うだけのため。カンプもそうなっている） |
 | NavigationBar | `labelBehavior: alwaysHide`（**ラベルなし・アイコンのみ**）／indicatorColor transparent／選択＝塗りアイコン、非選択＝outlined／icon 22 / height 64 |
-| Dialog | radius 12 / elevation 0 / 背景 surface / 1px outlineVariant 枠。ボタンは縦積み |
-| BottomSheet | 上端 radius 16 / elevation 0 / ハンドル 34×3 |
+| Dialog | radius 12 / elevation 0 / 背景 surface / 1px outlineVariant 枠。ボタンは縦積み。**実装は AppDialog を使い、AlertDialog を画面側で直接組まない** |
+| BottomSheet | 上端 radius 16 / elevation 0 / ハンドル 34×3。**実装は AppBottomSheet を使い、showModalBottomSheet を画面側で直接呼ばない** |
 | 円形アバター | AppAvatar に size 引数を追加し 64px。未設定は 20px の円アイコン、または頭文字を Archivo w700 |
 | EmptyView | アイコン廃止。見出し（headlineSmall）＋説明（bodyMedium, variant）＋任意 CTA。左寄せ |
 | ErrorView | 「！」（Archivo 大）＋下線付き見出し＋説明＋再試行 FilledButton。左寄せ |
@@ -160,6 +160,22 @@ hit target 最小 48
 - **LabeledField** `lib/core/widgets/labeled_field.dart`
   `LabeledField({required String label, required Widget child})` — labelSmall を入力欄の外側・上に固定して置く。
   *理由*: floatingLabel を使わない方針の実装先。8箇所で同じ組み合わせになる。
+
+### 追加コンポーネント（2026-08-02）
+
+- **AppDialog** `lib/core/widgets/app_dialog.dart`
+  `AppDialog({required String title, String? message, Widget? content, required List<Widget> actions})`
+  ＋ `AppDialog.show<T>(context, title:, message:, content:, actions: (dialogContext) => [...])`（showDialog の薄いラッパー）。
+  見た目はテーマ側（radius 12 / 1px 枠）に任せ、この widget は**ボタン縦積みのレイアウト**だけを持つ。
+  破壊的操作では FilledButton を「キャンセル」に割り当て、実行を TextButton に降格する（退会ダイアログが実例）。
+  *理由*: 「ボタン縦積み」の組み方が画面ごとの手組みだと、いずれ Material 標準の右下横並び actions が混入する。
+
+- **AppBottomSheet** `lib/core/widgets/app_bottom_sheet.dart`
+  `AppBottomSheet({String? title, required List<Widget> children})`
+  ＋ `AppBottomSheet.show<T>(context, title:, children: (sheetContext) => [...])`（showModalBottomSheet の薄いラッパー）。
+  左右パディング 24（画面と同じ）・見出し titleMedium・下端 SafeArea を widget 側が持つ。呼び出し側で重ねてつけない。
+  選択肢の列挙は ListTile を並べる（ログイン方法の切り替えが実例）。
+  *理由*: SafeArea ＋ パディング ＋ titleMedium 見出しの組み合わせを画面ごとに書くと余白がばらつく。
 
 既存の EmptyView / ErrorView / SkeletonListView / AppAvatar は API ごと作り直した（`docs/ARCHITECTURE.md` §3 も更新済み）。AppNetworkImage は変更なし。
 
