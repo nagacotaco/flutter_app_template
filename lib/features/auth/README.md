@@ -26,6 +26,11 @@ main.dart の初期化と AuthRepository の実装が連動して切り替わる
 
 ### Google ログインの設定手順
 
+**テンプレート本体は下記すべて設定済み（2026-08-02。Google / Apple プロバイダ有効化・
+クライアント ID 設定込み）。** 設定不備の検出は `integration_test/social_login_smoke_test.dart`
+（シミュレータでネイティブ UI 起動まで確認。Apple の完全な確認は実機で行う）。
+以下はコピー先アプリで新しい Firebase プロジェクトを作ったときの再実施手順。
+
 **リポジトリ / Firebase プロジェクトに設定済み（追加作業不要）:**
 
 - Info.plist の URL scheme（`$(GOOGLE_REVERSED_CLIENT_ID)`。値は flavor 別 xcconfig `ios/Flutter/{dev,prod}{Debug,Profile,Release}.xcconfig` で定義）

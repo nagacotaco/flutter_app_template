@@ -7,4 +7,4 @@ BUNDLE_DISPLAY_NAME=Template
 FIREBASE_APP_ID_SCHEME=app-1-64933516130-ios-a2b0f2032b2c97b7e8923b
 // Google ログイン用。GOOGLE_IOS_CLIENT_ID（env/prod.json）を逆順にした
 // com.googleusercontent.apps.xxx 形式。未設定なら Google ログイン以外は動く
-GOOGLE_REVERSED_CLIENT_ID=
+GOOGLE_REVERSED_CLIENT_ID=com.googleusercontent.apps.64933516130-ikmu2senhsl2d3nidh5mmb348cds7kp1
