@@ -163,6 +163,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get settingsPrivacyPolicy => 'Privacy Policy';
 
   @override
+  String get settingsPurchases => 'Plans & Purchases';
+
+  @override
   String get settingsVersion => 'App version';
 
   @override
@@ -270,4 +273,26 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get homePlaceholderViewItems => 'View items';
+
+  @override
+  String get paywallTitle => 'Plans';
+
+  @override
+  String get paywallProActive => 'You\'re on the Pro plan';
+
+  @override
+  String get paywallPurchaseButton => 'Purchase';
+
+  @override
+  String get paywallRestore => 'Restore Purchases';
+
+  @override
+  String get paywallRestoreNotFound => 'No purchases to restore';
+
+  @override
+  String get paywallUnavailableTitle => 'Products unavailable';
+
+  @override
+  String get paywallUnavailableBody =>
+      'No products are available right now. Please try again later.';
 }

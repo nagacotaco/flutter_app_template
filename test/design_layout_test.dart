@@ -5,6 +5,7 @@ import 'package:flutter_app_template/core/config/app_config.dart';
 import 'package:flutter_app_template/core/config/app_config_gate.dart';
 import 'package:flutter_app_template/core/config/app_config_repository.dart';
 import 'package:flutter_app_template/core/l10n/l10n.dart';
+import 'package:flutter_app_template/core/purchase/purchase_repository.dart';
 import 'package:flutter_app_template/core/settings/app_settings_provider.dart';
 import 'package:flutter_app_template/core/theme/app_theme.dart';
 import 'package:flutter_app_template/features/auth/presentation/login_screen.dart';
@@ -20,12 +21,14 @@ import 'package:flutter_app_template/features/onboarding/presentation/onboarding
 import 'package:flutter_app_template/features/profile/data/profile_repository.dart';
 import 'package:flutter_app_template/features/profile/presentation/profile_edit_screen.dart';
 import 'package:flutter_app_template/features/profile/presentation/profile_screen.dart';
+import 'package:flutter_app_template/features/purchase/presentation/paywall_screen.dart';
 import 'package:flutter_app_template/features/settings/presentation/settings_screen.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'core/purchase/fake_purchase_repository.dart';
 import 'features/home/fake_home_summary_repository.dart';
 import 'features/items/fake_item_repository.dart';
 import 'features/profile/fake_profile_repository.dart';
@@ -64,6 +67,9 @@ void main() {
             FakeHomeSummaryRepository(),
           ),
           profileRepositoryProvider.overrideWithValue(FakeProfileRepository()),
+          purchaseRepositoryProvider.overrideWithValue(
+            FakePurchaseRepository(),
+          ),
           currentUserProvider.overrideWith((ref) => user),
           authStateChangesProvider.overrideWith(
             (ref) => Stream<AppUser?>.value(user),
@@ -95,6 +101,7 @@ void main() {
     'profileEdit': const ProfileEditScreen(),
     'onboarding': const OnboardingScreen(),
     'home': const HomeScreen(),
+    'paywall': const PaywallScreen(),
   };
 
   for (final entry in screens.entries) {

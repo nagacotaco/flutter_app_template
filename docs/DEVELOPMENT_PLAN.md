@@ -31,6 +31,7 @@
 | クラッシュレポート | **Sentry** | `env/*.json` の `SENTRY_DSN` を設定すると有効化（空なら無効のまま動く）。environment に flavor が入る |
 | 強制アップデート/メンテナンス | **AppConfigRepository 切替式** | Firebase = Remote Config / Supabase = app_config テーブル。起動時1回取得・失敗時 fail-open。詳細は `lib/core/config/README.md` |
 | プッシュ通知 | **FCM（firebase_messaging）** | `pushNotificationsEnabled` で無効化可。通知タップで data の `path` へ遷移。iOS は APNs 設定が別途必要。詳細は `lib/core/notifications/README.md` |
+| アプリ内課金 | **RevenueCat（purchases_flutter）** | `env/*.json` の API キーが空なら無効のまま動く。entitlement は `pro` 固定（変更可）。ペイウォール雛形 `/paywall` 付き。詳細は `lib/features/purchase/README.md` |
 | 対象プラットフォーム | iOS / Android | web/desktop ディレクトリは削除（必要なら再生成できる）。iOS deployment target は 15.0（Firebase iOS SDK の最低要件） |
 
 ## 3. ディレクトリ構成方針（feature-first）
@@ -50,6 +51,7 @@ lib/
     ├── items/            # リスト/詳細のサンプル（ディープリンク実証用）
     ├── onboarding/       # 初回起動時のウォークスルー
     ├── profile/          # プロフィール表示・編集
+    ├── purchase/         # アプリ内課金のペイウォール雛形（SDK ラッパは core/purchase）
     └── settings/         # 設定画面
 ```
 
@@ -123,8 +125,12 @@ lib/
   - フォントは `assets/fonts/` 同梱ではなく **google_fonts パッケージ**（実行時取得＋キャッシュ）。オフライン初回起動でフォールバック表示になるのを避けたいコピー先アプリは、ここを同梱に差し替える
   - ホームは feature 間 import を避けるため `features/home/{domain,data}` に自己完結のダミー Repository を持つ（実データ接続はコピー先の作業）
   - レイアウト回帰は `test/design_layout_test.dart`（全画面 × light/dark × ja/en）で担保
+- [x] アプリ内課金（RevenueCat）の下地（2026-08-02。当初は「下地が薄い」として保留したが、SDK 初期化・Auth 同期・entitlement 状態・ペイウォール雛形・購入復元の配管は汎用と判断して薄く実装）
+  - `lib/core/purchase/`（PurchaseRepository 抽象 + RevenueCat 実装 + `isProProvider`）と `lib/features/purchase/`（ペイウォール画面 `/paywall`）
+  - `env/*.json` の `REVENUECAT_API_KEY_IOS/_ANDROID` が**空文字なら SDK を初期化せず無課金として動く**（Sentry と同じ無効化パターン。テンプレート状態で全テスト・起動が通る）
+  - Firebase/Supabase どちらのバックエンドでも `currentUserProvider` 経由でユーザー ID を同期
+  - 商品 ID・Offering 設計・訴求 UI はアプリ固有としてテンプレートに含めない。セットアップ手順・削除手順は `lib/features/purchase/README.md`
 - Web View 画面の雛形（利用規約表示等）
-- アプリ内課金（RevenueCat）の下地。**保留**: 商品 ID・Offering 設計はアプリ固有で、テンプレートに置ける「下地」が薄い。課金するアプリ側で書く方が速い
 - マルチプラットフォーム展開（web / macos / windows）。**保留**: 対象プラットフォームを iOS / Android に限定する現行方針と矛盾する。着手する場合はディレクトリを `fvm flutter create --platforms=web,macos,windows .` で再生成し、flavor・認証リダイレクト・ディープリンクの各プラットフォーム対応もスコープに含めること
 
 ## 5. テンプレートのコピー手順（運用）

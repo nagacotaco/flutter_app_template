@@ -9,6 +9,7 @@ part of 'routes.dart';
 List<RouteBase> get $appRoutes => [
   $onboardingRoute,
   $loginRoute,
+  $paywallRoute,
   $appShellRoute,
 ];
 
@@ -156,6 +157,32 @@ mixin $PhoneLoginRoute on GoRouteData {
     '/login/phone-login',
     queryParams: {if (_self.from != null) 'from': _self.from},
   );
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $paywallRoute => GoRouteData.$route(
+  path: '/paywall',
+  hasOverriddenOnExit: false,
+  factory: $PaywallRoute._fromState,
+);
+
+mixin $PaywallRoute on GoRouteData {
+  static PaywallRoute _fromState(GoRouterState state) => const PaywallRoute();
+
+  @override
+  String get location => GoRouteData.$location('/paywall');
 
   @override
   void go(BuildContext context) => context.go(location);

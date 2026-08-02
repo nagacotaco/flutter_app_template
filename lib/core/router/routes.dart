@@ -10,6 +10,7 @@ import 'package:flutter_app_template/features/items/presentation/item_list_scree
 import 'package:flutter_app_template/features/onboarding/presentation/onboarding_screen.dart';
 import 'package:flutter_app_template/features/profile/presentation/profile_edit_screen.dart';
 import 'package:flutter_app_template/features/profile/presentation/profile_screen.dart';
+import 'package:flutter_app_template/features/purchase/presentation/paywall_screen.dart';
 import 'package:flutter_app_template/features/settings/presentation/settings_screen.dart';
 import 'package:go_router/go_router.dart';
 
@@ -84,6 +85,17 @@ class PhoneLoginRoute extends GoRouteData with $PhoneLoginRoute {
   @override
   Widget build(BuildContext context, GoRouterState state) =>
       const PhoneLoginScreen();
+}
+
+/// ペイウォール（シェル外・全画面 push）。
+/// 設定画面などから `const PaywallRoute().push(context)` で開く。
+@TypedGoRoute<PaywallRoute>(path: '/paywall')
+class PaywallRoute extends GoRouteData with $PaywallRoute {
+  const PaywallRoute();
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const PaywallScreen();
 }
 
 /// ルート定義（Typed Routes）。

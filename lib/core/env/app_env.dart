@@ -26,5 +26,16 @@ abstract final class AppEnv {
   /// Sentry の DSN。空文字なら Sentry を初期化しない（クラッシュレポート無効）。
   static const String sentryDsn = String.fromEnvironment('SENTRY_DSN');
 
+  /// RevenueCat の Public API Key（iOS）。空文字なら課金 SDK を初期化しない
+  /// （課金無効。lib/core/purchase/README.md）。
+  static const String revenueCatApiKeyIos = String.fromEnvironment(
+    'REVENUECAT_API_KEY_IOS',
+  );
+
+  /// RevenueCat の Public API Key（Android）。空文字なら課金 SDK を初期化しない。
+  static const String revenueCatApiKeyAndroid = String.fromEnvironment(
+    'REVENUECAT_API_KEY_ANDROID',
+  );
+
   static bool get isProd => flavor == 'prod';
 }

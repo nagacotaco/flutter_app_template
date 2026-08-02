@@ -205,6 +205,10 @@
   "@settingsPrivacyPolicy": {
     "description": "設定: プライバシーポリシーリンク"
   },
+  "settingsPurchases": "プランと購入",
+  "@settingsPurchases": {
+    "description": "設定: ペイウォール画面への遷移リンク"
+  },
   "settingsVersion": "アプリバージョン",
   "@settingsVersion": {
     "description": "設定: アプリバージョン表示の項目名"
@@ -345,5 +349,33 @@
   "homePlaceholderViewItems": "アイテムを見る",
   "@homePlaceholderViewItems": {
     "description": "【雛形のダミー文言】ホーム空状態の CTA"
+  },
+  "paywallTitle": "プラン",
+  "@paywallTitle": {
+    "description": "ペイウォール画面のタイトル"
+  },
+  "paywallProActive": "Pro プランをご利用中です",
+  "@paywallProActive": {
+    "description": "ペイウォール: すでに pro が有効なときの見出し"
+  },
+  "paywallPurchaseButton": "購入する",
+  "@paywallPurchaseButton": {
+    "description": "ペイウォール: 購入ボタン"
+  },
+  "paywallRestore": "購入を復元",
+  "@paywallRestore": {
+    "description": "ペイウォール: 購入の復元リンク"
+  },
+  "paywallRestoreNotFound": "復元できる購入が見つかりませんでした",
+  "@paywallRestoreNotFound": {
+    "description": "ペイウォール: 復元しても有効な購入がなかったときの表示"
+  },
+  "paywallUnavailableTitle": "商品を読み込めません",
+  "@paywallUnavailableTitle": {
+    "description": "ペイウォール: 商品が1件もないときの見出し（テンプレート状態でも表示される）"
+  },
+  "paywallUnavailableBody": "現在購入できる商品がありません。時間をおいてもう一度お試しください。",
+  "@paywallUnavailableBody": {
+    "description": "ペイウォール: 商品が1件もないときの説明文"
   }
 }

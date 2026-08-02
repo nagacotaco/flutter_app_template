@@ -50,6 +50,7 @@
   "profileNotSet": "Not set",
   "settingsTermsOfService": "Terms of Service",
   "settingsPrivacyPolicy": "Privacy Policy",
+  "settingsPurchases": "Plans & Purchases",
   "settingsVersion": "App version",
   "settingsLogout": "Log out",
   "settingsDeleteAccount": "Delete account",
@@ -83,5 +84,12 @@
   "homePlaceholderWeeklyDone": "Done this week",
   "homePlaceholderLastSync": "Last sync",
   "homePlaceholderRecentItems": "Recent items",
-  "homePlaceholderViewItems": "View items"
+  "homePlaceholderViewItems": "View items",
+  "paywallTitle": "Plans",
+  "paywallProActive": "You're on the Pro plan",
+  "paywallPurchaseButton": "Purchase",
+  "paywallRestore": "Restore Purchases",
+  "paywallRestoreNotFound": "No purchases to restore",
+  "paywallUnavailableTitle": "Products unavailable",
+  "paywallUnavailableBody": "No products are available right now. Please try again later."
 }

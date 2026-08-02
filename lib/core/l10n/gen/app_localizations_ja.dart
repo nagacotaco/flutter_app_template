@@ -162,6 +162,9 @@ class AppLocalizationsJa extends AppLocalizations {
   String get settingsPrivacyPolicy => 'プライバシーポリシー';
 
   @override
+  String get settingsPurchases => 'プランと購入';
+
+  @override
   String get settingsVersion => 'アプリバージョン';
 
   @override
@@ -266,4 +269,25 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get homePlaceholderViewItems => 'アイテムを見る';
+
+  @override
+  String get paywallTitle => 'プラン';
+
+  @override
+  String get paywallProActive => 'Pro プランをご利用中です';
+
+  @override
+  String get paywallPurchaseButton => '購入する';
+
+  @override
+  String get paywallRestore => '購入を復元';
+
+  @override
+  String get paywallRestoreNotFound => '復元できる購入が見つかりませんでした';
+
+  @override
+  String get paywallUnavailableTitle => '商品を読み込めません';
+
+  @override
+  String get paywallUnavailableBody => '現在購入できる商品がありません。時間をおいてもう一度お試しください。';
 }

@@ -18,7 +18,7 @@ Flutter / Material 3 / iOS・Android のみ。ライト・ダーク両対応、�
   - `lib/core/l10n/arb/`（文言の新規追加。§7 のキーと重複させない）
 - **他ドキュメントとの優先順位** — 構造ルール（`docs/ARCHITECTURE.md`）が上位。衝突したら ARCHITECTURE を守り、この文書側を直す。この文書が正なのは「見た目」だけ。
 - **更新ルール** — 実装がこの仕様とズレたら、コードを黙って通すのではなく先にこの文書を直す（Living Document）。トークン・タイポグラフィ・コンポーネント仕様を変えたら §2〜§5 を必ず更新する。
-- **実装ステータス** — **実装済み（2026-07-31）**。13画面すべてに反映済み。レイアウトの回帰は `test/design_layout_test.dart`（全画面 × ライト/ダーク × 日本語/英語）が見張っている。画面を追加したらこのテストにも1行足す。
+- **実装ステータス** — **実装済み（2026-07-31）**。13画面すべてに反映済み。その後の追加画面もこの仕様で実装する（2026-08-02 にペイウォールを追加し、現在14画面）。レイアウトの回帰は `test/design_layout_test.dart`（全画面 × ライト/ダーク × 日本語/英語）が見張っている。画面を追加したらこのテストにも1行足す。
 - **カンプの所在** — `docs/design/` にコミット済み（`support.js` 込みでブラウザ単体で開ける）。更新手順は `docs/design/README.md`。
 - **絶対に崩さない3点**（詳細を読む前でもこれだけは守る）— ①無彩色のみ（有彩色は seed 差し替え時のみ）②カード・境界線・影・Divider で階層を作らない ③状態を色で表現しない（エラー＝太字＋下線＋「！」）。
 
@@ -184,6 +184,7 @@ hit target 最小 48
 - **ホーム** — 中央のアプリ名テキストを廃止し、**差し替え前提の雛形**として「主数値（displayLarge）＋ LabelValue 2個＋直近3件＋差し替え領域」を配置。空状態は EmptyView を再利用。
   データ源は **`features/home/{domain,data}` に置いた自己完結のダミー Repository**。カンプは items プロバイダ参照を想定していたが、`docs/ARCHITECTURE.md` §7 の feature 間 import 禁止（＝ `features/items/` を消してもホームが壊れない）を優先した。コピー先アプリは `home_summary_repository.dart` の中身と `homePlaceholder*` の文言だけ差し替える。
 - **メンテナンス / 強制アップデート** — 64px アイコン廃止、左寄せの大型見出し＋本文。見出しは2行想定、本文は最大6行で折り返す。強制アップデートに「現在 → 必要」のメタ行を追加。**バージョン名ではなくビルド番号**で出す（アプリ設定が持っているのが `min_build_number` だけで、最新バージョン名は取得できないため）。
+- **ペイウォール**（2026-08-02 追加。UI 刷新後に増えた画面で、カンプは無くこの仕様どおりに実装）— `/paywall` に全画面 push（AppBar あり・戻る矢印自動）。パッケージ行は**選択＝塗り**（onSurface 塗り＋文字反転、角丸 0）、価格は Archivo。購入は FilledButton、復元は `AppButtonStyles.subtleText` のリンク。エラー・復元結果は InlineError でボタン直下に。商品なし＝EmptyView（テンプレート状態でもこれが出る）。処理中の行は不透明度 30%。訴求文・特典リストはコピー先アプリで作り込む。
 
 ---
 
@@ -227,6 +228,13 @@ hit target 最小 48
 `homePlaceholderPendingUnit` / `-WeeklyDone` / `-LastSync` / `-RecentItems` / `-ViewItems`。
 **コピー先アプリで丸ごと差し替える前提**なので、ARB 上も末尾に1ブロックで固めてある。
 ホームを作り替えるときは、このブロックと `features/home/{domain,data}` をまとめて捨ててよい。
+
+### ペイウォール（2026-08-02 追加）
+
+`settingsPurchases`（プランと購入 / Plans & Purchases）と `paywall*` 7件
+（`paywallTitle` / `-ProActive` / `-PurchaseButton` / `-Restore` / `-RestoreNotFound` /
+`-UnavailableTitle` / `-UnavailableBody`）。課金 feature を削除するときはこのブロックごと消す
+（手順は `lib/features/purchase/README.md`）。
 
 - 既存キー（ようこそ／自分好みに／準備完了／退会しますか？ 等）は文言変更なし。
 - 「！」「▼」「→」「↗」は文言ではなく記号なので l10n に置かず、ウィジェット側に直接書いている。

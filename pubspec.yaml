@@ -61,6 +61,7 @@ dependencies:
   cached_network_image: ^3.4.1
   # Pure Mono のタイポグラフィ（和文 Noto Sans JP / 欧文・数字 Archivo）。DESIGN.md §3
   google_fonts: ^8.2.0
+  purchases_flutter: ^10.7.0
 
 dev_dependencies:
   flutter_test:

@@ -398,6 +398,12 @@ abstract class AppLocalizations {
   /// **'プライバシーポリシー'**
   String get settingsPrivacyPolicy;
 
+  /// 設定: ペイウォール画面への遷移リンク
+  ///
+  /// In ja, this message translates to:
+  /// **'プランと購入'**
+  String get settingsPurchases;
+
   /// 設定: アプリバージョン表示の項目名
   ///
   /// In ja, this message translates to:
@@ -601,6 +607,48 @@ abstract class AppLocalizations {
   /// In ja, this message translates to:
   /// **'アイテムを見る'**
   String get homePlaceholderViewItems;
+
+  /// ペイウォール画面のタイトル
+  ///
+  /// In ja, this message translates to:
+  /// **'プラン'**
+  String get paywallTitle;
+
+  /// ペイウォール: すでに pro が有効なときの見出し
+  ///
+  /// In ja, this message translates to:
+  /// **'Pro プランをご利用中です'**
+  String get paywallProActive;
+
+  /// ペイウォール: 購入ボタン
+  ///
+  /// In ja, this message translates to:
+  /// **'購入する'**
+  String get paywallPurchaseButton;
+
+  /// ペイウォール: 購入の復元リンク
+  ///
+  /// In ja, this message translates to:
+  /// **'購入を復元'**
+  String get paywallRestore;
+
+  /// ペイウォール: 復元しても有効な購入がなかったときの表示
+  ///
+  /// In ja, this message translates to:
+  /// **'復元できる購入が見つかりませんでした'**
+  String get paywallRestoreNotFound;
+
+  /// ペイウォール: 商品が1件もないときの見出し（テンプレート状態でも表示される）
+  ///
+  /// In ja, this message translates to:
+  /// **'商品を読み込めません'**
+  String get paywallUnavailableTitle;
+
+  /// ペイウォール: 商品が1件もないときの説明文
+  ///
+  /// In ja, this message translates to:
+  /// **'現在購入できる商品がありません。時間をおいてもう一度お試しください。'**
+  String get paywallUnavailableBody;
 }
 
 class _AppLocalizationsDelegate

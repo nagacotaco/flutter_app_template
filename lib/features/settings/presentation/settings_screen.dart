@@ -163,6 +163,11 @@ class _Body extends HookConsumerWidget {
         ),
         const SizedBox(height: AppSpacing.lg),
         _LinkRow(
+          label: l10n.settingsPurchases,
+          onTap: () => const PaywallRoute().push<void>(context),
+        ),
+        const SizedBox(height: AppSpacing.lg),
+        _LinkRow(
           label: l10n.settingsTermsOfService,
           isExternal: true,
           onTap: () => launchUrl(AppLinks.termsOfService),
