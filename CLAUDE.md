@@ -41,7 +41,8 @@ flutter は必ず fvm 経由で実行する。
 - 新規の共通ウィジェットは `lib/core/widgets/` にのみ置く（feature 間 import を作らない）
 - 余白・角丸・寸法は `AppSpacing` / `AppRadius` / `AppSize`（`lib/core/theme/app_spacing.dart`）の値だけを使う。数値の直書き禁止
 - 和文 Noto Sans JP / 欧文・数字 Archivo。Archivo への切り替えは `TextStyle?.archivo`（`app_text_theme.dart`）
-- **実装ステータス: 14画面すべて反映済み（2026-08-02。ペイウォール追加）**
+- パーツの実物カタログ: デバッグ専用のギャラリー画面 `/gallery`（開き方・削除手順は `lib/features/gallery/README.md`）。`lib/core/widgets/` にパーツを追加したらギャラリーにもサンプルを足す
+- **実装ステータス: 15画面すべて反映済み（2026-08-02。ペイウォール・ギャラリー追加）**
 
 ## テンプレート運用の前提
 

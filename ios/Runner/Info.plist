@@ -31,6 +31,10 @@
         <array>
           <string>$(FIREBASE_APP_ID_SCHEME)</string>
           <string>$(GOOGLE_REVERSED_CLIENT_ID)</string>
+          <!-- カスタムスキーム = Bundle ID（flavor 別に自動で変わり、リネームにも追従する）。
+               開発時のディープリンク確認用: xcrun simctl openurl booted "<bundleId>:///items/1"
+               本番のリンクは Universal Links を使う（docs/DEEP_LINKS.md） -->
+          <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
         </array>
       </dict>
     </array>

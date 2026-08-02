@@ -4,6 +4,9 @@
 
 - go_router のパス対応: `/items/:id` のようなパスで直接開ける（`lib/core/router/routes.dart`）
 - OS 側フラグ: iOS `FlutterDeepLinkingEnabled`（`ios/Runner/Info.plist`）/ Android `flutter_deeplinking_enabled`（`AndroidManifest.xml`）
+- 開発用カスタムスキーム（iOS）: **Bundle ID がそのままスキーム**になる
+  （`Info.plist` の `CFBundleURLSchemes` に `$(PRODUCT_BUNDLE_IDENTIFIER)` を登録済み。
+  flavor 別に自動で変わり、リネームにも追従する）。後述「開発時の動作確認」参照
 - 未ログイン時の復帰: 後述「未ログイン時の挙動」参照
 
 残りの設定（Associated Domains / intent-filter / `.well-known` の2ファイル）は
@@ -67,7 +70,27 @@ Flutter 側の `FlutterDeepLinkingEnabled: true`（go_router が URL を受け�
 
 SHA-256 は `./gradlew signingReport` または Play Console の「アプリの完全性」で取得。
 
-## 動作確認コマンド
+## 開発時の動作確認（ドメイン不要・テンプレート状態で動く）
+
+Universal Links / App Links の設定前でも、次の方法で任意のパスを開ける。
+確認済みの実例はギャラリー画面（`lib/features/gallery/README.md`）。
+
+```sh
+# iOS シミュレータ: スキーム = iOS の Bundle ID（flavor 別）
+# 「"アプリ名" で開きますか?」の確認ダイアログで「開く」をタップする
+xcrun simctl openurl booted "tech.tetrabox.flutterAppTemplate.dev:///items/1"
+
+# Android エミュレータ/実機: コンポーネント直指定なら intent-filter 不要
+adb shell am start \
+  -n tech.tetrabox.flutter_app_template.dev/tech.tetrabox.flutter_app_template.MainActivity \
+  -a android.intent.action.VIEW -d "app:///items/1"
+```
+
+- IMPORTANT: パスは `scheme://items/1` ではなく **`scheme:///items/1`**（スラッシュ3本）。
+  `//` の直後は host として解釈され、go_router にパスが渡らない
+- リネーム後はスキーム（= Bundle ID）と `-n` のコンポーネント名を読み替える
+
+## 本番設定後の動作確認コマンド
 
 ```sh
 # iOS シミュレータ
