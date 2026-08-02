@@ -10,6 +10,7 @@ List<RouteBase> get $appRoutes => [
   $onboardingRoute,
   $loginRoute,
   $paywallRoute,
+  $galleryRoute,
   $appShellRoute,
 ];
 
@@ -183,6 +184,32 @@ mixin $PaywallRoute on GoRouteData {
 
   @override
   String get location => GoRouteData.$location('/paywall');
+
+  @override
+  void go(BuildContext context) => context.go(location);
+
+  @override
+  Future<T?> push<T>(BuildContext context) => context.push<T>(location);
+
+  @override
+  void pushReplacement(BuildContext context) =>
+      context.pushReplacement(location);
+
+  @override
+  void replace(BuildContext context) => context.replace(location);
+}
+
+RouteBase get $galleryRoute => GoRouteData.$route(
+  path: '/gallery',
+  hasOverriddenOnExit: false,
+  factory: $GalleryRoute._fromState,
+);
+
+mixin $GalleryRoute on GoRouteData {
+  static GalleryRoute _fromState(GoRouterState state) => const GalleryRoute();
+
+  @override
+  String get location => GoRouteData.$location('/gallery');
 
   @override
   void go(BuildContext context) => context.go(location);

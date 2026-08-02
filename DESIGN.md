@@ -177,6 +177,15 @@ hit target 最小 48
   選択肢の列挙は ListTile を並べる（ログイン方法の切り替えが実例）。
   *理由*: SafeArea ＋ パディング ＋ titleMedium 見出しの組み合わせを画面ごとに書くと余白がばらつく。
 
+### パーツギャラリー（2026-08-02）
+
+この §5 の実物カタログとして **`/gallery`（`lib/features/gallery/`）** にデバッグ専用のギャラリー画面がある
+（release ビルドではルートがホームへ逃がす）。タイポグラフィ・ボタン・入力欄・共通ウィジェット・
+状態表示・ダイアログ / ボトムシートを1画面で確認できる。
+**`lib/core/widgets/` にパーツを追加したら、この画面にもサンプルを1つ足すこと。**
+画面内の文言は開発者向けサンプルデータなので l10n 対象外（ARB に開発専用キーを混ぜない）。
+コピー先で不要なら `features/gallery` ディレクトリと router 登録数行で消せる。
+
 既存の EmptyView / ErrorView / SkeletonListView / AppAvatar は API ごと作り直した（`docs/ARCHITECTURE.md` §3 も更新済み）。AppNetworkImage は変更なし。
 
 - `EmptyView({required String title, String? body, Widget? action})` — アイコン廃止・左寄せ。左右パディングは widget 側が持つ

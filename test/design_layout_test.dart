@@ -12,6 +12,7 @@ import 'package:flutter_app_template/features/auth/presentation/login_screen.dar
 import 'package:flutter_app_template/features/auth/presentation/password_reset_screen.dart';
 import 'package:flutter_app_template/features/auth/presentation/phone_login_screen.dart';
 import 'package:flutter_app_template/features/auth/presentation/signup_screen.dart';
+import 'package:flutter_app_template/features/gallery/presentation/gallery_screen.dart';
 import 'package:flutter_app_template/features/home/data/home_summary_repository.dart';
 import 'package:flutter_app_template/features/home/presentation/home_screen.dart';
 import 'package:flutter_app_template/features/items/data/item_repository.dart';
@@ -48,6 +49,7 @@ void main() {
     Widget screen, {
     ThemeMode themeMode = ThemeMode.light,
     Locale locale = const Locale('ja'),
+    bool settle = true,
   }) async {
     SharedPreferences.setMockInitialValues({});
     PackageInfo.setMockInitialValues(
@@ -86,7 +88,14 @@ void main() {
         ),
       ),
     );
-    await tester.pumpAndSettle();
+    if (settle) {
+      await tester.pumpAndSettle();
+    } else {
+      // スケルトンのシマーなど無限アニメーションを含む画面は settle できない。
+      // レイアウト（はみ出し）は最初の数フレームで確定するので数回 pump すれば足りる
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 500));
+    }
   }
 
   final screens = <String, Widget>{
@@ -102,7 +111,11 @@ void main() {
     'onboarding': const OnboardingScreen(),
     'home': const HomeScreen(),
     'paywall': const PaywallScreen(),
+    'gallery': const GalleryScreen(),
   };
+
+  // スケルトンのシマー（無限アニメーション）を常時表示するため settle できない画面
+  const noSettleScreens = {'gallery'};
 
   for (final entry in screens.entries) {
     for (final mode in [ThemeMode.light, ThemeMode.dark]) {
@@ -118,6 +131,7 @@ void main() {
             entry.value,
             themeMode: mode,
             locale: locale,
+            settle: !noSettleScreens.contains(entry.key),
           );
           expect(tester.takeException(), isNull);
         });

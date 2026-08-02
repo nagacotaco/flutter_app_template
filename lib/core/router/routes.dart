@@ -1,9 +1,13 @@
+import 'dart:async';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app_template/core/router/app_shell.dart';
 import 'package:flutter_app_template/features/auth/presentation/login_screen.dart';
 import 'package:flutter_app_template/features/auth/presentation/password_reset_screen.dart';
 import 'package:flutter_app_template/features/auth/presentation/phone_login_screen.dart';
 import 'package:flutter_app_template/features/auth/presentation/signup_screen.dart';
+import 'package:flutter_app_template/features/gallery/presentation/gallery_screen.dart';
 import 'package:flutter_app_template/features/home/presentation/home_screen.dart';
 import 'package:flutter_app_template/features/items/presentation/item_detail_screen.dart';
 import 'package:flutter_app_template/features/items/presentation/item_list_screen.dart';
@@ -96,6 +100,22 @@ class PaywallRoute extends GoRouteData with $PaywallRoute {
   @override
   Widget build(BuildContext context, GoRouterState state) =>
       const PaywallScreen();
+}
+
+/// 共通 UI パーツのギャラリー（デバッグ専用・シェル外）。
+/// `const GalleryRoute().push(context)` か deep link `/gallery` で開く。
+/// release ビルドではホームへ逃がす。不要なら features/gallery ごと消す。
+@TypedGoRoute<GalleryRoute>(path: '/gallery')
+class GalleryRoute extends GoRouteData with $GalleryRoute {
+  const GalleryRoute();
+
+  @override
+  FutureOr<String?> redirect(BuildContext context, GoRouterState state) =>
+      kDebugMode ? null : '/home';
+
+  @override
+  Widget build(BuildContext context, GoRouterState state) =>
+      const GalleryScreen();
 }
 
 /// ルート定義（Typed Routes）。

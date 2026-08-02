@@ -132,6 +132,7 @@ lib/
   - Firebase/Supabase どちらのバックエンドでも `currentUserProvider` 経由でユーザー ID を同期
   - 商品 ID・Offering 設計・訴求 UI はアプリ固有としてテンプレートに含めない。コピー後のセットアップ手順は `docs/IN_APP_PURCHASE.md`、削除手順は `lib/features/purchase/README.md`
 - [x] ダイアログ・ボトムシートの共通ウィジェット（2026-08-02。`lib/core/widgets/` に AppDialog / AppBottomSheet を追加。ボタン縦積み・パディング・SafeArea のレイアウトを core 側に閉じ、画面側で `AlertDialog` / `showModalBottomSheet` を直接組まないルールに。退会ダイアログ・ログイン方法シートを移行済み。仕様は `DESIGN.md` §5）
+- [x] UI パーツのギャラリー画面（2026-08-02。`/gallery`・`lib/features/gallery/`。デバッグ専用で release はホームへリダイレクト。Widgetbook は依存とメンテ対象が増えるためテンプレート規模では不採用と判断。文言はサンプルデータとして直書き＝l10n 対象外。パーツ追加時はギャラリーにもサンプルを足す運用。仕様は `DESIGN.md` §5）
 - Web View 画面の雛形（利用規約表示等）
 - マルチプラットフォーム展開（web / macos / windows）。**保留**: 対象プラットフォームを iOS / Android に限定する現行方針と矛盾する。着手する場合はディレクトリを `fvm flutter create --platforms=web,macos,windows .` で再生成し、flavor・認証リダイレクト・ディープリンクの各プラットフォーム対応もスコープに含めること
 
