@@ -1,7 +1,13 @@
 # ディープリンク設定手順
 
-go_router 側は `/items/:id` のようなパスで既に対応済み（`lib/core/router/routes.dart`）。
-OS からアプリを開くための設定は**ドメインとアプリ ID が決まるコピー後**に、この手順で行う。
+テンプレート側で設定済みのもの:
+
+- go_router のパス対応: `/items/:id` のようなパスで直接開ける（`lib/core/router/routes.dart`）
+- OS 側フラグ: iOS `FlutterDeepLinkingEnabled`（`ios/Runner/Info.plist`）/ Android `flutter_deeplinking_enabled`（`AndroidManifest.xml`）
+- 未ログイン時の復帰: 後述「未ログイン時の挙動」参照
+
+残りの設定（Associated Domains / intent-filter / `.well-known` の2ファイル）は
+**ドメインとアプリ ID が決まるコピー後**に、この手順で行う。
 
 ## 前提知識（1行ずつ）
 
@@ -27,14 +33,13 @@ OS からアプリを開くための設定は**ドメインとアプリ ID が�
 }
 ```
 
-3. Flutter 側: `Info.plist` に `FlutterDeepLinkingEnabled: true` を追加（go_router が URL を受け取るのに必要）
+Flutter 側の `FlutterDeepLinkingEnabled: true`（go_router が URL を受け取るのに必要）は**テンプレートで設定済み**。
 
 ## Android (App Links)
 
 1. `android/app/src/main/AndroidManifest.xml` の `<activity>` 内に intent-filter を追加:
 
 ```xml
-<meta-data android:name="flutter_deeplinking_enabled" android:value="true" />
 <intent-filter android:autoVerify="true">
     <action android:name="android.intent.action.VIEW" />
     <category android:name="android.intent.category.DEFAULT" />
@@ -42,6 +47,8 @@ OS からアプリを開くための設定は**ドメインとアプリ ID が�
     <data android:scheme="https" android:host="example.com" />
 </intent-filter>
 ```
+
+`flutter_deeplinking_enabled` の meta-data は**テンプレートで設定済み**。
 
 2. サーバー: `https://example.com/.well-known/assetlinks.json` を配信:
 
@@ -72,3 +79,13 @@ adb shell am start -a android.intent.action.VIEW \
 ```
 
 アプリが起動し、アイテム詳細画面（ID=1）が直接開けば成功。
+
+## 未ログイン時の挙動（実装済み）
+
+未ログイン（またはオンボーディング未完了）でディープリンクを開くと、
+`lib/core/router/app_router.dart` の redirect が元のパスを `?from=` に退避して
+`/onboarding?from=...` → `/login?from=...` と引き継ぎ、認証完了後に自動で元の画面へ復帰する。
+
+- 対応経路: メール・電話 OTP・Google / Apple・サインアップ（認証状態の変化で redirect が再評価されるため全経路共通）
+- `from` はアプリ内パスのみ許可。外部 URL（open redirect）や `/login` 系・`/onboarding` への復帰（ループ）は破棄してホームに着地する（`sanitizeFrom`）
+- テスト: `test/auth_redirect_test.dart` / `test/core/router/redirect_from_test.dart`

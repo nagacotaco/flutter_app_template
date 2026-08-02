@@ -15,11 +15,20 @@ import 'package:go_router/go_router.dart';
 
 part 'routes.g.dart';
 
+/// オンボーディング・認証画面が `?from=` で受け取る「認証後の復帰先」。
+/// 画面間の遷移で引き回すときに使う（検証は app_router.dart の sanitizeFrom）。
+extension RouteFromParam on BuildContext {
+  String? get routeFrom => GoRouterState.of(this).uri.queryParameters['from'];
+}
+
 /// 初回起動のオンボーディング（シェル外）。
 /// 未完了時は app_router.dart の redirect で誘導される。
 @TypedGoRoute<OnboardingRoute>(path: '/onboarding')
 class OnboardingRoute extends GoRouteData with $OnboardingRoute {
-  const OnboardingRoute();
+  const OnboardingRoute({this.from});
+
+  /// オンボーディング完了後に復帰するパス（redirect が退避したディープリンク先）
+  final String? from;
 
   @override
   Widget build(BuildContext context, GoRouterState state) =>
@@ -37,7 +46,10 @@ class OnboardingRoute extends GoRouteData with $OnboardingRoute {
   ],
 )
 class LoginRoute extends GoRouteData with $LoginRoute {
-  const LoginRoute();
+  const LoginRoute({this.from});
+
+  /// ログイン後に復帰するパス（redirect が退避したディープリンク先）
+  final String? from;
 
   @override
   Widget build(BuildContext context, GoRouterState state) =>
@@ -45,7 +57,9 @@ class LoginRoute extends GoRouteData with $LoginRoute {
 }
 
 class SignupRoute extends GoRouteData with $SignupRoute {
-  const SignupRoute();
+  const SignupRoute({this.from});
+
+  final String? from;
 
   @override
   Widget build(BuildContext context, GoRouterState state) =>
@@ -53,7 +67,9 @@ class SignupRoute extends GoRouteData with $SignupRoute {
 }
 
 class PasswordResetRoute extends GoRouteData with $PasswordResetRoute {
-  const PasswordResetRoute();
+  const PasswordResetRoute({this.from});
+
+  final String? from;
 
   @override
   Widget build(BuildContext context, GoRouterState state) =>
@@ -61,7 +77,9 @@ class PasswordResetRoute extends GoRouteData with $PasswordResetRoute {
 }
 
 class PhoneLoginRoute extends GoRouteData with $PhoneLoginRoute {
-  const PhoneLoginRoute();
+  const PhoneLoginRoute({this.from});
+
+  final String? from;
 
   @override
   Widget build(BuildContext context, GoRouterState state) =>

@@ -82,7 +82,9 @@ class LoginScreen extends HookConsumerWidget {
                         child: TextButton(
                           onPressed: state.isSubmitting
                               ? null
-                              : () => const SignupRoute().go(context),
+                              : () => SignupRoute(
+                                  from: context.routeFrom,
+                                ).go(context),
                           child: Text(l10n.loginToSignup),
                         ),
                       ),
@@ -92,7 +94,9 @@ class LoginScreen extends HookConsumerWidget {
                           style: AppButtonStyles.subtleText(context),
                           onPressed: state.isSubmitting
                               ? null
-                              : () => const PasswordResetRoute().go(context),
+                              : () => PasswordResetRoute(
+                                  from: context.routeFrom,
+                                ).go(context),
                           child: Text(
                             l10n.loginToPasswordReset,
                             textAlign: TextAlign.end,
@@ -162,7 +166,7 @@ class LoginScreen extends HookConsumerWidget {
                   title: Text(l10n.loginToPhoneLogin),
                   onTap: () {
                     Navigator.of(sheetContext).pop();
-                    const PhoneLoginRoute().go(context);
+                    PhoneLoginRoute(from: context.routeFrom).go(context);
                   },
                 ),
               ],

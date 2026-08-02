@@ -108,7 +108,7 @@ class _EmailSent extends StatelessWidget {
           ),
           const SizedBox(height: AppSpacing.md),
           TextButton(
-            onPressed: () => const LoginRoute().go(context),
+            onPressed: () => LoginRoute(from: context.routeFrom).go(context),
             child: Text(l10n.authBackToLogin),
           ),
         ],

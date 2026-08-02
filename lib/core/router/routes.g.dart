@@ -20,10 +20,15 @@ RouteBase get $onboardingRoute => GoRouteData.$route(
 
 mixin $OnboardingRoute on GoRouteData {
   static OnboardingRoute _fromState(GoRouterState state) =>
-      const OnboardingRoute();
+      OnboardingRoute(from: state.uri.queryParameters['from']);
+
+  OnboardingRoute get _self => this as OnboardingRoute;
 
   @override
-  String get location => GoRouteData.$location('/onboarding');
+  String get location => GoRouteData.$location(
+    '/onboarding',
+    queryParams: {if (_self.from != null) 'from': _self.from},
+  );
 
   @override
   void go(BuildContext context) => context.go(location);
@@ -63,10 +68,16 @@ RouteBase get $loginRoute => GoRouteData.$route(
 );
 
 mixin $LoginRoute on GoRouteData {
-  static LoginRoute _fromState(GoRouterState state) => const LoginRoute();
+  static LoginRoute _fromState(GoRouterState state) =>
+      LoginRoute(from: state.uri.queryParameters['from']);
+
+  LoginRoute get _self => this as LoginRoute;
 
   @override
-  String get location => GoRouteData.$location('/login');
+  String get location => GoRouteData.$location(
+    '/login',
+    queryParams: {if (_self.from != null) 'from': _self.from},
+  );
 
   @override
   void go(BuildContext context) => context.go(location);
@@ -83,10 +94,16 @@ mixin $LoginRoute on GoRouteData {
 }
 
 mixin $SignupRoute on GoRouteData {
-  static SignupRoute _fromState(GoRouterState state) => const SignupRoute();
+  static SignupRoute _fromState(GoRouterState state) =>
+      SignupRoute(from: state.uri.queryParameters['from']);
+
+  SignupRoute get _self => this as SignupRoute;
 
   @override
-  String get location => GoRouteData.$location('/login/signup');
+  String get location => GoRouteData.$location(
+    '/login/signup',
+    queryParams: {if (_self.from != null) 'from': _self.from},
+  );
 
   @override
   void go(BuildContext context) => context.go(location);
@@ -104,10 +121,15 @@ mixin $SignupRoute on GoRouteData {
 
 mixin $PasswordResetRoute on GoRouteData {
   static PasswordResetRoute _fromState(GoRouterState state) =>
-      const PasswordResetRoute();
+      PasswordResetRoute(from: state.uri.queryParameters['from']);
+
+  PasswordResetRoute get _self => this as PasswordResetRoute;
 
   @override
-  String get location => GoRouteData.$location('/login/password-reset');
+  String get location => GoRouteData.$location(
+    '/login/password-reset',
+    queryParams: {if (_self.from != null) 'from': _self.from},
+  );
 
   @override
   void go(BuildContext context) => context.go(location);
@@ -125,10 +147,15 @@ mixin $PasswordResetRoute on GoRouteData {
 
 mixin $PhoneLoginRoute on GoRouteData {
   static PhoneLoginRoute _fromState(GoRouterState state) =>
-      const PhoneLoginRoute();
+      PhoneLoginRoute(from: state.uri.queryParameters['from']);
+
+  PhoneLoginRoute get _self => this as PhoneLoginRoute;
 
   @override
-  String get location => GoRouteData.$location('/login/phone-login');
+  String get location => GoRouteData.$location(
+    '/login/phone-login',
+    queryParams: {if (_self.from != null) 'from': _self.from},
+  );
 
   @override
   void go(BuildContext context) => context.go(location);

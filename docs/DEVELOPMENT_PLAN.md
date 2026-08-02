@@ -3,7 +3,7 @@
 このドキュメントはテンプレートの「何を入れるか」「どの順で作るか」「どう運用するか」を管理する唯一の計画書。
 機能追加・方針変更のたびにこのファイルを更新する（Living Document）。
 
-- 最終更新: 2026-07-31
+- 最終更新: 2026-08-02
 - ステータス: Phase 0〜5 すべて完了 ＋ UI 刷新（Pure Mono）完了。以降の追加は Backlog から選定する
 
 ---
@@ -78,7 +78,9 @@ lib/
 - [x] go_router + go_router_builder で Typed Routes 定義（core/router/routes.dart）
 - [x] StatefulShellRoute によるボトムナビゲーション（ホーム/アイテム/設定、タブ状態保持）
 - [x] サンプルのリスト画面 → 詳細画面（`/items/:id`）。features/items/ が見本実装（正）
-- [x] ディープリンク設定手順ドキュメント（docs/DEEP_LINKS.md）。OS 側設定はドメイン確定後にコピー先で実施
+- [x] ディープリンク設定手順ドキュメント（docs/DEEP_LINKS.md）。Associated Domains / intent-filter / `.well-known` はドメイン確定後にコピー先で実施
+- [x] ディープリンクの OS 側フラグ（iOS `FlutterDeepLinkingEnabled` / Android `flutter_deeplinking_enabled`。ドメイン非依存分はテンプレートで設定済み）
+- [x] 未ログイン時のディープリンク復帰（redirect が元パスを `?from=` に退避し認証後に復帰。外部 URL は sanitize で破棄。core/router/app_router.dart）
 
 ### Phase 2: 認証（Supabase）
 
